@@ -1,2 +1,9 @@
-# The-Proof-Testament
-A web app for use in Formal Methods and other computational logic courses at Pepperdine University. Designed using the MEAN stack.
+# The Proof Testament 
+
+Web app for use in formal methods and other logic courses at Pepperdine University. 
+
+Frontend: Angular5
+
+Backend: NodeJS + ExpressJS
+
+Database: Firebase

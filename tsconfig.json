@@ -1,5 +1,9 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -8,7 +12,7 @@
       "node_modules/@types"
     ],
     "lib": [
-      "es5",
+      "es2017",
       "dom"
     ]
   }
