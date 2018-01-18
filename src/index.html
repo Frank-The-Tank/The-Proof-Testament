@@ -1,14 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
-  <title>Holder</title>
+  <title>HelloWorld</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="assets/app.css">
+    <link rel="stylesheet" href="https://angular-academy.s3.amazonaws.com/bundles/bundle.20160714172956.min.css">
+    <link rel="stylesheet"
+          href="https://angular-academy.s3-us-west-1.amazonaws.com/styles/angular-academy-lessons-theme-v1.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>Loading...
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBH7En_vRHHMw0vZlt6GkGgp0_lOvtUqac",
+            authDomain: "the-proof-testament.firebaseapp.com",
+            databaseURL: "https://the-proof-testament.firebaseio.com",
+            projectId: "the-proof-testament",
+            storageBucket: "the-proof-testament.appspot.com",
+            messagingSenderId: "388835831512"
+        };
+        firebase.initializeApp(config);
+
+        var root = firebase.database().ref();
+
+        root.on('value', function(snap) {
+            console.log(snap.val());
+        });
+
+    </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
-# The Proof Testament 
+# The Proof Testament   
 
-Web app for use in formal methods and other logic courses at Pepperdine University. 
+Web App made for use in formal methods and other logic courses at Pepperdine University
 
 Frontend: Angular5
 
