@@ -31,7 +31,8 @@
     "angularfire2": "^4.0.0-rc.0",
     "firebase": "^3.7.4",
     "firebase-queue": "^1.5.0",
-    "lodash": "^4.15.0"
+    "lodash": "^4.15.0",
+    "handlebars": "4.0.0"
   },
   "devDependencies": {
     "@angular/cli": "1.5.0",
@@ -52,6 +53,7 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
-    "typescript": "~2.4.2"
+    "typescript": "~2.4.2",
+    "handlebars": "4.0.0"
   }
 }
