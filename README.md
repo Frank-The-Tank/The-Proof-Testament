@@ -21,3 +21,6 @@ Database: Firebase
 2. To see the web app running navigate to "localhost:4200" in your browser.
 
 3. When you are finished with your current session make sure to end the NodeJS server session using CTRL-C in terminal/command line.
+
+### Additional Help
+If you are receiving the error "Error: Could not find module '@angular-devkit/core'" run npm install @angular-devkit/core --save-dev. This is a fix until the angularCLI develops release a patch.
