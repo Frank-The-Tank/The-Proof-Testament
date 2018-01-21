@@ -25,5 +25,5 @@ Database: Firebase
 ### Additional Help
 If you are receiving the error "Error: Could not find module '@angular-devkit/core'" run npm install @angular-devkit/core --save-dev. This is a fix until the angularCLI developers release a patch.
 
-### Includes
-This project uses a heavily modified version of the popular QuillJS library
+### Awknowledgements
+This project uses a heavily modified version of the popular QuillJS library (https://github.com/quilljs/quill)
