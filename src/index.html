@@ -21,8 +21,28 @@
   <div id="toolbar"></div>
   <div id="editor"></div>
 
-  <script>
 
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBH7En_vRHHMw0vZlt6GkGgp0_lOvtUqac",
+      authDomain: "the-proof-testament.firebaseapp.com",
+      databaseURL: "https://the-proof-testament.firebaseio.com",
+      projectId: "the-proof-testament",
+      storageBucket: "the-proof-testament.appspot.com",
+      messagingSenderId: "388835831512"
+    };
+    firebase.initializeApp(config);
+
+    var root = firebase.database().ref();
+
+    root.on('value', function(snap) {
+      console.log(snap.val());
+    });
+  </script>
+
+  <script>
     var toolBarOptions = [
       ['bold', 'italic', 'underline', 'strike']
     ];
