@@ -1,0 +1,7 @@
+<ul>
+  <div *ngFor="let rule of bibleObservable | async">
+    <ngb-alert type="info" [dismissible]="false">
+      <h1>{{rule.text}}</h1>
+    </ngb-alert>
+  </div>
+</ul>
