@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ng2-ckeditor';
 
-import { AppComponent, SampleEditor } from './app.component';
+import { AppComponent, Editor } from './app.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SampleEditor
+    Editor
   ],
   imports: [
     BrowserModule,

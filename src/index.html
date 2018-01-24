@@ -1,15 +1,50 @@
+<!-- ACTUAL HTML file that defines what app looks like online -->
+<!-- for component to be visualized online in the browser, it must be referenced here -->
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Testing</title>
   <base href="/">
+
+  <!--Bootstrap-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+
 </head>
 <body>
   <h1>The Proof Testament</h1>
+
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBH7En_vRHHMw0vZlt6GkGgp0_lOvtUqac",
+    authDomain: "the-proof-testament.firebaseapp.com",
+    databaseURL: "https://the-proof-testament.firebaseio.com",
+    projectId: "the-proof-testament",
+    storageBucket: "the-proof-testament.appspot.com",
+    messagingSenderId: "388835831512"
+  };
+
+  firebase.initializeApp(config);
+
+  var root = firebase.database().ref();
+
+  root.on('value', function(snap) {
+    console.log(snap.val());
+  });
+  </script>
+
+  <!-- <app-root> tag places the compenents html file's code here in the index.html so it is represented online -->
   <app-root></app-root>
+
+
 </body>
 </html>

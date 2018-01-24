@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
   @Component({
-    selector: 'sampleEditor',
+    selector: 'editor',
     template: `
     <ckeditor
       [(ngModel)]="ckeditorContent"
@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
     `,
 })
 
-export class SampleEditor {
+export class Editor {
   private ckeditorContent: string;
   constructor() {
     this.ckeditorContent = `<p>Greetings from CKEditor...</p>`;
