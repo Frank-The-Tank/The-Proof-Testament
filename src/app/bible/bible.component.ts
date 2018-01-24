@@ -14,7 +14,7 @@ export class BibleComponent implements OnInit {
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
-    this.bibleObservable = this.getRule('/messages');
+    this.bibleObservable = this.getRule('/theorems');
   }
 
   getRule(listPath): Observable<any[]> {
