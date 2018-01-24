@@ -6,6 +6,11 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { AppComponent, Editor } from './app.component';
 
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { environment } from './../environments/environment';
 
 @NgModule({
   declarations: [
@@ -16,6 +21,9 @@ import { AppComponent, Editor } from './app.component';
     BrowserModule,
     FormsModule,
     CKEditorModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireModule
   ],
   providers: [],
   bootstrap: [AppComponent]
