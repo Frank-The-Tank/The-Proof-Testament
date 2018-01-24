@@ -4,36 +4,12 @@
   <meta charset="utf-8">
   <title>Testing</title>
   <base href="/">
-
-  <!--QuillJS-->
-  <script src="https://cdn.quilljs.com/latest/quill.js"></script>
-  <script src="https://cdn.quilljs.com/latest/quill.min.js"></script>
-  <script src="https://cdnjs.cloudfare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
-
-  <link rel="stylesheet" href="https://cdn.quilljs.com/latest/quill.snow.css">
-  <link rel="stylesheet" href="https://cdn.quilljs.com/latest/quill.bubble.cs">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 </head>
 <body>
+  <h1>The Proof Testament</h1>
   <app-root></app-root>
-  <div id="toolbar"></div>
-  <div id="editor"></div>
-  <app-editing></app-editing>
-  <script>
-
-    var toolBarOptions = [
-      ['bold', 'italic', 'underline', 'strike']
-    ];
-
-    var quill = new Quill('#editor', {
-      modules: {
-        toolbar: toolBarOptions
-      },
-
-      theme: 'snow'
-    });
-  </script>
 </body>
 </html>
