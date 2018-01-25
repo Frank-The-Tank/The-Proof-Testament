@@ -11,7 +11,6 @@
 
 </head>
 <body>
-  <h1>The Proof Testament</h1>
   <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
   <script>
   // Initialize Firebase
@@ -31,7 +30,20 @@
     console.log(snap.val());
   });
   </script>
-  <app-root></app-root>
-  <app-bible></app-bible>
+
+  <div class="row backgroundContainer">
+
+    <div class="col-md-7 componentContainer">
+      <h1 class="sectionHeader">Formal Methods</h1>
+      <app-root></app-root>
+    </div>
+
+    <div class="col-md-5 componentContainer">
+      <h1 class="sectionHeader">The Bible</h1>
+      <app-bible></app-bible>
+    </div>
+
+  </div>
+
 </body>
 </html>
