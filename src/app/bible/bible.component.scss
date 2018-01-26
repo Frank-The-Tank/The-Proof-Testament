@@ -2,3 +2,11 @@
   max-height: 100vh;
   overflow: auto;
 }
+.topnav {
+  float: none;
+
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
