@@ -21,12 +21,9 @@ import { BibleComponent } from './bible/bible.component';
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
     Editor,
-    BibleComponent
-=======
+    BibleComponent,
     FooterComponent
->>>>>>> layout
   ],
   imports: [
     BrowserModule,
