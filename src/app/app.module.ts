@@ -13,7 +13,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 import { FooterComponent } from './footer/footer.component';
->>>>>>> layout
 
 import { environment } from './../environments/environment';
 import { BibleComponent } from './bible/bible.component';
@@ -21,12 +20,9 @@ import { BibleComponent } from './bible/bible.component';
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
     Editor,
-    BibleComponent
-=======
+    BibleComponent,
     FooterComponent
->>>>>>> layout
   ],
   imports: [
     BrowserModule,
@@ -38,10 +34,6 @@ import { BibleComponent } from './bible/bible.component';
     NgbModule.forRoot()
   ],
   providers: [],
-<<<<<<< HEAD
-  bootstrap: [AppComponent, BibleComponent]
-=======
-  bootstrap: [AppComponent, FooterComponent]
->>>>>>> layout
+  bootstrap: [AppComponent, BibleComponent, FooterComponent]
 })
 export class AppModule { }
