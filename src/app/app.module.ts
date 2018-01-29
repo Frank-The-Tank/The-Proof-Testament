@@ -16,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 
 import { environment } from './../environments/environment';
 import { BibleComponent } from './bible/bible.component';
+import {BibleService} from './bible/bible.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { BibleComponent } from './bible/bible.component';
     AngularFireAuthModule,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [BibleService],
   bootstrap: [AppComponent, BibleComponent, FooterComponent]
 })
 export class AppModule { }

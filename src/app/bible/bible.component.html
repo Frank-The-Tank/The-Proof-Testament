@@ -1,11 +1,14 @@
+<p>
+  When \(a \ne\) It works baby
+</p>
 <div class="topnav">
   <input type="text" placeholder="Search..">
 <div class="theoremsContainer">
   <ul>
-    <div *ngFor="let theorem of bibleObservable | async">
+    <div id="listElements" *ngFor="let theorem of bibleObservable$ | async" >
       <ngb-alert type="info" [dismissible]="false">
         <h1>{{theorem.rule}}: {{theorem.name}}</h1>
-        <p> {{theorem.eq}} </p>
+        <p>{{theorem.eq}}</p>
       </ngb-alert>
     </div>
   </ul>
