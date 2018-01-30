@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterContentChecked } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import {BibleService} from './bible.service';
@@ -15,7 +15,9 @@ export class BibleComponent implements OnInit {
   constructor(service: BibleService, private db: AngularFireDatabase) {
     this.bibleObservable$ = service.getTheorems(db);
   }
-
+ngAfterContentChecked(){
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+}
   ngOnInit() {}
 
 }

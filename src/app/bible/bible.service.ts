@@ -3,5 +3,3 @@ export class BibleService {
     return db.list('/theorems').valueChanges();
   }
 }
-
-
