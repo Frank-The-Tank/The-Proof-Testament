@@ -16,9 +16,9 @@ export class BibleComponent implements OnInit {
     this.bibleObservable$ = service.getTheorems(db);
   }
 
-  ngAfterContentChecked(){
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-  }
+  // ngAfterContentChecked(){
+  //   MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+  // }
 
   ngOnInit() {}
 

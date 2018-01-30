@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-// import { CKEditorModule } from './ckeditor/';
+// import { CKEditorModule } from 'ckeditor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent, EditorComponent } from './app.component';
@@ -17,6 +17,7 @@ import { FooterComponent } from './footer/footer.component';
 import { environment } from './../environments/environment';
 import { BibleComponent } from './bible/bible.component';
 import {BibleService} from './bible/bible.service';
+
 
 @NgModule({
   declarations: [

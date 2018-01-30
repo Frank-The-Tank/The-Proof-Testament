@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script src="./ckeditor/ckeditor.js"></script>
+  <script src="https://cdn.ckeditor.com/4.8.0/full/ckeditor.js"></script>
   <script type="text/javascript" async
           src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -19,6 +19,38 @@
 
     <div class="col-md-7 componentContainer">
       <h1 class="sectionHeader">Formal Methods</h1>
+
+      <!--generate TextEditor with our config-->
+      <textarea name="editor"></textarea>
+      <script>
+        CKEDITOR.replace( 'editor', {
+          toolbarGroups: [
+            {name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing']},
+            {name: 'tools', groups: ['tools']},
+            {name: 'document', groups: ['mode', 'document', 'doctools']},
+            {name: 'clipboard', groups: ['clipboard', 'undo']},
+            {name: 'forms', groups: ['forms']},
+            {name: 'basicstyles', groups: ['basicstyles', 'cleanup']},
+            {name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph']},
+            {name: 'links', groups: ['links']},
+            {name: 'insert', groups: ['insert']},
+            {name: 'styles', groups: ['styles']},
+            {name: 'colors', groups: ['colors']},
+            {name: 'others', groups: ['others']},
+            {name: 'about', groups: ['about']}
+          ],
+
+          removeButtons: 'Source,Templates,PasteFromWord,PasteText,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,ImageButton,HiddenField,Button,Bold,Italic,Underline,Strike,Subscript,Superscript,RemoveFormat,CopyFormatting,NumberedList,BulletedList,Indent,Outdent,CreateDiv,JustifyLeft,JustifyRight,Language,BidiRtl,JustifyBlock,JustifyCenter,Link,Anchor,Unlink,Image,Flash,Table,Smiley,Iframe,Styles,Format,Font,BGColor,TextColor,About,ShowBlocks,Blockquote,BidiLtr',
+
+
+        });
+      </script>
+
+
+      <!--enable local plugins-->
+
+      <!--forward to local config files-->
+
       <app-root></app-root>
     </div>
 
