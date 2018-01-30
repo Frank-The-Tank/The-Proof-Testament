@@ -15,9 +15,11 @@ export class BibleComponent implements OnInit {
   constructor(service: BibleService, private db: AngularFireDatabase) {
     this.bibleObservable$ = service.getTheorems(db);
   }
-ngAfterContentChecked(){
-  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-}
+
+  ngAfterContentChecked(){
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+  }
+
   ngOnInit() {}
 
 }
