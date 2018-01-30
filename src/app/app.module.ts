@@ -33,7 +33,7 @@ import {BibleService} from './bible/bible.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-NgbModule.forRoot()
+    NgbModule.forRoot()
   ],
   providers: [BibleService],
   bootstrap: [AppComponent, BibleComponent, FooterComponent]
