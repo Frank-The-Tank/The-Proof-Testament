@@ -25,6 +25,8 @@ p & q
 q #
 `;
 
+convertToLatex(text);
+
 // Converts a string into LaTeX. Returns PDF stream.
 
 function convertToLatex(entry) {
@@ -70,7 +72,9 @@ function convertToLatex(entry) {
 	doc = docSettings + '\n\n' + header + '\n\n\\begin{document}\\newcommand{\\unindent}{ \\hspace{-2em} }' + '\n\n' + content + '\n\n\\end{document}';
 	
 	// Export to PDF
-	const output = fs.createWriteStream('output.pdf');
+	let fileName = String('pdfs/' + Date.now()) + '.pdf';
+	
+	const output = fs.createWriteStream(fileName);
 	const pdf = latex(doc);
 	 
 	pdf.pipe(output);
