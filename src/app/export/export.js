@@ -76,7 +76,7 @@ function convertToLatex(entry) {
 	
 	const output = fs.createWriteStream(fileName);
 	const pdf = latex(doc);
-	 
+	
 	pdf.pipe(output);
 	
 	pdf.on('error', err => {
