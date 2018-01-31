@@ -20,37 +20,42 @@
     <div class="col-md-7 componentContainer">
       <h1 class="sectionHeader">Formal Methods</h1>
 
-      <!--generate TextEditor with our config-->
-      <textarea name="editor"></textarea>
-      <script>
-        CKEDITOR.replace( 'editor', {
-          toolbarGroups: [
-            {name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing']},
-            {name: 'tools', groups: ['tools']},
-            {name: 'document', groups: ['mode', 'document', 'doctools']},
-            {name: 'clipboard', groups: ['clipboard', 'undo']},
-            {name: 'forms', groups: ['forms']},
-            {name: 'basicstyles', groups: ['basicstyles', 'cleanup']},
-            {name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph']},
-            {name: 'links', groups: ['links']},
-            {name: 'insert', groups: ['insert']},
-            {name: 'styles', groups: ['styles']},
-            {name: 'colors', groups: ['colors']},
-            {name: 'others', groups: ['others']},
-            {name: 'about', groups: ['about']}
-          ],
+      <!--generate inlineTextEditor with our config-->
+      
+      <!--first need a div to replace later; contenteditable must be true-->
+      <div id="editor1" contenteditable="true">
+      <!-- need to figure out way to make this disappear upon typing -->
+          <p> Delete and enter text here </p>
+      </div>
 
-          removeButtons: 'Source,Templates,PasteFromWord,PasteText,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,ImageButton,HiddenField,Button,Bold,Italic,Underline,Strike,Subscript,Superscript,RemoveFormat,CopyFormatting,NumberedList,BulletedList,Indent,Outdent,CreateDiv,JustifyLeft,JustifyRight,Language,BidiRtl,JustifyBlock,JustifyCenter,Link,Anchor,Unlink,Image,Flash,Table,Smiley,Iframe,Styles,Format,Font,BGColor,TextColor,About,ShowBlocks,Blockquote,BidiLtr',
+      <script>
+          // Turn off automatic editor creation first, not sure if super vital
+          CKEDITOR.disableAutoInline = true;
+
+          //replace the div with editor with this config
+          CKEDITOR.inline( 'editor1',{
+            	toolbarGroups : [
+            		{ name: 'clipboard', groups: [ 'undo', 'clipboard' ] },
+                '/',
+            		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+            		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+            		{ name: 'forms', groups: [ 'forms' ] },
+            		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+            		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+            		{ name: 'links', groups: [ 'links' ] },
+            		{ name: 'insert', groups: [ 'insert' ] },
+            		{ name: 'styles', groups: [ 'styles' ] },
+            		{ name: 'colors', groups: [ 'colors' ] },
+            		{ name: 'tools', groups: [ 'tools' ] },
+            		{ name: 'others', groups: [ 'others' ] },
+            		{ name: 'about', groups: [ 'about' ] }
+            	],
+
+            	removeButtons: 'Source,Save,NewPage,Preview,Print,Cut,PasteFromWord,PasteText,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Superscript,Subscript,Strike,Underline,Bold,Italic,RemoveFormat,CopyFormatting,NumberedList,BulletedList,Indent,Outdent,Blockquote,CreateDiv,JustifyCenter,JustifyLeft,BidiLtr,BidiRtl,Language,JustifyRight,JustifyBlock,Anchor,Unlink,Link,Image,Flash,Table,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,TextColor,BGColor,ShowBlocks,Maximize,About,Styles,Format,Font,FontSize,Templates,Paste,Copy'
 
 
         });
       </script>
-
-
-      <!--enable local plugins-->
-
-      <!--forward to local config files-->
-
       <app-root></app-root>
     </div>
 
