@@ -8,7 +8,7 @@
 const latex = require('node-latex');
 const fs = require('fs');
 
-var text = `
+var format = `
 @Name
 @Course
 @Date
@@ -25,11 +25,8 @@ p & q
 q #
 `;
 
-convertToLatex(text);
-
-// Converts a string into LaTeX. Returns PDF stream.
-
-function convertToLatex(entry) {
+// Converts a string into LaTeX.
+function convertToLatexPDF(entry) {
 	
 	var doc = "";
 	
@@ -85,5 +82,10 @@ function convertToLatex(entry) {
 		return "Error"
 	});
 	
-	return pdf;
+	return fileName;
+}
+
+// Delete PDF file
+function deletePDF(fileName) {
+	fs.unlink(fileName);
 }
