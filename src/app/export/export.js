@@ -5,6 +5,9 @@
  *	Imported text must follow the format below.
  */
 
+const latex = require('node-latex');
+const fs = require('fs');
+
 var text = `
 @Name
 @Course
@@ -22,7 +25,7 @@ p & q
 q #
 `;
 
-// Converts a string into LaTeX.
+// Converts a string into LaTeX. Returns PDF stream.
 
 function convertToLatex(entry) {
 	
@@ -66,7 +69,17 @@ function convertToLatex(entry) {
 	// Assemble the document
 	doc = docSettings + '\n\n' + header + '\n\n\\begin{document}\\newcommand{\\unindent}{ \\hspace{-2em} }' + '\n\n' + content + '\n\n\\end{document}';
 	
-	return doc;
+	// Export to PDF
+	const output = fs.createWriteStream('output.pdf');
+	const pdf = latex(doc);
+	 
+	pdf.pipe(output);
+	
+	pdf.on('error', err => {
+		console.error(err);
+		
+		return "Error"
+	});
+	
+	return pdf;
 }
-
-console.log(convertToLatex(text));
