@@ -1,6 +1,6 @@
 <div class="topnav">
   <input type="text" placeholder="Search..">
-<div class="theoremsContainer">
+<div class="theoremsContainer" scrollable (scrollPosition)="scrollHandler($event)">
   <ul>
     <div id="listElements" *ngFor="let theorem of bibleObservable$ | async" >
       <ngb-alert type="info" [dismissible]="false">

@@ -1,7 +1,8 @@
-import { Component, OnInit,AfterContentChecked } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import {BibleService} from './bible.service';
+import { BibleService } from './bible.service';
+declare var MathJax: any;
 
 @Component({
   selector: 'app-bible',
@@ -21,5 +22,14 @@ export class BibleComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  scrollHandler(event) {
+    if (event == 'top') {
+      console.log("Top touched");
+    } else if (event == 'top') {
+      console.log("Bottom touched");
+    }
+  }
+
 
 }

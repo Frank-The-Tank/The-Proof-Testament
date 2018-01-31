@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 import { AppComponent, Editor } from './app.component';
 
@@ -17,13 +18,15 @@ import { FooterComponent } from './footer/footer.component';
 import { environment } from './../environments/environment';
 import { BibleComponent } from './bible/bible.component';
 import {BibleService} from './bible/bible.service';
+import { ScrollableDirective } from './directives/scrollable.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     Editor,
     BibleComponent,
-    FooterComponent
+    FooterComponent,
+    ScrollableDirective
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import {BibleService} from './bible/bible.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    InfiniteScrollModule
   ],
   providers: [BibleService],
   bootstrap: [AppComponent, BibleComponent, FooterComponent]
