@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
 import { BibleService } from './bible.service';
+import {FirebaseListObservable} from 'angularfire2/database-deprecated';
 declare var MathJax: any;
 
 @Component({
@@ -11,7 +11,7 @@ declare var MathJax: any;
 })
 export class BibleComponent implements OnInit {
 
-  bibleObservable$: Observable<any[]>;
+  bibleObservable$: FirebaseListObservable<any[]>;
 
   constructor(service: BibleService, private db: AngularFireDatabase) {
     this.bibleObservable$ = service.getTheorems(db);
@@ -24,12 +24,18 @@ export class BibleComponent implements OnInit {
   ngOnInit() {}
 
   scrollHandler(event) {
-    if (event == 'top') {
-      console.log("Top touched");
-    } else if (event == 'top') {
-      console.log("Bottom touched");
+    if (event === 'top') {
+      console.log('Top touched');
+    } else if (event === 'top') {
+      console.log('Bottom touched');
     }
   }
 
-
+  setBackgroundColor(type) {
+    if (type === 'axiom') {
+      return 'lightsalmon';
+    } else {
+      return '#bee5eb';
+    }
+  }
 }

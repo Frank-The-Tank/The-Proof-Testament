@@ -4,7 +4,33 @@
   top: 80px;
   margin: auto;
   overflow: auto;
+  overflow-y: scroll;
 }
+
+.theoremContainer {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 6px;
+  margin-bottom: 10px;
+  height: 100px;
+}
+
+.theoremType {
+  float: right;
+  font-size: 18px;
+  padding-top: 30px;
+  padding-right: 10px;
+}
+
+.theoremTitle {
+  font-size: 1.25em;
+}
+
+.theoremEquation {
+  text-align: center;
+}
+
 .topnav {
   position: fixed;
   float: none;

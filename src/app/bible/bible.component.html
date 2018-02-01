@@ -1,12 +1,13 @@
 <div class="topnav">
   <input type="text" placeholder="Search..">
-<div class="theoremsContainer" scrollable (scrollPosition)="scrollHandler($event)">
+<div class="theoremsContainer" appScrollable (scrollPosition)="scrollHandler($event)">
   <ul>
     <div id="listElements" *ngFor="let theorem of bibleObservable$ | async" >
-      <ngb-alert type="info" [dismissible]="false">
-        <h1>{{theorem.rule}}: {{theorem.name}}</h1>
-        <p>{{theorem.eq}}</p>
-      </ngb-alert>
+      <div class="theoremContainer" [style.background-color]="setBackgroundColor(theorem.type)">
+        <h1 class="theoremTitle">{{theorem.rule}}: {{theorem.name}}</h1>
+        <h2 class="theoremType">{{theorem.type}}</h2>
+        <p class="theoremEquation">{{theorem.eq}}</p>
+      </div>
     </div>
   </ul>
 </div>
