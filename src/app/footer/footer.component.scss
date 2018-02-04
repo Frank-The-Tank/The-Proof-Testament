@@ -1,6 +1,5 @@
 .footerBox {
  background-color: gray;
- color: maroon;
  display: flex;
  align-items: center;
  justify-content: center;
@@ -16,12 +15,15 @@
 
 .footerButton {
   color: black;
-  background-color: maroon;
+  background-color: #AF4035;
   font-size: 16px;
+  font-family: serif, sans-serif;
 }
 
 .divider {
   size: 10px;
   height: auto;
   display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
 }
