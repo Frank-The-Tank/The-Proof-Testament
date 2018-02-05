@@ -8,29 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+  <script type="text/javascript" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
 
 </head>
 <body>
 
-  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-  <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBH7En_vRHHMw0vZlt6GkGgp0_lOvtUqac",
-    authDomain: "the-proof-testament.firebaseapp.com",
-    databaseURL: "https://the-proof-testament.firebaseio.com",
-    projectId: "the-proof-testament",
-    storageBucket: "the-proof-testament.appspot.com",
-    messagingSenderId: "388835831512"
-  };
-  firebase.initializeApp(config);
-
-  var root = firebase.database().ref();
-
-  root.on('value', function(snap) {
-    console.log(snap.val());
-  });
-  </script>
+  <app-navbar></app-navbar>
 
   <div class="row backgroundContainer">
 
@@ -40,7 +25,6 @@
     </div>
 
     <div class="col-md-5 componentContainer">
-      <h1 class="sectionHeader">The Bible</h1>
       <app-bible></app-bible>
     </div>
 
@@ -49,6 +33,7 @@
   <app-footer></app-footer>
 >>>>>>> layout
   </div>
+</div>
 
 </body>
 </html>

@@ -1,7 +1,3 @@
-<ul>
-  <div *ngFor="let rule of bibleObservable | async">
-    <ngb-alert type="info" [dismissible]="false">
-      <h1>{{rule.rule}}</h1>
-    </ngb-alert>
-  </div>
-</ul>
+<input type="text" placeholder="Search.." (keyup)="search(input.value)" #input>
+<app-theorems-list [theorems]="filtered"></app-theorems-list>
+git

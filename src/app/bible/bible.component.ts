@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
+import { BibleService } from './bible.service';
+import {Theorem} from '../model/theorem';
+
 
 @Component({
   selector: 'app-bible',
@@ -9,16 +10,22 @@ import { Observable } from 'rxjs/Observable';
 })
 export class BibleComponent implements OnInit {
 
-  bibleObservable: Observable<any[]>;
+  allTheorems: Theorem[];
+  filtered: Theorem[];
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private service: BibleService) {}
 
   ngOnInit() {
-    this.bibleObservable = this.getRule('/theorems');
+    this.service.findAllTheorems()
+      .do(console.log)
+      .subscribe(
+        theorems => this.allTheorems = this.filtered = theorems
+      );
   }
 
-  getRule(listPath): Observable<any[]> {
-    return this.db.list(listPath).valueChanges();
+  search(search: string) {
+    this.filtered = this.allTheorems.filter(
+      theorem => theorem.rule.includes(search));
   }
 
 }
