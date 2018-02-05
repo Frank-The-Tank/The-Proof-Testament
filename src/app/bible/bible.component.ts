@@ -1,8 +1,7 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { BibleService } from './bible.service';
-import {FirebaseListObservable} from 'angularfire2/database-deprecated';
-declare var MathJax: any;
+import {Theorem} from '../model/theorem';
+
 
 @Component({
   selector: 'app-bible',
@@ -11,31 +10,22 @@ declare var MathJax: any;
 })
 export class BibleComponent implements OnInit {
 
-  bibleObservable$: FirebaseListObservable<any[]>;
+  allTheorems: Theorem[];
+  filtered: Theorem[];
 
-  constructor(service: BibleService, private db: AngularFireDatabase) {
-    this.bibleObservable$ = service.getTheorems(db);
+  constructor(private service: BibleService) {}
+
+  ngOnInit() {
+    this.service.findAllTheorems()
+      .do(console.log)
+      .subscribe(
+        theorems => this.allTheorems = this.filtered = theorems
+      );
   }
 
-  ngAfterContentChecked(){
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+  search(search: string) {
+    this.filtered = this.allTheorems.filter(
+      theorem => theorem.rule.includes(search));
   }
 
-  ngOnInit() {}
-
-  scrollHandler(event) {
-    if (event === 'top') {
-      console.log('Top touched');
-    } else if (event === 'top') {
-      console.log('Bottom touched');
-    }
-  }
-
-  setBackgroundColor(type) {
-    if (type === 'axiom') {
-      return 'lightsalmon';
-    } else {
-      return '#bee5eb';
-    }
-  }
 }

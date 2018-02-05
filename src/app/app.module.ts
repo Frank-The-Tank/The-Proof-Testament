@@ -7,11 +7,9 @@ import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 import { AppComponent, Editor } from './app.component';
 
-
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
 
 import { FooterComponent } from './footer/footer.component';
 
@@ -22,6 +20,10 @@ import { ScrollableDirective } from './directives/scrollable.directive';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BibleFilterPipe } from './pipes/bible-filter.pipe';
 
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+import { TheoremsListComponent } from './theorems-list/theorems-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ import { BibleFilterPipe } from './pipes/bible-filter.pipe';
     FooterComponent,
     ScrollableDirective,
     NavbarComponent,
-    BibleFilterPipe
+    BibleFilterPipe,
+    TheoremsListComponent
   ],
   imports: [
     BrowserModule,

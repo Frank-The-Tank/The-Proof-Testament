@@ -1,12 +1,3 @@
-<div class="theoremsContainer">
-  <input [(ngModel)]="searchText" class="bibleSearchBar" type="text" placeholder="Search..">
-    <ul appScrollable (scrollPosition)="scrollHandler($event)">
-      <li id="listElements" *ngFor="let theorem of bibleObservable$ | bibleFilter : searchText | async">
-        <div class="theoremContainer" [style.background-color]="setBackgroundColor(theorem.type)">
-          <h1 class="theoremTitle">{{theorem.rule}}: {{theorem.name}}</h1>
-          <h2 class="theoremType">{{theorem.type}}</h2>
-          <p class="theoremEquation">{{theorem.eq}}</p>
-        </div>
-      </li>
-    </ul>
-</div>
+<input type="text" placeholder="Search.." (keyup)="search(input.value)" #input>
+<app-theorems-list [theorems]="filtered"></app-theorems-list>
+git

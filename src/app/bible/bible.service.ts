@@ -1,7 +1,18 @@
+import {Observable} from 'rxjs/Observable';
+import {Theorem} from '../model/theorem';
+import {AngularFireDatabase} from 'angularfire2/database';
+import {Injectable} from '@angular/core';
 
-
+@Injectable()
 export class BibleService {
-  getTheorems(db) {
-    return db.list('/theorems').valueChanges();
+
+  constructor(private af: AngularFireDatabase) {}
+
+  findAllTheorems(): Observable<Theorem[]> {
+
+    return this.af.list('theorems').valueChanges()
+      .map(Theorem.fromJsonList);
+
   }
+
 }
