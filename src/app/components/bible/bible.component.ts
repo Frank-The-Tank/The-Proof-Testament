@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { BibleService } from './bible.service';
-import {Theorem} from '../model/theorem';
+import {Theorem} from '../../model/theorem';
 
 
 @Component({

@@ -1,5 +1,5 @@
 import {Observable} from 'rxjs/Observable';
-import {Theorem} from '../model/theorem';
+import {Theorem} from '../../model/theorem';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Injectable} from '@angular/core';
 

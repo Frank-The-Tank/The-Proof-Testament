@@ -1,5 +1,3 @@
-import {type} from 'os';
-
 export class Theorem {
 
   constructor(

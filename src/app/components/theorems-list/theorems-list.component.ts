@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Theorem} from '../model/theorem';
+import {Theorem} from '../../model/theorem';
 declare var MathJax: any;
 
 @Component({
