@@ -2,15 +2,16 @@
   position: fixed;
   bottom: 50px;
   top: 80px;
-  margin: auto;
   overflow: auto;
   overflow-y: scroll;
+  max-width: 39%;
 }
 
 .theoremContainer {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px #ccc;
   padding: 6px;
   margin-bottom: 10px;
   height: 100px;
@@ -31,12 +32,12 @@
   text-align: center;
 }
 
-.topnav {
-  position: fixed;
-  float: none;
-  top: 50px;
-}
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
+// .bibleSearchBarContainer {
+//   position: fixed;
+//   float: none;
+//   top: 50px;
+// }
+
+.bibleSearchBar {
+
 }

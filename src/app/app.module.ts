@@ -19,6 +19,8 @@ import { environment } from './../environments/environment';
 import { BibleComponent } from './bible/bible.component';
 import {BibleService} from './bible/bible.service';
 import { ScrollableDirective } from './directives/scrollable.directive';
+import { NavbarComponent } from './navbar/navbar.component';
+import { BibleFilterPipe } from './pipes/bible-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ScrollableDirective } from './directives/scrollable.directive';
     Editor,
     BibleComponent,
     FooterComponent,
-    ScrollableDirective
+    ScrollableDirective,
+    NavbarComponent,
+    BibleFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,6 @@ import { ScrollableDirective } from './directives/scrollable.directive';
     InfiniteScrollModule
   ],
   providers: [BibleService],
-  bootstrap: [AppComponent, BibleComponent, FooterComponent]
+  bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent]
 })
 export class AppModule { }
