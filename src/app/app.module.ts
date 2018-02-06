@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+// import { CKEditorModule } from 'ckeditor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { AppComponent} from './app.component';
-import { EditorComponent } from './editor/editor.component';
+import { AppComponent, EditorComponent } from './app.component';
 
 
 import { AngularFireModule } from 'angularfire2';
@@ -30,13 +29,13 @@ import {BibleService} from './bible/bible.service';
   imports: [
     BrowserModule,
     FormsModule,
-    
+    // CKEditorModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot()
   ],
   providers: [BibleService],
-  bootstrap: [AppComponent,EditorComponent, BibleComponent, FooterComponent]
+  bootstrap: [AppComponent, BibleComponent, FooterComponent]
 })
 export class AppModule { }
