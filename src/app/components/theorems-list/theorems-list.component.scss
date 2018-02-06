@@ -15,6 +15,7 @@
   padding: 6px;
   margin-bottom: 10px;
   height: 100px;
+  opacity: 0.8;
 }
 
 .theoremType {
@@ -22,12 +23,15 @@
   font-size: 18px;
   padding-top: 30px;
   padding-right: 10px;
+  color: white;
 }
 
 .theoremTitle {
   font-size: 1.25em;
+  color: white;
 }
 
 .theoremEquation {
   text-align: center;
+  color: white;
 }
