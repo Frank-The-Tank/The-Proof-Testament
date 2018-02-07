@@ -1,14 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CKEditorModule } from 'ng2-ckeditor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { AppComponent, Editor } from './app.component';
+import { AppComponent } from './app.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { QuillModule } from 'ngx-quill';
 
 import { FooterComponent } from './footer/footer.component';
 
@@ -22,28 +23,29 @@ import { BibleFilterPipe } from './pipes/bible-filter.pipe';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TheoremsListComponent } from './components/theorems-list/theorems-list.component';
+import { EditorComponent } from './editor/editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Editor,
     BibleComponent,
     FooterComponent,
     ScrollableDirective,
     NavbarComponent,
     BibleFilterPipe,
-    TheoremsListComponent
+    TheoremsListComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    CKEditorModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    QuillModule,
     NgbModule.forRoot()
   ],
   providers: [BibleService],
-  bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent]
+  bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent, EditorComponent]
 })
 export class AppModule { }
