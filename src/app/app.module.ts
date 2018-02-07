@@ -9,8 +9,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { QuillModule } from 'ngx-quill';
-
 import { FooterComponent } from './footer/footer.component';
 
 import { environment } from './../environments/environment';
@@ -42,7 +40,6 @@ import { EditorComponent } from './editor/editor.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    QuillModule,
     NgbModule.forRoot()
   ],
   providers: [BibleService],
