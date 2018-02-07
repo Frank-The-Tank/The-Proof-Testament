@@ -27,7 +27,7 @@ export class BibleComponent implements OnInit {
     this.filtered = this.allTheorems.filter(theorem =>
       theorem.rule.includes(search) ||
        (theorem.name && theorem.name.toLowerCase().includes(search.toLowerCase())
-    );
+    ));
   }
 
 }
