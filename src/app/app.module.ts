@@ -21,6 +21,7 @@ import { BibleFilterPipe } from './pipes/bible-filter.pipe';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TheoremsListComponent } from './components/theorems-list/theorems-list.component';
+import { EditorComponent } from './editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TheoremsListComponent } from './components/theorems-list/theorems-list.
     ScrollableDirective,
     NavbarComponent,
     BibleFilterPipe,
-    TheoremsListComponent
+    TheoremsListComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
