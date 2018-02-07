@@ -10,6 +10,7 @@ export class EditorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  	
   }
 
 }
