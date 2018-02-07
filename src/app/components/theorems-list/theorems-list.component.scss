@@ -16,6 +16,9 @@
   margin-bottom: 10px;
   height: 100px;
   opacity: 0.8;
+  &:hover {
+    background-color: black !important;
+  }
 }
 
 .theoremType {
