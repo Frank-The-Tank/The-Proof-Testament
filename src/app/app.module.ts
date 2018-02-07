@@ -22,6 +22,9 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TheoremsListComponent } from './components/theorems-list/theorems-list.component';
 import { EditorComponent } from './editor/editor.component';
+import {RouterModule} from '@angular/router';
+import {routerConfig} from './router.config';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { EditorComponent } from './editor/editor.component';
     NavbarComponent,
     BibleFilterPipe,
     TheoremsListComponent,
-    EditorComponent
+    EditorComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,8 @@ import { EditorComponent } from './editor/editor.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RouterModule.forRoot(routerConfig)
   ],
   providers: [BibleService],
   bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent, EditorComponent]
