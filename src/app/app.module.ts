@@ -26,6 +26,7 @@ import {RouterModule} from '@angular/router';
 import {routerConfig} from './router.config';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
+import { AboutUserComponent } from './components/about-user/about-user.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { HomeComponent } from './components/home/home.component';
     TheoremsListComponent,
     EditorComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+    AboutUserComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,6 @@ import { HomeComponent } from './components/home/home.component';
   ],
   providers: [BibleService],
   bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
-    EditorComponent, HomeComponent]
+    EditorComponent, HomeComponent, AboutComponent, AboutUserComponent]
 })
 export class AppModule { }
