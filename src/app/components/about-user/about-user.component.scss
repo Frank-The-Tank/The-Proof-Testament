@@ -1,0 +1,26 @@
+.aboutContainer {
+  margin-top: 10vh !important;
+  margin-left: 10vw !important;
+  max-height: 35vh;
+}
+
+.memberImg {
+  border-radius: 50%;
+  transition: all .2s ease-in-out;
+  height: 20vw;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.aboutInfoContainer {
+
+}
+
+.memberName {
+  margin-bottom: 25px;
+}
+
+.memberDescription {
+
+}
