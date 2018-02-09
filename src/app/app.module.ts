@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CKEditorModule } from 'ng2-ckeditor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { AppComponent, Editor } from './app.component';
+import { AppComponent } from './app.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -23,28 +22,41 @@ import { BibleFilterPipe } from './pipes/bible-filter.pipe';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TheoremsListComponent } from './components/theorems-list/theorems-list.component';
+import { EditorComponent } from './editor/editor.component';
+import {RouterModule} from '@angular/router';
+import {routerConfig} from './router.config';
+import { AboutComponent } from './components/about/about.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutUserComponent } from './components/about-user/about-user.component';
+
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Editor,
     BibleComponent,
     FooterComponent,
     ScrollableDirective,
     NavbarComponent,
     BibleFilterPipe,
-    TheoremsListComponent
+    TheoremsListComponent,
+    EditorComponent,
+    AboutComponent,
+    HomeComponent,
+    AboutUserComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    CKEditorModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    QuillModule,
+    RouterModule.forRoot(routerConfig)
   ],
   providers: [BibleService],
-  bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent]
+  bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
+    EditorComponent, HomeComponent, AboutComponent, AboutUserComponent]
 })
 export class AppModule { }

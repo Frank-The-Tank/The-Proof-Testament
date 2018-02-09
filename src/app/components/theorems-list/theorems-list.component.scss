@@ -1,10 +1,10 @@
 .theoremsContainer {
   position: fixed;
-  bottom: 50px;
+  bottom: 0px;
   top: 120px;
   overflow: auto;
   overflow-y: scroll;
-  max-width: 39%;
+  width: 39%;
 }
 
 .theoremContainer {
@@ -15,6 +15,10 @@
   padding: 6px;
   margin-bottom: 10px;
   height: 100px;
+  opacity: 0.8;
+  &:hover {
+    background-color: black !important;
+  }
 }
 
 .theoremType {
@@ -22,12 +26,15 @@
   font-size: 18px;
   padding-top: 30px;
   padding-right: 10px;
+  color: white;
 }
 
 .theoremTitle {
   font-size: 1.25em;
+  color: white;
 }
 
 .theoremEquation {
   text-align: center;
+  color: white;
 }

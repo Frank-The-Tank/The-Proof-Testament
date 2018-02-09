@@ -1,0 +1,19 @@
+.aboutHeader {
+  height: 400px;
+  opacity: 0.1;
+  background-image: url(https://wallpapercave.com/wp/0YsfzTq.jpg);
+  background-size: cover;
+}
+
+.aboutHeaderTextHolder {
+  position: relative;
+  bottom: 225px;
+  outline: 2px solid black;
+}
+
+.aboutHeaderText {
+  text-align: center;
+  color: black;
+  opacity: 1.0;
+  font-size: 60px;
+}
