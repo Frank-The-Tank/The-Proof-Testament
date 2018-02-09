@@ -17,6 +17,7 @@ import {BibleService} from './components/bible/bible.service';
 import { ScrollableDirective } from './directives/scrollable.directive';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BibleFilterPipe } from './pipes/bible-filter.pipe';
+import { QuillModule } from 'ngx-quill'
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -48,6 +49,7 @@ import { AboutUserComponent } from './components/about-user/about-user.component
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    QuillModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(routerConfig)
   ],
