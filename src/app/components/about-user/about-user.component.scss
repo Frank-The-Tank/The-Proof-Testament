@@ -2,6 +2,20 @@
   margin-top: 10vh !important;
   margin-left: 10vw !important;
   max-height: 35vh;
+  float: left;
+  position: absolute;
+}
+
+.background {
+  display: block;
+  z-index: 3;
+  width: 785px;
+  height: 315px;
+  position: absolute;
+  top: -15px;
+  border-radius: 25px;
+  border: solid;
+  border-color: #ADD8E6;
 }
 
 .memberImg {
@@ -11,6 +25,8 @@
   &:hover {
     transform: scale(1.05);
   }
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .aboutInfoContainer {
@@ -18,9 +34,11 @@
 }
 
 .memberName {
-  margin-bottom: 10px;
+  margin-bottom: -10px;
+  font-family: Garamond;
 }
 
 .memberDescription {
-
+  font-family: Garamond;
+  font-size: 18px;
 }
