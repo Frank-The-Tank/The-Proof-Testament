@@ -9,8 +9,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { QuillModule } from 'ngx-quill';
-
 import { FooterComponent } from './footer/footer.component';
 
 import { environment } from './../environments/environment';
@@ -24,6 +22,11 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TheoremsListComponent } from './components/theorems-list/theorems-list.component';
 import { EditorComponent } from './editor/editor.component';
+import {RouterModule} from '@angular/router';
+import {routerConfig} from './router.config';
+import { AboutComponent } from './components/about/about.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutUserComponent } from './components/about-user/about-user.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { EditorComponent } from './editor/editor.component';
     NavbarComponent,
     BibleFilterPipe,
     TheoremsListComponent,
-    EditorComponent
+    EditorComponent,
+    AboutComponent,
+    HomeComponent,
+    AboutUserComponent
   ],
   imports: [
     BrowserModule,
@@ -42,10 +48,11 @@ import { EditorComponent } from './editor/editor.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    QuillModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RouterModule.forRoot(routerConfig)
   ],
   providers: [BibleService],
-  bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent, EditorComponent]
+  bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
+    EditorComponent, HomeComponent, AboutComponent, AboutUserComponent]
 })
 export class AppModule { }
