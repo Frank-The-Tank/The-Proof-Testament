@@ -21,7 +21,7 @@ import { BibleFilterPipe } from './pipes/bible-filter.pipe';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TheoremsListComponent } from './components/theorems-list/theorems-list.component';
-import { EditorComponent } from './editor/editor.component';
+import { EditorComponent } from './components/editor/editor.component';
 import {RouterModule} from '@angular/router';
 import {routerConfig} from './router.config';
 import { AboutComponent } from './components/about/about.component';
