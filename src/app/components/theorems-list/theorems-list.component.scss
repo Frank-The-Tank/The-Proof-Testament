@@ -1,20 +1,21 @@
 .theoremsContainer {
   position: fixed;
   bottom: 0px;
-  top: 120px;
+  top: 110px;
   overflow: auto;
   overflow-y: scroll;
   width: 39%;
 }
 
 .theoremContainer {
+  position: relative;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
   box-shadow: 2px 2px 2px 2px #ccc;
   padding: 6px;
   margin-bottom: 10px;
-  height: 100px;
+  height: 95px;
   opacity: 0.8;
   &:hover {
     background-color: black !important;
