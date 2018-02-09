@@ -10,7 +10,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { FooterComponent } from './footer/footer.component';
+
+import { FooterComponent } from './components/footer/footer.component';
 
 import { environment } from './../environments/environment';
 import { BibleComponent } from './components/bible/bible.component';
