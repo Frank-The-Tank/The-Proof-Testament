@@ -29,6 +29,8 @@ import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutUserComponent } from './components/about-user/about-user.component';
 
+import { QuillModule } from 'ngx-quill';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +53,7 @@ import { AboutUserComponent } from './components/about-user/about-user.component
     AngularFireAuthModule,
     QuillModule,
     NgbModule.forRoot(),
+    QuillModule,
     RouterModule.forRoot(routerConfig)
   ],
   providers: [BibleService],
