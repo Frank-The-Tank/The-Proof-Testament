@@ -44,6 +44,9 @@ import { QuillModule } from 'ngx-quill';
     HomeComponent,
     AboutUserComponent
   ],
+  entryComponents: [
+    EditorComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
