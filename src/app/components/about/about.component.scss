@@ -2,9 +2,9 @@
   text-align: center;
   color: black;
   opacity: 1.0;
-  font-size: 60px;
+  font-size: 75px;
   font-family: avenir;
-  margin-top: 15px;
+  margin-top: 10%;
 }
 
 .aboutHeaderImg {
@@ -12,4 +12,15 @@
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+  opacity: 0.2;
+  margin-top: -44%;
+  margin-bottom: -150px;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.description {
+  margin-top: -25%;
+  position: relative;
+  margin-left: -5%;
 }
