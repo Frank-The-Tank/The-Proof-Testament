@@ -5,7 +5,7 @@
   float: left;
   position: absolute;
 }
-
+/*
 .background {
   display: block;
   z-index: 3;
@@ -20,6 +20,7 @@
   z-index: 1;
   opacity: .15;
 }
+*/
 
 .memberImg {
   border-radius: 50%;
@@ -30,16 +31,20 @@
   }
   max-width: 100%;
   max-height: 100%;
-  z-index: 2;
 }
 
 .aboutInfoContainer {
   z-index: 2;
+  border-radius: 25px;
+  width: 100vw;
+  overflow: scroll;
+  background-color: #ffedcc;
 }
 
 .memberName {
   margin-bottom: -10px;
   font-family: avenir;
+  margin-top: 2.5%;
 }
 
 .memberDescription {
