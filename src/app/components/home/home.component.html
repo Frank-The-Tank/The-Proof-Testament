@@ -2,6 +2,8 @@
 
   <div class="col-md-7 componentContainer">
     <app-editor></app-editor>
+    <div #editorContainer></div>
+    <button (click)="addEditor()" class="addEditorBtn" type="button">Add Editor</button>
   </div>
 
   <div class="col-md-5 componentContainer">
@@ -11,4 +13,5 @@
   <div id="footerBox">
     <app-footer></app-footer>
   </div>
+
 </div>

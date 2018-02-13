@@ -1,3 +1,9 @@
-<input type="text" placeholder="Search.." (keyup)="search(input.value)" #input>
+<span>
+  <input type="text" placeholder="Search.." (keyup)="search(input.value)" #input>
+  <button>Back</button>
+  <button>Forward</button>
+</span>
+
 <app-theorems-list [theorems]="filtered"></app-theorems-list>
+
 

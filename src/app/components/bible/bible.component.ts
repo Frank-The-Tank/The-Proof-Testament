@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { BibleService } from './bible.service';
 import {Theorem} from '../../model/theorem';
-
+import {ElementRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-bible',
@@ -12,12 +12,12 @@ export class BibleComponent implements OnInit {
 
   allTheorems: Theorem[];
   filtered: Theorem[];
+  @ViewChild('theoremList') elementView: ElementRef;
 
   constructor(private service: BibleService) {}
 
   ngOnInit() {
     this.service.findAllTheorems()
-      .do(console.log)
       .subscribe(
         theorems => this.allTheorems = this.filtered = theorems
       );
@@ -29,5 +29,9 @@ export class BibleComponent implements OnInit {
        (theorem.name && theorem.name.toLowerCase().includes(search.toLowerCase())
     ));
   }
+
+  // findPageSize(): number {
+  //   return Math.floor((window.screen.height - 280) / 100);
+  // }
 
 }
