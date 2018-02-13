@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
@@ -22,7 +22,7 @@ import { QuillModule } from 'ngx-quill'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TheoremsListComponent } from './components/theorems-list/theorems-list.component';
-import { EditorComponent } from './editor/editor.component';
+import { EditorComponent } from './components/editor/editor.component';
 import {RouterModule} from '@angular/router';
 import {routerConfig} from './router.config';
 import { AboutComponent } from './components/about/about.component';
@@ -43,6 +43,9 @@ import { AboutUserComponent } from './components/about-user/about-user.component
     HomeComponent,
     AboutUserComponent
   ],
+  entryComponents: [ //part of routing
+    EditorComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -51,6 +54,7 @@ import { AboutUserComponent } from './components/about-user/about-user.component
     AngularFireAuthModule,
     QuillModule,
     NgbModule.forRoot(),
+    ReactiveFormsModule,
     QuillModule,
     RouterModule.forRoot(routerConfig)
   ],

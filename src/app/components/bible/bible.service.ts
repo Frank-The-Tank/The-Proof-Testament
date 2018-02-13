@@ -10,8 +10,11 @@ export class BibleService {
 
   findAllTheorems(): Observable<Theorem[]> {
 
-    return this.af.list('theorems').valueChanges()
-      .map(Theorem.fromJsonList);
+    // return this.af.list('theorems', ref => {
+    //   return ref.limitToFirst(pageSize).orderByKey();
+    // }).valueChanges().map(Theorem.fromJsonList);
+
+    return this.af.list('theorems').valueChanges().map(Theorem.fromJsonList);
 
   }
 
