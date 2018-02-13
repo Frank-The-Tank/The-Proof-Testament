@@ -37,7 +37,18 @@ import Quill from 'quill';
   encapsulation: ViewEncapsulation.None
 })
 export class EditorComponent{
-  title = '<div>hi</div> <p> hello </p> <br> <ul><option>hi </option><option>shut up</option> </ul>';
+  // title = content already in the editor
+  title = '<p> Prove: </p> ' +
+    '<p> Description: By ... </p> ' +
+    '<br> Proof <br> ' +
+    '<p> Step: </p>' +
+    '<p style="text-indent: 5em;">=  Rule</p>' +
+    '<p> Step: </p>' +
+    '<p style="text-indent: 5em;">=  Rule</p>' +
+    '<p> Step: </p>' +
+    '<p style="text-indent: 5em;">=  Rule</p>' +
+    '<p> Step: </p>' +
+    '<p style="text-indent: 5em;">=  Rule</p>';
   isReadOnly = false;
   placeholder = 'placeholder';
   form: FormGroup;
