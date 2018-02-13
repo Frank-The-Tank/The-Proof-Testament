@@ -1,5 +1,6 @@
 
-<quill-editor [(ngModel)]="title" [required]="false" (onContentChanged)="logChange($event);" (onSelectionChanged)="logSelection($event);">
+<quill-editor [(ngModel)]="title" [required]="false" [modules]="{formula: true, syntax: true, keyboard: true}"
+(onContentChanged)="logChange($event);" (onSelectionChanged)="logSelection($event);">
   <div quill-editor-toolbar>
     <span class="ql-indent">
       <button class="ql-indent" value="+1"></button>

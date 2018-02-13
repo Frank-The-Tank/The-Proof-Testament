@@ -73,20 +73,28 @@ export class EditorComponent {
   }
 
   setControl() {
-    this.form.setControl('editor', new FormControl('test - new Control'))
+    this.form.setControl('editor', new FormControl('test - new Control'));
   }
 
   setFocus($event) {
     $event.focus();
   }
 
-  patchValue() {
-    this.form.controls['editor'].patchValue(`${this.form.controls['editor'].value} patched!`)
-  }
+  // quill.keyboard.addBinding({
+  //   key: 'B',
+  //   shortKey: true
+  // }, function(range, context){
+  //   this.quill.formatText(range, 'bold', true);
+  // }
+  // });
 
-  toggleReadOnly() {
-    this.isReadOnly = !this.isReadOnly;
-  }
+  // patchValue() {
+  //   this.form.controls['editor'].patchValue(`${this.form.controls['editor'].value} patched!`)
+  // }
+
+  // toggleReadOnly() {
+  //   this.isReadOnly = !this.isReadOnly;
+  // }
 
   logChange($event: any) {
     console.log($event);
