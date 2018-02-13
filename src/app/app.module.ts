@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
@@ -44,7 +44,7 @@ import { QuillModule } from 'ngx-quill';
     HomeComponent,
     AboutUserComponent
   ],
-  entryComponents: [
+  entryComponents: [ //part of routing
     EditorComponent
   ],
   imports: [
@@ -54,6 +54,7 @@ import { QuillModule } from 'ngx-quill';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot(),
+    ReactiveFormsModule,
     QuillModule,
     RouterModule.forRoot(routerConfig)
   ],
