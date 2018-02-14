@@ -70,6 +70,8 @@ export class EditorComponent {
       .subscribe(data => {
         console.log('view child + directly subscription', data)
       });
+
+    // quill.keyboard.addBinding({});
   }
 
   setControl() {
@@ -80,13 +82,7 @@ export class EditorComponent {
     $event.focus();
   }
 
-  // quill.keyboard.addBinding({
-  //   key: 'B',
-  //   shortKey: true
-  // }, function(range, context){
-  //   this.quill.formatText(range, 'bold', true);
-  // }
-  // });
+
 
   // patchValue() {
   //   this.form.controls['editor'].patchValue(`${this.form.controls['editor'].value} patched!`)
