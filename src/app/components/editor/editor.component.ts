@@ -84,11 +84,32 @@ export class EditorComponent {
     }
 
     addBindingCreated(quill){
-      quill.keyboard.addBinding({
-        key: 'B',
-        metaKey: true
-      }, (range, context) => {
-        console.log('KEYBINDING B', range, context);
+      quill.keyboard.addBinding({ key: 'e' }, {
+          collapsed: true,
+          prefix: /^=$/,
+          offset: 1,
+      },
+       (range, context) => {
+         quill.deleteText(range.index-1, 1); //range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index-1, "≡");
+      });
+      quill.keyboard.addBinding({ key: 'i' }, {
+          collapsed: true,
+          prefix: /^=$/,
+          offset: 1,
+      },
+       (range, context) => {
+         quill.deleteText(range.index-1, 1); //range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index-1, "⇒";
+      });
+      quill.keyboard.addBinding({ key: 'f' }, {
+          collapsed: true,
+          prefix: /^=$/,
+          offset: 1,
+      },
+       (range, context) => {
+         quill.deleteText(range.index-1, 1); //range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index-1, "⇐");
       });
     }
 
