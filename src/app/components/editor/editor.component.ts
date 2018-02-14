@@ -50,7 +50,9 @@ export class EditorComponent {
     this.form = fb.group({
       editor: ['test']
     });
+    
   }
+
   @ViewChild('editor') editor: QuillEditorComponent
 
   ngOnInit() {
