@@ -1,8 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, ViewEncapsulation, ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
 import { QuillEditorComponent } from 'ngx-quill/src/quill-editor.component';
+import { AutocompleteBoxComponent } from '../autocomplete-box/autocomplete-box.component';
 
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -30,7 +31,8 @@ import Quill from 'quill';
 
 
 export class EditorComponent implements OnInit {
-  // title = content already in the editor
+
+  @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
 
   title = '<p> Prove: </p> ' +
     '<p> Description: By ... </p> ' +
@@ -49,18 +51,18 @@ export class EditorComponent implements OnInit {
     form: FormGroup;
     modules = {};
 
-    constructor(fb: FormBuilder) {
+    constructor(fb: FormBuilder, private factoryResolver: ComponentFactoryResolver) {
       this.form = fb.group({
         editor: ['test']
       });
 
       this.modules = {
         formula: true,
-        toolbar: [[{ 'indent': '-1'}, { 'indent': '+1' }],['formula']]
+        toolbar: [[{ 'indent': '-1'}, { 'indent': '+1' }], ['formula']]
       };
   }
 
-  @ViewChild('editor') editor: QuillEditorComponent
+  @ViewChild('editor') editor: QuillEditorComponent;
 
   ngOnInit() {
     this.form
@@ -79,6 +81,13 @@ export class EditorComponent implements OnInit {
       .subscribe(data => {
         console.log('view child + directly subscription', data);
       });
+    }
+
+    keyPressed() {
+      console.log('TEST WORKED');
+      const factory = this.factoryResolver.resolveComponentFactory(AutocompleteBoxComponent);
+      const ref = this.viewContainerRef.createComponent(factory);
+      ref.changeDetectorRef.detectChanges();
     }
 
     addBindingCreated(quill) {
@@ -126,4 +135,5 @@ export class EditorComponent implements OnInit {
     logSelection($event: any) {
       console.log($event);
     }
+
   }

@@ -29,6 +29,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutUserComponent } from './components/about-user/about-user.component';
 
 import { QuillModule } from 'ngx-quill';
+import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomplete-box.component';
 
 @NgModule({
   declarations: [
@@ -42,10 +43,12 @@ import { QuillModule } from 'ngx-quill';
     EditorComponent,
     AboutComponent,
     HomeComponent,
-    AboutUserComponent
+    AboutUserComponent,
+    AutocompleteBoxComponent
   ],
-  entryComponents: [ //part of routing
-    EditorComponent
+  entryComponents: [ // Components that are added dynamically to page
+    EditorComponent,
+    AutocompleteBoxComponent
   ],
   imports: [
     BrowserModule,
