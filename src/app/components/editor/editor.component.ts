@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { QuillEditorComponent } from 'ngx-quill/src/quill-editor.component';
 
-import 'rxjs/add/operator/debounceTime'
+import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 import Quill from 'quill';
@@ -29,10 +29,8 @@ import Quill from 'quill';
 })
 
 
-export class EditorComponent {
+export class EditorComponent implements OnInit {
   // title = content already in the editor
-
-
 
   title = '<p> Prove: </p> ' +
     '<p> Description: By ... </p> ' +
@@ -59,7 +57,7 @@ export class EditorComponent {
       this.modules = {
         formula: true,
         toolbar: [[{ 'indent': '-1'}, { 'indent': '+1' }],['formula']]
-      }
+      };
   }
 
   @ViewChild('editor') editor: QuillEditorComponent
@@ -72,26 +70,26 @@ export class EditorComponent {
       .debounceTime(400)
       .distinctUntilChanged()
       .subscribe(data => {
-        console.log('native fromControl value changes with debounce', data)
+        console.log('native fromControl value changes with debounce', data);
       });
 
     this.editor
       .onContentChanged.debounceTime(400)
       .distinctUntilChanged()
       .subscribe(data => {
-        console.log('view child + directly subscription', data)
+        console.log('view child + directly subscription', data);
       });
     }
 
-    addBindingCreated(quill){
+    addBindingCreated(quill) {
       quill.keyboard.addBinding({ key: 'e' }, {
           collapsed: true,
           prefix: /^=$/,
           offset: 1,
       },
        (range, context) => {
-         quill.deleteText(range.index-1, 1); //range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index-1, "≡");
+         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 1, '≡');
       });
       quill.keyboard.addBinding({ key: 'i' }, {
           collapsed: true,
@@ -99,8 +97,8 @@ export class EditorComponent {
           offset: 1,
       },
        (range, context) => {
-         quill.deleteText(range.index-1, 1); //range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index-1, "⇒";
+         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 1, '⇒');
       });
       quill.keyboard.addBinding({ key: 'f' }, {
           collapsed: true,
@@ -108,8 +106,8 @@ export class EditorComponent {
           offset: 1,
       },
        (range, context) => {
-         quill.deleteText(range.index-1, 1); //range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index-1, "⇐");
+         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 1, '⇐');
       });
     }
 
