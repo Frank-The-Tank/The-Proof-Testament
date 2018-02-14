@@ -31,6 +31,9 @@ import Quill from 'quill';
 
 export class EditorComponent {
   // title = content already in the editor
+
+
+
   title = '<p> Prove: </p> ' +
     '<p> Description: By ... </p> ' +
     '<br> Proof: <br> ' +
@@ -43,15 +46,20 @@ export class EditorComponent {
     '<p> Step: </p>' +
     '<p style="text-indent: 5em;">=  Rule</p>' +
     '<p> /≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀+-^ </p>';
-  isReadOnly = false;
-  placeholder = 'placeholder';
-  form: FormGroup;
+    isReadOnly = false;
+    placeholder = 'placeholder';
+    form: FormGroup;
+    modules = {};
 
-  constructor(fb: FormBuilder) {
-    this.form = fb.group({
-      editor: ['test']
-    });
+    constructor(fb: FormBuilder) {
+      this.form = fb.group({
+        editor: ['test']
+      });
 
+      this.modules = {
+        formula: true,
+        toolbar: [[{ 'indent': '-1'}, { 'indent': '+1' }],['formula']]
+      }
   }
 
   @ViewChild('editor') editor: QuillEditorComponent
@@ -73,33 +81,30 @@ export class EditorComponent {
       .subscribe(data => {
         console.log('view child + directly subscription', data)
       });
+    }
 
-    // quill.keyboard.addBinding({});
+    addBindingCreated(quill){
+      quill.keyboard.addBinding({
+        key: 'B',
+        metaKey: true
+      }, (range, context) => {
+        console.log('KEYBINDING B', range, context);
+      });
+    }
+
+    setControl() {
+      this.form.setControl('editor', new FormControl('test - new Control'));
+    }
+
+    setFocus($event) {
+      $event.focus();
+    }
+
+    logChange($event: any) {
+      console.log($event);
+    }
+
+    logSelection($event: any) {
+      console.log($event);
+    }
   }
-
-  setControl() {
-    this.form.setControl('editor', new FormControl('test - new Control'));
-  }
-
-  setFocus($event) {
-    $event.focus();
-  }
-
-
-
-  // patchValue() {
-  //   this.form.controls['editor'].patchValue(`${this.form.controls['editor'].value} patched!`)
-  // }
-
-  // toggleReadOnly() {
-  //   this.isReadOnly = !this.isReadOnly;
-  // }
-
-  logChange($event: any) {
-    console.log($event);
-  }
-
-  logSelection($event: any) {
-    console.log($event);
-  }
-}
