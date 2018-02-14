@@ -33,7 +33,7 @@ export class EditorComponent {
   // title = content already in the editor
   title = '<p> Prove: </p> ' +
     '<p> Description: By ... </p> ' +
-    '<br> Proof <br> ' +
+    '<br> Proof: <br> ' +
     '<p> Step: </p>' +
     '<p style="text-indent: 5em;">=  Rule</p>' +
     '<p> Step: </p>' +
@@ -41,7 +41,8 @@ export class EditorComponent {
     '<p> Step: </p>' +
     '<p style="text-indent: 5em;">=  Rule</p>' +
     '<p> Step: </p>' +
-    '<p style="text-indent: 5em;">=  Rule</p>';
+    '<p style="text-indent: 5em;">=  Rule</p>' +
+    '<p> /≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀+-^ </p>';
   isReadOnly = false;
   placeholder = 'placeholder';
   form: FormGroup;
@@ -50,7 +51,7 @@ export class EditorComponent {
     this.form = fb.group({
       editor: ['test']
     });
-    
+
   }
 
   @ViewChild('editor') editor: QuillEditorComponent
