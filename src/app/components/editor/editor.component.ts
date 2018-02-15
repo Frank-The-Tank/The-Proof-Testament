@@ -34,9 +34,9 @@ export class EditorComponent implements OnInit {
 
   @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
 
-  title = '<p> Prove: </p> ' +
-    '<p> Description: By ... </p> ' +
-    '<br> Proof: <br> ' +
+  title = '<p>Prove: </p> ' +
+    '<p>Description: By ... </p> ' +
+    '<br>Proof: <br> ' +
     '<p> /≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀+-^ </p>';
     isReadOnly = false;
     placeholder = 'placeholder';
@@ -84,38 +84,9 @@ export class EditorComponent implements OnInit {
 
     addBindingCreated(quill) {
       //BINDINGS FOR RULE SYMBOLS
-      //padded after the symbol
-      quill.keyboard.addBinding({ key: 'e' }, {
-          collapsed: true,
-          prefix: /^=$/,
-          offset: 1,
-      },
-       (range, context) => {
-         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
-         quill.insertText(range.index - 1, '=            <>');
-      });
-
-      quill.keyboard.addBinding({ key: 'l' }, {
-          collapsed: true,
-          prefix: /^=$/,
-          offset: 1,
-      },
-       (range, context) => {
-         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
-         quill.insertText(range.index - 1, '<            <>');
-      });
-
-      quill.keyboard.addBinding({ key: 'g' }, {
-          collapsed: true,
-          prefix: /^=$/,
-          offset: 1,
-      },
-       (range, context) => {
-         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
-         quill.insertText(range.index - 1, '>            <>');
-      });
-
       //not padded after the symbol
+
+      //implies
       quill.keyboard.addBinding({ key: 'i' }, {
           collapsed: true,
           prefix: /^=$/,
@@ -124,8 +95,10 @@ export class EditorComponent implements OnInit {
       (range, context) => {
          quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 1, '⇒          <>');
+        quill.setSelection(range.index + 11);
       });
 
+      //follows from
       quill.keyboard.addBinding({ key: 'f' }, {
           collapsed: true,
           prefix: /^=$/,
@@ -134,7 +107,46 @@ export class EditorComponent implements OnInit {
        (range, context) => {
          quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
          quill.insertText(range.index - 1, '⇐          <>');
+         quill.setSelection(range.index + 11);
       });
+
+      //padded after the symbol by two
+      //equals
+      quill.keyboard.addBinding({ key: 'e' }, {
+          collapsed: true,
+          prefix: /^=$/,
+          offset: 1,
+      },
+       (range, context) => {
+         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+         quill.insertText(range.index - 1, '=            <>');
+         quill.setSelection(range.index + 13);
+      });
+
+      //less than
+      quill.keyboard.addBinding({ key: 'l' }, {
+          collapsed: true,
+          prefix: /^=$/,
+          offset: 1,
+      },
+       (range, context) => {
+         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+         quill.insertText(range.index - 1, '<            <>');
+         quill.setSelection(range.index + 13);
+      });
+
+      //greater than
+      quill.keyboard.addBinding({ key: 'g' }, {
+          collapsed: true,
+          prefix: /^=$/,
+          offset: 1,
+      },
+       (range, context) => {
+         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+         quill.insertText(range.index - 1, '>            <>');
+         quill.setSelection(range.index + 13);
+      });
+
 
     }
 
