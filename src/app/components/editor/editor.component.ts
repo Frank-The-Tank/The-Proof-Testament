@@ -63,16 +63,14 @@ export class EditorComponent implements OnInit {
       });
     }
 
-    // keyPressed() {
-    //   console.log('TEST WORKED');
-    //   const factory = this.factoryResolver.resolveComponentFactory(AutocompleteBoxComponent);
-    //   const ref = this.viewContainerRef.createComponent(factory);
-    //   ref.changeDetectorRef.detectChanges();
-    // }
+    keyPressed() {
+      console.log('TEST WORKED');
+      const factory = this.factoryResolver.resolveComponentFactory(AutocompleteBoxComponent);
+      const ref = this.viewContainerRef.createComponent(factory);
+      ref.changeDetectorRef.detectChanges();
+    }
 
     addBindingCreated(quill) {
-      //BINDINGS FOR RULE SYMBOLS
-      //not padded after the symbol
 
       //implies
       quill.keyboard.addBinding({ key: 'i' }, {
@@ -84,6 +82,16 @@ export class EditorComponent implements OnInit {
         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 1, '⇒          <>');
         quill.setSelection(range.index + 11);
+      });
+
+
+      quill.keyboard.addBinding({ key: 'i' }, {
+          collapsed: true,
+          prefix: /^([a-z]*\s*)*=$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 1, '⇒ ');
       });
 
       //follows from
@@ -98,7 +106,15 @@ export class EditorComponent implements OnInit {
          quill.setSelection(range.index + 11);
       });
 
-      //padded after the symbol by two
+      quill.keyboard.addBinding({ key: 'f' }, {
+          collapsed: true,
+          prefix: /^([a-z]*\s*)*=$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 1, '⇐ ');
+      });
+
       //equals
       quill.keyboard.addBinding({ key: 'e' }, {
           collapsed: true,
@@ -123,6 +139,16 @@ export class EditorComponent implements OnInit {
          quill.setSelection(range.index + 13);
       });
 
+      quill.keyboard.addBinding({ key: 'l' }, {
+          collapsed: true,
+          prefix: /^([a-z]*\s*)*=$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 1, '< ');
+      });
+
+
       //greater than
       quill.keyboard.addBinding({ key: 'g' }, {
           collapsed: true,
@@ -135,6 +161,14 @@ export class EditorComponent implements OnInit {
          quill.setSelection(range.index + 13);
       });
 
+      quill.keyboard.addBinding({ key: 'g' }, {
+          collapsed: true,
+          prefix: /^([a-z]*\s*)*=$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 1, '> ');
+      });
 
     }
 
