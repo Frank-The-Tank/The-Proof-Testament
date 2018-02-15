@@ -77,7 +77,7 @@ export class EditorComponent implements OnInit {
     //implies
     quill.keyboard.addBinding({key: 'i'}, {
         collapsed: true,
-        prefix: /^=$/,
+        prefix: /^;$/,
         offset: 1,
       },
       (range, context) => {
@@ -89,7 +89,7 @@ export class EditorComponent implements OnInit {
     //follows from
     quill.keyboard.addBinding({key: 'f'}, {
         collapsed: true,
-        prefix: /^=$/,
+        prefix: /^;$/,
         offset: 1,
       },
       (range, context) => {
@@ -101,7 +101,7 @@ export class EditorComponent implements OnInit {
     //equals
     quill.keyboard.addBinding({key: 'e'}, {
         collapsed: true,
-        prefix: /^=$/,
+        prefix: /^;$/,
         offset: 1,
       },
       (range, context) => {
@@ -113,7 +113,7 @@ export class EditorComponent implements OnInit {
     //less than
     quill.keyboard.addBinding({key: 'l'}, {
         collapsed: true,
-        prefix: /^=$/,
+        prefix: /^;$/,
         offset: 1,
       },
       (range, context) => {
@@ -127,7 +127,7 @@ export class EditorComponent implements OnInit {
     quill.keyboard.addBinding({key: 'g'}, {
 
         collapsed: true,
-        prefix: /^=$/,
+        prefix: /^;$/,
         offset: 1,
       },
       (range, context) => {
@@ -142,7 +142,7 @@ export class EditorComponent implements OnInit {
     quill.keyboard.addBinding({key: 'f'}, {
         empty: false,
         collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*=$/
+        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;$/
       },
       (range, context) => {
         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
@@ -153,7 +153,7 @@ export class EditorComponent implements OnInit {
     quill.keyboard.addBinding({key: 'l'}, {
         empty: false,
         collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*=$/
+        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;$/
 
         //missing * and - and + characters and ^
       },
@@ -167,7 +167,7 @@ export class EditorComponent implements OnInit {
     quill.keyboard.addBinding({key: 'g'}, {
         empty: false,
         collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*=$/
+        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;$/
       },
       (range, context) => {
         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
@@ -179,7 +179,7 @@ export class EditorComponent implements OnInit {
     quill.keyboard.addBinding({key: 'i'}, {
         empty: false,
         collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*=$/
+        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;$/
       },
       (range, context) => {
         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
@@ -190,7 +190,7 @@ export class EditorComponent implements OnInit {
     quill.keyboard.addBinding({key: 'u'}, {
         empty: false,
         collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*=$/
+        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;$/
       },
       (range, context) => {
         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
@@ -201,7 +201,7 @@ export class EditorComponent implements OnInit {
     quill.keyboard.addBinding({key: 'd'}, {
         empty: false,
         collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*=$/
+        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;$/
       },
       (range, context) => {
         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
@@ -212,7 +212,7 @@ export class EditorComponent implements OnInit {
     quill.keyboard.addBinding({key: 'e'}, {
         empty: false,
         collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*=$/
+        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;$/
       },
       (range, context) => {
         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
@@ -223,7 +223,7 @@ export class EditorComponent implements OnInit {
     quill.keyboard.addBinding({key: 'n'}, {
         empty: false,
         collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*=$/
+        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;$/
       },
       (range, context) => {
         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
@@ -234,7 +234,7 @@ export class EditorComponent implements OnInit {
     quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*=$/
+        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;$/
       },
       (range, context) => {
         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
@@ -245,7 +245,7 @@ export class EditorComponent implements OnInit {
     quill.keyboard.addBinding({key: 'o'}, {
         empty: false,
         collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*=$/
+        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;$/
       },
       (range, context) => {
         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
@@ -255,9 +255,8 @@ export class EditorComponent implements OnInit {
     //for all
     quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
-        shiftKey: true,
         collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*=$/
+        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;$/
       },
       (range, context) => {
         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
@@ -269,13 +268,13 @@ export class EditorComponent implements OnInit {
         empty: false,
 
         collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*=$/
+        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;$/
       },
       (range, context) => {
         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 1, '∃ ');
       });
-
+//brackets defintely different than les than
   }
 
   setControl() {
