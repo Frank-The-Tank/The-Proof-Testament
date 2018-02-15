@@ -10,18 +10,6 @@ import 'rxjs/add/operator/distinctUntilChanged';
 
 import Quill from 'quill';
 
-// // override p with div tag
-// const Parchment = Quill.import('parchment');
-// let Block = Parchment.query('block');
-//
-// Block.tagName = 'DIV';
-// // or class NewBlock extends Block {}; NewBlock.tagName = 'DIV';
-// Quill.register(Block /* or NewBlock */, true);
-// //
-// // import Counter from './counter';
-// // Quill.register('modules/counter', Counter)
-
-
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
@@ -36,8 +24,8 @@ export class EditorComponent implements OnInit {
 
   title = '<p>Prove: </p> ' +
     '<p>Description: By ... </p> ' +
-    '<br>Proof: <br> ' +
-    '<p> /≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀+-^ </p>';
+    '<br>Proof: <br> ';
+    // '<p> /≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀+-^ </p>';
     isReadOnly = false;
     placeholder = 'placeholder';
     form: FormGroup;
@@ -75,12 +63,12 @@ export class EditorComponent implements OnInit {
       });
     }
 
-    keyPressed() {
-      console.log('TEST WORKED');
-      const factory = this.factoryResolver.resolveComponentFactory(AutocompleteBoxComponent);
-      const ref = this.viewContainerRef.createComponent(factory);
-      ref.changeDetectorRef.detectChanges();
-    }
+    // keyPressed() {
+    //   console.log('TEST WORKED');
+    //   const factory = this.factoryResolver.resolveComponentFactory(AutocompleteBoxComponent);
+    //   const ref = this.viewContainerRef.createComponent(factory);
+    //   ref.changeDetectorRef.detectChanges();
+    // }
 
     addBindingCreated(quill) {
       //BINDINGS FOR RULE SYMBOLS
@@ -93,7 +81,7 @@ export class EditorComponent implements OnInit {
           offset: 1,
       },
       (range, context) => {
-         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+        quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 1, '⇒          <>');
         quill.setSelection(range.index + 11);
       });
