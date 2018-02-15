@@ -77,7 +77,7 @@ export class EditorComponent implements OnInit {
     //implies
     quill.keyboard.addBinding({key: 'i'}, {
         collapsed: true,
-        prefix: /^=$/,
+        prefix: /^:$/,
         offset: 1,
       },
       (range, context) => {
@@ -89,7 +89,7 @@ export class EditorComponent implements OnInit {
     //follows from
     quill.keyboard.addBinding({key: 'f'}, {
         collapsed: true,
-        prefix: /^=$/,
+        prefix: /^:$/,
         offset: 1,
       },
       (range, context) => {
@@ -99,9 +99,9 @@ export class EditorComponent implements OnInit {
       });
 
     //equals
-    quill.keyboard.addBinding({key: 'e'}, {
+    quill.keyboard.addBinding({key: 187}, {
         collapsed: true,
-        prefix: /^=$/,
+        prefix: /^:$/,
         offset: 1,
       },
       (range, context) => {
@@ -110,10 +110,10 @@ export class EditorComponent implements OnInit {
         quill.setSelection(range.index + 13);
       });
 
-    //less than
+    // //less than
     quill.keyboard.addBinding({key: 'l'}, {
         collapsed: true,
-        prefix: /^=$/,
+        prefix: /^:$/,
         offset: 1,
       },
       (range, context) => {
@@ -127,7 +127,7 @@ export class EditorComponent implements OnInit {
     quill.keyboard.addBinding({key: 'g'}, {
 
         collapsed: true,
-        prefix: /^=$/,
+        prefix: /^:$/,
         offset: 1,
       },
       (range, context) => {
@@ -136,9 +136,9 @@ export class EditorComponent implements OnInit {
         quill.setSelection(range.index + 13);
       });
 
-    // ///////////////////////////////////////////inline symbols///////////////////////////////////////////
+    ///////////////////////////////////////////inline symbols///////////////////////////////////////////
 
-    // follows from
+    // // follows from
     quill.keyboard.addBinding({key: 'f'}, {
         empty: false,
         collapsed: true,
@@ -149,7 +149,7 @@ export class EditorComponent implements OnInit {
         quill.insertText(range.index - 1, '⇐ ');
       });
 
-    //less than
+    // //less than
     quill.keyboard.addBinding({key: 'l'}, {
         empty: false,
         collapsed: true,
@@ -163,7 +163,7 @@ export class EditorComponent implements OnInit {
       });
 
 
-    //greater than
+    // //greater than
     quill.keyboard.addBinding({key: 'g'}, {
         empty: false,
         collapsed: true,
@@ -175,7 +175,7 @@ export class EditorComponent implements OnInit {
       });
 
 
-    //implies
+    // //implies
     quill.keyboard.addBinding({key: 'i'}, {
         empty: false,
         collapsed: true,
@@ -186,7 +186,7 @@ export class EditorComponent implements OnInit {
         quill.insertText(range.index - 1, '⇒ ');
       });
 
-    //union
+    // //union
     quill.keyboard.addBinding({key: 'u'}, {
         empty: false,
         collapsed: true,
