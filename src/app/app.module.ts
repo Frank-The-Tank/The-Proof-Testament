@@ -17,7 +17,6 @@ import {BibleService} from './components/bible/bible.service';
 import { ScrollableDirective } from './directives/scrollable.directive';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BibleFilterPipe } from './pipes/bible-filter.pipe';
-import { QuillModule } from 'ngx-quill'
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -28,6 +27,9 @@ import {routerConfig} from './router.config';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutUserComponent } from './components/about-user/about-user.component';
+
+import { QuillModule } from 'ngx-quill';
+import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomplete-box.component';
 
 @NgModule({
   declarations: [
@@ -41,10 +43,12 @@ import { AboutUserComponent } from './components/about-user/about-user.component
     EditorComponent,
     AboutComponent,
     HomeComponent,
-    AboutUserComponent
+    AboutUserComponent,
+    AutocompleteBoxComponent
   ],
-  entryComponents: [ //part of routing
-    EditorComponent
+  entryComponents: [ // Components that are added dynamically to page
+    EditorComponent,
+    AutocompleteBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,6 @@ import { AboutUserComponent } from './components/about-user/about-user.component
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    QuillModule,
     NgbModule.forRoot(),
     ReactiveFormsModule,
     QuillModule,
