@@ -161,452 +161,452 @@ export class EditorComponent implements OnInit {
 
     // ///////////////////////////////////////////inline symbols///////////////////////////////////////////
 
-    // follows from
-    quill.keyboard.addBinding({key: 'f'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;f$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⇐ ');
-      });
-
-    //less than
-    quill.keyboard.addBinding({key: 't'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;l$/
-
-        //missing * and - and + characters and ^
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '< ');
-      });
-
-    //less than or equal to
-    quill.keyboard.addBinding({key: 'e'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;l$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≤ ');
-      });
-
-    //greater than
-    quill.keyboard.addBinding({key: 't'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;g$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '> ');
-      });
-
-
-    //greater than or equal to
-    quill.keyboard.addBinding({key: 'e'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;g$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≥ ');
-      });
-
-    //implies
-    quill.keyboard.addBinding({key: 'm'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;i$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⇒ ');
-      });
-
-    //equival
-    quill.keyboard.addBinding({key: 'q'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;e$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≡ ');
-      });
-
-    //textual subsitution
-    quill.keyboard.addBinding({key: 's'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;t$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≔ ');
-      });
-
-    //element of
-    quill.keyboard.addBinding({key: 'l'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;e$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∈ ');
-      });
-
-    //universe
-    quill.keyboard.addBinding({key: 's'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;u$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'Ʊ ');
-      });
-
-    //proper subset
-    quill.keyboard.addBinding({key: 'b'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;p$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⊂ ');
-      });
-
-    //proper superset
-    quill.keyboard.addBinding({key: 'p'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;p$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⊃ ');
-      });
-
-    //subset
-    quill.keyboard.addBinding({key: 'b'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;s$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⊆ ');
-      });
-
-    //superset
-    quill.keyboard.addBinding({key: 'p'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;s$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⊇ ');
-      });
-
-    //empty set
-    quill.keyboard.addBinding({key: 's'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;e$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∅ ');
-      });
-
-
-    //union
-    quill.keyboard.addBinding({key: 'n'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;u$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∪ ');
-      });
-
-    //intersection
-    quill.keyboard.addBinding({key: 'n'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;i$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∩ ');
-      });
-
-    // complement
-    quill.keyboard.addBinding({key: 'o'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;c$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '~ ');
-      });
-
-
-    // disjunction
-    quill.keyboard.addBinding({key: 'r'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;o$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⋁ ');
-      });
-
-    // conjunction
-    quill.keyboard.addBinding({key: 'n'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;a$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⋀ ');
-      });
-
-    // for all
-    quill.keyboard.addBinding({key: 'a'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;f$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∀ ');
-      });
-
-    // there exists
-    quill.keyboard.addBinding({key: 'x'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;e$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∃ ');
-      });
-    //power set
-    quill.keyboard.addBinding({key: 's'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;p$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'Ρ ');
-      });
-
-    //up arrow
-    quill.keyboard.addBinding({key: 'p'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;u$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '↑ ');
-      });
-
-    //down arrow
-    quill.keyboard.addBinding({key: 'n'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;d$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '↓ ');
-      });
-    //cross product
-    quill.keyboard.addBinding({key: 'p'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;c$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '× ');
-      });
-
-    //division symbol
-    quill.keyboard.addBinding({key: 'v'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;d$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '÷ ');
-      });
-
-    //function composition
-    quill.keyboard.addBinding({key: 'c'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;f$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∙ ');
-      });
-
-    //function product
-    quill.keyboard.addBinding({key: 'p'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;f$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∘ ');
-      });
-
-    //floating dot
-    quill.keyboard.addBinding({key: 't'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;d$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⋅ ');
-      });
-
-    //star
-    quill.keyboard.addBinding({key: 't'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;s$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '★ ');
-      });
-
-
-    //brackets defintely different than les than
-
-    /////////// //////////////////////// not + symbols //////////////////////// ////////////////////////
-
-    //not
-    quill.keyboard.addBinding({key: 't'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;no$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '¬ ');
-      });
-
-    //does not imply
-    quill.keyboard.addBinding({key: 'm'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;ni$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '⇏ ');
-      });
-
-    //does not follow from
-    quill.keyboard.addBinding({key: 'f'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;nf$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '⇍ ');
-      });
-    //not equal
-    quill.keyboard.addBinding({key: 'q'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;ne$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '≠ ');
-      });
-
-    //not element of
-    quill.keyboard.addBinding({key: 'l'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;ne$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '∉ ');
-      });
-
-    //not a subset
-    quill.keyboard.addBinding({key: 'b'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;ns$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '⊄ ');
-      });
-
-    //not a superset
-    quill.keyboard.addBinding({key: 'p'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;ns$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '⊅ ');
-      });
-
-    //not a proper superset
-    quill.keyboard.addBinding({key: 'b'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;np$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '⊈ ');
-      });
-
-    //not a proper superset
-    quill.keyboard.addBinding({key: 'p'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;ns$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '⊉ ');
-      });
+    // // follows from
+    // quill.keyboard.addBinding({key: 'f'}, {
+    //     empty: false,
+    //     collapsed: true,
+    //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;f$/
+    //   },
+    //   (range, context) => {
+    //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    //     quill.insertText(range.index - 2, '⇐ ');
+    //   });
+    // //
+    // // //less than
+    // // quill.keyboard.addBinding({key: 't'}, {
+    // //     empty: false,
+    // //     collapsed: true,
+    // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;l$/
+    // //
+    // //     //missing * and - and + characters and ^
+    // //   },
+    // //   (range, context) => {
+    // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // //     quill.insertText(range.index - 2, '< ');
+    // //   });
+    // //
+    // // //less than or equal to
+    // // quill.keyboard.addBinding({key: 'e'}, {
+    // //     empty: false,
+    // //     collapsed: true,
+    // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;l$/
+    // //   },
+    // //   (range, context) => {
+    // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // //     quill.insertText(range.index - 2, '≤ ');
+    // //   });
+    // //
+    // // //greater than
+    // // quill.keyboard.addBinding({key: 't'}, {
+    // //     empty: false,
+    // //     collapsed: true,
+    // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;g$/
+    // //   },
+    // //   (range, context) => {
+    // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // //     quill.insertText(range.index - 2, '> ');
+    // //   });
+    // //
+    // //
+    // // //greater than or equal to
+    // // quill.keyboard.addBinding({key: 'e'}, {
+    // //     empty: false,
+    // //     collapsed: true,
+    // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;g$/
+    // //   },
+    // //   (range, context) => {
+    // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // //     quill.insertText(range.index - 2, '≥ ');
+    // //   });
+    // //
+    // // //implies
+    // // quill.keyboard.addBinding({key: 'm'}, {
+    // //     empty: false,
+    // //     collapsed: true,
+    // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;i$/
+    // //   },
+    // //   (range, context) => {
+    // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // //     quill.insertText(range.index - 2, '⇒ ');
+    // //   });
+    // //
+    // // //equival
+    // // quill.keyboard.addBinding({key: 'q'}, {
+    // //     empty: false,
+    // //     collapsed: true,
+    // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;e$/
+    // //   },
+    // //   (range, context) => {
+    // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // //     quill.insertText(range.index - 2, '≡ ');
+    // //   });
+    // //
+    // // //textual subsitution
+    // // quill.keyboard.addBinding({key: 's'}, {
+    // //     empty: false,
+    // //     collapsed: true,
+    // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;t$/
+    // //   },
+    // //   (range, context) => {
+    // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // //     quill.insertText(range.index - 2, '≔ ');
+    // //   });
+    // //
+    // // //element of
+    // // quill.keyboard.addBinding({key: 'l'}, {
+    // //     empty: false,
+    // //     collapsed: true,
+    // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;e$/
+    // //   },
+    // //   (range, context) => {
+    // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // //     quill.insertText(range.index - 2, '∈ ');
+    // //   });
+    // //
+    // // // //universe
+    // // // quill.keyboard.addBinding({key: 's'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;u$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, 'Ʊ ');
+    // // //   });
+    // // //
+    // // // //proper subset
+    // // // quill.keyboard.addBinding({key: 'b'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;p$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '⊂ ');
+    // // //   });
+    // // //
+    // // // //proper superset
+    // // // quill.keyboard.addBinding({key: 'p'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;p$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '⊃ ');
+    // // //   });
+    // // //
+    // // // //subset
+    // // // quill.keyboard.addBinding({key: 'b'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;s$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '⊆ ');
+    // // //   });
+    // // //
+    // // // //superset
+    // // // quill.keyboard.addBinding({key: 'p'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;s$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '⊇ ');
+    // // //   });
+    // // //
+    // // // //empty set
+    // // // quill.keyboard.addBinding({key: 's'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;e$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '∅ ');
+    // // //   });
+    // // //
+    // // //
+    // // // //union
+    // // // quill.keyboard.addBinding({key: 'n'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;u$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '∪ ');
+    // // //   });
+    // // //
+    // // // //intersection
+    // // // quill.keyboard.addBinding({key: 'n'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;i$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '∩ ');
+    // // //   });
+    // // //
+    // // // // complement
+    // // // quill.keyboard.addBinding({key: 'o'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;c$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '~ ');
+    // // //   });
+    // // //
+    // // //
+    // // // // disjunction
+    // // // quill.keyboard.addBinding({key: 'r'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;o$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '⋁ ');
+    // // //   });
+    // // //
+    // // // // conjunction
+    // // // quill.keyboard.addBinding({key: 'n'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;a$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '⋀ ');
+    // // //   });
+    // // //
+    // // // // for all
+    // // // quill.keyboard.addBinding({key: 'a'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;f$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '∀ ');
+    // // //   });
+    // // //
+    // // // // there exists
+    // // // quill.keyboard.addBinding({key: 'x'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;e$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '∃ ');
+    // // //   });
+    // // // //power set
+    // // // quill.keyboard.addBinding({key: 's'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;p$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, 'Ρ ');
+    // // //   });
+    // // //
+    // // // //up arrow
+    // // // quill.keyboard.addBinding({key: 'p'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;u$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '↑ ');
+    // // //   });
+    // // //
+    // // // //down arrow
+    // // // quill.keyboard.addBinding({key: 'n'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;d$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '↓ ');
+    // // //   });
+    // // // //cross product
+    // // // quill.keyboard.addBinding({key: 'p'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;c$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '× ');
+    // // //   });
+    // // //
+    // // // //division symbol
+    // // // quill.keyboard.addBinding({key: 'v'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;d$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '÷ ');
+    // // //   });
+    // // //
+    // // // //function composition
+    // // // quill.keyboard.addBinding({key: 'c'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;f$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '∙ ');
+    // // //   });
+    // // //
+    // // // //function product
+    // // // quill.keyboard.addBinding({key: 'p'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;f$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '∘ ');
+    // // //   });
+    // // //
+    // // // //floating dot
+    // // // quill.keyboard.addBinding({key: 't'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;d$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '⋅ ');
+    // // //   });
+    // // //
+    // // // //star
+    // // // quill.keyboard.addBinding({key: 't'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;s$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 2, '★ ');
+    // // //   });
+    // // //
+    // // //
+    // // // //brackets defintely different than les than
+    // // //
+    // // // /////////// //////////////////////// not + symbols //////////////////////// ////////////////////////
+    // // //
+    // // // //not
+    // // // quill.keyboard.addBinding({key: 't'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;no$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 3, '¬ ');
+    // // //   });
+    // // //
+    // // // //does not imply
+    // // // quill.keyboard.addBinding({key: 'm'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;ni$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 3, '⇏ ');
+    // // //   });
+    // // //
+    // // // //does not follow from
+    // // // quill.keyboard.addBinding({key: 'f'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;nf$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 3, '⇍ ');
+    // // //   });
+    // // // //not equal
+    // // // quill.keyboard.addBinding({key: 'q'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;ne$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 3, '≠ ');
+    // // //   });
+    // // //
+    // // // //not element of
+    // // // quill.keyboard.addBinding({key: 'l'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;ne$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 3, '∉ ');
+    // // //   });
+    // // //
+    // // // //not a subset
+    // // // quill.keyboard.addBinding({key: 'b'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;ns$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 3, '⊄ ');
+    // // //   });
+    // // //
+    // // // //not a superset
+    // // // quill.keyboard.addBinding({key: 'p'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;ns$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 3, '⊅ ');
+    // // //   });
+    // // //
+    // // // //not a proper superset
+    // // // quill.keyboard.addBinding({key: 'b'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;np$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 3, '⊈ ');
+    // // //   });
+    // // //
+    // // // //not a proper superset
+    // // // quill.keyboard.addBinding({key: 'p'}, {
+    // // //     empty: false,
+    // // //     collapsed: true,
+    // // //     prefix: /^([A-Z]|[a-z]|\s|:|.|≡|=|¬|≢|≠|≥|≤|⇒|⇐|⇍|⇏|≔|<|>|∈|∅|Ʊ|⊂|⊃|⊆|⊇|∉|⊄|⊅|⊈|⊉|∪|∩|#|~|⋅|∘|∙|÷|×|Ρ|↓|↑|◃|▹|★|∀|∃|⋁|⋀)*;ns$/
+    // // //   },
+    // // //   (range, context) => {
+    // // //     quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+    // // //     quill.insertText(range.index - 3, '⊉ ');
+    // // //   });
   }
 
   setControl() {
