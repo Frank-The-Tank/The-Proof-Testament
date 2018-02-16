@@ -169,7 +169,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⇐ ');
+        quill.insertText(range.index - 2, ' ⇐ ');
       });
 
     //less than
@@ -182,7 +182,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '< ');
+        quill.insertText(range.index - 2, ' < ');
       });
 
     //less than or equal to
@@ -193,7 +193,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≤ ');
+        quill.insertText(range.index - 2, ' ≤ ');
       });
 
     //greater than
@@ -204,7 +204,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '> ');
+        quill.insertText(range.index - 2, ' > ');
       });
 
 
@@ -216,7 +216,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≥ ');
+        quill.insertText(range.index - 2, ' ≥ ');
       });
 
     //implies
@@ -227,7 +227,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⇒ ');
+        quill.insertText(range.index - 2, ' ⇒ ');
       });
 
     //equival
@@ -238,7 +238,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≡ ');
+        quill.insertText(range.index - 2, ' ≡ ');
       });
 
     //textual subsitution
@@ -249,7 +249,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≔ ');
+        quill.insertText(range.index - 2, ' ≔ ');
       });
 
     //element of
@@ -260,7 +260,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∈ ');
+        quill.insertText(range.index - 2, ' ∈ ');
       });
 
     //universe
@@ -271,7 +271,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'Ʊ ');
+        quill.insertText(range.index - 2, ' Ʊ ');
       });
 
     //proper subset
@@ -282,7 +282,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⊂ ');
+        quill.insertText(range.index - 2, ' ⊂ ');
       });
 
     //proper superset
@@ -293,7 +293,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⊃ ');
+        quill.insertText(range.index - 2, ' ⊃ ');
       });
 
     //subset
@@ -304,7 +304,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⊆ ');
+        quill.insertText(range.index - 2, ' ⊆ ');
       });
 
     //superset
@@ -315,7 +315,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⊇ ');
+        quill.insertText(range.index - 2, ' ⊇ ');
       });
 
     //empty set
@@ -326,7 +326,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∅ ');
+        quill.insertText(range.index - 2, ' ∅ ');
       });
 
 
@@ -338,7 +338,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∪ ');
+        quill.insertText(range.index - 2, ' ∪ ');
       });
 
     //intersection
@@ -349,7 +349,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∩ ');
+        quill.insertText(range.index - 2, ' ∩ ');
       });
 
     // complement
@@ -360,7 +360,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '~ ');
+        quill.insertText(range.index - 2, ' ~ ');
       });
 
 
@@ -372,7 +372,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⋁ ');
+        quill.insertText(range.index - 2, ' ⋁ ');
       });
 
     // conjunction
@@ -383,7 +383,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⋀ ');
+        quill.insertText(range.index - 2, ' ⋀ ');
       });
 
     // for all
@@ -394,7 +394,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∀ ');
+        quill.insertText(range.index - 2, ' ∀ ');
       });
 
     // there exists
@@ -405,7 +405,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∃ ');
+        quill.insertText(range.index - 2, ' ∃ ');
       });
     //power set
     quill.keyboard.addBinding({key: 's'}, {
@@ -415,7 +415,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'Ρ ');
+        quill.insertText(range.index - 2, ' Ρ ');
       });
 
     //up arrow
@@ -426,7 +426,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '↑ ');
+        quill.insertText(range.index - 2, ' ↑ ');
       });
 
     //down arrow
@@ -437,7 +437,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '↓ ');
+        quill.insertText(range.index - 2, ' ↓ ');
       });
     //cross product
     quill.keyboard.addBinding({key: 'p'}, {
@@ -447,7 +447,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '× ');
+        quill.insertText(range.index - 2, ' × ');
       });
 
     //division symbol
@@ -458,7 +458,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '÷ ');
+        quill.insertText(range.index - 2, ' ÷ ');
       });
 
     //function composition
@@ -469,7 +469,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∙ ');
+        quill.insertText(range.index - 2, ' ∙ ');
       });
 
     //function product
@@ -480,7 +480,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '∘ ');
+        quill.insertText(range.index - 2, ' ∘ ');
       });
 
     //floating dot
@@ -491,7 +491,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⋅ ');
+        quill.insertText(range.index - 2, ' ⋅ ');
       });
 
     //star
@@ -502,7 +502,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '★ ');
+        quill.insertText(range.index - 2, ' ★ ');
       });
 
 
