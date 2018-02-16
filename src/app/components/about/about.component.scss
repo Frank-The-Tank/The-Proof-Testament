@@ -20,8 +20,17 @@
   min-height: 100%;
 }
 
-.description {
+.descriptions {
   margin-top: -25%;
   position: relative;
+}
+
+.left {
   margin-left: -5%;
+  margin-bottom: 3%;
+}
+
+.right {
+  margin-left: 25%;
+  margin-right: 3%;
 }
