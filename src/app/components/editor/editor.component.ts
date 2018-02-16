@@ -80,7 +80,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⇒          <>');
+        quill.insertText(range.index - 2, '⇒           < >');
         quill.setSelection(range.index + 11);
       });
 
@@ -92,7 +92,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⇐          <>');
+        quill.insertText(range.index - 2, '⇐           < >');
         quill.setSelection(range.index + 11);
       });
 
@@ -104,7 +104,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '=            <>');
+        quill.insertText(range.index - 2, '=             < >');
         quill.setSelection(range.index + 13);
       });
 
@@ -116,7 +116,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '<            <>');
+        quill.insertText(range.index - 2, '<             < >');
         quill.setSelection(range.index + 13);
       });
 
@@ -128,7 +128,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≤            <>');
+        quill.insertText(range.index - 2, '≤             < >');
         quill.setSelection(range.index + 13);
       });
 
@@ -142,7 +142,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '>            <>');
+        quill.insertText(range.index - 2, '>             < >');
         quill.setSelection(range.index + 13);
       });
 
@@ -155,7 +155,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≥            <>');
+        quill.insertText(range.index - 2, '≥             < >');
         quill.setSelection(range.index + 13);
       });
 
