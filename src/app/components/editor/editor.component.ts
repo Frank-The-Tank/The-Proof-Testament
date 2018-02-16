@@ -25,7 +25,6 @@ export class EditorComponent implements OnInit {
   title = '<p>Prove: </p> ' +
     '<p>Description: By ... </p> ' +
     '<br>Proof: <br> ';
-  // '<p> /≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀+-^ </p>';
   isReadOnly = false;
   placeholder = 'placeholder';
   form: FormGroup;
