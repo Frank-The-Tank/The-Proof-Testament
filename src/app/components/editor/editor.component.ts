@@ -518,7 +518,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '¬ ');
+        quill.insertText(range.index - 3, ' ¬ ');
       });
 
     //does not imply
@@ -529,7 +529,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '⇏ ');
+        quill.insertText(range.index - 3, ' ⇏ ');
       });
 
     //does not follow from
@@ -540,7 +540,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '⇍ ');
+        quill.insertText(range.index - 3, ' ⇍ ');
       });
     //not equal
     quill.keyboard.addBinding({key: 'q'}, {
@@ -550,7 +550,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '≠ ');
+        quill.insertText(range.index - 3, ' ≠ ');
       });
 
     //not element of
@@ -561,7 +561,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '∉ ');
+        quill.insertText(range.index - 3, ' ∉ ');
       });
 
     //not a subset
@@ -572,7 +572,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '⊄ ');
+        quill.insertText(range.index - 3, ' ⊄ ');
       });
 
     //not a superset
@@ -583,7 +583,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '⊅ ');
+        quill.insertText(range.index - 3, ' ⊅ ');
       });
 
     //not a proper superset
@@ -594,7 +594,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '⊈ ');
+        quill.insertText(range.index - 3, ' ⊈ ');
       });
 
     //not a proper superset
@@ -605,7 +605,7 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, '⊉ ');
+        quill.insertText(range.index - 3, ' ⊉ ');
       });
   }
 
