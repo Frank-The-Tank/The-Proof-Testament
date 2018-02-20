@@ -23,7 +23,7 @@ export class EditorComponent implements OnInit {
   @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
 
   title = '<p>Prove: </p> ' +
-    '<p>Description: By ... </p> ' +
+    '<p>Description: By mathematical induction.... </p> ' +
     '<br>Proof: <br> ';
   isReadOnly = false;
   placeholder = 'placeholder';
@@ -61,13 +61,6 @@ export class EditorComponent implements OnInit {
         console.log('view child + directly subscription', data);
       });
   }
-
-  // keyPressed() {
-  //   console.log('TEST WORKED');
-  //   const factory = this.factoryResolver.resolveComponentFactory(AutocompleteBoxComponent);
-  //   const ref = this.viewContainerRef.createComponent(factory);
-  //   ref.changeDetectorRef.detectChanges();
-  // }
 
   addBindingCreated(quill) {
     //rule definition symbol
