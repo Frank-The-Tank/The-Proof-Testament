@@ -12,4 +12,15 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
   }
 
+  contributors = [
+    {
+      name: "Frank",
+      description: "dope guy"
+    },
+    {
+      name: "Josh",
+      description: "dope guy"
+    }
+  ];
+
 }
