@@ -2,6 +2,7 @@
               [(ngModel)]="title"
               [modules]="modules"
               (onEditorCreated)="addBindingCreated($event)"
-              (onContentChanged)="keyPressed()">
+              (onContentChanged)="logChange($event);"
+              (onSelectionChanged)="logSelection($event);">
 </quill-editor>
 <!--<div #autoCompleteContainer></div>-->
