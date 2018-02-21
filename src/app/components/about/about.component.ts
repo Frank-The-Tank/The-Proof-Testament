@@ -14,12 +14,36 @@ export class AboutComponent implements OnInit {
 
   contributors = [
     {
-      name: "Frank",
+      name: "Frank Garcia",
       description: "dope guy"
     },
     {
-      name: "Josh",
-      description: "dope guy"
+      name: "Giorgio",
+      description: "cool guy"
+    },
+    {
+      name: "Micah Benn",
+      description: "neat guy"
+    }
+    {
+      name: "Drake Ramdall",
+      description: "sick guy"
+    }
+    {
+      name: "Damir Kaliyev",
+      description: "nice guy"
+    }
+    {
+      name: "Zach Rhodes",
+      description: "big guy"
+    }
+    {
+      name: "James Maynard",
+      description: "old guy"
+    }
+    {
+      name: "Josh Myers",
+      description: "funny guy"
     }
   ];
 
