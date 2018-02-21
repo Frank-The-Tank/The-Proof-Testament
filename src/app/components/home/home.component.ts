@@ -8,6 +8,7 @@ import * as Quill from 'quill';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
 
   @ViewChild('editorContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
@@ -25,17 +26,22 @@ export class HomeComponent implements OnInit {
 
   export() {
 
+    // Find the text boxes
     const textBoxes = document.getElementsByClassName("ql-editor");
-
-    // console.log(container.getElementsByTagName('p')[0].textContent);
 
     var output = "";
 
+    // Loop through each text box
     for (var i = 0; i < textBoxes.length; i++) {
-      var textBox = textBoxes[i];
+      const textBox = textBoxes[i];
 
-      output += "# Exercise " + (i + 1) + "\n" + textBox.innerHTML + "\n";
+      output += "# Exercise " + (i + 1) + "\n" + textBox.innerHTML + "# \n";
     }
+
+    // Cleanup output manually. Method textContent fails to keep new lines.
+    output = output.replace(/<p>/g, "");
+    output = output.replace(/<\/p>/g, "\n");
+    output = output.replace(/<br>/g, "\n")
 
     console.log(output);
   }

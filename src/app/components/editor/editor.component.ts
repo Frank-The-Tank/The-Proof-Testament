@@ -17,7 +17,6 @@ import Quill from 'quill';
   encapsulation: ViewEncapsulation.None
 })
 
-
 export class EditorComponent implements OnInit {
 
   @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
