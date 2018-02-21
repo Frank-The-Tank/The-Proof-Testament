@@ -20,7 +20,12 @@ import Quill from 'quill';
 
 export class EditorComponent implements OnInit {
 
-  @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
+  @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) autoCompleteContainer: ViewContainerRef;
+
+  // const factory = this.factoryResolver.resolveComponentFactory(AutocompleteBoxComponent);
+  // const ref = this.viewContainerRef.createComponent(factory);
+  // console.log(ref);
+  // title = ref;
 
   title = '<p>Prove: </p> ' +
     '<p>Description: By ... </p> ' +
@@ -44,6 +49,7 @@ export class EditorComponent implements OnInit {
   @ViewChild('editor') editor: QuillEditorComponent;
 
   ngOnInit() {
+
     this.form
       .controls
       .editor
@@ -62,16 +68,16 @@ export class EditorComponent implements OnInit {
       });
   }
 
-  // keyPressed() {
-  //   console.log('TEST WORKED');
-  //   const factory = this.factoryResolver.resolveComponentFactory(AutocompleteBoxComponent);
-  //   const ref = this.viewContainerRef.createComponent(factory);
-  //   ref.changeDetectorRef.detectChanges();
-  // }
+  keyPressed(quill) {
+    console.log('TEST WORKED');
+    const factory = this.factoryResolver.resolveComponentFactory(AutocompleteBoxComponent);
+    const ref = this.autoCompleteContainer.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
 
   addBindingCreated(quill) {
     //rule definition symbol
-
+    
     //implies
     quill.keyboard.addBinding({key: 'm'}, {
         collapsed: true,
@@ -148,7 +154,6 @@ export class EditorComponent implements OnInit {
 
     //greater than or equal to
     quill.keyboard.addBinding({key: 'e'}, {
-
         collapsed: true,
         prefix: /^;g$/,
         offset: 2,

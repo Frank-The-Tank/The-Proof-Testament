@@ -1,7 +1,7 @@
 <quill-editor #editor
               [(ngModel)]="title"
               [modules]="modules"
-              (onEditorCreated)="addBindingCreated($event)"
-              (onContentChanged)="keyPressed()">
+              (onEditorCreated)="addBindingCreated($event)">
 </quill-editor>
-<!--<div #autoCompleteContainer></div>-->
+<!-- <div #autoCompleteContainer></div> -->
+<app-autocomplete-box #autoCompleteContainer></app-autocomplete-box>
