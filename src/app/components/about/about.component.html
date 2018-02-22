@@ -6,7 +6,9 @@
   <div class="descriptions">
     <div *ngFor="let contributor of contributors" class="left">
       <app-about-user
-      [name]="contributor.name" [description]="contributor.description">
+      [name]="contributor.name"
+      [description]="contributor.description"
+      [pic]="contributor.pic">
       </app-about-user>
     </div>
   </div>

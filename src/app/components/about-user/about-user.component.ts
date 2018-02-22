@@ -16,5 +16,6 @@ export class AboutUserComponent implements OnInit {
   name: string;
   @Input()
   description: string;
-
+  @Input()
+  pic: string;
 }
