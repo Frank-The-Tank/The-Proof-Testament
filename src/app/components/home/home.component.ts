@@ -27,8 +27,6 @@ export class HomeComponent implements OnInit {
   }
 
   export() {
-    convert();
-
     // Find the text boxes
     const textBoxes = document.getElementsByClassName("ql-editor");
 
@@ -46,6 +44,6 @@ export class HomeComponent implements OnInit {
     output = output.replace(/<\/p>/g, "\n");
     output = output.replace(/<br>/g, "\n")
 
-    console.log(output);
+    convert(output);
   }
 }
