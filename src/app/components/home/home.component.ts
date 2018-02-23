@@ -3,6 +3,8 @@ import { EditorComponent } from '../editor/editor.component';
 
 import * as Quill from 'quill';
 
+import { convert } from '../../convert/convert';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -25,6 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   export() {
+    convert();
 
     // Find the text boxes
     const textBoxes = document.getElementsByClassName("ql-editor");
