@@ -22,11 +22,6 @@ export class EditorComponent implements OnInit {
 
   @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) autoCompleteContainer: ViewContainerRef;
 
-  // const factory = this.factoryResolver.resolveComponentFactory(AutocompleteBoxComponent);
-  // const ref = this.viewContainerRef.createComponent(factory);
-  // console.log(ref);
-  // title = ref;
-
   title = '<p>Prove: </p> ' +
     '<p>Description: By ... </p> ' +
     '<br>Proof: <br> ';
@@ -41,15 +36,29 @@ export class EditorComponent implements OnInit {
     });
 
     this.modules = {
-      formula: true,
-      toolbar: [[{'indent': '-1'}, {'indent': '+1'}], ['formula']]
+    	toolbar: {
+        container:
+        [
+            ['formula'],
+            [{'indent': '-1'}, {'indent': '+1'}],
+            [{ 'placeholder': ['[GuestName]', '[HotelName]'] }], // custom dropdown
+        ],
+        handlers: {
+            "placeholder": function (value) {
+                if (value) {
+                    const cursorPosition = this.quill.getSelection().index;
+                    this.quill.insertText(cursorPosition, value);
+                    this.quill.setSelection(cursorPosition + value.length);
+                }
+            }
+        }
+      }
     };
   }
 
   @ViewChild('editor') editor: QuillEditorComponent;
 
   ngOnInit() {
-
     this.form
       .controls
       .editor
@@ -77,7 +86,7 @@ export class EditorComponent implements OnInit {
 
   addBindingCreated(quill) {
     //rule definition symbol
-    
+
     //implies
     quill.keyboard.addBinding({key: 'm'}, {
         collapsed: true,
