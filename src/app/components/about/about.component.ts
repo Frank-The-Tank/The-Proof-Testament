@@ -26,7 +26,7 @@ export class AboutComponent implements OnInit {
     {
       name: "Micah Benn",
       description: "neat guy",
-      pic: "../../../assets/images/micah.jpg"
+      pic: "../../../assets/images/micah.jpeg"
     },
     {
       name: "Drake Ramsdall",
