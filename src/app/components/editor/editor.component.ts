@@ -8,7 +8,11 @@ import {AutocompleteBoxComponent} from '../autocomplete-box/autocomplete-box.com
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import Quill from 'quill';
+import * as QuillNamespace from 'quill';
+let Quill: any = QuillNamespace;
+
+import Counter from './counter';
+Quill.register('modules/counter', Counter);
 
 @Component({
   selector: 'app-editor',
@@ -37,7 +41,8 @@ export class EditorComponent implements OnInit {
 
     this.modules = {
       formula: true,
-      toolbar: [[{'indent': '-1'}, {'indent': '+1'}], ['formula']]
+      toolbar: true,
+      counter: { container: '#counter', unit: 'word' }
     };
   }
 
@@ -54,18 +59,15 @@ export class EditorComponent implements OnInit {
         console.log('native fromControl value changes with debounce', data);
       });
 
-    this.editor
-      .onContentChanged.debounceTime(400)
-      .distinctUntilChanged()
-      .subscribe(data => {
-        console.log('view child + directly subscription', data);
-      });
+    // this.editor.onContentChanged.debounce(400).distinctUntilChanged().subscribe(data=>{
+    //   console.log('view child + directly subscription', data);
+    // });
+
   }
 
   addBindingCreated(quill) {
-    //rule definition symbol
 
-    //implies
+    // implies
     quill.keyboard.addBinding({key: 'm'}, {
         collapsed: true,
         prefix: /^;i$/,
@@ -73,11 +75,11 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⇒           < >');
+        quill.insertText(range.index - 2, '⇒          〈  〉');
         quill.setSelection(range.index + 11);
       });
 
-    //follows from
+    // follows from
     quill.keyboard.addBinding({key: 'f'}, {
         collapsed: true,
         prefix: /^;f$/,
@@ -85,11 +87,11 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⇐           < >');
+        quill.insertText(range.index - 2, '⇐          〈  〉');
         quill.setSelection(range.index + 11);
       });
 
-    //equals
+    // equals
     quill.keyboard.addBinding({key: 'q'}, {
         collapsed: true,
         prefix: /^;e$/,
@@ -97,11 +99,11 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '=             < >');
+        quill.insertText(range.index - 2, '=            〈  〉');
         quill.setSelection(range.index + 13);
       });
 
-    //less than
+    // less than
     quill.keyboard.addBinding({key: 't'}, {
         collapsed: true,
         prefix: /^;l$/,
@@ -109,11 +111,11 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '<             < >');
+        quill.insertText(range.index - 2, '<            〈  〉');
         quill.setSelection(range.index + 13);
       });
 
-    //less than or equal to
+    // less than or equal to
     quill.keyboard.addBinding({key: 'e'}, {
         collapsed: true,
         prefix: /^;l$/,
@@ -121,12 +123,12 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≤             < >');
+        quill.insertText(range.index - 2, '≤            〈  〉');
         quill.setSelection(range.index + 13);
       });
 
 
-    //greater than
+    // greater than
     quill.keyboard.addBinding({key: 't'}, {
 
         collapsed: true,
@@ -135,11 +137,11 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '>             < >');
+        quill.insertText(range.index - 2, '>            〈  〉');
         quill.setSelection(range.index + 13);
       });
 
-    //greater than or equal to
+    // greater than or equal to
     quill.keyboard.addBinding({key: 'e'}, {
 
         collapsed: true,
@@ -148,17 +150,29 @@ export class EditorComponent implements OnInit {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≥             < >');
+        quill.insertText(range.index - 2, '≥            〈  〉');
         quill.setSelection(range.index + 13);
       });
 
     // ///////////////////////////////////////////inline symbols///////////////////////////////////////////
 
-    // p
-    quill.keyboard.addBinding({key: 'e'}, {
+    // natural numbers
+    quill.keyboard.addBinding({key: 'n'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;p$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;n$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' ℕ ');
+      });
+
+
+    // p
+    quill.keyboard.addBinding({key: 't'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;i$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -166,109 +180,121 @@ export class EditorComponent implements OnInit {
       });
 
 
-      // poset
-      quill.keyboard.addBinding({key: 't'}, {
-          empty: false,
-          collapsed: true,
-          prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;p$/
-        },
-        (range, context) => {
-          quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-          quill.insertText(range.index - 2, ' ⪯ ');
-        });
+    // poset
+    quill.keyboard.addBinding({key: 't'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;r$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' ⪯ ');
+      });
 
-        //poset inverted
-        quill.keyboard.addBinding({key: 'p'}, {
-            empty: false,
-            collapsed: true,
-            prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;t$/
-          },
-          (range, context) => {
-            quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-            quill.insertText(range.index - 2, ' ⪰ ');
-          });
+    // poset inverted
+    quill.keyboard.addBinding({key: 'r'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;t$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' ⪰ ');
+      });
 
-        //p inverted
-        quill.keyboard.addBinding({key: 'p'}, {
-            empty: false,
-            collapsed: true,
-            prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;e$/
-          },
-          (range, context) => {
-            quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-            quill.insertText(range.index - 2, ' ≻ ');
-          });
+    // p inverted
+    quill.keyboard.addBinding({key: 'i'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;t$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' ≻ ');
+      });
 
-        // hash
-        quill.keyboard.addBinding({key: 'h'}, {
-            empty: false,
-            collapsed: true,
-            prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;h$/
-          },
-          (range, context) => {
-            quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-            quill.insertText(range.index - 2, ' # ');
-          });
-//pi
-quill.keyboard.addBinding({key: 'i'}, {
-    empty: false,
-    collapsed: true,
-    prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;p$/
-  },
-  (range, context) => {
-    quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-    quill.insertText(range.index - 2, ' π ');
-  });
-
-//join
-quill.keyboard.addBinding({key: 'n'}, {
-    empty: false,
-    collapsed: true,
-    prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;j$/
-  },
-  (range, context) => {
-    quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-    quill.insertText(range.index - 2, ' ⨝ ');
-  });
-
-//big-O
-quill.keyboard.addBinding({key: 'o'}, {
-    empty: false,
-    collapsed: true,
-    prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;b$/
-  },
-  (range, context) => {
-    quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-    quill.insertText(range.index - 2, ' Ο ');
-  });
-
-//big omega
-quill.keyboard.addBinding({key: 'g'}, {
-    empty: false,
-    collapsed: true,
-    prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;b$/
-  },
-  (range, context) => {
-    quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-    quill.insertText(range.index - 2, ' Ω ');
-  });
-
-  //big theta
-  quill.keyboard.addBinding({key: 't'}, {
-      empty: false,
-      collapsed: true,
-      prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;b$/
-    },
-    (range, context) => {
-      quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-      quill.insertText(range.index - 2, ' Θ ');
-    });
-
-    //phi
+    // hash
     quill.keyboard.addBinding({key: 'h'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;p$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;h$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' # ');
+      });
+
+    // sigma
+    quill.keyboard.addBinding({key: 'a'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;s$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' σ ');
+      });
+
+    // pi
+    quill.keyboard.addBinding({key: 'i'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;p$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' π ');
+      });
+
+    // natural join
+    quill.keyboard.addBinding({key: 'j'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;n$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' ⨝ ');
+      });
+
+    // big-O
+    quill.keyboard.addBinding({key: 'o'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;b$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' Ο ');
+      });
+
+    // big omega
+    quill.keyboard.addBinding({key: 'g'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;b$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' Ω ');
+      });
+
+    // big theta
+    quill.keyboard.addBinding({key: 't'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;b$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' Θ ');
+      });
+
+    // phi
+    quill.keyboard.addBinding({key: 'h'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;p$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -279,42 +305,42 @@ quill.keyboard.addBinding({key: 'g'}, {
     quill.keyboard.addBinding({key: 'f'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;f$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;f$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⇐ ');
       });
 
-    //less than
+    // less than
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;l$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;l$/
 
-        //missing * and - and + characters and ^
+        // missing * and - and + characters and ^
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' < ');
       });
 
-    //less than or equal to
+    // less than or equal to
     quill.keyboard.addBinding({key: 'e'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;l$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;l$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ≤ ');
       });
 
-    //greater than
+    // greater than
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;g$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;g$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -322,121 +348,121 @@ quill.keyboard.addBinding({key: 'g'}, {
       });
 
 
-    //greater than or equal to
+    // greater than or equal to
     quill.keyboard.addBinding({key: 'e'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;g$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;g$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ≥ ');
       });
 
-    //implies
+    // implies
     quill.keyboard.addBinding({key: 'm'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;i$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;i$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⇒ ');
       });
 
-    //equival
+    // equival
     quill.keyboard.addBinding({key: 'q'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;e$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;e$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ≡ ');
       });
 
-    //textual subsitution
+    // textual subsitution
     quill.keyboard.addBinding({key: 's'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;t$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;t$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ≔ ');
       });
 
-    //element of
+    // element of
     quill.keyboard.addBinding({key: 'l'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;e$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;e$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ∈ ');
       });
 
-    //universe
+    // universe
     quill.keyboard.addBinding({key: 's'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;u$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;u$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' Ʊ ');
       });
 
-    //proper subset
+    // proper subset
     quill.keyboard.addBinding({key: 'b'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;p$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;p$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⊂ ');
       });
 
-    //proper superset
+    // proper superset
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;p$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;p$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⊃ ');
       });
 
-    //subset
+    // subset
     quill.keyboard.addBinding({key: 'b'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;s$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;s$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⊆ ');
       });
 
-    //superset
+    // superset
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;s$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;s$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⊇ ');
       });
 
-    //empty set
+    // empty set
     quill.keyboard.addBinding({key: 's'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;e$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;e$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -444,22 +470,22 @@ quill.keyboard.addBinding({key: 'g'}, {
       });
 
 
-    //union
+    // union
     quill.keyboard.addBinding({key: 'n'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;u$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;u$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ∪ ');
       });
 
-    //intersection
+    // intersection
     quill.keyboard.addBinding({key: 'n'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;i$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;i$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -470,7 +496,7 @@ quill.keyboard.addBinding({key: 'g'}, {
     quill.keyboard.addBinding({key: 'o'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;c$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;c$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -482,7 +508,7 @@ quill.keyboard.addBinding({key: 'g'}, {
     quill.keyboard.addBinding({key: 'r'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;o$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;o$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -493,7 +519,7 @@ quill.keyboard.addBinding({key: 'g'}, {
     quill.keyboard.addBinding({key: 'n'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;a$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;a$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -504,7 +530,7 @@ quill.keyboard.addBinding({key: 'g'}, {
     quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;f$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;f$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -515,7 +541,7 @@ quill.keyboard.addBinding({key: 'g'}, {
     quill.keyboard.addBinding({key: 'x'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;e$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;e$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -525,94 +551,116 @@ quill.keyboard.addBinding({key: 'g'}, {
     quill.keyboard.addBinding({key: 's'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;p$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;p$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' Ρ ');
       });
 
-    //up arrow
-    quill.keyboard.addBinding({key: 'p'}, {
+    // up arrow
+    quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;u$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;u$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ↑ ');
       });
 
-    //down arrow
-    quill.keyboard.addBinding({key: 'n'}, {
+    // right arrow
+    quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;d$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;r$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' → ');
+      });
+
+    // left arrow
+    quill.keyboard.addBinding({key: 'a'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;l$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' ← ');
+      });
+
+    // down arrow
+    quill.keyboard.addBinding({key: 'a'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;d$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ↓ ');
       });
-    //cross product
+    // cross product
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;c$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;c$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' × ');
       });
 
-    //division symbol
+    // division symbol
     quill.keyboard.addBinding({key: 'v'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;d$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;d$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ÷ ');
       });
 
-    //function composition
+    // function composition
     quill.keyboard.addBinding({key: 'c'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;f$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;f$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ∙ ');
       });
 
-    //function product
+    // function product
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;f$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;f$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ∘ ');
       });
 
-    //floating dot
+    // floating dot
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;d$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;d$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⋅ ');
       });
 
-    //star
+    // star
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;s$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;s$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -620,102 +668,103 @@ quill.keyboard.addBinding({key: 'g'}, {
       });
 
 
-    //brackets defintely different than les than
+    // brackets defintely different than les than
 
     /////////// //////////////////////// not + symbols //////////////////////// ////////////////////////
 
-    //not
+    // not
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;no$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;no$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ¬ ');
       });
 
-    //does not imply
+    // does not imply
     quill.keyboard.addBinding({key: 'm'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;ni$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;ni$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ⇏ ');
       });
 
-    //does not follow from
+    // does not follow from
     quill.keyboard.addBinding({key: 'f'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;nf$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;nf$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ⇍ ');
       });
-    //not equal
+
+    // not equal
     quill.keyboard.addBinding({key: 'q'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;ne$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;ne$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ≠ ');
       });
 
-    //not element of
+    // not element of
     quill.keyboard.addBinding({key: 'l'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;ne$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;ne$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ∉ ');
       });
 
-    //not a subset
+    // not a subset
     quill.keyboard.addBinding({key: 'b'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;ns$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;ns$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ⊄ ');
       });
 
-    //not a superset
+    // not a superset
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;ns$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;ns$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ⊅ ');
       });
 
-    //not a proper superset
+    // not a proper superset
     quill.keyboard.addBinding({key: 'b'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;np$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;np$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ⊈ ');
       });
 
-    //not a proper superset
+    // not a proper superset
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩#~⋅*∘∙÷×Ρ↓↑◃▹★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^/a]*;ns$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;ns$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
