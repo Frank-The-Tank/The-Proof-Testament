@@ -59,6 +59,7 @@ export class EditorComponent implements OnInit {
         console.log('native fromControl value changes with debounce', data);
       });
 
+//gives error
     // this.editor.onContentChanged.debounce(400).distinctUntilChanged().subscribe(data=>{
     //   console.log('view child + directly subscription', data);
     // });
