@@ -8,7 +8,11 @@ import {AutocompleteBoxComponent} from '../autocomplete-box/autocomplete-box.com
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import Quill from 'quill';
+import * as QuillNamespace from 'quill';
+let Quill: any = QuillNamespace;
+
+import Counter from './counter';
+Quill.register('modules/counter', Counter);
 
 @Component({
   selector: 'app-editor',
@@ -37,9 +41,8 @@ export class EditorComponent implements OnInit {
 
     this.modules = {
       formula: true,
-      toolbar: [
-        [{'indent': '-1'}, {'indent': '+1'}], ['formula']
-      ]
+      toolbar: true,
+      counter: { container: '#counter', unit: 'word' }
     };
   }
 
@@ -56,12 +59,10 @@ export class EditorComponent implements OnInit {
         console.log('native fromControl value changes with debounce', data);
       });
 
-    this.editor
-      .onContentChanged.debounceTime(400)
-      .distinctUntilChanged()
-      .subscribe(data => {
-        console.log('view child + directly subscription', data);
-      });
+    // this.editor.onContentChanged.debounce(400).distinctUntilChanged().subscribe(data=>{
+    //   console.log('view child + directly subscription', data);
+    // });
+
   }
 
   addBindingCreated(quill) {
@@ -558,7 +559,7 @@ export class EditorComponent implements OnInit {
       });
 
     // up arrow
-    quill.keyboard.addBinding({key: 'p'}, {
+    quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
         prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;u$/
@@ -583,7 +584,7 @@ export class EditorComponent implements OnInit {
     quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;r$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;l$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -591,7 +592,7 @@ export class EditorComponent implements OnInit {
       });
 
     // down arrow
-    quill.keyboard.addBinding({key: 'n'}, {
+    quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
         prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕ〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;d$/
