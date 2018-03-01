@@ -30,6 +30,7 @@ import { AboutUserComponent } from './components/about-user/about-user.component
 
 import { QuillModule } from 'ngx-quill';
 import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomplete-box.component';
+import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomp
     AboutComponent,
     HomeComponent,
     AboutUserComponent,
-    AutocompleteBoxComponent
+    AutocompleteBoxComponent,
+    SymbolPickerComponent
   ],
   entryComponents: [ // Components that are added dynamically to page
     EditorComponent,
