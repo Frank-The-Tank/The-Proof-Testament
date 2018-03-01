@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <quill-editor [(ngModel)]="title"
 [modules]="modules"
@@ -19,3 +20,11 @@
     </span>
   </div>
 </quill-editor>
+=======
+<quill-editor #editor
+  [(ngModel)]="title"
+  [modules]="modules" 
+  (onEditorCreated)="addBindingCreated($event)">
+</quill-editor>
+<app-autocomplete-box #autoCompleteContainer></app-autocomplete-box>
+>>>>>>> 1bf43b198caf21f685619a3bc9feea2dcd2ad456

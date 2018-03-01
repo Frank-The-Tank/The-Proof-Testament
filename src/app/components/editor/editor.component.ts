@@ -24,7 +24,7 @@ Quill.register('modules/counter', Counter);
 
 export class EditorComponent implements OnInit {
 
-  @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
+  @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) autoCompleteContainer: ViewContainerRef;
 
   title = '<p>Prove: </p> ' +
     '<p>Description: By mathematical induction.... </p> ' +
@@ -40,9 +40,29 @@ export class EditorComponent implements OnInit {
     });
 
     this.modules = {
+<<<<<<< HEAD
       formula: true,
       toolbar: true,
       counter: { container: '#counter', unit: 'word' }
+=======
+    	toolbar: {
+        container:
+        [
+            ['formula'],
+            [{'indent': '-1'}, {'indent': '+1'}],
+            [{ 'placeholder': ['[GuestName]', '[HotelName]'] }], // custom dropdown
+        ],
+        handlers: {
+            "placeholder": function (value) {
+                if (value) {
+                    const cursorPosition = this.quill.getSelection().index;
+                    this.quill.insertText(cursorPosition, value);
+                    this.quill.setSelection(cursorPosition + value.length);
+                }
+            }
+        }
+      }
+>>>>>>> 1bf43b198caf21f685619a3bc9feea2dcd2ad456
     };
   }
 
@@ -63,6 +83,14 @@ export class EditorComponent implements OnInit {
     //   console.log('view child + directly subscription', data);
     // });
 
+<<<<<<< HEAD
+=======
+  keyPressed(quill) {
+    console.log('TEST WORKED');
+    const factory = this.factoryResolver.resolveComponentFactory(AutocompleteBoxComponent);
+    const ref = this.autoCompleteContainer.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+>>>>>>> 1bf43b198caf21f685619a3bc9feea2dcd2ad456
   }
 
   addBindingCreated(quill) {
@@ -143,7 +171,6 @@ export class EditorComponent implements OnInit {
 
     // greater than or equal to
     quill.keyboard.addBinding({key: 'e'}, {
-
         collapsed: true,
         prefix: /^;g$/,
         offset: 2,
