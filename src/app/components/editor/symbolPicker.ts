@@ -19,7 +19,7 @@ export default class SymbolPicker {
 
     container.addEventListener('click', function() {
       console.log('FRANK: ADD PRESSED');
-      quill.insertText(10, 'LETS GO');
+      quill.insertText(quill.getSelection(), 'LETS GO');
     });
   }
 
