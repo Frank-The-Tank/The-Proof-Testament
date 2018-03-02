@@ -12,7 +12,9 @@ import * as QuillNamespace from 'quill';
 let Quill: any = QuillNamespace;
 
 import Counter from './counter';
+import SymbolPicker from './symbolPicker';
 Quill.register('modules/counter', Counter);
+Quill.register('modules/symbolPicker', SymbolPicker);
 
 @Component({
   selector: 'app-editor',
@@ -42,7 +44,8 @@ export class EditorComponent implements OnInit {
     this.modules = {
       formula: true,
       toolbar: true,
-      counter: { container: '#counter', unit: 'word' }
+      counter: { container: '#counter', unit: 'word' },
+      symbolPicker: { container: '#symbolCounter' }
     };
   }
 
