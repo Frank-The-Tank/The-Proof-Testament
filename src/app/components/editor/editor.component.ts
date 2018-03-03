@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild, ViewEncapsulation, ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, ViewEncapsulation, ViewContainerRef, ComponentFactoryResolver, Input} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 
@@ -13,6 +13,7 @@ let Quill: any = QuillNamespace;
 
 import Counter from './counter';
 import SymbolPicker from './symbolPicker';
+import {SymbolPickerService} from '../symbol-picker/symbol-picker.service';
 Quill.register('modules/counter', Counter);
 Quill.register('modules/symbolPicker', SymbolPicker);
 
@@ -36,7 +37,9 @@ export class EditorComponent implements OnInit {
   form: FormGroup;
   modules = {};
 
-  constructor(fb: FormBuilder, private factoryResolver: ComponentFactoryResolver) {
+  constructor(fb: FormBuilder,
+              private factoryResolver: ComponentFactoryResolver,
+              private symbolService: SymbolPickerService) {
     this.form = fb.group({
       editor: ['test']
     });
@@ -45,7 +48,7 @@ export class EditorComponent implements OnInit {
       formula: true,
       toolbar: true,
       counter: { container: '#counter', unit: 'word' },
-      symbolPicker: { container: '#symbolCounter' }
+      symbolPicker: { container: '#symbolCounter', selector: this.symbolService.symbolSelected }
     };
   }
 
@@ -104,6 +107,7 @@ export class EditorComponent implements OnInit {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, '=            〈  〉');
         quill.setSelection(range.index + 13);
+        quill.modules.refresh();
       });
 
     // less than

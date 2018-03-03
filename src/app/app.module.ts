@@ -31,6 +31,7 @@ import { AboutUserComponent } from './components/about-user/about-user.component
 import { QuillModule } from 'ngx-quill';
 import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomplete-box.component';
 import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.component';
+import {SymbolPickerService} from './components/symbol-picker/symbol-picker.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,7 @@ import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.
     QuillModule,
     RouterModule.forRoot(routerConfig)
   ],
-  providers: [BibleService],
+  providers: [BibleService, SymbolPickerService],
   bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
     EditorComponent, HomeComponent, AboutComponent, AboutUserComponent]
 })

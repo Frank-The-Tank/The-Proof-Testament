@@ -1,5 +1,3 @@
-import * as Quill from 'quill'
-
 export interface Config {
   container: string;
   unit: 'word'|'char';
