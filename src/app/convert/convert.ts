@@ -5,7 +5,7 @@
  *	Imported text must follow the format below.
  */
 
-import * as latex from 'node-latex';
+import * as PDFTeX from './pdftex/pdftex'
 
 export function convert(string) {
 	
@@ -55,8 +55,5 @@ export function convert(string) {
 	// Assemble the document
 	doc = docSettings + '\n\n' + header + '\n\n\\begin{document}\\newcommand{\\unindent}{ \\hspace{-2em} }' + '\n\n' + content + '\n\n\\end{document}';
 
-	// File to export as
-	let fileName = String('pdfs/' + Date.now()) + '.pdf';
-
-	console.log(doc);
+	return doc;
 }
