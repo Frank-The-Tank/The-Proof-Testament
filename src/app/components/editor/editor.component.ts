@@ -15,7 +15,8 @@ import Counter from './counter';
 import SymbolPicker from './symbolPicker';
 import {SymbolPickerService} from '../symbol-picker/symbol-picker.service';
 Quill.register('modules/counter', Counter);
-Quill.register('modules/symbolPicker', SymbolPicker);
+Quill.register('modules/equalsSymbol', SymbolPicker);
+Quill.register('modules/impliesSymbol', SymbolPicker);
 
 @Component({
   selector: 'app-editor',
@@ -48,8 +49,10 @@ export class EditorComponent implements OnInit {
       formula: true,
       toolbar: true,
       counter: { container: '#counter', unit: 'word' },
-      symbolPicker: { container: '#symbolCounter', selector: this.symbolService.symbolSelected }
+      equalsSymbol: { container: '#equalsBtn', selector: 'equals' },
+      impliesSymbol: { container: '#impliesBtn', selector: 'implies' }
     };
+
   }
 
   @ViewChild('editor') editor: QuillEditorComponent;
