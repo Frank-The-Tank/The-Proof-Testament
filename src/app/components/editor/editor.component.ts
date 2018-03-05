@@ -14,6 +14,8 @@ let Quill: any = QuillNamespace;
 import Counter from './counter';
 import SymbolPicker from './symbolPicker';
 import {SymbolPickerService} from '../symbol-picker/symbol-picker.service';
+
+const Keyboard = Quill.import('modules/keyboard');
 Quill.register('modules/counter', Counter);
 Quill.register('modules/equalsSymbol', SymbolPicker);
 Quill.register('modules/impliesSymbol', SymbolPicker);
@@ -24,7 +26,6 @@ Quill.register('modules/impliesSymbol', SymbolPicker);
   styleUrls: ['./editor.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-
 
 export class EditorComponent implements OnInit {
 
@@ -37,6 +38,18 @@ export class EditorComponent implements OnInit {
   placeholder = 'placeholder';
   form: FormGroup;
   modules = {};
+  hideSymbols = true;
+
+  bindings = {
+    enter: {
+      key: 13,
+      handler: function() {
+        console.log('enter pressed');
+        this.hideSymbols = !this.hideSymbols;
+        console.log(this.hideSymbols);
+      }
+    }
+  };
 
   constructor(fb: FormBuilder,
               private factoryResolver: ComponentFactoryResolver,
@@ -46,13 +59,15 @@ export class EditorComponent implements OnInit {
     });
 
     this.modules = {
+      keyboard: {
+        bindings: this.bindings
+      },
       formula: true,
       toolbar: true,
       counter: { container: '#counter', unit: 'word' },
       equalsSymbol: { container: '#equalsBtn', selector: 'equals' },
       impliesSymbol: { container: '#impliesBtn', selector: 'implies' }
     };
-
   }
 
   @ViewChild('editor') editor: QuillEditorComponent;
@@ -75,6 +90,15 @@ export class EditorComponent implements OnInit {
   }
 
   addBindingCreated(quill) {
+
+    // enter
+    // quill.keyboard.addBinding({ key: Keyboard.key.ENTER }, {
+    //     collapsed: true
+    //   },
+    //   (range, context) => {
+    //     console.log('enter pressed');
+    //     this.toggleSymbolBtns();
+    //   });
 
     // implies
     quill.keyboard.addBinding({key: 'm'}, {
@@ -110,7 +134,7 @@ export class EditorComponent implements OnInit {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, '=            〈  〉');
         quill.setSelection(range.index + 13);
-        quill.modules.refresh();
+        this.hideSymbols = !this.hideSymbols;
       });
 
     // less than

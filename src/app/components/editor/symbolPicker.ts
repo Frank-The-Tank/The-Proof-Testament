@@ -1,3 +1,7 @@
+import * as QuillNamespace from 'quill';
+let Quill: any = QuillNamespace;
+const Keyboard = Quill.import('modules/keyboard');
+
 export interface Config {
   container: string;
   selector: 'equals'|'implies'|'followsFrom';
@@ -17,6 +21,13 @@ export default class SymbolPicker {
     this.options = options;
 
     const container = document.querySelector(this.options.container);
+
+    quill.keyboard.addBinding({ key: 'Enter' }, {
+        collapsed: true
+      },
+      (range, context) => {
+        console.log('ENTER PRESSED');
+      });
 
     switch (this.options.selector) {
       case 'equals': {

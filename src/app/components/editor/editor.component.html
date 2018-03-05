@@ -15,8 +15,10 @@
         <app-autocomplete-box></app-autocomplete-box>
       </span>
       <span class="ql-formats">
-        <button id="equalsBtn" class="symbolBtn">=</button>
-        <button id="impliesBtn" class="symbolBtn">=></button>
+        <div [hidden]="hideSymbols">
+          <button id="equalsBtn" class="symbolBtn">=</button>
+          <button id="impliesBtn" class="symbolBtn">=></button>
+        </div>
       </span>
     </div>
 </quill-editor>
