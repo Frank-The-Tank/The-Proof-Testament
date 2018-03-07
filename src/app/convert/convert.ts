@@ -5,7 +5,7 @@
  *	Imported text must follow the format below.
  */
 
-import * as PDFTeX from './pdftex/pdftex'
+import { PDFTeX } from './pdftex/pdftex'
 
 export function convert(string) {
 	
@@ -54,6 +54,12 @@ export function convert(string) {
 
 	// Assemble the document
 	doc = docSettings + '\n\n' + header + '\n\n\\begin{document}\\newcommand{\\unindent}{ \\hspace{-2em} }' + '\n\n' + content + '\n\n\\end{document}';
+
+	// Compile LaTeX
+
+	var pdftex = PDFTeX;
+
+	pdftex.testOutput();
 
 	return doc;
 }
