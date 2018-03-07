@@ -4,6 +4,10 @@
 
 quill-editor {
       display: block;
+      position: fixed;
+      bottom: 60px;
+      top: 75px;
+      width: 56%;
     }
     .ng-invalid {
       border: 1px dashed red;

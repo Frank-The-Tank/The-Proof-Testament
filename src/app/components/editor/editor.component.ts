@@ -15,7 +15,6 @@ import Counter from './counter';
 import SymbolPicker from './symbolPicker';
 import {SymbolPickerService} from '../symbol-picker/symbol-picker.service';
 
-const Keyboard = Quill.import('modules/keyboard');
 Quill.register('modules/counter', Counter);
 Quill.register('modules/equalsSymbol', SymbolPicker);
 Quill.register('modules/impliesSymbol', SymbolPicker);
@@ -31,7 +30,7 @@ export class EditorComponent implements OnInit {
 
   @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
 
-  title = '<p>Prove: </p> ' +
+  outline = '<p>Prove: </p> ' +
     '<p>Description: By mathematical induction.... </p> ' +
     '<br>Proof: <br> ';
   isReadOnly = false;
@@ -43,10 +42,9 @@ export class EditorComponent implements OnInit {
   bindings = {
     enter: {
       key: 13,
-      handler: function() {
-        console.log('enter pressed');
+      handler: () => {
         this.hideSymbols = !this.hideSymbols;
-        console.log(this.hideSymbols);
+        quill.insertText(quill.getSelection(),'\n');
       }
     }
   };
@@ -83,22 +81,9 @@ export class EditorComponent implements OnInit {
         console.log('native fromControl value changes with debounce', data);
       });
 
-    // this.editor.onContentChanged.debounce(400).distinctUntilChanged().subscribe(data=>{
-    //   console.log('view child + directly subscription', data);
-    // });
-
   }
 
   addBindingCreated(quill) {
-
-    // enter
-    // quill.keyboard.addBinding({ key: Keyboard.key.ENTER }, {
-    //     collapsed: true
-    //   },
-    //   (range, context) => {
-    //     console.log('enter pressed');
-    //     this.toggleSymbolBtns();
-    //   });
 
     // implies
     quill.keyboard.addBinding({key: 'm'}, {
@@ -134,7 +119,6 @@ export class EditorComponent implements OnInit {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, '=            〈  〉');
         quill.setSelection(range.index + 13);
-        this.hideSymbols = !this.hideSymbols;
       });
 
     // less than
@@ -818,7 +802,7 @@ export class EditorComponent implements OnInit {
     console.log($event);
   }
 
-  logSelection($event: any) {
+  ($event: any) {
     console.log($event);
   }
 

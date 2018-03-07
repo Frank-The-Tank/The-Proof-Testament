@@ -1,5 +1,5 @@
 <quill-editor
-  [(ngModel)]="title"
+  [(ngModel)]="outline"
   [modules]="modules"
   (onEditorCreated)="addBindingCreated($event)"
   (onSelectionChanged)="logSelection($event)">
@@ -16,9 +16,15 @@
       </span>
       <span class="ql-formats">
         <div [hidden]="hideSymbols">
+          <select class="ql-size" >
+            <option id="equalsBtn" value="equals">=</option>
+            <option id="impliesBtn" value="implies">=></option>
+          </select>
+        </div>
+        <!-- <div [hidden]="hideSymbols">
           <button id="equalsBtn" class="symbolBtn">=</button>
           <button id="impliesBtn" class="symbolBtn">=></button>
-        </div>
+        </div> -->
       </span>
     </div>
 </quill-editor>

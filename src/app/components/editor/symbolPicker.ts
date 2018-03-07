@@ -20,14 +20,9 @@ export default class SymbolPicker {
     this.quill = quill;
     this.options = options;
 
-    const container = document.querySelector(this.options.container);
+    console.log('got to symbolPicker.ts!');
 
-    quill.keyboard.addBinding({ key: 'Enter' }, {
-        collapsed: true
-      },
-      (range, context) => {
-        console.log('ENTER PRESSED');
-      });
+    const container = document.querySelector(this.options.container);
 
     switch (this.options.selector) {
       case 'equals': {
