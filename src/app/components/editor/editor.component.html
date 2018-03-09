@@ -1,7 +1,16 @@
-<quill-editor #editor
-              [(ngModel)]="title"
-              [modules]="modules"
-              (onEditorCreated)="addBindingCreated($event)"
-              (onContentChanged)="keyPressed()">
+
+<quill-editor [(ngModel)]="title"
+[modules]="modules"
+(onEditorCreated)="addBindingCreated($event)"
+
+(onSelectionChanged)="logSelection($event);">
+  <div quill-editor-toolbar>
+  <span class="ql-formats">
+    <button class='ql-indent' value = "-1"></button>
+    <button class='ql-indent' value = "+1"></button>
+  </span>
+    <span class="ql-formats">
+      <div id="counter"></div>
+    </span>
+  </div>
 </quill-editor>
-<!--<div #autoCompleteContainer></div>-->
