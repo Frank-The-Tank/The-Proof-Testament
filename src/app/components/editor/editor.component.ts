@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild, ViewEncapsulation, ViewContainerRef, ComponentFactoryResolver, Input} from '@angular/core';
+import {Component, ElementRef, OnInit, OnDestroy, ViewChild, ViewEncapsulation, ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 
@@ -9,12 +9,13 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 import * as QuillNamespace from 'quill';
-let Quill: any = QuillNamespace;
+const Quill: any = QuillNamespace;
 
 import Counter from './counter';
 import SymbolPicker from './symbolPicker';
 import SymbolDropdown from './symbolDropdown';
 import {SymbolPickerService} from '../symbol-picker/symbol-picker.service';
+import {EditorService} from './editor.service';
 
 Quill.register('modules/counter', Counter);
 Quill.register('modules/equalsSymbol', SymbolPicker);
@@ -28,33 +29,39 @@ Quill.register('modules/symbolDropdown', SymbolDropdown);
   encapsulation: ViewEncapsulation.None
 })
 
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, OnDestroy {
 
   @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
 
-  outline = '<p>Prove: </p> ' +
-    '<p>Description: By mathematical induction.... </p> ' +
-    '<br>Proof: <br> ';
+  infoFilled: boolean;
+  private infoFilledSubscription;
+  proofTxt = 'test';
+  outline = this.proofTxt;
   isReadOnly = false;
-  placeholder = 'placeholder';
   form: FormGroup;
   modules = {};
   hideSymbols = true;
-  infoFilled = false;
+
 
   bindings = {
     enter: {
       key: 13,
       handler: () => {
         this.hideSymbols = !this.hideSymbols;
-        quill.insertText(quill.getSelection(),'\n');
+        Quill.insertText(Quill.getSelection(), '\n');
       }
     }
   };
 
   constructor(fb: FormBuilder,
               private factoryResolver: ComponentFactoryResolver,
-              private symbolService: SymbolPickerService) {
+              private symbolService: SymbolPickerService,
+              private editorService: EditorService) {
+
+    this.infoFilledSubscription = this.editorService.infoFilledChange.subscribe(infoFilled => {
+      this.infoFilled = infoFilled;
+    });
+
     this.form = fb.group({
       editor: ['test']
     });
@@ -84,6 +91,10 @@ export class EditorComponent implements OnInit {
         console.log('native fromControl value changes with debounce', data);
       });
 
+  }
+
+  ngOnDestroy() {
+    this.infoFilledSubscription.unsubscribe();
   }
 
   addBindingCreated(quill) {
@@ -568,7 +579,8 @@ export class EditorComponent implements OnInit {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ∃');
       });
-    //power set
+
+    // power set
     quill.keyboard.addBinding({key: 's'}, {
         empty: false,
         collapsed: true,
@@ -802,10 +814,6 @@ export class EditorComponent implements OnInit {
   }
 
   logChange($event: any) {
-    console.log($event);
-  }
-
-  ($event: any) {
     console.log($event);
   }
 

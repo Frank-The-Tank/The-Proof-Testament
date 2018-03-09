@@ -1,16 +1,3 @@
-<div *ngIf="!infoFilled">
-  <form>
-    <fieldset>
-      <div class="form-group">
-        <label for="">Proof:</label>
-        <input type="text" name="proof" value="" class="form-control">
-      </div>
-    </fieldset>
-
-      <button (click)="infoFilled = true">Submit</button>
-  </form>
-</div>
-
 <div *ngIf="infoFilled">
   <quill-editor
     [(ngModel)]="outline"

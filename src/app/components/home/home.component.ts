@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver, ViewChild } from '@angular/core';
-import { EditorComponent } from '../editor/editor.component';
+import { Component, OnInit} from '@angular/core';
+import {EditorService} from '../editor/editor.service';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +8,12 @@ import { EditorComponent } from '../editor/editor.component';
 })
 export class HomeComponent implements OnInit {
 
-  @ViewChild('editorContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
+  infoFilled = this.editorService.infoFilled;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(private editorService: EditorService) {}
 
   ngOnInit() {
   }
 
-  addEditor() {
-    const factory = this.componentFactoryResolver.resolveComponentFactory(EditorComponent);
-    const ref = this.viewContainerRef.createComponent(factory);
-    ref.changeDetectorRef.detectChanges();
-  }
 
 }

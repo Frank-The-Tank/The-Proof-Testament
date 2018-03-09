@@ -15,10 +15,10 @@ export default class SymbolDropdown {
     this.quill = quill;
     this.options = options;
 
-    const container = document.querySelector(this.options.container);
-
-    console.log('symbolDropdown: ' + container);
-    console.log(container.innerHTML);
+    // const container = document.querySelector(this.options.container);
+    //
+    // console.log('symbolDropdown: ' + container);
+    // console.log(container.innerHTML);
 
 
 

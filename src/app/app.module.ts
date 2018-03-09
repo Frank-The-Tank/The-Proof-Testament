@@ -32,6 +32,8 @@ import { QuillModule } from 'ngx-quill';
 import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomplete-box.component';
 import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.component';
 import {SymbolPickerService} from './components/symbol-picker/symbol-picker.service';
+import { EditorFormComponent } from './components/editor-form/editor-form.component';
+import {EditorService} from './components/editor/editor.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import {SymbolPickerService} from './components/symbol-picker/symbol-picker.serv
     HomeComponent,
     AboutUserComponent,
     AutocompleteBoxComponent,
-    SymbolPickerComponent
+    SymbolPickerComponent,
+    EditorFormComponent
   ],
   entryComponents: [ // Components that are added dynamically to page
     EditorComponent,
@@ -64,7 +67,7 @@ import {SymbolPickerService} from './components/symbol-picker/symbol-picker.serv
     QuillModule,
     RouterModule.forRoot(routerConfig)
   ],
-  providers: [BibleService, SymbolPickerService],
+  providers: [BibleService, SymbolPickerService, EditorService],
   bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
     EditorComponent, HomeComponent, AboutComponent, AboutUserComponent]
 })

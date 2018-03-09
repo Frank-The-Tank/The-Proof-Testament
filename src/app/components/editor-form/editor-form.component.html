@@ -1,0 +1,13 @@
+<div *ngIf="!infoFilled">
+  <form>
+    <fieldset>
+      <div class="form-group">
+        <label>Proof:</label>
+        <input [ngModel]="proofTxt" type="text" name="proof" value="" class="form-control">
+      </div>
+    </fieldset>
+
+    <button (click)="formSubmit()">Submit</button>
+  </form>
+</div>
+
