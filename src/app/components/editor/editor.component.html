@@ -1,30 +1,45 @@
-<quill-editor
-  [(ngModel)]="outline"
-  [modules]="modules"
-  (onEditorCreated)="addBindingCreated($event)"
-  (onSelectionChanged)="logSelection($event)">
-    <div quill-editor-toolbar>
-      <span class="ql-formats">
-        <button class='ql-indent' value = "-1"></button>
-        <button class='ql-indent' value = "+1"></button>
-      </span>
-      <span class="ql-formats">
-        <div id="counter"></div>
-      </span>
-      <span class="ql-formats">
-        <app-autocomplete-box></app-autocomplete-box>
-      </span>
-      <span class="ql-formats">
-        <div [hidden]="hideSymbols">
-          <select class="ql-size" >
-            <option id="equalsBtn" value="equals">=</option>
-            <option id="impliesBtn" value="implies">=></option>
-          </select>
-        </div>
-        <!-- <div [hidden]="hideSymbols">
-          <button id="equalsBtn" class="symbolBtn">=</button>
-          <button id="impliesBtn" class="symbolBtn">=></button>
-        </div> -->
-      </span>
-    </div>
-</quill-editor>
+<div *ngIf="!infoFilled">
+  <form>
+    <fieldset>
+      <div class="form-group">
+        <label for="">Proof:</label>
+        <input type="text" name="proof" value="" class="form-control">
+      </div>
+    </fieldset>
+
+      <button (click)="infoFilled = true">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="infoFilled">
+  <quill-editor
+    [(ngModel)]="outline"
+    [modules]="modules"
+    (onEditorCreated)="addBindingCreated($event)"
+    (onSelectionChanged)="logSelection($event)">
+      <div quill-editor-toolbar>
+        <span class="ql-formats">
+          <button class='ql-indent' value = "-1"></button>
+          <button class='ql-indent' value = "+1"></button>
+        </span>
+        <span class="ql-formats">
+          <div id="counter"></div>
+        </span>
+        <span class="ql-formats">
+          <app-autocomplete-box></app-autocomplete-box>
+        </span>
+        <span class="ql-formats">
+          <!-- <div [hidden]="hideSymbols">
+            <select class="ql-size" >
+              <option id="equalsBtn" value="equals">=</option>
+              <option id="impliesBtn" value="implies">=></option>
+            </select>
+          </div> -->
+          <div [hidden]="hideSymbols">
+            <button id="equalsBtn" class="symbolBtn">=</button>
+            <button id="impliesBtn" class="symbolBtn">=></button>
+          </div>
+        </span>
+      </div>
+  </quill-editor>
+</div>

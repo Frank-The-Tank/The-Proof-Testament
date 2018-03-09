@@ -13,11 +13,13 @@ let Quill: any = QuillNamespace;
 
 import Counter from './counter';
 import SymbolPicker from './symbolPicker';
+import SymbolDropdown from './symbolDropdown';
 import {SymbolPickerService} from '../symbol-picker/symbol-picker.service';
 
 Quill.register('modules/counter', Counter);
 Quill.register('modules/equalsSymbol', SymbolPicker);
 Quill.register('modules/impliesSymbol', SymbolPicker);
+Quill.register('modules/symbolDropdown', SymbolDropdown);
 
 @Component({
   selector: 'app-editor',
@@ -38,6 +40,7 @@ export class EditorComponent implements OnInit {
   form: FormGroup;
   modules = {};
   hideSymbols = true;
+  infoFilled = false;
 
   bindings = {
     enter: {

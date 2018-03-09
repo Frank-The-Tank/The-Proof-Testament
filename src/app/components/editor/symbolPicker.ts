@@ -20,8 +20,6 @@ export default class SymbolPicker {
     this.quill = quill;
     this.options = options;
 
-    console.log('got to symbolPicker.ts!');
-
     const container = document.querySelector(this.options.container);
 
     switch (this.options.selector) {
