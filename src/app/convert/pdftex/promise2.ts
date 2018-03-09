@@ -194,6 +194,6 @@
         ajaxTimeout: 0
     };
 
-    exports.promise = Promise;
+    exports.promise = promise;
 
 })(this);
