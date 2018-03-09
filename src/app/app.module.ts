@@ -31,6 +31,8 @@ import { AboutUserComponent } from './components/about-user/about-user.component
 import { QuillModule } from 'ngx-quill';
 import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomplete-box.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
