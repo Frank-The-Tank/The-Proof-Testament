@@ -10,7 +10,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 
   infoFilled: boolean;
   infoFilledSubscription;
-  proofTxt: string;
+  customProofSelected = false;
 
   constructor(private editorService: EditorService) {
     this.infoFilledSubscription = this.editorService.infoFilledChange.subscribe(infoFilled => {
@@ -20,6 +20,14 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 
   formSubmit() {
     this.editorService.toggleFormFilled();
+  }
+
+  onProofSelectionChanged(selection) {
+    if (selection === 'custom') {
+      this.customProofSelected = true;
+    } else {
+      this.customProofSelected = false;
+    }
   }
 
   ngOnInit() {
