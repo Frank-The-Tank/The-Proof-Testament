@@ -1,3 +1,20 @@
 .ql-toolbar.ql-snow + .ql-container.ql-snow {
   margin-bottom: 10px !important;
 }
+
+
+quill-editor {
+      display: block;
+    }
+    .ng-invalid {
+      border: 1px dashed red;
+    }
+
+    /* Set default font-family */
+    [quill-editor-element] {
+      font-family: "Times New Roman";
+    }
+
+.ql-container {
+  font-size: 20px;
+}
