@@ -8,6 +8,7 @@ import {EditorService} from '../editor/editor.service';
 })
 export class EditorFormComponent implements OnInit, OnDestroy {
 
+  nameText = '';
   infoFilled: boolean;
   infoFilledSubscription;
   customProofSelected = false;
@@ -20,6 +21,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 
   formSubmit() {
     this.editorService.toggleFormFilled();
+    this.editorService.submitData(this.nameText);
   }
 
   onProofSelectionChanged(selection) {

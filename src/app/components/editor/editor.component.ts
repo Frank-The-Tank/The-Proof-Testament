@@ -37,6 +37,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   private infoFilledSubscription;
   proofTxt = 'test';
   outline = this.proofTxt;
+  private outlineSubscription;
   isReadOnly = false;
   form: FormGroup;
   modules = {};
@@ -60,6 +61,10 @@ export class EditorComponent implements OnInit, OnDestroy {
 
     this.infoFilledSubscription = this.editorService.infoFilledChange.subscribe(infoFilled => {
       this.infoFilled = infoFilled;
+    });
+
+    this.outlineSubscription = this.editorService.outlineChange.subscribe(outline => {
+      this.outline = outline;
     });
 
     this.form = fb.group({
@@ -95,6 +100,7 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.infoFilledSubscription.unsubscribe();
+    this.outlineSubscription.unsubscribe();
   }
 
   addBindingCreated(quill) {
