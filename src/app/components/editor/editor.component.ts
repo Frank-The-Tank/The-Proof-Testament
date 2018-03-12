@@ -35,8 +35,7 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   infoFilled: boolean;
   private infoFilledSubscription;
-  proofTxt = 'test';
-  outline = this.proofTxt;
+  outline: string;
   private outlineSubscription;
   isReadOnly = false;
   form: FormGroup;

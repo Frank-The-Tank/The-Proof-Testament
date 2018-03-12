@@ -4,15 +4,15 @@
       <legend>Editor Form</legend>
       <div class="form-group">
         <label>Name:</label>
-        <input #nameHolder [(ngModel)]="nameText" type="text" name="proof" value="" class="form-control">
+        <input [(ngModel)]="nameText" type="text" name="proof" value="" class="form-control">
       </div>
       <div class="form-group">
         <label>Class:</label>
-        <input type="text" value="" class="form-control">
+        <input [(ngModel)]="classText" type="text" name="class" value="" class="form-control">
       </div>
       <div class="form-group">
         <label>Proof:</label>
-        <select (change)="onProofSelectionChanged($event.target.value)" name="proofs" class="form-control">
+        <select (change)="onProofSelectionChanged($event.target.value)" [(ngModel)]="proofText" name="proofs" class="form-control">
           <option style="display:none" value=""></option>
           <option value="custom">[Custom]</option>
           <option value="3.1">3.1</option>
@@ -24,6 +24,7 @@
       <div class="form-group">
         <label>Description:</label>
         <textarea
+          [(ngModel)]="descriptionText"
           name="description"
           cols="30" rows="5"
           class="form-control"
