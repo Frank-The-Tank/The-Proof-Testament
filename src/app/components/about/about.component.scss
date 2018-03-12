@@ -1,19 +1,36 @@
-.aboutHeader {
-  height: 400px;
-  opacity: 0.1;
-  background-image: url(https://wallpapercave.com/wp/0YsfzTq.jpg);
-  background-size: cover;
-}
-
-.aboutHeaderTextHolder {
-  position: relative;
-  bottom: 225px;
-  outline: 2px solid black;
-}
-
 .aboutHeaderText {
   text-align: center;
   color: black;
   opacity: 1.0;
-  font-size: 60px;
+  font-size: 70px;
+  font-family: avenir;
+  margin-top: 10%;
+  font-stretch: semi-expanded;
+}
+
+.aboutHeaderImg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  opacity: 0.2;
+  margin-top: -44%;
+  margin-bottom: -150px;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.descriptions {
+  margin-top: -25%;
+  position: relative;
+}
+
+.left {
+  margin-left: -5%;
+  margin-bottom: 3%;
+}
+
+.titleImg {
+  width: 100%;
+  opacity: 0.8;
 }

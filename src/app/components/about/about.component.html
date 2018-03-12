@@ -1,6 +1,16 @@
-<div class="col-md-12 aboutHeader"></div>
-<div class="aboutHeaderTextHolder">
-  <h1 class="aboutHeaderText">Meet the Team</h1>
-</div>
-
-<app-about-user></app-about-user>
+<body>
+  <img class="titleImg" src="https://www.carthage.edu/live/image/gid/46/3711_computerscience-banner-final.rev.1399991027.jpg">
+  <div class="titleContainer">
+    <h1 class="aboutHeaderText">Meet Our 2018 Capstone Team</h1>
+    <img class="aboutHeaderImg" src="http://weclipart.com/gimg/2FB7DB3F24DE474C/smack-clipart-wave-pattern-extended.svg">
+  </div>
+  <div class="descriptions">
+    <div *ngFor="let contributor of contributors" class="left">
+      <app-about-user
+      [name]="contributor.name"
+      [description]="contributor.description"
+      [pic]="contributor.pic">
+      </app-about-user>
+    </div>
+  </div>
+</body>
