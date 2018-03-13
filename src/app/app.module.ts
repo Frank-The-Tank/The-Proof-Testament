@@ -10,7 +10,6 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
-import { FooterComponent } from './components/footer/footer.component';
 
 import { environment } from './../environments/environment';
 import { BibleComponent } from './components/bible/bible.component';
@@ -38,7 +37,6 @@ import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomp
   declarations: [
     AppComponent,
     BibleComponent,
-    FooterComponent,
     ScrollableDirective,
     NavbarComponent,
     BibleFilterPipe,
@@ -65,7 +63,7 @@ import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomp
     RouterModule.forRoot(routerConfig)
   ],
   providers: [BibleService],
-  bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
+  bootstrap: [AppComponent, BibleComponent, NavbarComponent,
     EditorComponent, HomeComponent, AboutComponent, AboutUserComponent]
 })
 export class AppModule { }
