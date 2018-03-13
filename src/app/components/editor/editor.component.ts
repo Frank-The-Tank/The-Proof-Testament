@@ -37,17 +37,17 @@ export class EditorComponent implements OnInit, OnDestroy {
   private infoFilledSubscription;
   outline: string;
   private outlineSubscription;
+  hideSymbols = true;
+  private hideSymbolsSubscription;
   isReadOnly = false;
   form: FormGroup;
   modules = {};
-  hideSymbols = true;
-
 
   bindings = {
     enter: {
       key: 13,
       handler: () => {
-        this.hideSymbols = !this.hideSymbols;
+        this.editorService.toggleHideSymbols();
         Quill.insertText(Quill.getSelection(), '\n');
       }
     }
@@ -64,6 +64,10 @@ export class EditorComponent implements OnInit, OnDestroy {
 
     this.outlineSubscription = this.editorService.outlineChange.subscribe(outline => {
       this.outline = outline;
+    });
+
+    this.hideSymbolsSubscription = this.editorService.hideSymbolsChange.subscribe(hideSymbols => {
+      this.hideSymbols = hideSymbols;
     });
 
     this.form = fb.group({
@@ -100,6 +104,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.infoFilledSubscription.unsubscribe();
     this.outlineSubscription.unsubscribe();
+    this.hideSymbolsSubscription.unsubscribe();
   }
 
   addBindingCreated(quill) {

@@ -5,8 +5,10 @@ import {Subject} from 'rxjs/Subject';
 export class EditorService {
 
   infoFilled = false;
+  hideSymbols = true;
 
   infoFilledChange: Subject<boolean> = new Subject<boolean>();
+  hideSymbolsChange: Subject<boolean> = new Subject<boolean>();
   outlineChange: Subject<string> = new Subject<string>();
 
   constructor() {}
@@ -14,6 +16,11 @@ export class EditorService {
   toggleFormFilled() {
     this.infoFilledChange.next(!this.infoFilled);
     this.infoFilled = !this.infoFilled;
+  }
+
+  toggleHideSymbols() {
+    this.hideSymbolsChange.next(!this.hideSymbols);
+    this.hideSymbols = !this.hideSymbols;
   }
 
   submitData(data: string) {
