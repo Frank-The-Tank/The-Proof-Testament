@@ -59,7 +59,7 @@ export function convert(string) {
 
 	var pdftex = PDFTeX;
 
-	pdftex.testOutput();
+	pdftex.compile(doc);
 
 	return doc;
 }

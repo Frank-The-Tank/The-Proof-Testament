@@ -1,7 +1,9 @@
-import * as promise from './promise2';
+// import * as promise from './promise2';
+
+import { will } from './will';
 
 var PDFTeX = function() {
-  var worker = new Worker('pdftex-worker.js');
+  var worker = new Worker('assets/pdftex-worker.js');
   var self = this;
   var initialized = false;
 
@@ -17,6 +19,8 @@ var PDFTeX = function() {
     var data = JSON.parse(ev.data);
     var msg_id;
 
+    console.log(data);
+
     if(!('command' in data))
       console.log("missing command!", data);
     switch(data['command']) {
@@ -28,9 +32,10 @@ var PDFTeX = function() {
         self['on_'+data['command']](data['contents']);
         break;
       default:
-        //console.debug('< received', data);
         msg_id = data['msg_id'];
         if(('msg_id' in data) && (msg_id in promises)) {
+          console.log(data['result']);
+
           promises[msg_id].done(data['result']);
         }
         else
@@ -38,21 +43,26 @@ var PDFTeX = function() {
     }
   }
 
-  var onready = new (<any>promise).Promise();
+  // var onready = new promise.Promise();
+  var onready = new will.Will();
+
   var promises = [];
   var chunkSize = undefined;
 
   var sendCommand = function(cmd) {
-    var p = new (<any>promise).Promise();
-    var msg_id = promises.push(p)-1;
+    // var p = new promise.Promise();
+    var w = new will.Will();
+
+    // var msg_id = promises.push(p)-1;
+    var msg_id = promises.push(w) - 1;
 
     onready.then(function() {
       cmd['msg_id'] = msg_id;
-      //console.debug('> sending', cmd);
       worker.postMessage(JSON.stringify(cmd));
     });
 
-    return p;
+    // return p;
+    return w;
   };
 
   var determineChunkSize = function() {
@@ -123,39 +133,47 @@ var PDFTeX = function() {
   }
 
   self.compile = function(source_code) {
-    var p = new (<any>promise).Promise();
+    // var p = new promise.Promise();
+    var w = new will.Will();
 
     self.compileRaw(source_code).then(function(binary_pdf) {
-      if(binary_pdf === false)
-        return p.done(false);
+      if(binary_pdf === false) {
+        // return p.done(false);
+        return w.done(false);
+      }
 
       var pdf_dataurl = 'data:application/pdf;charset=binary;base64,' + window.btoa(binary_pdf);
-
-      return p.done(pdf_dataurl);
+      // return p.done(pdf_dataurl);
+      return w.done(pdf_dataurl);
     });
-    return p;
+
+    // return p;
+    return w;
   }
 
-  this.testOutput = function() {
+  self.testOutput = function() {
     console.log("HERE")
 
     return;
   }
 
   self.compileRaw = function(source_code) {
-    if(typeof(chunkSize) === "undefined")
+    if(typeof(chunkSize) === "undefined") {
       chunkSize = determineChunkSize();
+    }
 
     var commands;
-    if(initialized)
+
+    if(initialized) {
       commands = [
         curry(self, 'FS_unlink', ['/input.tex']),
       ];
-    else
+    } else {
       commands = [
         curry(self, 'FS_createDataFile', ['/', 'input.tex', source_code, true, true]),
         curry(self, 'FS_createLazyFilesFromList', ['/', 'texlive.lst', './texlive', true, true]),
       ];
+    }
 
     var sendCompile = function() {
       initialized = true;
@@ -170,20 +188,11 @@ var PDFTeX = function() {
       return self.FS_readFile('/input.pdf');
     }
 
-    return (<any>promise).chain(commands)
-      .then(sendCompile)
-      .then(getPDF);
+    // return promise.chain(commands).then(sendCompile).then(getPDF);
+    return will.chain(commands, []).then(sendCompile).then(getPDF);
   };
 };
 
 const instance = new PDFTeX()
 
 export {instance as PDFTeX }
-
-// export default function() {
-
-// }
-
-// (function(exports) {
-
-// })(this);
