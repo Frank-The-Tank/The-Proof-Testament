@@ -1,6 +1,6 @@
 .theoremsContainer {
   position: fixed;
-  bottom: 0px;
+  bottom: 10px;
   top: 110px;
   overflow: auto;
   overflow-y: scroll;
@@ -37,4 +37,8 @@
 .theoremEquation {
   text-align: center;
   color: white;
+}
+
+#listElements {
+  margin-bottom: 10px;
 }
