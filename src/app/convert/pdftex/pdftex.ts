@@ -143,6 +143,7 @@ var PDFTeX = function() {
       }
 
       var pdf_dataurl = 'data:application/pdf;charset=binary;base64,' + window.btoa(binary_pdf);
+
       // return p.done(pdf_dataurl);
       return w.done(pdf_dataurl);
     });
