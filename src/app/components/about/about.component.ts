@@ -50,7 +50,7 @@ export class AboutComponent implements OnInit {
     },
     {
       name: "Josh Myers",
-      description: "funny guy",
+      description: "Hailing from Moorpark, CA, Josh’s hobbies include eating, playing basketball, and more eating. One of his fondest memories at Pepperdine should not be disclosed on the public domain, but it involves himself, James Maynard, Korean BBQ, and an exam 4 hours later.",
       pic: "../../../assets/images/josh.jpg"
     }
   ];
