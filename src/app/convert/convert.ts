@@ -59,7 +59,15 @@ export function convert(string) {
 
 	var pdftex = PDFTeX;
 
-	pdftex.compile(doc);
+	pdftex.compile(doc).then(function(pdf_dataurl) {
+		var answer = confirm("Your PDF is ready. View now?");
+
+		if (answer) {
+			window.open(pdf_dataurl, '_blank');
+		} else {
+
+		}
+	});
 
 	return doc;
 }
