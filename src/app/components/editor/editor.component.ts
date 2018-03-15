@@ -33,6 +33,8 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
 
+  editorInstance: any;
+  previousEditorSelection: any;
   infoFilled: boolean;
   private infoFilledSubscription;
   outline: string;
@@ -48,7 +50,8 @@ export class EditorComponent implements OnInit, OnDestroy {
       key: 13,
       handler: () => {
         this.editorService.toggleHideSymbols();
-        Quill.insertText(Quill.getSelection(), '\n');
+        this.editorInstance.insertText(this.editorInstance.getSelection(), '\n');
+        this.previousEditorSelection = this.editorInstance.getSelection();
       }
     }
   };
@@ -107,7 +110,23 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.hideSymbolsSubscription.unsubscribe();
   }
 
+  symbolSelectorChanged(selectedVal) {
+    switch (selectedVal) {
+      case 'equals': {
+        console.log('equals pressed');
+        this.editorInstance.insertText(this.previousEditorSelection, 'TESTING TESTING GG');
+        break;
+      }
+      default: {
+        console.log('something other than equals was pressed');
+        break;
+      }
+    }
+  }
+
   addBindingCreated(quill) {
+
+    this.editorInstance = quill;
 
     // implies
     quill.keyboard.addBinding({key: 'm'}, {
