@@ -19,14 +19,13 @@
             <select (change)="symbolSelectorChanged($event.target.value)"
                     class="ql-size"
                     title="symbolSelector">
-              <option id="equalsBtn" value="equals">=</option>
-              <option id="impliesBtn" value="implies">=></option>
+              <option id="equalsBtn" value="equals" [innerHtml]="equalsUnicode"></option>
+              <option id="impliesBtn" value="implies" [innerHtml]="impliesUnicode"></option>
+              <option id="followsFromBtn" value="followsFrom" [innerHtml]="followsFromUnicode"></option>
+              <option id="lessThanBtn" value="lessThan" [innerHtml]="lessThanUnicode"></option>
+              <option id="greaterThanBtn" value="greaterThan" [innerHtml]="greaterThanUnicode"></option>
             </select>
           </div>
-          <!--<div [hidden]="hideSymbols">-->
-            <!--<button id="equalsBtn" class="symbolBtn">=</button>-->
-            <!--<button id="impliesBtn" class="symbolBtn">=></button>-->
-          <!--</div>-->
         </span>
       </div>
   </quill-editor>
