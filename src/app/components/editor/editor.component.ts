@@ -17,6 +17,8 @@ import SymbolDropdown from './symbolDropdown';
 import {SymbolPickerService} from '../symbol-picker/symbol-picker.service';
 import {EditorService} from './editor.service';
 
+import { convert } from '../../convert/convert';
+
 Quill.register('modules/counter', Counter);
 Quill.register('modules/equalsSymbol', SymbolPicker);
 Quill.register('modules/impliesSymbol', SymbolPicker);
@@ -825,6 +827,27 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   logChange($event: any) {
     console.log($event);
+  }
+
+  export() {
+    // Find the text boxes
+    const textBoxes = document.getElementsByClassName("ql-editor");
+
+    var output = "";
+
+    // Loop through each text box
+    for (var i = 0; i < textBoxes.length; i++) {
+      const textBox = textBoxes[i];
+
+      output += "# Exercise " + (i + 1) + "\n" + textBox.innerHTML + "# \n";
+    }
+
+    // Cleanup output manually. Method textContent fails to keep new lines.
+    output = output.replace(/<p>/g, "");
+    output = output.replace(/<\/p>/g, "\n");
+    output = output.replace(/<br>/g, "\n")
+
+    console.log(output);
   }
 
 }
