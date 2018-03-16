@@ -2,9 +2,12 @@
   margin-bottom: 10px !important;
 }
 
-
 quill-editor {
       display: block;
+      position: fixed;
+      bottom: 60px;
+      top: 75px;
+      width: 56%;
     }
     .ng-invalid {
       border: 1px dashed red;
@@ -14,3 +17,24 @@ quill-editor {
     [quill-editor-element] {
       font-family: "Times New Roman";
     }
+
+.ql-container {
+  font-size: 20px;
+}
+
+.symbolBtn {
+  border: 1px solid black;
+  outline-style: solid;
+  outline-color: #ee7624;
+  line-height: 18px;
+  margin-left: 10px;
+  border-radius: 50px;
+  &:hover {
+    color: red;
+  }
+}
+
+.functionBtn {
+  font-weight: bold;
+  line-height: 18px;
+}

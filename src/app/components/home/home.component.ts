@@ -1,9 +1,7 @@
-import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver, ViewChild } from '@angular/core';
-import { EditorComponent } from '../editor/editor.component';
+import { Component, OnInit} from '@angular/core';
+import {EditorService} from '../editor/editor.service';
 
 import * as Quill from 'quill';
-
-import { convert } from '../../convert/convert';
 
 @Component({
   selector: 'app-home',
@@ -13,37 +11,10 @@ import { convert } from '../../convert/convert';
 
 export class HomeComponent implements OnInit {
 
-  @ViewChild('editorContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
+  infoFilled = this.editorService.infoFilled;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(private editorService: EditorService) {}
 
   ngOnInit() {
-  }
-
-  addEditor() {
-    const factory = this.componentFactoryResolver.resolveComponentFactory(EditorComponent);
-    const ref = this.viewContainerRef.createComponent(factory);
-    ref.changeDetectorRef.detectChanges();
-  }
-
-  export() {
-    // Find the text boxes
-    const textBoxes = document.getElementsByClassName("ql-editor");
-
-    var output = "";
-
-    // Loop through each text box
-    for (var i = 0; i < textBoxes.length; i++) {
-      const textBox = textBoxes[i];
-
-      output += "# Exercise " + (i + 1) + "\n" + textBox.innerHTML + "# \n";
-    }
-
-    // Cleanup output manually. Method textContent fails to keep new lines.
-    output = output.replace(/<p>/g, "");
-    output = output.replace(/<\/p>/g, "\n");
-    output = output.replace(/<br>/g, "\n")
-
-    convert(output);
   }
 }

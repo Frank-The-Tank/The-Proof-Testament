@@ -9,7 +9,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { FooterComponent } from './footer/footer.component';
+
+import { FooterComponent } from './components/footer/footer.component';
 
 import { environment } from './../environments/environment';
 import { BibleComponent } from './components/bible/bible.component';
@@ -30,6 +31,12 @@ import { AboutUserComponent } from './components/about-user/about-user.component
 
 import { QuillModule } from 'ngx-quill';
 import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomplete-box.component';
+import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.component';
+import {SymbolPickerService} from './components/symbol-picker/symbol-picker.service';
+import { EditorFormComponent } from './components/editor-form/editor-form.component';
+import {EditorService} from './components/editor/editor.service';
+
+
 
 @NgModule({
   declarations: [
@@ -44,7 +51,9 @@ import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomp
     AboutComponent,
     HomeComponent,
     AboutUserComponent,
-    AutocompleteBoxComponent
+    AutocompleteBoxComponent,
+    SymbolPickerComponent,
+    EditorFormComponent
   ],
   entryComponents: [ // Components that are added dynamically to page
     EditorComponent,
@@ -61,7 +70,7 @@ import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomp
     QuillModule,
     RouterModule.forRoot(routerConfig)
   ],
-  providers: [BibleService],
+  providers: [BibleService, SymbolPickerService, EditorService],
   bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
     EditorComponent, HomeComponent, AboutComponent, AboutUserComponent]
 })

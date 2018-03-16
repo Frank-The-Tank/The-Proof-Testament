@@ -1,6 +1,6 @@
 .theoremsContainer {
   position: fixed;
-  bottom: 0px;
+  bottom: 10px;
   top: 110px;
   overflow: auto;
   overflow-y: scroll;
@@ -15,8 +15,7 @@
   box-shadow: 2px 2px 2px 2px #ccc;
   padding: 6px;
   margin-bottom: 10px;
-  height: 95px;
-  opacity: 0.8;
+  height: 95px; /* Had opacity: 0.8; */
   &:hover {
     background-color: black !important;
   }
@@ -38,4 +37,8 @@
 .theoremEquation {
   text-align: center;
   color: white;
+}
+
+#listElements {
+  margin-bottom: 10px;
 }
