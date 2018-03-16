@@ -45,7 +45,7 @@ export class AboutComponent implements OnInit {
     },
     {
       name: "James Maynard",
-      description: "old guy",
+      description: 'This is James. James is a proud Naperville native. James will rave for hours about Chicago deep dish pies. James has a wide variety of catchphrases, including “dope”, “fasho”, and “I’m the man.” James’ idol is Ross Rhea ("Goon" or bust).',
       pic: "../../../assets/images/james.jpg"
     },
     {
