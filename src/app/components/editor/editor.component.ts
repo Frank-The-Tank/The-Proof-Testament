@@ -116,6 +116,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.previousEditorSelection,
           this.equalsUnicode + '           〈  〉'
         );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 14);
         this.hideSymbols = true;
         break;
       }
@@ -124,6 +125,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.previousEditorSelection,
           this.impliesUnicode + '            〈  〉'
         );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
         break;
       }
@@ -132,6 +134,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.previousEditorSelection,
           this.followsFromUnicode + '            〈  〉'
         );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
         break;
       }
@@ -140,6 +143,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.previousEditorSelection,
           this.lessThanUnicode + '            〈  〉'
         );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
         break;
       }
@@ -148,6 +152,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.previousEditorSelection,
           this.greaterThanUnicode + '            〈  〉'
         );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
         break;
       }
