@@ -17,16 +17,18 @@ import {BibleService} from './components/bible/bible.service';
 import { ScrollableDirective } from './directives/scrollable.directive';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BibleFilterPipe } from './pipes/bible-filter.pipe';
+import { QuillModule } from 'ngx-quill'
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { TheoremsListComponent } from './components/theorems-list/theorems-list.component';
-import { EditorComponent } from './editor/editor.component';
+import { EditorComponent } from './components/editor/editor.component';
 import {RouterModule} from '@angular/router';
 import {routerConfig} from './router.config';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutUserComponent } from './components/about-user/about-user.component';
+import { DocsComponent } from './components/docs/docs.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,11 @@ import { AboutUserComponent } from './components/about-user/about-user.component
     EditorComponent,
     AboutComponent,
     HomeComponent,
-    AboutUserComponent
+    AboutUserComponent,
+    DocsComponent
+  ],
+  entryComponents: [
+    EditorComponent
   ],
   imports: [
     BrowserModule,
@@ -49,10 +55,11 @@ import { AboutUserComponent } from './components/about-user/about-user.component
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot(),
+    QuillModule,
     RouterModule.forRoot(routerConfig)
   ],
   providers: [BibleService],
   bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
-    EditorComponent, HomeComponent, AboutComponent, AboutUserComponent]
+    EditorComponent, HomeComponent, AboutComponent, AboutUserComponent, DocsComponent]
 })
 export class AppModule { }
