@@ -5,10 +5,10 @@ p {
 }
 
 .navbar {
-    overflow: auto;
+    overflow: visible; /* auto*/
     background-color: #ff6600;
     font-family: Arial, Helvetica, sans-serif;
-    height: 60px;
+    height: 90px;
     display: flex;
     align-items: center; /* align vertical */
 }
@@ -18,13 +18,13 @@ p {
     font-size: 16px;
     color: white;
     text-align: center;
-    padding: 14px 2px;
+    padding: 16px 2px;
     text-decoration: none;
 }
 
 
 .dropdown .dropbtn {
-    display: table-row;
+    display: table-column;
     font-size: 16px;
     border: none;
     outline: none;
@@ -37,17 +37,21 @@ p {
 
 .navbar a:hover, .dropdown:hover .dropbtn {
     background-color: #0000cc;
+    padding: 10px;
 }
 
 .dropdown-content {
     display: none;
-    position: relative;
-    background-color: #f1f1f1;
+    position: absolute; /*relative*/
+    background-color: #ff6600;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
+button {
+  padding: 5px;
+}
 
 .dropdown-content a:hover {background-color: #0000cc}
 
