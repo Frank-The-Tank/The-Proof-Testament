@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {EditorService} from './editor.service';
 
 import * as QuillNamespace from 'quill';
-let Quill: any = QuillNamespace;
+const Quill: any = QuillNamespace;
 const Keyboard = Quill.import('modules/keyboard');
 
 export interface Config {
