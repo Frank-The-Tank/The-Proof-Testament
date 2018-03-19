@@ -28,6 +28,7 @@ import {routerConfig} from './router.config';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutUserComponent } from './components/about-user/about-user.component';
+import { DocsComponent } from './components/docs/docs.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AboutUserComponent } from './components/about-user/about-user.component
     EditorComponent,
     AboutComponent,
     HomeComponent,
-    AboutUserComponent
+    AboutUserComponent,
+    DocsComponent
   ],
   entryComponents: [
     EditorComponent
@@ -52,13 +54,12 @@ import { AboutUserComponent } from './components/about-user/about-user.component
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    QuillModule,
     NgbModule.forRoot(),
     QuillModule,
     RouterModule.forRoot(routerConfig)
   ],
   providers: [BibleService],
   bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
-    EditorComponent, HomeComponent, AboutComponent, AboutUserComponent]
+    EditorComponent, HomeComponent, AboutComponent, AboutUserComponent, DocsComponent]
 })
 export class AppModule { }
