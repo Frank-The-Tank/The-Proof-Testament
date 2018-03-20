@@ -1,14 +1,9 @@
-p {
-  color: white;
-  font-size: 20px;
-  padding: 12px 16px;
-}
 
 .navbar {
     overflow: visible; /* auto*/
     background-color: #ff6600;
     font-family: Arial, Helvetica, sans-serif;
-    height: 90px;
+    height: 60px;
     display: flex;
     align-items: center; /* align vertical */
 }
@@ -45,15 +40,13 @@ p {
     position: absolute; /*relative*/
     background-color: #ff6600;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  //  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
-button {
-  padding: 5px;
-}
 
-.dropdown-content a:hover {background-color: #0000cc}
+
+.dropdown-content a:hover {background-color: #0000cc;}
 
 .dropdown:hover .dropdown-content {
     display: block;
