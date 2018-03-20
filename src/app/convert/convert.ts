@@ -7,6 +7,17 @@
 
 import { PDFTeX } from './pdftex/pdftex'
 
+const input = `<strong>Name: Mica$ h</strong> $
+<strong>Class: Math 22$ 1</strong> $
+<strong>Proof: 2.$ 1</strong> $
+<strong>Solution: 2.$ 1</strong> $
+<strong>p  ≤  $ q</strong> $
+<strong>
+=\wedgegt;            〈 2.1 〉</strong>
+<strong>$ p</strong> $`
+
+// convert(input);
+
 export function convert(string) {
 	
 	const prepend = '@Name \n@Course \n@Date \n@Assignment'
@@ -24,7 +35,7 @@ export function convert(string) {
 	let rawHeaders = resolvedString.match(/@(.*)/g);
 
 	if (rawHeaders.length != 4){
-		return "<convertToLatex> Entry text must have 4 headers denoted by '@'.";
+		return "<convert> Entry text must have 4 headers denoted by '@'.";
 	}
 
 	let lhead = ('\\lhead{' + rawHeaders[1]).replace('@', '') + ' \\ ' + (rawHeaders[3] + '}').replace('@', '');
@@ -43,7 +54,7 @@ export function convert(string) {
 	content = content.replace(/([=|&])(?=[\t{1,}|\s{1,}]<)(.*)/gm, "\\\\ \\unindent $ $1 \\ $2 $ \n");
 
 	// Format math
-	content = content.replace(/(\w\s?[=|&|<].*)/gm, "$ $1 $");
+	// content = content.replace(/(\w\s?[=|&|<].*)/gm, "$ $1 $");
 
 	// Format symbols
 	content = content.replace(/&/gm, "\\wedge");
@@ -55,19 +66,21 @@ export function convert(string) {
 	// Assemble the document
 	doc = docSettings + '\n\n' + header + '\n\n\\begin{document}\\newcommand{\\unindent}{ \\hspace{-2em} }' + '\n\n' + content + '\n\n\\end{document}';
 
+	console.log(doc);
+
 	// Compile LaTeX
 
-	var pdftex = PDFTeX;
+	// var pdftex = PDFTeX;
 
-	pdftex.compile(doc).then(function(pdf_dataurl) {
-		var answer = confirm("Your PDF is ready. View now?");
+	// pdftex.compile(doc).then(function(pdf_dataurl) {
+	// 	var answer = confirm("Your PDF is ready. View now?");
 
-		if (answer) {
-			window.open(pdf_dataurl, '_blank');
-		} else {
+	// 	if (answer) {
+	// 		window.open(pdf_dataurl, '_blank');
+	// 	} else {
 
-		}
-	});
+	// 	}
+	// });
 
 	return doc;
 }
