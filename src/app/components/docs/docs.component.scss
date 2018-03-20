@@ -1,12 +1,33 @@
-.container-fluid {
-
-}
-
-#Sidebar {
-  border-right: 3px solid orange;
-  height: 100%;
-}
-
-.col-sm-5 {
+table {
   text-align: center;
+  table-layout: auto;
+  margin: auto;
+  font-family: Garamond;
+  background-color: #e6f3ff;
+  margin-top: 3%;
+}
+
+th, td {
+  border: 2px solid black;
+}
+
+th {
+  font-size: 28px;
+  color: white;
+  background-color: black;
+}
+
+td {
+  width: 30%;
+  font-size: 20px;
+}
+
+body {
+  background-color: #e6f3ff;
+}
+
+.title {
+  margin: auto;
+  font-family: Garamond;
+  margin-right: 4%;
 }
