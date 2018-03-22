@@ -7,24 +7,30 @@
 
 import { PDFTeX } from './pdftex/pdftex'
 
-const input = `<strong>Name: Mica$ h</strong> $
-<strong>Class: Math 22$ 1</strong> $
-<strong>Proof: 2.$ 1</strong> $
-<strong>Solution: 2.$ 1</strong> $
-<strong>p  ≤  $ q</strong> $
-<strong>
-=\wedgegt;            〈 2.1 〉</strong>
-<strong>$ p</strong> $`
+const input = `
+<strong>Name: Micah</strong>
+<strong>Class: Benn</strong>
+<strong>Proof: 2.1</strong>
+<strong>Solution: hi</strong>
+p
+≤            〈 a 〉
+l
+`
 
-// convert(input);
+ convert(input);
 
 export function convert(string) {
 	
-	const prepend = '@Name \n@Course \n@Date \n@Assignment'
-
-	// Make sure the string is formatted
-	var resolvedString = prepend + '\n\n' + string;
-
+	// Replace strings
+	var resolvedString = string;
+	
+	resolvedString = resolvedString.replace("\<strong\>Name\: ", "@");
+	resolvedString = resolvedString.replace("\<strong\>Class\: ", "@");
+	resolvedString = resolvedString.replace("\<strong\>Proof\: ", "@");
+	resolvedString = resolvedString.replace("\<strong\>Solution\: ", "@");
+	
+	resolvedString = resolvedString.replace("</strong>")
+	
 	// Final document
 	var doc = "";
 
