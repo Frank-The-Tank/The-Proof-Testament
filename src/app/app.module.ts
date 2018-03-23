@@ -35,6 +35,7 @@ import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.
 import {SymbolPickerService} from './components/symbol-picker/symbol-picker.service';
 import { EditorFormComponent } from './components/editor-form/editor-form.component';
 import {EditorService} from './components/editor/editor.service';
+import { GrammarComponent } from './grammar/grammar.component';
 
 
 
@@ -53,7 +54,8 @@ import {EditorService} from './components/editor/editor.service';
     AboutUserComponent,
     AutocompleteBoxComponent,
     SymbolPickerComponent,
-    EditorFormComponent
+    EditorFormComponent,
+    GrammarComponent
   ],
   entryComponents: [ // Components that are added dynamically to page
     EditorComponent,
