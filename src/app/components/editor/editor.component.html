@@ -15,6 +15,11 @@
           <app-autocomplete-box></app-autocomplete-box>
         </span>
         <span class="ql-formats">
+          <select class="ql-size">
+            <option *ngFor="let symbol of keys(symbols)" [ngValue]="symbol" [innerHtml]="symbols[symbol]"></option>
+          </select>
+        </span>
+        <span class="ql-formats">
           <div [hidden]="hideSymbols">
             <select (change)="symbolSelectorChanged($event.target.value)"
                     class="ql-size"

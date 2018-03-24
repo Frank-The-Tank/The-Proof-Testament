@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 
 import {QuillEditorComponent} from 'ngx-quill/src/quill-editor.component';
 import {AutocompleteBoxComponent} from '../autocomplete-box/autocomplete-box.component';
+import {Symbols} from '../../model/symbols';
 
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -27,6 +28,9 @@ Quill.register('modules/counter', Counter);
 export class EditorComponent implements OnInit, OnDestroy {
 
   @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
+
+  keys = Object.keys;
+  symbols = Symbols;
 
   editorInstance: any;
   previousEditorSelection: any;
@@ -167,6 +171,11 @@ export class EditorComponent implements OnInit, OnDestroy {
   addBindingCreated(quill) {
 
     this.editorInstance = quill;
+
+    quill.on('text-change', function() {
+      console.log('Text change!');
+      this.hideSymbols = true;
+    });
 
     // implies
     quill.keyboard.addBinding({key: 'm'}, {
