@@ -35,7 +35,7 @@ import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.
 import {SymbolPickerService} from './components/symbol-picker/symbol-picker.service';
 import { EditorFormComponent } from './components/editor-form/editor-form.component';
 import {EditorService} from './components/editor/editor.service';
-import { GrammarComponent } from './grammar/grammar.component';
+import { GrammarComponent } from './components/grammar/grammar.component';
 
 
 
