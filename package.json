@@ -8,7 +8,8 @@
     "build": "ng build --prod",
     "test": "mocha",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "antlr4ts": "antlr4ts -visitor ./src/app/components/grammar/Slick.g4"
   },
   "keywords": [
     "ANTLR4",
@@ -116,6 +117,6 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.9.1",
     "typedoc": "^0.5.1",
-    "typescript": "^2.7.2"
+    "typescript": "^2.4.2"
   }
 }
