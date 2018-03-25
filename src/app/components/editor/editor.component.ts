@@ -113,6 +113,28 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.hideSymbolsSubscription.unsubscribe();
   }
 
+  generateSymbolShortcut(symbolIdentifier) {
+    let symbolShortcut = '';
+
+    switch (symbolIdentifier) {
+      case 'not': {
+        symbolShortcut = ';er';
+        break;
+      }
+      default: {
+        console.log('symbol could not be identified');
+        break;
+      }
+    }
+
+    return symbolShortcut;
+  }
+
+  insertSymbol(selectedVal) {
+    this.editorInstance.insertText(this.previousEditorSelection, selectedVal);
+    this.editorInstance.setSelection(this.previousEditorSelection.index + 1);
+  }
+
   symbolSelectorChanged(selectedVal) {
     switch (selectedVal) {
       case 'equals': {
@@ -891,8 +913,10 @@ export class EditorComponent implements OnInit, OnDestroy {
     $event.focus();
   }
 
-  logChange($event: any) {
-    console.log($event);
+  updateSelection($event: any) {
+    if (this.editorInstance.getSelection()) {
+      this.previousEditorSelection = this.editorInstance.getSelection();
+    }
   }
 
 }
