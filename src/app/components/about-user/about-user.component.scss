@@ -1,0 +1,32 @@
+.aboutContainer {
+  margin-top: 10vh !important;
+  margin-left: 10vw !important;
+  max-height: 35vh;
+  float: left;
+  display: flex;
+}
+
+.memberImg {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.aboutInfoContainer {
+  z-index: 2;
+  border-radius: 25px;
+  width: 100vw;
+  overflow: scroll;
+  background-color: #ffedcc;
+}
+
+.memberName {
+  margin-bottom: -10px;
+  font-family: avenir;
+  margin-top: 2.5%;
+}
+
+.memberDescription {
+  font-family: avenir;
+  font-size: 18px;
+}
