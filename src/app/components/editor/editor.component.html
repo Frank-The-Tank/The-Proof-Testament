@@ -2,7 +2,9 @@
   <quill-editor
     [(ngModel)]="outline"
     [modules]="modules"
-    (onEditorCreated)="addBindingCreated($event)">
+    (onEditorCreated)="addBindingCreated($event)"
+    (onSelectionChanged)="updateSelection($event)"
+    (onContentChanged)="updateSelection($event)">
       <div quill-editor-toolbar>
         <span class="ql-formats">
           <button class='ql-indent' value = "-1"></button>
@@ -13,6 +15,19 @@
         </span>
         <span class="ql-formats">
           <app-autocomplete-box></app-autocomplete-box>
+        </span>
+        <span class="ql-formats">
+          <select
+            id="symbolInLineSelector"
+            (change)="insertSymbol($event.target.value)"
+            class="ql-size"
+            title="symbolSelect">
+            <option
+              *ngFor="let symbol of keys(symbols)"
+              [ngValue]="symbol"
+              [innerHtml]="symbols[symbol]">
+            </option>
+          </select>
         </span>
         <span class="ql-formats">
           <div [hidden]="hideSymbols">
