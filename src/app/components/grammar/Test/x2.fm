@@ -1,0 +1,13 @@
+Prove 3.86b
+
+  E[z, p] ⇒ p ⋁ q
+=    〈 Implication (3.59) 〉
+  ¬E[z, p] ⋁ p ⋁ q
+=    〈 Implication (3.59), with p, q ≔ E[z, p], p 〉
+  (E[z, p] ⇒ p) ⋁ q
+=    〈 (3.86a) 〉
+  (E[z, false] ⇒ p) ⋁ q
+=    〈 Implication (3.59) 〉
+  ¬E[z, false] ⋁ p ⋁ q
+=    〈 Imlication (3.59) with p, q ≔ E[z, p], p ⋁ q〉
+  ¬E[z, false] ⇒ p ⋁ q

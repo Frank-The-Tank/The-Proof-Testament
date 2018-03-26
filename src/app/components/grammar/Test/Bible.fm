@@ -1,0 +1,220 @@
+EQUIVALENCE AND true
+
+(3.1) Axiom, Associativity of ≡: ((p ≡ q) ≡ r)  ≡  (p ≡ (q ≡ r))
+(3.2) Axiom, Symmetry of ≡: p ≡ q ≡ q ≡ p
+(3.3) Axiom, Identity of ≡: true ≡ q ≡ q
+(3.4) true
+(3.5) Reflexivity of ≡: p ≡ p
+
+------------------------------
+
+NEGATION, INEQUIVALENCE, AND false
+
+(3.8) Definition of false: false ≡ ¬true
+(3.9) Axiom, Distributivity of ¬ over ≡: ¬(p ≡ q) ≡ ¬p ≡ q
+(3.10) Definition of ≢: (p ≢ q) ≡ ¬(p ≡ q)
+(3.11) ¬p ≡ q ≡ p ≡ ¬q
+(3.12) Double negation: ¬¬p ≡ q
+(3.13) Negation of false: ¬false ≡ true
+(3.14) (p ≢ q) ≡ ¬p ≡ q
+(3.15) ¬p ≡ p ≡ false
+(3.16) Symmetry of ≢: (p ≢ q) ≡ (q ≢ p)
+(3.17) Associativity of ≢: ((p ≢ q) ≢ r) ≡ (p ≢ (q ≢ r))
+(3.18) Mutual associativity: ((p ≢ q) ≡ r) ≡ (p ≢ (q ≡ r))
+(3.19) Mutual interchangeability: p ≢ q ≡ r  ≡  p ≡ q ≢ r
+(3.19.1) p ≢ p ≢ q  ≡  q
+
+------------------------------
+
+DISJUNCTION
+
+(3.24) Axiom, Symmetry of ⋁: p ⋁ q  ≡  q ⋁ p
+(3.25) Axiom, Associativity of ⋁: (p ⋁ q) ⋁ r  ≡  p ⋁ (q ⋁ r)
+(3.26) Axiom, Idempotency of ⋁: p ⋁ p ≡ p
+(3.27) Axiom, Distributivity of ⋁ over ≡: p ⋁ (q ≡ r)  ≡  p ⋁ q ≡ p ⋁ r
+(3.28) Axiom, Excluded middle: p ⋁ ¬p
+(3.29) Zero of ⋁: p ⋁ true ≡ true
+(3.30) Identity of ⋁: p ⋁ false ≡ p
+(3.31) Distributivity of ⋁ over ⋁: p ⋁ (q ⋁ r)  ≡  (p ⋁ q) ⋁ (p ⋁ r)
+(3.32) p ⋁ q ≡ p ⋁ ¬q ≡ p
+
+------------------------------
+
+CONJUNCTION
+
+(3.35) Axiom, Golden rule: p ⋀ q ≡ p ≡ q ≡ p ⋁ q
+(3.36) Symmetry of ⋀: p ⋀ q ≡ q ⋀ p
+(3.37) Associativity of ⋀: (p ⋀ q) ⋀ r  ≡  p ⋀ (q ⋀ r)
+(3.38) Idempotency of ⋀: p ⋀ p ≡ p
+(3.39) Identity of ⋀: p ⋀ true ≡ p
+(3.40) Zero of ⋀: p ⋀ false ≡ false
+(3.41) Distributivity of ⋀ over ⋀: p ⋀ (q ⋀ r) ≡ (p ⋀ q) ⋀ (p ⋀ r)
+(3.42) Contradiction: p ⋀ ¬p ≡ false
+(3.43a) Absorption: p ⋀ (p ⋁ q) ≡ p
+(3.43b) Absorption: p ⋁ (p ⋀ q) ≡ p
+(3.44a) Absorption: p ⋀ (¬p ⋁ q) ≡ p ⋀ q
+(3.44b) Absorption: p ⋁ (¬p ⋀ q) ≡ p ⋁ q
+(3.45) Distributivity of ⋁ over ⋀: p ⋁ (q ⋀ r) ≡ (p ⋁ q) ⋀ (p ⋁ r)
+(3.46) Distributivity of ⋀ over ⋁: p ⋀ (q ⋁ r) ≡ (p ⋀ q) ⋁ (p ⋀ r)
+(3.47a) De Morgan: ¬(p ⋀ q) ≡ ¬p ⋁ ¬q
+(3.47b) De Morgan: ¬(p ⋁ q) ≡ ¬p ⋀ ¬q
+(3.48) p ⋀ q ≡ p ⋀ ¬q ≡ ¬p
+(3.49) p ⋀ (q ≡ r) ≡ p ⋀ q ≡ p ⋀ r ≡ p
+(3.50) p ⋀ (q ≡ p) ≡ p ⋀ q
+(3.51) Replacement: (p ≡ q) ⋀ (r ≡ p)  ≡  (p ≡ q) ⋀ (r ≡ q)
+(3.52) Equivalence: p ≡ q  ≡  (p ⋀ q) ⋁ (¬p ⋀ ¬q)
+(3.53) Exclusive or: p ≢ q  ≡  (¬p ⋀ q) ⋁ (p ⋀ ¬q)
+(3.55) (p ⋀ q) ⋀ r ≡ p ≡ q ≡ r ≡ p ⋁ q ≡ q ⋁ r ≡ r ⋁ p ≡ p ⋁ q ⋁ r
+
+------------------------------
+
+IMPLICATION
+
+(3.57) Definition of Implication: p ⇒ q  ≡  p ⋁ q ≡ q
+(3.58) Axiom, Consequence: p ⇐ q  ≡  q ⇒ p
+(3.59) Implication: p ⇒ q  ≡  ¬p ⋁ q
+(3.60) Implication: p ⇒ q  ≡  p ⋀ q ≡ p
+(3.61) Contrapositive: p ⇒ q  ≡  ¬q ⇒ ¬p
+(3.62) p ⇒ (q ≡ r)  ≡  p ⋀ q ≡ p ⋀ r
+(3.63) Distributivity of ⇒ over ≡: p ⇒ (q ≡ r)  ≡  (p ⇒ q) ≡ (p ⇒ r)
+(3.63.1) Distributivity of ⇒ over ⋀: p ⇒ (q ⋀ r)  ≡  (p ⇒ q) ⋀ (p ⇒ r)
+(3.63.2) Distributivity of ⇒ over ⋁: p ⇒ (q ⋁ r)  ≡  (p ⇒ q) ⋁ (p ⇒ r)
+(3.64) p ⇒ (q ⇒ r)  ≡  (p ⇒ q) ⇒ (p ⇒ r)
+(3.65) Shunting: p ⋀ q ⇒ r  ≡  p ⇒ (q ⇒ r)
+(3.66) p ⋀ (p ⇒ q)  ≡  p ⋀ q
+(3.67) p ⋀ (q ⇒ p)  ≡  p
+(3.68) p ⋁ (p ⇒ q) ≡ true
+(3.69) p ⋁ (q ⇒ p) ≡ q ⇒ p
+(3.70) p ⋁ q ⇒ p ⋀ q  ≡  p ≡ q
+(3.71) Reflexivity of ⇒: p ⇒ p
+(3.72) Right zero of ⇒: p ⇒ true  ≡  true
+(3.73) Left identity of ⇒: true ⇒ p  ≡  p
+(3.74) p ⇒ false  ≡  ¬p
+(3.74.1) ¬p ⇒ false  ≡  p
+(3.75) false ⇒ p  ≡  true
+(3.76a) Weakening the consequent: p ⇒ p ⋁ q
+(3.76b) Stengthening the antecedent: p ⋀ q ⇒ p
+(3.76c) Weakening/strengthening: p ⋀ q ⇒ p ⋁ q
+(3.76d) p ⋁ (q ⋀ r) ⇒ p ⋁ q
+(3.76e) p ⋀ q ⇒ p ⋀ (q ⋁ r)
+(3.76.1) p ⋀ q ⇒ p ⋁ r
+(3.76.2) (p ⇒ q)  ⇒  ((q ⇒ r) ⇒ (p ⇒ r))
+(3.77) Modus ponens: p ⋀ (p ⇒ q) ⇒ q
+(3.77.1) Modus tollens: (p ⇒ q) ⋀ ¬q ⇒ ¬p
+(3.78) (p ⇒ r) ⋀ (q ⇒ r)  ⇒  (p ⋁ q) ⇒ r
+(3.79) (p ⇒ r) ⋀ (¬p ⇒ r)  ≡  r
+(3.80) Mutual implication: (p ⇒ q) ⋀ (q ⇒ p)  ≡  (p ≡ q)
+(3.81) Antisymmetry: (p ⇒ q) ⋀ (q ⇒ p)  ⇒  (p ≡ q)
+(3.82a) Transitivity: (p ⇒ q) ⋀ (q ⇒ r)  ⇒  (p ⇒ r)
+(3.82b) Transitivity: (p ≡ q) ⋀ (q ⇒ r)  ⇒  (p ⇒ r)
+(3.82c) Transitivity: (p ⇒ q) ⋀ (q ≡ r)  ⇒  (p ⇒ r)
+(3.82.1) Transitivity of ≡: (p ≡ q) ⋀ (q ≡ r)  ⇒  (p ≡ r)
+(3.82.2) (p ≡ q) ⇒ (p ⇒ q)
+
+------------------------------
+
+LEIBNIZ AS AN AXIOM
+
+(3.83) Axiom, Leibniz: e = f  ⇒  E[z,e] = E[z,f]
+(3.84a) Substitution: (e = f) ⋀ E[z,e]  ≡  (e = f) ⋀ E[z,f]
+(3.84b) Substitution: (e = f) ⇒ E[z,e]  ≡  (e = f) ⇒ E[z,f]
+(3.84c) Substitution: q ⋀ (e = f) ⇒ E[z,e]  ≡  q ⋀ (e = f) ⇒ E[z,f]
+(3.85a) Replace by true: p ⇒ E[z,p]  ≡  p ⇒ E[z,true]
+(3.85b) Replace by true: q ⋀ p ⇒ E[z,p]  ≡  q ⋀ p ⇒ E[z,true]
+(3.86a) Replace by false: E[z,p] ⇒ p  ≡  E[z,false] ⇒ p
+(3.86b) Replace by false: E[z,p] ⇒ p ⋁ q  ≡  E[z,false] ⇒ p ⋁ q
+(3.87) Replace by true: p ⋀ E[z,p]  ≡  p ⋀ E[z,true]
+(3.88) Replace by false: p ⋁ E[z,p]  ≡  p ⋁ E[z,false]
+(3.89) Shannon: E[z,p]  ≡  (p ⋀ E[z,true]) ⋁ (¬p ⋀ E[z,false])
+
+------------------------------
+
+ADDITIONAL THEOREMS CONCERNING IMPLICATION
+
+(4.1) p ⇒ (q ⇒ p)
+(4.2) Monotonicity of ⋁: (p ⇒ q)  ⇒  (p ⋁ r ⇒ q ⋁ r)
+(4.3) Monotonicity of ⋀: (p ⇒ q)  ⇒  (p ⋀ r ⇒ q ⋀ r)
+
+------------------------------
+
+PROOF TECHNIQUE METATHEOREMS
+
+(4.4) Deduction (assume conjuncts of the antecedent):
+  To prove P1 ⋀ P2 ⇒ Q, assume P1 and P2, and prove Q.
+  You cannot use textual substitution in P1 or P2.
+(4.5) Case analysis: If E[z,true] and E[z,false] are theorems, then so is E[z,p].
+(4.6) Case analysis: (p ⋁ q ⋁ r) ⋀ (p ⇒ s) ⋀ (q ⇒ s) ⋀ (r ⇒ s) ⇒ s
+(4.7) Mutual implication: To prove P ≡ Q, prove P ⇒ Q and Q ⇒ P.
+(4.7.1) Truth implication: To prove P, prove true ⇒ P.
+(4.9) Proof by contradiction: To prove P, prove ¬P ⇒ false.
+(4.12) Proof by contrapositive: To prove P ⇒ Q, prove ¬Q ⇒ ¬P.
+
+------------------------------
+
+GENERAL LAWS OF QUANTIFICATION
+
+(8.13) Axiom, Empty range: (★x | false : P) = u
+(8.14) Axiom, One-point rule: (★x | x = E : P) = P[x ≔ E]
+(8.15) Axiom, Distributivity: (★x | R : P) ★ (★x | R : Q) = (★x | R : P ★ Q)
+(8.16) Axiom, Range split: (★x | R ⋁ S : P) = (★x | R : P) ★ (★x | S : P)
+(8.17) Axiom, Range split: (★x | R ⋁ S : P) ★ (★x | R ⋀ S : P) = (★x | R : P) ★ (★x | S | P)
+(8.18) Axiom, Range split for idempotent ★: (★x | R ⋁ S : P) = (★x | R : P) ★ (★x | S : P)
+(8.19) Axiom, Interchange of dummies: (★x | R : (★y | Q : P)) = (★y | Q : (★x | R : P))
+(8.20) Axiom, Nesting: (★x,y | R ⋀ Q : P) = (★x | R : (★y | Q : P))
+(8.21) Axiom, Dummy renaming: (★x | R : P) = (★y | R[x ≔ y] : P[x ≔ y])
+(8.22) Change of dummy: (★x | R : P) = (★y | R[x ≔ f.y] : P[x ≔ f.y])
+(8.23a) Split off term: (★i | 0 ≤ i < n + 1 : P) = (★i | 0 ≤ i < n : P) ★ P[i ≔ n]
+(8.23b) Split off term: (★i | 0 ≤ i < n + 1 : P) = P[i ≔ 0] ★ (★i | 0 < i < n + 1 : P)
+
+------------------------------
+
+UNIVERSAL QUANTIFICATION
+
+(9.2) Axiom, Trading: (∀x | R : P) ≡ (∀x |: R ⇒ P)
+(9.3a) Trading: (∀x | R : P) ≡ (∀x |: ¬R ⋁ P)
+(9.3b) Trading: (∀x | R : P) ≡ (∀x |: R ⋀ P ≡ R)
+(9.3c) Trading: (∀x | R : P) ≡ (∀x |: R ⋁ P ≡ P)
+(9.4a) Trading: (∀x | Q ⋀ R : P) ≡ (∀x | Q : R ⇒ P)
+(9.4b) Trading: (∀x | Q ⋀ R : P) ≡ (∀x | Q : ¬R ⋁ P)
+(9.4c) Trading: (∀x | Q ⋀ R : P) ≡ (∀x | Q : R ⋀ P ≡ R)
+(9.4d) Trading: (∀x | Q ⋀ R : P) ≡ (∀x | Q : R ⋁ P ≡ P)
+(9.4.1) Universal double trading: (∀x | R : P) ≡ (∀x | ¬P : ¬R)
+(9.5) Axiom, Distributivity of ⋁ over ∀: P ⋁ (∀x | R : Q) ≡ (∀x | R : P ⋁ Q)
+(9.6) (∀x | R : P) ≡ P ⋁ (∀x |: ¬R)
+(9.7) Distributivity of ⋀ over ∀: ¬(∀x |: ¬R) ⇒ ((∀x | R : P ⋀ Q) ≡ P ⋀ (∀x | P : Q))
+(9.8) (∀x | R : true) ≡ true
+(9.9) (∀x | R : P ≡ Q) ⇒ ((∀x | R : P) ≡ (∀x | R : Q))
+(9.10) Range weakening/strengthening: (∀x | Q ⋁ R : P) ⇒ (∀x | Q : P)
+(9.11) Body weakening/strengthening: (∀x | R : P ⋀ Q) ⇒ (∀x | R : P)
+(9.12) Monotonicity of ∀: (∀x | R : Q ⇒ P) ⇒ ((∀x | R : Q) ⇒ (∀x | R : P))
+(9.13) Instantiation: (∀x |: P) ⇒ P[x ≔ E]
+(9.14) Metatheorem: P is a theorem iff (∀x |: P) is a theorem.
+
+------------------------------
+
+EXISTENTIAL QUANTIFICATION
+
+(9.17) Axiom, Generalized De Morgan: (∃x | R : P) ≡ ¬(∀x | R : ¬P)
+(9.18a) Generalized De Morgan: ¬(∃x | R : ¬P) ≡ (∀x | R : P)
+(9.18b) Generalized De Morgan: ¬(∃x | R : P) ≡ (∀x | R : ¬P)
+(9.18c) Generalized De Morgan: (∃x | R : ¬P) ≡ ¬(∀x | R : P)
+(9.19) Trading: (∃x | R : P) ≡ (∃x |: R ⋀ P)
+(9.20) Trading: (∃x | Q ⋀ R : P) ≡ (∃x | Q : R ⋀ P)
+(9.20.1) Existential double trading: (∃x | R : P) ≡ (∃x | P : R)
+(9.20.2) (∃x |: R) ⇒ ((∀x | R : P) ⇒ (∃x | R : P))
+(9.21) Distributivity of ⋀ over ∃: P ⋀ (∃x | R : Q) ≡ (∃x | R : P ⋀ Q)
+(9.22) (∃x | R : P) ≡ P ⋀ (∃ |: R)
+(9.23) Distributivity of ⋁ over ∃: (∃x |: R) ⇒ ((∃x | R : P ⋁ Q) ≡ P ⋁ (∃x | R : Q))
+(9.24) (∃x | R : false) ≡ false
+(9.25) Range weakening/strengthening: (∃x | R : P) ⇒ (∃x | Q ⋁ R : P)
+(9.26) Body weakening/strengthening: (∃x | R : P) ⇒ (∃x | R : P ⋁ Q)
+(9.27) Monotonicity of ∃: (∀x | R : Q ⇒ P) ⇒ ((∃x | R : Q) ⇒ (∃x | R : P))
+(9.28) ∃-Introduction: P[x ≔ E] ⇒ (∃x |: P)
+(9.29) Interchange of quantificiation: (∃x | R : (∀y | Q : P)) ⇒ (∀y | Q : (∃x | R : P))
+(9.30) (∃x | R : P) ⇒ Q is a theorem iff (R ⋀ P)[x ≔ y] ⇒ Q is a theorem.
+
+------------------------------
+
+A THEORY OF SETS
+
+(11.2) {e0, ..., e(n-1)} =

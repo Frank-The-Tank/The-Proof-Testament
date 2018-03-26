@@ -14,7 +14,7 @@
     "antlr4ts": "rimraf gen && antlr4ts ./src/app/components/grammar/Slick.g4 -visitor",
     "compile": "tsc -watch -p ./",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "trial": "ts-node ./src/app/components/grammar/fm2latex.ts ./src/app/components/grammar/test/a7.fm"
+    "trial": "ts-node fm2latex.ts ./test/a7.fm"
   },
   "keywords": [
     "Antlr4",

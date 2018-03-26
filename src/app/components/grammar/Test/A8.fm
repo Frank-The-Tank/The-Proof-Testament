@@ -1,0 +1,51 @@
+Prove 3.85a
+
+  p ⇒ E[z, p]
+=    〈 Identity of ≡ 〉
+  (p ≡ true) ⇒ E[z, p]
+=    〈 (3.84b) with e, f ≔ p, true 〉
+  (p ≡ true) ⇒ E[z, true]
+=    〈 Identity of ≡ 〉
+  p ⇒ E[z, true]  ╱╱
+
+------------------------------
+
+Prove 3.85b
+
+  q ⋀ p ⇒ E[z, p]
+=    〈 Identity of ≡ 〉
+  q ⋀ (p ≡ true) ⇒ E[z, p]
+=    〈 (3.84c) with e, f ≔ p, true 〉
+  q ⋀ (p ≡ true) ⇒ E[z, true]
+=    〈 Identity of ≡ 〉
+  q ⋀ p ⇒ E[z, true]  ╱╱
+
+------------------------------
+
+Prove 4.1
+
+  q ⇒ p
+=    〈 (3.59) 〉
+  ¬q ⋁ p
+⇐    〈 (3.76a) Strengthening 〉
+  p  ╱╱
+
+------------------------------
+
+Prove 4.3
+
+  p ⋀ r ⇒ q ⋀ r
+=    〈 (3.59) 〉
+  ¬(p ⋀ r) ⋁ (q ⋀ r)
+=    〈 De Morgan 〉
+  ¬p ⋁ ¬r ⋁ (q ⋀ r)
+=    〈 Distbributivity of ⋁ over ⋀ 〉
+  ¬p ⋁ ((¬r ⋁ q) ⋀ (¬r ⋁ r))
+=    〈 Excluded middle 〉
+  ¬p ⋁ ((¬r ⋁ q) ⋀ true)
+=    〈 Identity of ≡ 〉
+  ¬p ⋁ ¬r ⋁ q
+⇐    〈 (3.76a) Strengthening 〉
+  ¬p ⋁ q
+=    〈 (3.59) 〉
+  p ⇒ q  ╱╱

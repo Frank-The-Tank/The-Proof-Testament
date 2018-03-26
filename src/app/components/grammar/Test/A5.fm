@@ -1,0 +1,37 @@
+Prove 3.12
+
+  ¬¬p ≡ p
+=    〈 (3.11) ¬p ≡ q ≡ p ≡ ¬q, with p, q ≔ ¬p, p 〉
+  ¬p ≡ ¬p
+=    〈 Identity of ≡ 〉
+  true  ╱╱
+
+------------------------------
+
+Prove 3.13
+
+  ¬false
+=    〈 Definition of false (3.8) 〉
+  ¬¬true
+=    〈 Double negation 〉
+  true  ╱╱
+
+------------------------------
+
+Prove 3.14
+
+  p ≢ q
+=    〈 Definition of ≢ (3.10) 〉
+  ¬(p ≡ q)
+=    〈 Distributivity of ¬ over ≡ (3.9) 〉
+  ¬p ≡ q  ╱╱
+
+------------------------------
+
+Prove 3.19
+
+  p ≢ q ≡ r
+=    〈 Definition of ≢ (3.10) with p, q ≔ p, q ≡ r〉
+  ¬(p ≡ q ≡ r)
+=    〈 Definition of ≢ (3.10) with p, q ≔ p ≡ q, r 〉
+  p ≡ q ≢ r  ╱╱
