@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Theorem} from '../../model/theorem';
 declare var MathJax: any;
+import { ScrollableDirective } from '../../directives/scrollable.directive'
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-theorems-list',
@@ -17,12 +19,8 @@ export class TheoremsListComponent implements OnInit {
   ngOnInit() {
   }
 
-  scrollHandler(event) {
-    if (event === 'top') {
-      console.log('Top touched');
-    } else if (event === 'top') {
-      console.log('Bottom touched');
-    }
+  scrollHandler(e) {
+    console.log(e);
   }
 
   setBackgroundColor(type) {

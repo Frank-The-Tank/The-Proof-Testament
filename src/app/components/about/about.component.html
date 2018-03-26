@@ -1,6 +1,28 @@
-<div class="col-md-12 aboutHeader"></div>
-<div class="aboutHeaderTextHolder">
-  <h1 class="aboutHeaderText">Meet the Team</h1>
-</div>
-
-<app-about-user></app-about-user>
+<body>
+  <div class="titleContainer">
+    <h1 class="aboutHeaderText">A Bit About Us, Eh?</h1>
+    <img class="aboutHeaderImg" src="http://weclipart.com/gimg/2FB7DB3F24DE474C/smack-clipart-wave-pattern-extended.svg">
+  </div>
+  <div class="preamble">
+    <h2>The Preamble</h2>
+    <img class="underline" src="http://www.clker.com/cliparts/G/u/S/n/Z/6/underline-1.svg">
+    <p class="intro">Hello, world! Welcome to our web browser application, <i>The Proof Testament</i>.
+      As you may know, Formal Methods is one of the first classes you enroll in
+      as a Computer Science student at Pepperdine University. In this course, you
+      will learn and practice the formal methodology in understanding and solving proofs.
+      However, writing out proofs by hand may be tedious, frustrating, and time-consuming
+      (and your professors may not appreciate your handwriting skills; you know
+      who you are). With our app, you should be able to construct proofs at a faster
+      rate than ever before! Now, without further ado, allow us to introduce the bright
+       minds of our development team:</p>
+  </div>
+  <div class="descriptions">
+    <div *ngFor="let contributor of contributors" class="left">
+      <app-about-user
+      [name]="contributor.name"
+      [description]="contributor.description"
+      [pic]="contributor.pic">
+      </app-about-user>
+    </div>
+  </div>
+</body>
