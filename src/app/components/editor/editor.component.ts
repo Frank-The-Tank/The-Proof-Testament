@@ -340,10 +340,10 @@ export class EditorComponent implements OnInit, OnDestroy {
       });
 
     // natural join
-    quill.keyboard.addBinding({key: 'j'}, {
+    quill.keyboard.addBinding({key: 'n'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;n$/
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;j$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -911,7 +911,7 @@ export class EditorComponent implements OnInit, OnDestroy {
             });
 
             //real numbers
-            quill.keyboard.addBinding({key: 'l'}, {
+            quill.keyboard.addBinding({key: 'n'}, {
                 empty: false,
                 collapsed: true,
                 prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;r$/
