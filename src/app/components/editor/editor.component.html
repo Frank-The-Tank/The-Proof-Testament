@@ -1,7 +1,33 @@
-<quill-editor #editor
-              [(ngModel)]="title"
-              [modules]="modules"
-              (onEditorCreated)="addBindingCreated($event)"
-              (onContentChanged)="keyPressed()">
-</quill-editor>
-<!--<div #autoCompleteContainer></div>-->
+<div *ngIf="infoFilled">
+  <quill-editor
+    [(ngModel)]="outline"
+    [modules]="modules"
+    (onEditorCreated)="addBindingCreated($event)">
+      <div quill-editor-toolbar>
+        <span class="ql-formats">
+          <button class='ql-indent' value = "-1"></button>
+          <button class='ql-indent' value = "+1"></button>
+        </span>
+        <span class="ql-formats">
+          <div id="counter"></div>
+        </span>
+        <span class="ql-formats">
+          <app-autocomplete-box></app-autocomplete-box>
+        </span>
+        <span class="ql-formats">
+          <div [hidden]="hideSymbols">
+            <select (change)="symbolSelectorChanged($event.target.value)"
+                    class="ql-size"
+                    title="symbolSelector">
+              <option id="equalsBtn" value="equals" [innerHtml]="equalsUnicode"></option>
+              <option id="impliesBtn" value="implies" [innerHtml]="impliesUnicode"></option>
+              <option id="followsFromBtn" value="followsFrom" [innerHtml]="followsFromUnicode"></option>
+              <option id="lessThanBtn" value="lessThan" [innerHtml]="lessThanUnicode"></option>
+              <option id="greaterThanBtn" value="greaterThan" [innerHtml]="greaterThanUnicode"></option>
+            </select>
+          </div>
+        </span>
+        <span class ="ql-formats"><button (click)="export()" id="exportBtn" class="functionBtn">Export</button></span>
+      </div>
+  </quill-editor>
+</div>
