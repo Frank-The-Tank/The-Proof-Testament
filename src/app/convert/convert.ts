@@ -8,8 +8,8 @@
 import { PDFTeX } from './pdftex/pdftex'
 
 const input = `
-<strong>Name: Micah</strong>
-<strong>Class: Benn</strong>
+<strong>Name: Micah Benn</strong>
+<strong>Class: A1 - Math 221</strong>
 <strong>Proof: 2.1</strong>
 <strong>Solution: hi</strong>
 p
@@ -17,20 +17,13 @@ p
 l
 `
 
- convert(input);
+convert(input);
 
 export function convert(string) {
 	
-	// Replace strings
-	var resolvedString = string;
-	
-	resolvedString = resolvedString.replace("\<strong\>Name\: ", "@");
-	resolvedString = resolvedString.replace("\<strong\>Class\: ", "@");
-	resolvedString = resolvedString.replace("\<strong\>Proof\: ", "@");
-	resolvedString = resolvedString.replace("\<strong\>Solution\: ", "@");
-	
-	resolvedString = resolvedString.replace("</strong>")
-	
+	// Replace strings	
+	var resolvedString = string.replace(/<strong>.*:\s?(.*)<\/strong>/gm, "@$1");
+		
 	// Final document
 	var doc = "";
 
@@ -44,8 +37,8 @@ export function convert(string) {
 		return "<convert> Entry text must have 4 headers denoted by '@'.";
 	}
 
-	let lhead = ('\\lhead{' + rawHeaders[1]).replace('@', '') + ' \\ ' + (rawHeaders[3] + '}').replace('@', '');
-	let chead = ('\\chead{' + rawHeaders[0] + '}').replace('@', '');
+	let lhead = ('\\lhead{' + rawHeaders[0] + '}').replace('@', '');
+	let chead = ('\\chead{' + rawHeaders[1] + '}').replace('@', '');
 	let rhead = ('\\rhead{' + rawHeaders[2] + '}').replace('@', '');
 
 	let header = lhead + '\n' + chead + '\n' + rhead;
@@ -60,7 +53,7 @@ export function convert(string) {
 	content = content.replace(/([=|&])(?=[\t{1,}|\s{1,}]<)(.*)/gm, "\\\\ \\unindent $ $1 \\ $2 $ \n");
 
 	// Format math
-	// content = content.replace(/(\w\s?[=|&|<].*)/gm, "$ $1 $");
+	content = content.replace(/(\n)≤/gm, "$\\newline$")
 
 	// Format symbols
 	content = content.replace(/&/gm, "\\wedge");
