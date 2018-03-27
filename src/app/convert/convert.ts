@@ -9,12 +9,17 @@ import { PDFTeX } from './pdftex/pdftex'
 
 const input = `
 <strong>Name: Micah Benn</strong>
-<strong>Class: A1 - Math 221</strong>
+<strong>Class: Math 221</strong>
 <strong>Proof: 2.1</strong>
-<strong>Solution: hi</strong>
-p
-≤            〈 a 〉
-l
+
+
+<strong>Solution: </strong>
+<strong>a</strong>
+<strong>
+=&gt;            〈  2.1〉</strong>
+<strong>p  ⋀ d</strong>
+=            〈 1.1 〉
+q  ⋁  g
 `
 
 convert(input);
@@ -23,12 +28,15 @@ export function convert(string) {
 	
 	// Replace strings	
 	var resolvedString = string.replace(/<strong>.*:\s?(.*)<\/strong>/gm, "@$1");
-		
+	
+	resolvedString = resolvedString.replace(/<strong>/gm, "");
+	resolvedString = resolvedString.replace(/<\/strong>/gm, "");
+	
 	// Final document
 	var doc = "";
 
 	// Document settings
-	let docSettings = '\\documentclass[11pt]{article}\n\\usepackage[margin=1in]{geometry}\n\\usepackage{fancyhdr}\n\\pagestyle{fancy}\n\\usepackage{amsmath}\n\\usepackage{amssymb}';
+	let docSettings = '\\documentclass[12pt]{article}\n\\usepackage[margin=1in]{geometry}\n\\usepackage{fancyhdr}\n\\pagestyle{fancy}\n\\usepackage{amsmath}\n\\usepackage{amssymb}\n\\usepackage{setspace}\n\\doublespacing';
 
 	// Header text
 	let rawHeaders = resolvedString.match(/@(.*)/g);
@@ -42,7 +50,7 @@ export function convert(string) {
 	let rhead = ('\\rhead{' + rawHeaders[2] + '}').replace('@', '');
 
 	let header = lhead + '\n' + chead + '\n' + rhead;
-
+	
 	// Content
 	let content = resolvedString.replace(/@.*.$/gm, "").replace(/\n{2,}/gm, "\n");
 
@@ -52,18 +60,32 @@ export function convert(string) {
 	// Format indentation
 	content = content.replace(/([=|&])(?=[\t{1,}|\s{1,}]<)(.*)/gm, "\\\\ \\unindent $ $1 \\ $2 $ \n");
 
-	// Format math
-	content = content.replace(/(\n)≤/gm, "$\\newline$")
-
+	// Format indentation
+	content = content.replace(/\n(≤|\=\&gt\;|=)/gm, "\\newline$1");
+	content = content.replace(/(〉)\n/gm, "$1\\newline\\indent ");
+	
 	// Format symbols
-	content = content.replace(/&/gm, "\\wedge");
-	content = content.replace(/or/gm, "\\vee");
-
+	var symbolMap: { [key: string]: string } = {
+		"〈"	: "$\\langle$",
+		"〉": "$\\rangle$",
+		"≤": "$\\leq$",
+		"=&gt;": "$\\Rightarrow$",
+		"⋀": "$\\wedge$",
+		"⋁": "$\\vee$"
+	};
+		
+	for (let symbol in symbolMap) {
+		content = content.replace(RegExp(symbol, "g"), symbolMap[symbol]);
+	}
+		
 	// Newline at end of exercises
 	content = content.replace(/#$/gm, "\\\\ \n");
 
 	// Assemble the document
 	doc = docSettings + '\n\n' + header + '\n\n\\begin{document}\\newcommand{\\unindent}{ \\hspace{-2em} }' + '\n\n' + content + '\n\n\\end{document}';
+
+	// Temp fix
+	doc = doc.replace(/@/, "");
 
 	console.log(doc);
 
