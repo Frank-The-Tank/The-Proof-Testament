@@ -3,6 +3,7 @@ import {Theorem} from '../../model/theorem';
 declare var MathJax: any;
 import { ScrollableDirective } from '../../directives/scrollable.directive'
 import { Observable } from 'rxjs/Observable';
+import { BibleService } from '../bible/bible.service';
 
 @Component({
   selector: 'app-theorems-list',
@@ -14,13 +15,17 @@ export class TheoremsListComponent implements OnInit {
   @Input()
   theorems: Theorem[];
 
-  constructor() { }
+  constructor(private service: BibleService) { }
 
   ngOnInit() {
   }
 
   scrollHandler(e) {
     console.log(e);
+    if (e === 'bottom') {
+      console.log('EEEEEEHHHHH');
+      this.service.updatePageSize(15);
+    }
   }
 
   setBackgroundColor(type) {
