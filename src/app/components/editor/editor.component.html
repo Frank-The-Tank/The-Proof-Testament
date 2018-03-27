@@ -3,7 +3,8 @@
     [(ngModel)]="outline"
     [modules]="modules"
     (onEditorCreated)="addBindingCreated($event)"
-    (onSelectionChanged)="logSelection($event)">
+    (onSelectionChanged)="updateSelection($event)"
+    (onContentChanged)="updateSelection($event)">
       <div quill-editor-toolbar>
         <span class="ql-formats">
           <button class='ql-indent' value = "-1"></button>
@@ -16,18 +17,32 @@
           <app-autocomplete-box></app-autocomplete-box>
         </span>
         <span class="ql-formats">
-          <!-- <div [hidden]="hideSymbols">
-            <select class="ql-size" >
-              <option id="equalsBtn" value="equals">=</option>
-              <option id="impliesBtn" value="implies">=></option>
-            </select>
-          </div> -->
-          <div [hidden]="hideSymbols">
-            <button id="equalsBtn" class="symbolBtn">=</button>
-            <button id="impliesBtn" class="symbolBtn">=></button>
-          </div>
-          <button (click)="export()" id="exportBtn" class="functionBtn">Export</button>
+          <select
+            id="symbolInLineSelector"
+            (change)="insertSymbol($event.target.value)"
+            class="ql-size"
+            title="symbolSelect">
+            <option
+              *ngFor="let symbol of keys(symbols)"
+              [ngValue]="symbol"
+              [innerHtml]="symbols[symbol]">
+            </option>
+          </select>
         </span>
+        <span class="ql-formats">
+          <div [hidden]="hideSymbols">
+            <select (change)="symbolSelectorChanged($event.target.value)"
+                    class="ql-size"
+                    title="symbolSelector">
+              <option id="equalsBtn" value="equals" [innerHtml]="equalsUnicode"></option>
+              <option id="impliesBtn" value="implies" [innerHtml]="impliesUnicode"></option>
+              <option id="followsFromBtn" value="followsFrom" [innerHtml]="followsFromUnicode"></option>
+              <option id="lessThanBtn" value="lessThan" [innerHtml]="lessThanUnicode"></option>
+              <option id="greaterThanBtn" value="greaterThan" [innerHtml]="greaterThanUnicode"></option>
+            </select>
+          </div>
+        </span>
+        <span class ="ql-formats"><button (click)="export()" id="exportBtn" class="functionBtn">Export</button></span>
       </div>
   </quill-editor>
 </div>

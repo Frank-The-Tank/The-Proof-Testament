@@ -1,0 +1,93 @@
+Prove 3.61
+
+  ¬q ⇒ ¬p
+=    〈 (3.59) with p, q ≔ ¬q, ¬p 〉
+  ¬¬q ⋁ ¬p
+=    〈 Double negation 〉
+  q ⋁ ¬p
+=    〈 Symmetry of ⋁ 〉
+  ¬p ⋁ q
+=    〈 (3.59) 〉
+  p ⇒ q  ╱╱
+
+------------------------------
+
+Prove 3.63
+
+  p ⇒ q ≡ p ⇒ r
+=    〈 Implication (3.59), twice 〉
+  ¬p ⋁ q ≡ ¬p ⋁ r
+=    〈 Distributivity of ⋁ over ≡ 〉
+  ¬p ⋁ (q ≡ r)
+=    〈 Implication (3.59) 〉
+  p ⇒ (q ≡ r)  ╱╱
+
+------------------------------
+
+Prove 3.65
+
+  p ⋀ q ⇒ r
+=    〈 Implication (3.59) 〉
+  ¬(p ⋀ q) ⋁ r
+=    〈 De Morgan 〉
+  ¬p ⋁ ¬q ⋁ r
+=    〈 Associativity of ⋁ 〉
+  ¬p ⋁ (¬q ⋁ r)
+=    〈 Implication (3.59) 〉
+  ¬p ⋁ (q ⇒ r)
+=    〈 Implication (3.59) 〉
+  p ⇒ (q ⇒ r)  ╱╱
+
+------------------------------
+
+Prove 3.70
+
+  p ⋁ q ⇒ p ⋀ q
+=    〈 Implication (3.59) 〉
+  ¬(p ⋁ q) ⋁ (p ⋀ q)
+=    〈 De Morgan 〉
+  (¬p ⋀ ¬q) ⋁ (p ⋀ q)
+=    〈 Alternate definition of ≡ 〉
+  p ≡ q  ╱╱
+
+------------------------------
+
+Prove 3.71
+
+  p ⇒ p
+=    〈 Implication (3.59) 〉
+  ¬p ⋁ p
+=    〈 Excluded middle 〉
+  true  ╱╱
+
+------------------------------
+
+Prove 3.72
+
+  p ⇒ true
+=    〈 Implication (3.59) 〉
+  ¬p ⋁ true
+=    〈 Zero of ⋁ 〉
+  true  ╱╱
+
+------------------------------
+
+Prove 3.76a
+
+  p ⇒ p ⋁ q
+=    〈 Implication (3.59) 〉
+  ¬p ⋁ p ⋁ q
+=    〈 Excluded middle 〉
+  true ⋁ q
+=    〈 Zero of ⋁ 〉
+  true  ╱╱
+
+------------------------------
+
+Prove 3.77
+
+  p ⋀ (p ⇒ q) ⇒ q
+=    〈 (3.66) p ⋀ (p ⇒ q) ≡ p ⋀ q 〉
+  p ⋀ q ⇒ q
+=    〈 Strengthening (3.76b) 〉
+  true  ╱╱

@@ -1,0 +1,453 @@
+<body>
+  <div class="content">
+    <h1><u><i>The Proof Testament</i> 1.0 Documentation</u></h1>
+    <br>
+    <p>Web Application for use in Formal Methods and other formalf logic-based courses at
+      Pepperdine University.<br><br>Frontend: <a href="https://angular.io">Angular5</a>
+      <br>Backend: <a href="https://nodejs.org/en/">NodeJS</a> + <a href="https://expressjs.com">ExpressJS</a>
+      <br>Database: <a href="https://firebase.google.com">Firebase</a><br></p>
+    <h3>Download and Setup</h3>
+    <p>1. Create a clone of the source repository in terminal or command line using
+      "git clone: https://github.com/Frank-The-Tank/The-Proof-Testament.git"<br>2.
+      Navigate to the project folder in terminal or command line and run "npm install".
+      If this doesn't work install yarn by running "npm install -g yarn". This is
+      a custom package manager similar to npm.<br></p>
+    <h3>Starting the Server</h3>
+    <p>1. To start the server simply use terminal/command line and run the command
+      "ng serve" within the project folder.<br>2. To see the web app running
+      navigate to "localhost:4200" in your browser.<br>3. When you are finished
+      with your current session make sure to end the NodeJS server session using
+      CTRL-C in the terminal/command line.<br></p>
+    <h3>Additional Help</h3>
+    <p>If you are receiving the "Error: Could not find module '@angular-devkit/core'"
+      run npm install @angular-devkit/core --save-dev. This is a fix until the
+      Angular CLI developers release a patch.</p>
+    <h3>Acknowledgements</h3>
+    <p>This project uses a heavily modified version of the popular QuillJS library
+      (https://github.com/quilljs/quill).</p>
+    <p><b>And, of course, we must give credit to the inspiration, knowledge, and
+      support of both Dr. Warford and Professor Cupp.</b></p>
+  </div>
+  <hr>
+  <div class="key">
+    <h1>Shortcut Key</h1>
+  </div>
+  <table align="center">
+    <tr>
+      <th>name</th>
+      <th>symbol</th>
+      <th>shortcut</th>
+    </tr>
+    <tr>
+      <td class="name">Implies</td>
+      <td>⇒</td>
+      <td>;im</td>
+    </tr>
+    <tr>
+      <td class="name">Does not imply</td>
+      <td>⇏</td>
+      <td>;nim</td>
+    </tr>
+    <tr>
+      <td class="name">Follows from</td>
+      <td>⇐</td>
+      <td>;ff</td>
+    </tr>
+    <tr>
+      <td class="name">Does not follow from</td>
+      <td>⇍</td>
+      <td>;nff</td>
+    </tr>
+    <tr>
+      <td class="name">Equals</td>
+      <td>=</td>
+      <td>;eq</td>
+    </tr>
+    <tr>
+      <td class="name">Equivales</td>
+      <td>≡</td>
+      <td>;eq</td>
+    </tr>
+    <tr>
+      <td class="name">Not</td>
+      <td>¬</td>
+      <td>;not</td>
+    </tr>
+    <tr>
+      <td class="name">Does not equal</td>
+      <td>≠</td>
+      <td>;neq</td>
+    </tr>
+    <tr>
+      <td class="name">Greater than or equal to</td>
+      <td>≥</td>
+      <td>;ge</td>
+    </tr>
+    <tr>
+      <td class="name">Greater than</td>
+      <td>></td>
+      <td>;gt</td>
+    </tr>
+    <tr>
+      <td class="name">Less than or equal to</td>
+      <td>≤</td>
+      <td>;le</td>
+    </tr>
+    <tr>
+      <td class="name">Less than</td>
+      <td><</td>
+      <td>;lt</td>
+    </tr>
+    <tr>
+      <td class="name">Replaces</td>
+      <td>≔</td>
+      <td>;=</td>
+    </tr>
+    <tr>
+      <td class="name">Is an element of</td>
+      <td>∈</td>
+      <td>;el</td>
+    </tr>
+    <tr>
+      <td class="name">Upsilon</td>
+      <td>Ʊ</td>
+      <td>;om</td>
+    </tr>
+    <tr>
+      <td class="name">Proper subset</td>
+      <td>⊂</td>
+      <td>;pb</td>
+    </tr>
+    <tr>
+      <td class="name">Proper superset</td>
+      <td>⊃</td>
+      <td>;pp</td>
+    </tr>
+    <tr>
+      <td class="name">Subset</td>
+      <td>⊆</td>
+      <td>;sb</td>
+    </tr>
+    <tr>
+      <td class="name">Not a subset of</td>
+      <td>⊄</td>
+      <td>;nsb</td>
+    </tr>
+    <tr>
+      <td class="name">Not a superset of</td>
+      <td>⊅</td>
+      <td>;nsp</td>
+    </tr>
+    <tr>
+      <td class="name">Not a proper subset of</td>
+      <td>⊈</td>
+      <td>;npb</td>
+    </tr>
+    <tr>
+      <td class="name">Not a proper superset of</td>
+      <td>⊉</td>
+      <td>;nsp</td>
+    </tr>
+    <tr>
+      <td class="name">Superset</td>
+      <td>⊇</td>
+      <td>;sp</td>
+    </tr>
+    <tr>
+      <td class="name">Empty set</td>
+      <td>∅</td>
+      <td>;es</td>
+    </tr>
+    <tr>
+      <td class="name">Union</td>
+      <td>∪</td>
+      <td>;un</td>
+    </tr>
+    <tr>
+      <td class="name">Intersection</td>
+      <td>∩</td>
+      <td>;in</td>
+    </tr>
+    <tr>
+      <td class="name">Complement</td>
+      <td>~</td>
+      <td>;co</td>
+    </tr>
+    <tr>
+      <td class="name">Disjunction</td>
+      <td>⋁</td>
+      <td>;or</td>
+    </tr>
+    <tr>
+      <td class="name">Conjunction</td>
+      <td>⋀</td>
+      <td>;an</td>
+    </tr>
+    <tr>
+      <td class="name">For all</td>
+      <td>∀</td>
+      <td>;fa</td>
+    </tr>
+    <tr>
+      <td class="name">Exists</td>
+      <td>∃</td>
+      <td>;ex</td>
+    </tr>
+    <tr>
+      <td class="name">Power set</td>
+      <td>Ρ</td>
+      <td>;ps</td>
+    </tr>
+    <tr>
+      <td class="name">Down</td>
+      <td>↓</td>
+      <td>;dn</td>
+    </tr>
+    <tr>
+      <td class="name">Up</td>
+      <td>↑</td>
+      <td>;up</td>
+    </tr>
+    <tr>
+      <td class="name">Cross product</td>
+      <td>×</td>
+      <td>;cp</td>
+    </tr>
+    <tr>
+      <td class="name">Divides</td>
+      <td>÷</td>
+      <td>;dv</td>
+    </tr>
+    <tr>
+      <td class="name">Function composition</td>
+      <td>∙</td>
+      <td>;fc</td>
+    </tr>
+    <tr>
+      <td class="name">Function product</td>
+      <td>∘</td>
+      <td>;fp</td>
+    </tr>
+    <tr>
+      <td class="name">Dot product</td>
+      <td>⋅</td>
+      <td>;dt</td>
+    </tr>
+    <tr>
+      <td class="name">Star</td>
+      <td>★</td>
+      <td>;st</td>
+    </tr>
+    <tr>
+      <td class="name">Phi</td>
+      <td>𝜙</td>
+      <td>;ph</td>
+    </tr>
+    <tr>
+      <td class="name">Theta</td>
+      <td>Θ</td>
+      <td>;bt</td>
+    </tr>
+    <tr>
+      <td class="name">Omega</td>
+      <td>Ω</td>
+      <td>;bg</td>
+    </tr>
+    <tr>
+      <td class="name">Big O</td>
+      <td>Ο</td>
+      <td>;bo</td>
+    </tr>
+    <tr>
+      <td class="name"></td>
+      <td>⨝</td>
+      <td>;nj</td>
+    </tr>
+    <tr>
+      <td class="name"></td>
+      <td>≺</td>
+      <td>;it</td>
+    </tr>
+    <tr>
+      <td class="name"></td>
+      <td>≻</td>
+      <td>;ti</td>
+    </tr>
+    <tr>
+      <td class="name"></td>
+      <td>⪰</td>
+      <td>;tr</td>
+    </tr>
+    <tr>
+      <td class="name"></td>
+      <td>⪯</td>
+      <td>;rt</td>
+    </tr>
+    <tr>
+      <td class="name">Pi</td>
+      <td>π</td>
+      <td>;pi</td>
+    </tr>
+    <tr>
+      <td class="name">Hash</td>
+      <td>#</td>
+      <td>;hh</td>
+    </tr>
+    <tr>
+      <td class="name"></td>
+      <td>ℕ</td>
+      <td>;nn</td>
+    </tr>
+    <tr>
+      <td class="name"></td>
+      <td>σ</td>
+      <td>;sa</td>
+    </tr>
+    <tr>
+      <td class="name">Not equivalent</td>
+      <td></td>
+      <td>;nev</td>
+    </tr>
+    <tr>
+      <td class="name">Integer</td>
+      <td></td>
+      <td>;in</td>
+    </tr>
+    <tr>
+      <td class="name">Rational</td>
+      <td></td>
+      <td>;ra</td>
+    </tr>
+    <tr>
+      <td class="name">Real</td>
+      <td></td>
+      <td>;rl</td>
+    </tr>
+    <tr>
+      <td class="name">Boolean</td>
+      <td></td>
+      <td>;bn</td>
+    </tr>
+  </table>
+</body>
+
+No current keybindings for +, -, ^, *
+
+
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2" id="Sidebar">
+       <a href="./docs"> Words </a>
+     </div>
+     <div class="col-sm-1"></div>
+    <div class="col-sm-4">
+      <ul>
+        <li> Implies (⇒) = ;im </li>
+        <li> Does not imply (⇏) = ;nim </li>
+        <li> Follows from (⇐) = ;ff </li>
+        <li> Does not follow from (⇍) = ;nff </li>
+        <li> Equals = ;eq </li>
+        <li> Equival (≡) = ;eq </li>
+        <li> Not (¬) = ;not </li>
+        <li> Does not equal (≠) = ;neq </li>
+        <li> Greater than or equal to (≥) = ;ge </li>
+        <li> Greater than (>) = ;gt </li>
+        <li> Less than or equal to (≤) = ;le </li>
+        <li> Less than (<) = ;lt </li>
+        <li> Replaces (≔) = ;= </li>
+        <li> Is an element of (∈) = ;el </li>
+        <li> Omega (Ʊ) = ;om </li>
+        <li> Proper subset (⊂) = ;pb </li>
+        <li> Proper superset (⊃) = ;pp </li>
+        <li> Subset (⊆) = ;sb </li>
+        <li> Not a subset of (⊄) = ;nsb </li>
+        <li> Not a superset of (⊅) = ;nsp </li>
+        <li> Not a proper subset of (⊈) = ;npb </li>
+        <li> Not a proper superset of (⊉) = ;nsp </li>
+        <li> Superset (⊇) = ;sp </li>
+        <li> Empty set (∅) = ;es </li>
+        <li> Union (∪) = ;un </li>
+        <li> Intersection (∩) = ;in </li>
+        <li> Complement (~) = ;co </li>
+        <li> Disjunction (⋁) = ;or </li>
+        <li> Conjunction (⋀) = ;an </li>
+        <li> For all (∀) = ;fa </li>
+        <li> Exists (∃) = ;ex </li>
+        <li> Power set (Ρ) = ;ps </li>
+        <li> ↓ = ;dn </li>
+        <li> ↑ = ;up </li>
+        <li> Cross product (×) = ;cp </li>
+        <li> ÷ = ;dv </li>
+        <li> Function composition (∙) = ;fc </li>
+        <li> Function product (∘) = ;fp </li>
+        <li> Dot product (⋅) = ;dt </li>
+        <li> ★ = ;st </li>
+        <li> No binding for + - ^ * </li>
+        <li> 𝜙 = ;ph </li>
+        <li> Θ = ;bt </li>
+        <li> Ω = ;bg </li>
+        <li> Ο = ;bo </li>
+        <li> ⨝ = ;nj </li>
+        <li> ≺ = ;it </li>
+        <li> ≻ = ;ti </li>
+        <li> ⪰ =;tr </li>
+        <li> ⪯ = ;rt </li>
+        <li> π = ;pi </li>
+        <li> # = ;hh </li>
+        <li> ℕ = ;nn </li>
+        <li> σ = ;sa </li>
+        <li> Not equivalent = ;nev </li>
+        <li> Integer = ;in </li>
+        <li> Rational = ;ra </li>
+        <li> Real = ;rl </li>
+        <li> Boolean = ;bn </li>
+      </ul>
+    </div>
+    <div class="col-sm-4"> Words 3 </div>
+  </div>
+</div> -->
+
+
+<!--
+⇒Implies = ;im
+⇏ Not imply = ;nim
+⇍ Not follows from = ;nff
+⇐ Follows from = ;ff
+Equals = ;eq //binding for rule format, not inline
+≡ Equival = ;eq
+¬ Not = ;not
+≠ Not equal = ;neq
+≥ Greater than or equal to = ;ge
+> Greater than = ;gt
+≤ Less than or equal to = ;le
+< Less than = ;lt
+≔ Replaces = ;=
+∈ Element of = ;el
+Not element of = ;nel
+Ʊ Omega = ;om
+⊂ proper sub = ;pb
+⊃ proper super = ;pp
+⊆ subset = ;sb
+⊄ not subset = ;nsb
+⊅ not superset = ;nsp
+⊈ not proper subset = ;npb
+⊉ not proper superset = ;nsp
+⊇ superset = ;sp
+∅ empty set = ;es
+∪ union = ;un
+∩ intersection = ;in
+~ complement = ;co
+⋁ disjunction = ;or
+⋀ Conjunction = ;an
+∀for all = ;fa
+∃ exists = ;ex
+Ρ power set = ;ps
+↓ = ;dn
+↑ = ;up
+× cross product = ;cp
+÷ = ;dv
+∙ function composition = ;fc
+∘ function product = ;fp
+⋅ ____ = ;dt
+★ = ;st
+  -->

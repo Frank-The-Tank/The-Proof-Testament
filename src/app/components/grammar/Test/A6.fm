@@ -1,0 +1,87 @@
+Prove 3.30
+
+  p ⋁ false
+=    〈 (3.15) ¬p ≡ p ≡ false 〉
+  p ⋁ (¬p ≡ p)
+=    〈 Distributivity of ⋁ over ≡ 〉
+  p ⋁ ¬p ≡ p ⋁ p
+=    〈 Excluded middle; Idempotency of ⋁ 〉
+  true ≡ p
+=    〈 Identity of ≡ 〉
+  p  ╱╱
+
+------------------------------
+
+Prove 3.31
+
+  (p ⋁ q) ⋁ (p ⋁ r)
+=    〈 Associativity of ⋁ 〉
+  p ⋁ (q ⋁ p) ⋁ r
+=    〈 Symmetry of ⋁ 〉
+  p ⋁ (p ⋁ q) ⋁ r
+=    〈 Associativity of ⋁ 〉
+  (p ⋁ p) ⋁ (q ⋁ r)
+=    〈 Idempotency of ⋁ 〉
+  p ⋁ (q ⋁ r)  ╱╱
+
+------------------------------
+
+Prove 3.32
+
+  p ⋁ q ≡ p ⋁ ¬q
+=    〈 Distributivity of ⋁ over ≡ 〉
+  p ⋁ (q ≡ ¬q)
+=    〈 (3.15) p ≡ ¬p ≡ false 〉
+  p ⋁ false
+=    〈 Identity of ⋁ 〉
+  p  ╱╱
+
+------------------------------
+
+Prove 3.36
+
+  p ⋀ q
+=    〈 golden rule 〉
+  p ≡ q ≡ p ⋁ q
+=    〈 Symmetry of ≡ 〉
+  q ≡ p ≡ p ⋁ q
+=    〈 Symmetry of ⋁ 〉
+  q ≡ p ≡ q ⋁ p
+=    〈 golden rule 〉
+  q ⋀ p  ╱╱
+
+------------------------------
+
+Prove 3.38
+
+  p ⋀ p ≡ p
+=    〈 golden rule with q ≔ p 〉
+  p ⋁ p ≡ p
+=    〈 Idempotency of ⋁ 〉
+  true  ╱╱
+
+------------------------------
+
+Prove 3.47a
+
+  ¬(p ⋀ q)
+=    〈 Golden rule 〉
+  ¬(p ≡ q ≡ p ⋁ q)
+=    〈 Distributivity of ¬ over ≡ 〉
+  ¬p ≡ q ≡ p ⋁ q
+=    〈 (3.32) with p, q ≔ q, p 〉
+  ¬p ≡ p ⋁ ¬q
+=    〈 (3.32) with p, q ≔ ¬p, q 〉
+  ¬p ⋁ ¬q  ╱╱
+
+------------------------------
+
+Prove 3.47b
+
+  ¬(p ⋁ q)
+=    〈 Double negation, twice 〉
+  ¬(¬¬p ⋁ ¬¬q)
+=    〈 De Morgan, (3.47a) with p, q ≔ ¬p, ¬q 〉
+  ¬¬(¬p ⋀ ¬q)
+=    〈 Double negation 〉
+  ¬p ⋀ ¬q  ╱╱
