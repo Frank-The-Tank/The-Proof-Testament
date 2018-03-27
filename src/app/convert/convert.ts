@@ -138,21 +138,21 @@ export function convert(string) {
 	// Temp fix
 	doc = doc.replace(/@/, "");
 
-	// console.log(doc);
+	console.log(doc);
 
 	// Compile LaTeX
 
-	 var pdftex = PDFTeX;
+	 // var pdftex = PDFTeX;
 
-	 pdftex.compile(doc).then(function(pdf_dataurl) {
-	 	var answer = confirm("Your PDF is ready. View now?");
+	 // pdftex.compile(doc).then(function(pdf_dataurl) {
+	 // 	var answer = confirm("Your PDF is ready. View now?");
 
-	 	if (answer) {
-	 		window.open(pdf_dataurl, '_blank');
-	 	} else {
+	 // 	if (answer) {
+	 // 		window.open(pdf_dataurl, '_blank');
+	 // 	} else {
 
-	 	}
-	 });
+	 // 	}
+	 // });
 
 	return doc;
 }
