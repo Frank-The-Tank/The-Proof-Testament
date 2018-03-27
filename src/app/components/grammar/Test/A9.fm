@@ -1,0 +1,23 @@
+Prove 4.1
+
+  q ⇒ p
+=    〈 Assume conjunct p 〉
+  q ⇒ true
+=    〈 Right zero of ⇒ 〉
+  true  ╱╱
+
+------------------------------
+
+Prove 3.77
+
+  q
+=    〈 (3.57) 〉
+  p ⇒ q ≡ p ⋁ q
+=    〈 Assume conjunct p ⇒ q 〉
+  true ≡ p ⋁ q
+=    〈 Identity of ≡ 〉
+  p ⋁ q
+=    〈 Assume conjunct p 〉
+  true ⋁ q
+=    〈 Zero of ⋁ 〉
+  true  ╱╱
