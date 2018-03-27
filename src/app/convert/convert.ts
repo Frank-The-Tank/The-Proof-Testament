@@ -36,7 +36,7 @@ export function convert(string) {
 	var doc = "";
 
 	// Document settings
-	let docSettings = '\\documentclass[12pt]{article}\n\\usepackage[margin=1in]{geometry}\n\\usepackage{fancyhdr}\n\\pagestyle{fancy}\n\\usepackage{amsmath}\n\\usepackage{amssymb}\n\\usepackage{setspace}\n\\doublespacing';
+	let docSettings = '\\documentclass[12pt]{article}\n\\usepackage[margin=1in]{geometry}\n\\usepackage{fancyhdr}\n\\pagestyle{fancy}\n\\usepackage{amsmath}\n\\usepackage{amssymb}\n\\usepackage{centernot}\n\\usepackage{setspace}\n\\doublespacing';
 
 	// Header text
 	let rawHeaders = resolvedString.match(/@(.*)/g);
@@ -61,21 +61,72 @@ export function convert(string) {
 	content = content.replace(/([=|&])(?=[\t{1,}|\s{1,}]<)(.*)/gm, "\\\\ \\unindent $ $1 \\ $2 $ \n");
 
 	// Format indentation
-	content = content.replace(/\n(≤|\=\&gt\;|=)/gm, "\\newline$1");
+	content = content.replace(/\n(<|>|≤|≥|\=\&gt\;|=|⇒|⇐)/gm, "\\newline$1");
 	content = content.replace(/(〉)\n/gm, "$1\\newline\\indent ");
 	
 	// Format symbols
 	var symbolMap: { [key: string]: string } = {
-		"〈"	: "$\\langle$",
-		"〉": "$\\rangle$",
-		"≤": "$\\leq$",
-		"=&gt;": "$\\Rightarrow$",
-		"⋀": "$\\wedge$",
-		"⋁": "$\\vee$"
+		"〈"	: "\\langle",
+		"〉": "\\rangle",
+		"<": "<",
+		">": ">",
+		"≤": "\\leq",
+		"≥": "\\geq",
+		"=&gt;": "\\Rightarrow",
+		"⋀": "\\wedge",
+		"⋁": "\\vee",
+		"⇒": "\\Rightarrow",
+		"⇐": "\\Leftarrow",
+		"⇏": "\\centernot\\Rightarrow",
+		"⇍": "\\centernot\\Leftarrow",
+		"=": "=",
+		"≡": "\\equiv",
+		"≠": "\\neq",
+		"ℕ": "\\natural",
+		"≺": "\\prec",
+		"≻": "\\succ",
+		"⪯": "\\preceq",
+		"⪰": "\\succeq",
+		"#": "\\#",
+		"σ": "\\sigma",
+		"π": "\\pi",
+		"⨝": "\\bowtie",
+		"Ω": "\\Omega",
+		"Θ": "\\Theta",
+		"𝜙": "\\phi",
+		"≔": ":=",
+		"∈": "\\in",
+		"∉": "\\notin",
+		"Ʊ": "U",
+		"⊂": "\\subset",
+		"⊃": "\\supset",
+		"⊆": "\\subseteq",
+		"⊇": "\\supseteq",
+		"⊄": "\\centernot\\subset",
+		"⊅": "\\centernot\\supset",
+		"⊈": "\\nsubseteq",
+		"⊉": "\\centernot\\supseteq",
+		"∅": "\\varnothing",
+		"∪": "\\cup",
+		"∩": "\\cap",
+		"~": "\\sim",
+		"∀": "\\forall",
+		"∃": "\\exists",
+		"Ρ": "P",
+		"↑": "\\uparrow",
+		"→": "\\rightarrow",
+		"↓": "\\downarrow",
+		"×": "\\times",
+		"÷": "\\div",
+		"∙": "\\bullet",
+		"∘": "\\circ",
+		"⋅": "\\cdot",
+		"★": "\\star",
+		"¬": "\\neg"
 	};
 		
 	for (let symbol in symbolMap) {
-		content = content.replace(RegExp(symbol, "g"), symbolMap[symbol]);
+		content = content.replace(RegExp(symbol, "g"), "$" + symbolMap[symbol] + "$");
 	}
 		
 	// Newline at end of exercises
