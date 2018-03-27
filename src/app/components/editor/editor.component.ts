@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 
 import {QuillEditorComponent} from 'ngx-quill/src/quill-editor.component';
 import {AutocompleteBoxComponent} from '../autocomplete-box/autocomplete-box.component';
+import {Symbols} from '../../model/symbols';
 
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -12,15 +13,12 @@ import * as QuillNamespace from 'quill';
 const Quill: any = QuillNamespace;
 
 import Counter from './counter';
-import SymbolPicker from './symbolPicker';
-import SymbolDropdown from './symbolDropdown';
 import {SymbolPickerService} from '../symbol-picker/symbol-picker.service';
 import {EditorService} from './editor.service';
 
+import { convert } from '../../convert/convert';
+
 Quill.register('modules/counter', Counter);
-Quill.register('modules/equalsSymbol', SymbolPicker);
-Quill.register('modules/impliesSymbol', SymbolPicker);
-Quill.register('modules/symbolDropdown', SymbolDropdown);
 
 @Component({
   selector: 'app-editor',
@@ -33,6 +31,11 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   @ViewChild('autoCompleteContainer', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
 
+  keys = Object.keys;
+  symbols = Symbols;
+
+  editorInstance: any;
+  previousEditorSelection: any;
   infoFilled: boolean;
   private infoFilledSubscription;
   outline: string;
@@ -43,12 +46,19 @@ export class EditorComponent implements OnInit, OnDestroy {
   form: FormGroup;
   modules = {};
 
+  equalsUnicode = '\u003D';
+  impliesUnicode = '\u21D2';
+  followsFromUnicode = '\u21D0';
+  lessThanUnicode = '\u003C';
+  greaterThanUnicode = '\u003E';
+
   bindings = {
     enter: {
       key: 13,
       handler: () => {
-        this.editorService.toggleHideSymbols();
-        Quill.insertText(Quill.getSelection(), '\n');
+        this.hideSymbols = false;
+        this.editorInstance.insertText(this.editorInstance.getSelection(), '\n');
+        this.previousEditorSelection = this.editorInstance.getSelection();
       }
     }
   };
@@ -80,9 +90,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       formula: true,
       toolbar: true,
-      counter: { container: '#counter', unit: 'word' },
-      equalsSymbol: { container: '#equalsBtn', selector: 'equals' },
-      impliesSymbol: { container: '#impliesBtn', selector: 'implies' }
+      counter: { container: '#counter', unit: 'word' }
     };
   }
 
@@ -107,7 +115,91 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.hideSymbolsSubscription.unsubscribe();
   }
 
+  generateSymbolShortcut(symbolIdentifier) {
+    let symbolShortcut = '';
+
+    switch (symbolIdentifier) {
+      case 'not': {
+        symbolShortcut = ';er';
+        break;
+      }
+      default: {
+        console.log('symbol could not be identified');
+        break;
+      }
+    }
+
+    return symbolShortcut;
+  }
+
+  insertSymbol(selectedVal) {
+    this.editorInstance.insertText(this.previousEditorSelection, selectedVal);
+    this.editorInstance.setSelection(this.previousEditorSelection.index + 1);
+  }
+
+  symbolSelectorChanged(selectedVal) {
+    switch (selectedVal) {
+      case 'equals': {
+        this.editorInstance.insertText(
+          this.previousEditorSelection,
+          this.equalsUnicode + '           〈  〉'
+        );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 14);
+        this.hideSymbols = true;
+        break;
+      }
+      case 'implies': {
+        this.editorInstance.insertText(
+          this.previousEditorSelection,
+          this.impliesUnicode + '            〈  〉'
+        );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.hideSymbols = true;
+        break;
+      }
+      case 'followsFrom': {
+        this.editorInstance.insertText(
+          this.previousEditorSelection,
+          this.followsFromUnicode + '            〈  〉'
+        );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.hideSymbols = true;
+        break;
+      }
+      case 'lessThan': {
+        this.editorInstance.insertText(
+          this.previousEditorSelection,
+          this.lessThanUnicode + '            〈  〉'
+        );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.hideSymbols = true;
+        break;
+      }
+      case 'greaterThan': {
+        this.editorInstance.insertText(
+          this.previousEditorSelection,
+          this.greaterThanUnicode + '            〈  〉'
+        );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.hideSymbols = true;
+        break;
+      }
+      default: {
+        console.log('something other than equals was pressed');
+        this.hideSymbols = true;
+        break;
+      }
+    }
+  }
+
   addBindingCreated(quill) {
+
+    this.editorInstance = quill;
+
+    quill.on('text-change', function() {
+      console.log('Text change!');
+      this.hideSymbols = true;
+    });
 
     // implies
     quill.keyboard.addBinding({key: 'm'}, {
@@ -823,8 +915,31 @@ export class EditorComponent implements OnInit, OnDestroy {
     $event.focus();
   }
 
-  logChange($event: any) {
-    console.log($event);
+  updateSelection($event: any) {
+    if (this.editorInstance.getSelection()) {
+      this.previousEditorSelection = this.editorInstance.getSelection();
+    }
+  }
+
+  export() {
+    // Find the text boxes
+    const textBoxes = document.getElementsByClassName("ql-editor");
+
+    var output = "";
+
+    // Loop through each text box
+    for (var i = 0; i < textBoxes.length; i++) {
+      const textBox = textBoxes[i];
+
+      output += "# Exercise " + (i + 1) + "\n" + textBox.innerHTML + "# \n";
+    }
+
+    // Cleanup output manually. Method textContent fails to keep new lines.
+    output = output.replace(/<p>/g, "");
+    output = output.replace(/<\/p>/g, "\n");
+    output = output.replace(/<br>/g, "\n")
+
+    console.log(output);
   }
 
 }
