@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-about-user',
@@ -12,4 +12,10 @@ export class AboutUserComponent implements OnInit {
   ngOnInit() {
   }
 
+  @Input()
+  name: string;
+  @Input()
+  description: string;
+  @Input()
+  pic: string;
 }

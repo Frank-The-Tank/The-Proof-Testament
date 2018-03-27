@@ -28,6 +28,7 @@ import {routerConfig} from './router.config';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutUserComponent } from './components/about-user/about-user.component';
+import { DocsComponent } from './components/docs/docs.component';
 
 import { QuillModule } from 'ngx-quill';
 import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomplete-box.component';
@@ -35,7 +36,6 @@ import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.
 import {SymbolPickerService} from './components/symbol-picker/symbol-picker.service';
 import { EditorFormComponent } from './components/editor-form/editor-form.component';
 import {EditorService} from './components/editor/editor.service';
-import { GrammarComponent } from './components/grammar/grammar.component';
 
 
 
@@ -55,7 +55,7 @@ import { GrammarComponent } from './components/grammar/grammar.component';
     AutocompleteBoxComponent,
     SymbolPickerComponent,
     EditorFormComponent,
-    GrammarComponent
+    DocsComponent
   ],
   entryComponents: [ // Components that are added dynamically to page
     EditorComponent,
@@ -74,6 +74,6 @@ import { GrammarComponent } from './components/grammar/grammar.component';
   ],
   providers: [BibleService, SymbolPickerService, EditorService],
   bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
-    EditorComponent, HomeComponent, AboutComponent, AboutUserComponent]
+    EditorComponent, HomeComponent, AboutComponent, AboutUserComponent, DocsComponent]
 })
 export class AppModule { }
