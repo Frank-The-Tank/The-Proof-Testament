@@ -931,7 +931,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           });
 
           //rational
-          quill.keyboard.addBinding({key: 'a'}, {
+          quill.keyboard.addBinding({key: 'l'}, {
               empty: false,
               collapsed: true,
               prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;r$/
