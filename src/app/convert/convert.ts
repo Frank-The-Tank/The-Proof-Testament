@@ -7,22 +7,22 @@
 
 import { PDFTeX } from './pdftex/pdftex'
 
-const input = `
-<strong>Name: Micah Benn</strong>
-<strong>Class: Math 221</strong>
-<strong>Proof: 2.1</strong>
+// const input = `
+// <strong>Name: Micah Benn</strong>
+// <strong>Class: Math 221</strong>
+// <strong>Proof: 2.1</strong>
 
 
-<strong>Solution: </strong>
-<strong>a</strong>
-<strong>
-=&gt;            〈  2.1〉</strong>
-<strong>p  ⋀ d</strong>
-=            〈 1.1 〉
-q  ⋁  g
-`
+// <strong>Solution: </strong>
+// <strong>a</strong>
+// <strong>
+// =&gt;            〈  2.1〉</strong>
+// <strong>p  ⋀ d</strong>
+// =            〈 1.1 〉
+// q  ⋁  g
+// `
 
-convert(input);
+// convert(input);
 
 export function convert(string) {
 	
@@ -36,7 +36,9 @@ export function convert(string) {
 	var doc = "";
 
 	// Document settings
-	let docSettings = '\\documentclass[12pt]{article}\n\\usepackage[margin=1in]{geometry}\n\\usepackage{fancyhdr}\n\\pagestyle{fancy}\n\\usepackage{amsmath}\n\\usepackage{amssymb}\n\\usepackage{centernot}\n\\usepackage{setspace}\n\\doublespacing';
+	let docSettings = '\\documentclass[12pt]{article}\n\\usepackage[margin=1in]{geometry}\n\\usepackage{fancyhdr}\n\\pagestyle{fancy}\n\\usepackage{amsmath}\n\\usepackage{amssymb}';
+
+	// \n\\usepackage{centernot}\n\\usepackage{setspace}\n\\doublespacing
 
 	// Header text
 	let rawHeaders = resolvedString.match(/@(.*)/g);
@@ -142,17 +144,17 @@ export function convert(string) {
 
 	// Compile LaTeX
 
-	 // var pdftex = PDFTeX;
+	 var pdftex = PDFTeX;
 
-	 // pdftex.compile(doc).then(function(pdf_dataurl) {
-	 // 	var answer = confirm("Your PDF is ready. View now?");
+	 pdftex.compile(doc).then(function(pdf_dataurl) {
+	 	var answer = confirm("Your PDF is ready. View now?");
 
-	 // 	if (answer) {
-	 // 		window.open(pdf_dataurl, '_blank');
-	 // 	} else {
+	 	if (answer) {
+	 		window.open(pdf_dataurl, '_blank');
+	 	} else {
 
-	 // 	}
-	 // });
+	 	}
+	 });
 
 	return doc;
 }

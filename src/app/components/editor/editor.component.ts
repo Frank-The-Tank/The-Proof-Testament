@@ -995,13 +995,6 @@ export class EditorComponent implements OnInit, OnDestroy {
 
     var output = textBoxes[0].innerHTML;
 
-    // Loop through each text box
-    // for (var i = 0; i < textBoxes.length; i++) {
-    //   const textBox = textBoxes[i];
-
-    //   output += "# Exercise " + (i + 1) + "\n" + textBox.innerHTML + "# \n";
-    // }
-
     // Cleanup output manually. Method textContent fails to keep new lines.
     output = output.replace(/<p>/g, "");
     output = output.replace(/<\/p>/g, "\n");
