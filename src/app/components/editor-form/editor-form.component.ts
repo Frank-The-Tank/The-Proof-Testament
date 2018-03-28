@@ -1,5 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {EditorService} from '../editor/editor.service';
+import {BibleService} from '../bible/bible.service';
+import {Theorem} from '../model/theorem';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-editor-form',
@@ -15,8 +18,9 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   infoFilled: boolean;
   infoFilledSubscription;
   customProofSelected = false;
+  theorems$: Observable<Theorem[]>;
 
-  constructor(private editorService: EditorService) {
+  constructor(private editorService: EditorService, private bibleService: BibleService) {
     this.infoFilledSubscription = this.editorService.infoFilledChange.subscribe(infoFilled => {
       this.infoFilled = infoFilled;
     });
@@ -42,6 +46,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.theorems$ = this.bibleService.findAllTheorems();
   }
 
   ngOnDestroy() {
