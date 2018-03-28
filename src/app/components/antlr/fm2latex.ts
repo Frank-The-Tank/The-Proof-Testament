@@ -1,6 +1,6 @@
 import { SlickCompiler } from './SlickCompiler';
 // import * as fs from 'fs';
-const filename = "./test/A4.fm";
+const filename = './test/A4.fm';
 if (filename) {
   const compiler = new SlickCompiler();
   const code = '  ¬q ⇒ ¬p\n' +
