@@ -42,11 +42,22 @@
 // import {SlickLexer} from './SlickLexer';
 //
 //
-// @Component({
-//   selector: 'app-antlr',
-//   templateUrl: './antlr.component.html',
-//   styleUrls: ['./antlr.component.scss']
-// })
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-antlr',
+  templateUrl: './antlr.component.html',
+  styleUrls: ['./antlr.component.scss']
+})
+
+export class AntlrComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
 // export class AntlrComponent implements SlickListener {
 //   private parser: SlickParser;
 //   private bible: Object;
