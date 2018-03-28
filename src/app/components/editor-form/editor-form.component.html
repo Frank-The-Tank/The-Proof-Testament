@@ -15,9 +15,9 @@
         <select (change)="onProofSelectionChanged($event.target.value)" [(ngModel)]="proofText" name="proofs" class="form-control">
           <option style="display:none" value=""></option>
           <option value="custom">[Custom]</option>
-          <option value="3.1">3.1</option>
-          <option value="3.2">3.2</option>
-          <option value="3.3">3.3</option>
+          <option *ngFor="let theorem of (theorems$ | async)" [ngValue]="theorem.name">
+            {{theorem.rule}}: {{theorem.name}}
+          </option>
         </select>
         <input [hidden]="!customProofSelected" type="text" class="form-control">
       </div>
