@@ -44,7 +44,7 @@ import {TokenStream} from 'antlr4ts';
 import {SlickParser} from './SlickParser';
 import {SlickListener} from './SlickListener';
 import {SlickLexer} from './SlickLexer';
-
+// @ts-ignore: Unreachable code error
 import * as fs from 'fs';
 
 
@@ -117,6 +117,7 @@ export class SlickCompiler implements SlickListener {
   public exitJunctionExpr = (ctx: JunctionExprContext) => {
     const rhs = this.stack.pop();
     const lhs = this.stack.pop();
+    // @ts-ignore: Unreachable code error
     const x = lhs + ' ' + this.latex[ctx.JOP()] + ' ' + rhs;
     this.stack.push(x);
   }
@@ -124,6 +125,7 @@ export class SlickCompiler implements SlickListener {
   public exitImplicationExpr = (ctx: ImplicationExprContext) => {
     const rhs = this.stack.pop();
     const lhs = this.stack.pop();
+    // @ts-ignore: Unreachable code error
     const x = lhs + ' ' + this.latex[ctx.IMPOP()] + ' ' + rhs;
     this.stack.push(x);
   }
@@ -131,7 +133,8 @@ export class SlickCompiler implements SlickListener {
   public exitEquivalenceExpr = (ctx: EquivalenceExprContext) => {
     const rhs = this.stack.pop();
     const lhs = this.stack.pop();
-    const x = lhs + ' ' + this.latex[ctx.EQOP()] + ' ' + rhs;
+    // @ts-ignore: Unreachable code error
+    const x = lhs + ' ' + this.latex[ctx.EQOP] + ' ' + rhs;
     this.stack.push(x);
   }
 
@@ -172,6 +175,7 @@ export class SlickCompiler implements SlickListener {
   }
 
   public exitTheorem = (ctx: TheoremContext) => {
+    // @ts-ignore: Unreachable code error
     const theorem = this.bible[ctx.RULENUM()];
     this.stack.push('Prove\\ ' + theorem + '\\\\ \\\\\n');
   }
@@ -192,9 +196,9 @@ export class SlickCompiler implements SlickListener {
     this.parser = new SlickParser(this.tokens);
     this.parser.buildParseTree = true;
     this.tree = this.parser.doc();
-    console.log('what is this' + this);
-    // ParseTreeWalker.DEFAULT.walk(this, this.tree);
-    // return this.output;
+    // @ts-ignore: Unreachable code error
+    ParseTreeWalker.DEFAULT.walk(this, this.tree);
+    return this.output;
   }
 }
 
