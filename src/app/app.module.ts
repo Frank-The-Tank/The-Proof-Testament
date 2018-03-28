@@ -36,6 +36,7 @@ import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.
 import {SymbolPickerService} from './components/symbol-picker/symbol-picker.service';
 import { EditorFormComponent } from './components/editor-form/editor-form.component';
 import {EditorService} from './components/editor/editor.service';
+import { AntlrComponent } from './components/antlr/antlr.component';
 
 
 
@@ -55,7 +56,8 @@ import {EditorService} from './components/editor/editor.service';
     AutocompleteBoxComponent,
     SymbolPickerComponent,
     EditorFormComponent,
-    DocsComponent
+    DocsComponent,
+    AntlrComponent
   ],
   entryComponents: [ // Components that are added dynamically to page
     EditorComponent,

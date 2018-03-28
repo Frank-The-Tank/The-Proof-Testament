@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GrammarComponent } from './grammar.component';
+import { AntlrComponent } from './antlr.component';
 
-describe('GrammarComponent', () => {
-  let component: GrammarComponent;
-  let fixture: ComponentFixture<GrammarComponent>;
+describe('AntlrComponent', () => {
+  let component: AntlrComponent;
+  let fixture: ComponentFixture<AntlrComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GrammarComponent ]
+      declarations: [ AntlrComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GrammarComponent);
+    fixture = TestBed.createComponent(AntlrComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

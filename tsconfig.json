@@ -4,11 +4,12 @@
   "compilerOptions": {
     "outDir": "out",
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "preserveConstEnums": true,
     "target": "es6",
     "rootDir": ".",
     "typeRoots": [

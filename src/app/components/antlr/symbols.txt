@@ -1,0 +1,38 @@
+SYMBOL    UNICODE         NAME                        KEYSTROKE
+≔         0x2254          replaced by / gets          :=
+★         0x2605          generic quantifier          @g
+≤         0x2264          at least                    <=
+≥         0x2265          at most                     >=
+∈         0x2208          element of                  @i
+∉         0x2209          not element of              !@i
+⊂         0x2282          proper subset of            @(
+⊆         0x2286          subset of                   @(=
+⊃         0x2283          proper superset of          @)
+⊇         0x2287          superset of                 @)=
+⊄         0x2284          not a proper subset of      !
+⊈         0x2288          not a subset of
+⊅         0x2285          not a proper superset of
+⊉         0x2289          not a superset of
+∪         0x222a          union
+∩         0x2229          intersection
+∅         0x2205          empty set                   @0
+⋀         0x22c0          conjunction                 &
+⋁         0x22c1          disjunction                 |
+≡         0x2261          equivales                   =
+≢         0x2262          not equivales               !=
+=                         equals                      ==
+≠         0x2260          not equals                  !==
+⇒         0x21d2          implies                     >>
+⇏         0x21cf          does not imply              !>>
+⇐         0x21d0          follows from                <<
+⇍         0x21cd          does not follow from        !<<
+∀         0x2200          universal quantifier        @u
+∃         0x2203          existential quantifier      @e
+〈         0x2329          begin hint
+〉         0x232a          end hint
+╱╱        0x2571 0x2571   end of proof                //
+ℤ         0x2124          integer                     @z
+ℕ         0x2115          natural                     @n
+ℚ         0x211a          rational                    @q
+ℝ         0x211d          real                        @r
+𝔹         0x1d539         boolean                     @b
