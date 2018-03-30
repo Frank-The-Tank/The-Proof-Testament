@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, Output, EventEmitter } from '@angular/core';
 import { BibleService } from './bible.service';
 import {Theorem} from '../../model/theorem';
 import {ElementRef, ViewChild} from '@angular/core';
@@ -13,6 +13,7 @@ export class BibleComponent implements OnInit {
   allTheorems: Theorem[];
   filtered: Theorem[];
   @ViewChild('theoremList') elementView: ElementRef;
+  @Output() secondClickEvent = new EventEmitter();
 
   constructor(private service: BibleService) {}
 
@@ -30,8 +31,8 @@ export class BibleComponent implements OnInit {
     ));
   }
 
-  // findPageSize(): number {
-  //   return Math.floor((window.screen.height - 280) / 100);
-  // }
+  insertIntoEditorComp(name) {
+    this.secondClickEvent.emit(name);
+  }
 
 }
