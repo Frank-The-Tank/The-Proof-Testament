@@ -191,8 +191,8 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   insertBibleThm(thmInfo) {
-    this.editorInstance.insertText(this.previousEditorSelection, thmInfo);  
-    this.editorInstance.setSelection(this.previousEditorSelection.index + thmInfo.length);
+    this.editorInstance.insertText(this.previousEditorSelection, thmInfo);
+    this.editorInstance.setSelection(this.previousEditorSelection.index + thmInfo.length + 3);
     this.previousEditorSelection = this.editorInstance.getSelection();
   }
 

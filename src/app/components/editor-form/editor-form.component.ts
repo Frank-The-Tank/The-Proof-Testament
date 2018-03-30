@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {EditorService} from '../editor/editor.service';
 import {BibleService} from '../bible/bible.service';
-import {Theorem} from '../model/theorem';
+import {Theorem} from '../../model/theorem';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
