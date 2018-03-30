@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {Theorem} from '../../model/theorem';
 declare var MathJax: any;
 
@@ -9,8 +9,8 @@ declare var MathJax: any;
 })
 export class TheoremsListComponent implements OnInit {
 
-  @Input()
-  theorems: Theorem[];
+  @Input() theorems: Theorem[];
+  @Output() clickEvent = new EventEmitter();
 
   constructor() { }
 
@@ -35,6 +35,10 @@ export class TheoremsListComponent implements OnInit {
 
   ngAfterContentChecked() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+  }
+
+  insertTheorem(name) {
+    this.clickEvent.emit(name);
   }
 
 }

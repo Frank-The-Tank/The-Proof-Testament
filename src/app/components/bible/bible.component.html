@@ -4,6 +4,4 @@
   <button>Forward</button>
 </span>
 
-<app-theorems-list [theorems]="filtered"></app-theorems-list>
-
-
+<app-theorems-list [theorems]="filtered" (clickEvent)="insertIntoEditorComp($event)"></app-theorems-list>
