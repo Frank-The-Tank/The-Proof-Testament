@@ -14,7 +14,7 @@ export class TheoremsListComponent implements OnInit {
 
   @Input() theorems: Theorem[];
   @Output() clickEvent = new EventEmitter();
-  @ViewChild('holder', {read: ElementRef}) public holder: ElementRef<any>;
+  @ViewChild('holder', {read: ElementRef}) public holder: ElementRef;
 
 
   constructor(private service: BibleService) {}

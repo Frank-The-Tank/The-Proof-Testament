@@ -12,17 +12,17 @@ export class BibleService {
 
   constructor(private af: AngularFireDatabase) {}
 
-  findAllTheorems(): Subject<Theorem[]> {
+  findAllTheorems(): Observable<Theorem[]> {
     return this.af.list('theorems').valueChanges().map(Theorem.fromJsonList);
   }
 
-  fillFirstTheorems(): Subject<Theorem[]> {
+  fillFirstTheorems(): Observable<Theorem[]> {
     return this.af.list('theorems', ref => {
       return ref.limitToFirst(10).orderByKey();
     }).valueChanges().map(Theorem.fromJsonList);
   }
 
-  updateTheoremCount(size): Subject<Theorem[]> {
+  updateTheoremCount(size): Observable<Theorem[]> {
     return this.af.list('theorems', ref => {
       return ref.limitToFirst(size).orderByKey();
     }).valueChanges().map(Theorem.fromJsonList);
