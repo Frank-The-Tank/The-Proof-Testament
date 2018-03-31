@@ -1,10 +1,8 @@
-<div class="theoremsContainer">
-  <ul appScrollable (scrollPosition)="scrollHandler($event)">
-    <li id="listElements" *ngFor="let theorem of theorems">
+<div #holder class="theoremsContainer" appScrollable (scrollPosition)="scrollHandler($event)">
+    <ul id="listElements" *ngFor="let theorem of theorems">
       <div (click)="insertTheorem('(' + theorem.rule + ') ' + theorem.name)"
-      class="theoremContainer"
-      [style.background-color]="setBackgroundColor(theorem.type)"
-      class="list-group-item">
+           class="theoremContainer list-group-item"
+           [style.background-color]="setBackgroundColor(theorem.type)">
         <h1 class="theoremTitle">{{theorem.rule}}: {{theorem.name}}</h1>
         <h2 class="theoremType">{{theorem.type}}</h2>
         <p class="theoremEquation">{{theorem.eq}}</p>
