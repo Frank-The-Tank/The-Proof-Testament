@@ -1,8 +1,8 @@
-import { SlickCompiler } from './SlickCompiler';
+import { AntlrComponent } from './antlr.component'
 // import * as fs from 'fs';
 const filename = './test/A4.fm';
 if (filename) {
-  const compiler = new SlickCompiler();
+  const compiler = new AntlrComponent();
   const code = '  ¬q ⇒ ¬p\n' +
     '=    〈 (3.59) with p, q ≔ ¬q, ¬p 〉\n' +
     '  ¬¬q ⋁ ¬p\n' +

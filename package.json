@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "antlr4ts": "cd src/app/components/antlr && antlr4ts -visitor Slick.g4",
-    "trial": "cd src/app/components/antlr && ts-node -D fm2latex.ts ./test/a7.fm"
+    "trial": "cd src/app/components/antlr && ts-node -D fm2latex.ts ./test/a7.fm > test.txt"
   },
   "private": true,
   "dependencies": {
