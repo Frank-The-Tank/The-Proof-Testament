@@ -1,6 +1,6 @@
 import { AntlrComponent } from './antlr.component'
 // import * as fs from 'fs';
-const filename = './test/A4.fm';
+const filename = './test/A7.fm';
 if (filename) {
   const compiler = new AntlrComponent();
   const code = '  ¬q ⇒ ¬p\n' +
@@ -17,3 +17,16 @@ if (filename) {
 } else {
   console.log('Missing filename\n');
 }
+
+
+// import { SlickCompiler } from './SlickCompiler';
+// import * as fs from 'fs';
+// const filename = process.argv[2];
+// if (filename) {
+//   let compiler = new SlickCompiler();
+//   let code = fs.readFileSync(filename).toString();
+//   let results = compiler.compile(code);
+//   process.stdout.write(results);
+// } else {
+//   process.stdout.write("Missing filename\n");
+// }
