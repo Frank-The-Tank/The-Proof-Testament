@@ -18,6 +18,7 @@ export class BibleComponent implements OnInit, OnDestroy {
   private thmSubscription;
   private thmFirstSubscription;
   private thmUpdateSubscription;
+  private fieldEmptySubscription;
   @ViewChild('theoremList') elementView: ElementRef;
 
   constructor(private service: BibleService) {
@@ -50,9 +51,18 @@ export class BibleComponent implements OnInit, OnDestroy {
     this.pageSizeSubscription.unsubscribe();
     this.thmUpdateSubscription.unsubscribe();
     this.thmFirstSubscription.unsubscribe();
+    this.fieldEmptySubscription.unsubscribe();
   }
 
   search(search: string) {
+    if (search === '') {
+      this.fieldEmptySubscription = this.service.fillFirstTheorems()
+        .subscribe(
+          theorems => {
+            this.filtered = theorems;
+          }
+        );
+    }
     this.filtered = this.allTheorems.filter(theorem =>
       theorem.rule.includes(search) ||
        (theorem.name && theorem.name.toLowerCase().includes(search.toLowerCase())

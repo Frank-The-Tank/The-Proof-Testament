@@ -1,4 +1,4 @@
-<div class="theoremsContainer" appScrollable (scrollPosition)="scrollHandler($event)">
+<div #holder class="theoremsContainer" appScrollable (scrollPosition)="scrollHandler($event)">
     <ul id="listElements" *ngFor="let theorem of theorems">
       <div class="theoremContainer" [style.background-color]="setBackgroundColor(theorem.type)" class="list-group-item">
         <h1 class="theoremTitle">{{theorem.rule}}: {{theorem.name}}</h1>
