@@ -15,7 +15,7 @@ export class TheoremsListComponent implements OnInit {
   @Input()
   theorems: Theorem[];
 
-  constructor(private service: BibleService) { }
+  constructor(private service: BibleService) {}
 
   ngOnInit() {
   }
@@ -24,7 +24,7 @@ export class TheoremsListComponent implements OnInit {
     console.log(e);
     if (e === 'bottom') {
       console.log('EEEEEEHHHHH');
-      this.service.updatePageSize(15);
+      this.service.updatePageSize(this.service.pageSize + 10);
     }
   }
 
