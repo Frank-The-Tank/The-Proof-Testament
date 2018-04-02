@@ -33,9 +33,9 @@ export class TheoremsListComponent implements OnInit {
 
   setBackgroundColor(type) {
     if (type === 'axiom') {
-      return '#00025c';
+      return '#82ac60';
     } else {
-      return '#ee7624';
+      return '#353535';
     }
   }
 
