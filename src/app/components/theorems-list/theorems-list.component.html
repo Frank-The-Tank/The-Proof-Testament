@@ -1,4 +1,5 @@
-<div #holder class="theoremsContainer" appScrollable (scrollPosition)="scrollHandler($event)">
+<div #holder class="theoremsContainer" appScrollable (scrollPosition)="scrollHandler($event)" >
+
     <ul id="listElements" *ngFor="let theorem of theorems">
       <div (click)="insertTheorem('(' + theorem.rule + ') ' + theorem.name)"
            class="theoremContainer list-group-item"
@@ -7,8 +8,9 @@
         <h2 class="theoremType">{{theorem.type}}</h2>
         <p class="theoremEquation">{{theorem.eq}}</p>
       </div>
+
     </ul>
-    <div class="sk-cube-grid">
+    <div class="sk-cube-grid" appScrollable (scrollPosition) ="scrollHandler($event)"*ngIf="loading">
       <div class="sk-cube sk-cube1"></div>
       <div class="sk-cube sk-cube2"></div>
       <div class="sk-cube sk-cube3"></div>
@@ -19,5 +21,4 @@
       <div class="sk-cube sk-cube8"></div>
       <div class="sk-cube sk-cube9"></div>
     </div>
-
 </div>
