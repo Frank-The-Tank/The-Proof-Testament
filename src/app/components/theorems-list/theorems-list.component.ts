@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit, ElementRef, ViewChild} from '@angular/core';
 import {Theorem} from '../../model/theorem';
 declare var MathJax: any;
 import { ScrollableDirective } from '../../directives/scrollable.directive'
 import { Observable } from 'rxjs/Observable';
+import { BibleService } from '../bible/bible.service';
 
 @Component({
   selector: 'app-theorems-list',
@@ -11,28 +12,42 @@ import { Observable } from 'rxjs/Observable';
 })
 export class TheoremsListComponent implements OnInit {
 
-  @Input()
-  theorems: Theorem[];
+  @Input() theorems: Theorem[];
+  @Output() clickEvent = new EventEmitter();
+  @ViewChild('holder', {read: ElementRef}) public holder: ElementRef;
 
-  constructor() { }
+loading: boolean = true;
 
-  ngOnInit() {
+  constructor(private service: BibleService) {}
+
+  ngOnInit() { this.loading = true;
   }
 
   scrollHandler(e) {
     console.log(e);
+    if (e === 'bottom') {
+      this.loading = true;
+      console.log('EEEEEEHHHHH');
+      this.service.updatePageSize(this.service.pageSize + 10);
+      this.holder.nativeElement.scrollTop -= 20;
+      this.loading = false;
+    }
   }
 
   setBackgroundColor(type) {
     if (type === 'axiom') {
-      return '#00025c';
+      return '#82ac60';
     } else {
-      return '#ee7624';
+      return '#353535';
     }
   }
 
   ngAfterContentChecked() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+  }
+
+  insertTheorem(name) {
+    this.clickEvent.emit(name);
   }
 
 }
