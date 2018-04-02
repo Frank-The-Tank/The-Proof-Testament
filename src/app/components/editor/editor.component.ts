@@ -990,12 +990,11 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   export() {
-    // Find the text boxes
     const textBoxes = document.getElementsByClassName("ql-editor");
 
     var output = textBoxes[0].innerHTML;
 
-    // Cleanup output manually. Method textContent fails to keep new lines.
+    // Cleanup output. Method textContent fails to keep new lines.
     output = output.replace(/<p>/g, "");
     output = output.replace(/<\/p>/g, "\n");
     output = output.replace(/<br>/g, "\n")
