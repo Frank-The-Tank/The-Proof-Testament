@@ -1060,7 +1060,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     output = output.replace(/<\/p>/g, '\n');
     output = output.replace(/<br>/g, '\n');
 
-    console.log(output);
+    convert(output);
   }
 
 }
