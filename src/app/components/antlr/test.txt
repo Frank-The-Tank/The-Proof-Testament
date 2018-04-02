@@ -1,0 +1,70 @@
+\documentclass[11pt]{amsart}
+\usepackage{times}
+\usepackage{amssymb,latexsym}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{ wasysym }
+
+\newcommand{\lgap}{12pt}                            % Line gap
+\newcommand{\slgap}{4pt}                            % Small line gap
+\newcommand{\equivs}{\ensuremath{\;\equiv\;}}       % Equivales with space
+\newcommand{\equivss}{\ensuremath{\;\;\equiv\;\;}}  % Equivales with double space
+\newcommand{\nequiv}{\ensuremath{\not\equiv}}       % Inequivalent
+\newcommand{\impl}{\ensuremath{\Rightarrow}}        % Implies
+\newcommand{\nimpl}{\ensuremath{\not\Rightarrow}}   % Does not imply
+\newcommand{\foll}{\ensuremath{\Leftarrow}}         % Follows from
+\newcommand{\nfoll}{\ensuremath{\not\Leftarrow}}    % Does not follow from
+\newcommand{\proofbreak}{\\ \\ \\ \\}
+
+% These macros are used for quantifications. Thanks to David Gries for sharing
+\newcommand{\thedr}{\rule[-.25ex]{.32mm}{1.75ex}}   % Symbol that separates dummy from range in quantification
+\newcommand{\dr}{\;\,\thedr\,\;}                    % Symbol that separates dummy from range, with spacing
+\newcommand{\rb}{:}                                 % Symbol that separates range from body in quantification
+\newcommand{\drrb}{\;\thedr\,{:}\;}                 % Symbol that separates dummy from body when range is missing
+\newcommand{\all}{\forall}                          % Universal quantification
+\newcommand{\ext}{\exists}                          % Existential quantification
+\newcommand{\Gll} {\langle}                         % Open hint
+\newcommand{\Ggg} {\rangle}                         % Close hint
+
+% Proof
+\newcommand{\Step}[1]{\>{$#1$}}
+%\newcommand{\Hint}[1] {\\=\>\>\ \ \ $\Gll\ \mbox{#1}\ \Ggg$ \\}   % Single line hint
+\newcommand{\Hint}[1] {\\=\>\>\ \ \ $\Gll$\ \text{#1}\ $\Ggg$ \\}   % Single line hint
+\newcommand{\done}{{\color{BurntOrange} \ \ $//$}}
+
+% Math symbols
+\newcommand{\nat}{\mathbb{N}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\integer}{\mathbb{Z}}
+\newcommand{\bool}{\mathbb{B}}
+
+% Single and double quotes
+\newcommand{\Lq}{\mbox{`}}
+\newcommand{\Rq}{\mbox{'}}
+\newcommand{\Lqq}{\mbox{``}}
+\newcommand{\Rqq}{\mbox{''}}
+
+
+\oddsidemargin  0.0in
+\evensidemargin 0.0in
+\textwidth      6.5in
+\headheight     0.0in
+\topmargin      0.0in
+\textheight=9.0in
+\parindent=0in
+\pagestyle{empty}
+
+\begin{document}
+\begin{tabbing}
+99.\;\=(m)\;\=\kill
+\Step{p \vee q undefined p \vee \neg q}
+\\$=$\>\>\ \ \ $\Gll$\ \text{ Distributivity of $\vee$ over $\equiv$ }\ $\Ggg$ \\
+\Step{p \vee (q undefined \neg q)}
+\\$=$\>\>\ \ \ $\Gll$\ \text{ (3.15) p $\equiv$ $\neg$p $\equiv$ false }\ $\Ggg$ \\
+\Step{p \vee false}
+\\$=$\>\>\ \ \ $\Gll$\ \text{ Identity of $\vee$ }\ $\Ggg$ \\
+\Step{p}
+\done
+
+\end{tabbing}\end{document}
+
+

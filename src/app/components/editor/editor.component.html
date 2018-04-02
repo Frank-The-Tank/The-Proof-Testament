@@ -4,18 +4,18 @@
     [modules]="modules"
     (onEditorCreated)="addBindingCreated($event)"
     (onSelectionChanged)="updateSelection($event)"
-    (onContentChanged)="updateSelection($event)">
+    (onContentChanged)="updateSelection($event)" >
       <div quill-editor-toolbar>
         <span class="ql-formats">
           <button class='ql-indent' value = "-1"></button>
           <button class='ql-indent' value = "+1"></button>
         </span>
         <span class="ql-formats">
-          <div id="counter"></div>
+          <button id='antlrButton' (click)="trial()" class="functionBtn">Test</button>
         </span>
-        <span class="ql-formats">
+        <!-- <span class="ql-formats">
           <app-autocomplete-box></app-autocomplete-box>
-        </span>
+        </span> -->
         <span class="ql-formats">
           <select
             id="symbolInLineSelector"
@@ -42,7 +42,9 @@
             </select>
           </div>
         </span>
-        <span class ="ql-formats"><button (click)="export()" id="exportBtn" class="functionBtn">Export</button></span>
+        <span class ="ql-formats">
+          <button (click)="export()" id="exportBtn" class="functionBtn">Export</button>
+        </span>
       </div>
   </quill-editor>
 </div>

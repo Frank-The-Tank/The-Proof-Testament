@@ -135,7 +135,7 @@ export class AntlrComponent implements SlickListener {
         + theorem.name.slice(0, 1).toUpperCase() + theorem.name.slice(1)
         + '}:\\ \\ ' : '\\ \\ ') + theorem.eq;
       }
-      
+
       this.latex = {
         '⋀': '\\wedge',
         '⋁': '\\vee',
@@ -178,7 +178,7 @@ export class AntlrComponent implements SlickListener {
   public exitJunctionExpr = (ctx: JunctionExprContext) => {
     const rhs = this.stack.pop();
     const lhs = this.stack.pop();
-    // @ts-ignore: Unreachable code error
+    // @ts-ignore: Type: 'Terminal Node' Cannot be used as index type
     const x = lhs + ' ' + this.latex[ctx.JOP()] + ' ' + rhs;
     this.stack.push(x);
   }
@@ -186,7 +186,7 @@ export class AntlrComponent implements SlickListener {
   public exitImplicationExpr = (ctx: ImplicationExprContext) => {
     const rhs = this.stack.pop();
     const lhs = this.stack.pop();
-    // @ts-ignore: Unreachable code error
+    // @ts-ignore: Type: 'Terminal Node' Cannot be used as index type
     const x = lhs + ' ' + this.latex[ctx.IMPOP()] + ' ' + rhs;
     this.stack.push(x);
   }
@@ -194,7 +194,7 @@ export class AntlrComponent implements SlickListener {
   public exitEquivalenceExpr = (ctx: EquivalenceExprContext) => {
     const rhs = this.stack.pop();
     const lhs = this.stack.pop();
-    // @ts-ignore: Unreachable code error
+    // @ts-ignore: Type: 'Terminal Node' Cannot be used as index type
     const x = lhs + ' ' + this.latex[ctx.EQOP] + ' ' + rhs;
     this.stack.push(x);
   }
@@ -236,7 +236,7 @@ export class AntlrComponent implements SlickListener {
   }
 
   public exitTheorem = (ctx: TheoremContext) => {
-    // @ts-ignore: Unreachable code error
+    // @ts-ignore: Type: 'Terminal Node' Cannot be used as index type
     const theorem = this.bible[ctx.RULENUM()];
     this.stack.push('Prove\\ ' + theorem + '\\\\ \\\\\n');
   }

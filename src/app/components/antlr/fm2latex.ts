@@ -3,15 +3,13 @@ import { AntlrComponent } from './antlr.component'
 const filename = './test/A7.fm';
 if (filename) {
   const compiler = new AntlrComponent();
-  const code = '  ¬q ⇒ ¬p\n' +
-    '=    〈 (3.59) with p, q ≔ ¬q, ¬p 〉\n' +
-    '  ¬¬q ⋁ ¬p\n' +
-    '=    〈 Double negation 〉\n' +
-    '  q ⋁ ¬p\n' +
-    '=    〈 Symmetry of ⋁ 〉\n' +
-    '  ¬p ⋁ q\n' +
-    '=    〈 (3.59) 〉\n' +
-    '  p ⇒ q  ╱╱';
+  const code = '  p ⋁ q ≢ p ⋁ ¬q\n' +
+    '=    〈 Distributivity of ⋁ over ≡ 〉\n' +
+    '  p ⋁ (q ≡ ¬q)\n' +
+    '=    〈 (3.15) p ≡ ¬p ≡ false 〉\n' +
+    '  p ⋁ false\n' +
+    '=    〈 Identity of ⋁ 〉\n' +
+    '  p  ╱╱';
   const results = compiler.compile(code);
   console.log(results);
 } else {

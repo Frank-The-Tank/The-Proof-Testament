@@ -1,4 +1,13 @@
-import {Component, ElementRef, OnInit, OnDestroy, ViewChild, ViewEncapsulation, ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  ViewEncapsulation,
+  ViewContainerRef,
+  ComponentFactoryResolver
+} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 
@@ -10,15 +19,17 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 import * as QuillNamespace from 'quill';
+
 const Quill: any = QuillNamespace;
 
-import Counter from './counter';
+
 import {SymbolPickerService} from '../symbol-picker/symbol-picker.service';
 import {EditorService} from './editor.service';
 
-import { convert } from '../../convert/convert';
+import {convert} from '../../convert/convert';
 
-Quill.register('modules/counter', Counter);
+import {AntlrComponent} from '../antlr/antlr.component';
+
 
 @Component({
   selector: 'app-editor',
@@ -51,6 +62,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   followsFromUnicode = '\u21D0';
   lessThanUnicode = '\u003C';
   greaterThanUnicode = '\u003E';
+  doesNotEqualUnicode = '\u2262';
 
   bindings = {
     enter: {
@@ -90,7 +102,6 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       formula: true,
       toolbar: true,
-      counter: { container: '#counter', unit: 'word' }
     };
   }
 
@@ -132,6 +143,14 @@ export class EditorComponent implements OnInit, OnDestroy {
     return symbolShortcut;
   }
 
+  trial(quill, elementRef) {
+
+    const text = this.editorInstance.getText();
+    const compiler = new AntlrComponent();
+    const results = compiler.compile(text);
+    console.log(results);
+  }
+
   insertSymbol(selectedVal) {
     this.editorInstance.insertText(this.previousEditorSelection, selectedVal);
     this.editorInstance.setSelection(this.previousEditorSelection.index + 1);
@@ -142,7 +161,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       case 'equals': {
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.equalsUnicode + '           〈  〉'
+          this.equalsUnicode + '           〈 〉'
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 14);
         this.hideSymbols = true;
@@ -151,7 +170,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       case 'implies': {
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.impliesUnicode + '            〈  〉'
+          this.impliesUnicode + '            〈 〉'
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
@@ -160,7 +179,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       case 'followsFrom': {
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.followsFromUnicode + '            〈  〉'
+          this.followsFromUnicode + '            〈 〉'
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
@@ -169,7 +188,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       case 'lessThan': {
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.lessThanUnicode + '            〈  〉'
+          this.lessThanUnicode + '            〈 〉'
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
@@ -178,7 +197,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       case 'greaterThan': {
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.greaterThanUnicode + '            〈  〉'
+          this.greaterThanUnicode + '            〈 〉'
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
@@ -196,7 +215,7 @@ export class EditorComponent implements OnInit, OnDestroy {
 
     this.editorInstance = quill;
 
-    quill.on('text-change', function() {
+    quill.on('text-change', function () {
       console.log('Text change!');
       this.hideSymbols = true;
     });
@@ -209,7 +228,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⇒          〈  〉');
+        quill.insertText(range.index - 2, '⇒          〈 〉');
         quill.setSelection(range.index + 11);
       });
 
@@ -221,7 +240,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '⇐          〈  〉');
+        quill.insertText(range.index - 2, '⇐          〈 〉');
         quill.setSelection(range.index + 11);
       });
 
@@ -233,7 +252,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '=            〈  〉');
+        quill.insertText(range.index - 2, '=            〈 〉\n');
         quill.setSelection(range.index + 13);
       });
 
@@ -245,7 +264,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '<            〈  〉');
+        quill.insertText(range.index - 2, '<            〈 〉');
         quill.setSelection(range.index + 13);
       });
 
@@ -257,7 +276,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≤            〈  〉');
+        quill.insertText(range.index - 2, '≤            〈 〉');
         quill.setSelection(range.index + 13);
       });
 
@@ -271,7 +290,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '>            〈  〉');
+        quill.insertText(range.index - 2, '>            〈 〉');
         quill.setSelection(range.index + 13);
       });
 
@@ -284,12 +303,11 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, '≥            〈  〉');
+        quill.insertText(range.index - 2, '≥            〈 〉');
         quill.setSelection(range.index + 13);
       });
 
     // ///////////////////////////////////////////inline symbols///////////////////////////////////////////
-
 
 
     // p
@@ -841,16 +859,16 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.insertText(range.index - 3, ' ≠ ');
       });
 
-      //not equivales
-      quill.keyboard.addBinding({key: 'v'}, {
-          empty: false,
-          collapsed: true,
-          prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;ne$/
-        },
-        (range, context) => {
-          quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-          quill.insertText(range.index - 3, ' ≢ ');
-        });
+    //not equivales
+    quill.keyboard.addBinding({key: 'v'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;ne$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 3, this.doesNotEqualUnicode);
+      });
 
     // not element of
     quill.keyboard.addBinding({key: 'l'}, {
@@ -907,72 +925,72 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.insertText(range.index - 3, ' ⊉ ');
       });
 
-      ////////////////////////////////// natural numbers, etc ///////////////////////////////
-      // natural numbers
-      quill.keyboard.addBinding({key: 'n'}, {
-          empty: false,
-          collapsed: true,
-          prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;n$/
-        },
-        (range, context) => {
-          quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-          quill.insertText(range.index - 2, ' ℕ ');
-        });
+    ////////////////////////////////// natural numbers, etc ///////////////////////////////
+    // natural numbers
+    quill.keyboard.addBinding({key: 'n'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;n$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' ℕ ');
+      });
 
-        // integers
-        quill.keyboard.addBinding({key: 'r'}, {
-            empty: false,
-            collapsed: true,
-            prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;i$/
-          },
-          (range, context) => {
-            quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-            quill.insertText(range.index - 2, ' ℤ ');
-          });
+    // integers
+    quill.keyboard.addBinding({key: 'r'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;i$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' ℤ ');
+      });
 
-          //rational
-          quill.keyboard.addBinding({key: 'a'}, {
-              empty: false,
-              collapsed: true,
-              prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;r$/
-            },
-            (range, context) => {
-              quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-              quill.insertText(range.index - 2, ' ℚ ');
-            });
+    //rational
+    quill.keyboard.addBinding({key: 'a'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;r$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' ℚ ');
+      });
 
-            //real numbers
-            quill.keyboard.addBinding({key: 'n'}, {
-                empty: false,
-                collapsed: true,
-                prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;r$/
-              },
-              (range, context) => {
-                quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-                quill.insertText(range.index - 2, ' ℝ ');
-              });
+    //real numbers
+    quill.keyboard.addBinding({key: 'n'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;r$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' ℝ ');
+      });
 
-            //booleans
-            quill.keyboard.addBinding({key: 'n'}, {
-                empty: false,
-                collapsed: true,
-                prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;b$/
-              },
-              (range, context) => {
-                quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-                quill.insertText(range.index - 2, ' 𝔹 ');
-              });
+    //booleans
+    quill.keyboard.addBinding({key: 'n'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;b$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' 𝔹 ');
+      });
 
-              //end of proof
-              quill.keyboard.addBinding({key: 'd'}, {
-                  empty: false,
-                  collapsed: true,
-                  prefix: /[/╱≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;en$/
-                },
-                (range, context) => {
-                  quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-                  quill.insertText(range.index - 3, ' ╱╱ ');
-                });
+    //end of proof
+    quill.keyboard.addBinding({key: 'd'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/╱≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;en$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 3, ' ╱╱ ');
+      });
   }
 
   setControl() {
@@ -991,21 +1009,21 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   export() {
     // Find the text boxes
-    const textBoxes = document.getElementsByClassName("ql-editor");
+    const textBoxes = document.getElementsByClassName('ql-editor');
 
-    var output = "";
+    let output = '';
 
     // Loop through each text box
-    for (var i = 0; i < textBoxes.length; i++) {
+    for (let i = 0; i < textBoxes.length; i++) {
       const textBox = textBoxes[i];
 
-      output += "# Exercise " + (i + 1) + "\n" + textBox.innerHTML + "# \n";
+      output += '# Exercise ' + (i + 1) + '\n' + textBox.innerHTML + '# \n';
     }
 
     // Cleanup output manually. Method textContent fails to keep new lines.
-    output = output.replace(/<p>/g, "");
-    output = output.replace(/<\/p>/g, "\n");
-    output = output.replace(/<br>/g, "\n")
+    output = output.replace(/<p>/g, '');
+    output = output.replace(/<\/p>/g, '\n');
+    output = output.replace(/<br>/g, '\n');
 
     console.log(output);
   }
