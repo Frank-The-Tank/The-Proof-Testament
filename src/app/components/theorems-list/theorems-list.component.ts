@@ -16,18 +16,21 @@ export class TheoremsListComponent implements OnInit {
   @Output() clickEvent = new EventEmitter();
   @ViewChild('holder', {read: ElementRef}) public holder: ElementRef;
 
+loading: boolean = true;
 
   constructor(private service: BibleService) {}
 
-  ngOnInit() {
+  ngOnInit() { this.loading = true;
   }
 
   scrollHandler(e) {
     console.log(e);
     if (e === 'bottom') {
+      this.loading = true;
       console.log('EEEEEEHHHHH');
       this.service.updatePageSize(this.service.pageSize + 10);
       this.holder.nativeElement.scrollTop -= 20;
+      this.loading = false;
     }
   }
 
