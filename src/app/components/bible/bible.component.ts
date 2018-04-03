@@ -3,6 +3,8 @@ import { BibleService } from './bible.service';
 import {Theorem} from '../../model/theorem';
 import {ElementRef, ViewChild} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
+import {Observable} from 'rxjs/Observable';
+import {EmptyObservable} from 'rxjs/observable/EmptyObservable';
 
 @Component({
   selector: 'app-bible',
@@ -50,9 +52,13 @@ export class BibleComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.thmSubscription.unsubscribe();
     this.pageSizeSubscription.unsubscribe();
-    this.thmUpdateSubscription.unsubscribe();
     this.thmFirstSubscription.unsubscribe();
-    this.fieldEmptySubscription.unsubscribe();
+    if (this.thmUpdateSubscription) {
+      this.thmUpdateSubscription.unsubscribe();
+    }
+    if (this.fieldEmptySubscription) {
+      this.fieldEmptySubscription.unsubscribe();
+    }
   }
 
   search(search: string) {
