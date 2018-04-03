@@ -12,7 +12,7 @@
       </div>
       <div class="form-group">
         <label>Proof:</label>
-        <select (change)="onProofSelectionChanged($event.target.value)" [(ngModel)]="proofText" name="proofs" class="form-control">
+        <select #proofSelector (change)="onProofSelectionChanged($event.target.value)" [(ngModel)]="proofText" name="proofs" class="form-control">
           <option style="display:none" value=""></option>
           <option value="custom">[Custom]</option>
           <option *ngFor="let theorem of (theorems$ | async)" [ngValue]="'(' + theorem.rule + ') ' + (theorem.name || theorem.eq)">
@@ -22,7 +22,7 @@
             <span *ngIf="!theorem.name && theorem.eq.length > 50">(Equation to long to display)</span>
           </option>
         </select>
-        <input [hidden]="!customProofSelected" type="text" class="form-control">
+        <input #hiddenField [hidden]="!customProofSelected" type="text" class="form-control">
       </div>
       <div class="form-group">
         <label>Description:</label>
@@ -34,6 +34,6 @@
           placeholder="Proof by mathematical induction... "></textarea>
       </div>
     </fieldset>
-    <button (click)="formSubmit()" class="btn btn-primary">Generate Editor</button>
+    <button (click)="formSubmit(proofSelector.value, hiddenField.value)" class="btn btn-primary">Generate Editor</button>
   </form>
 </div>

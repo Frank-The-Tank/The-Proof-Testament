@@ -26,8 +26,11 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     });
   }
 
-  formSubmit() {
+  formSubmit(selection, hiddenVal) {
     this.editorService.toggleFormFilled();
+    if (selection === 'custom') {
+      this.proofText = hiddenVal;
+    }
     const outline =
       ('Name: ').bold() +  this.nameText + '<br />' +
       ('Class: ').bold() + this.classText + '<br />' +
