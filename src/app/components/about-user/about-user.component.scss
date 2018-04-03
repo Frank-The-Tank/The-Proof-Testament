@@ -1,9 +1,10 @@
 .aboutContainer {
   margin-top: 10vh !important;
   margin-left: 10vw !important;
-  max-height: 35vh;
+  // max-height: 35vh;
   float: left;
   display: flex;
+  padding-top: 50px;
 }
 
 .memberImg {
@@ -16,8 +17,9 @@
   z-index: 2;
   border-radius: 25px;
   width: 100vw;
-  overflow: scroll;
+  overflow: hidden;
   background-color: #ffedcc;
+
 }
 
 .memberName {
