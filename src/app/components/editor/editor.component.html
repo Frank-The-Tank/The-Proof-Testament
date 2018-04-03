@@ -42,7 +42,12 @@
             </select>
           </div>
         </span>
-        <span class ="ql-formats"><button (click)="export()" id="exportBtn" class="functionBtn">Export</button></span>
+        <span class ="ql-formats">
+          <button (click)="export()" id="exportBtn" class="functionBtn">Export</button>
+        </span>
+        <span class="ql-formats" style="float: right;">
+          <div class="loader" id="exportLoader" style="visibility: hidden;"></div>
+        </span>
       </div>
   </quill-editor>
 </div>

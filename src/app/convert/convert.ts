@@ -134,8 +134,6 @@ export function convert(string) {
 	// Newline at end of exercises
 	content = content.replace(/#$/gm, "\\\\ \n");
 
-	content = content + "$\\centernot\\cap$"
-
 	// Assemble the document
 	doc = docSettings + '\n\n' + header + '\n\n\\begin{document}\\newcommand{\\unindent}{ \\hspace{-2em} }' + '\n\n' + content + '\n\n\\end{document}';
 
@@ -146,17 +144,26 @@ export function convert(string) {
 
 	// Compile LaTeX
 
-	 var pdftex = PDFTeX;
+	var pdftex = PDFTeX;
 
-	 pdftex.compile(doc).then(function(pdf_dataurl) {
-	 	var answer = confirm("Your PDF is ready. View now?");
+	var loader = document.getElementById("exportLoader");
+	var exportBtn = (<HTMLInputElement> document.getElementById("exportBtn"));
 
-	 	if (answer) {
-	 		window.open(pdf_dataurl, '_blank');
-	 	} else {
+	loader.style.visibility = "visible";
+	exportBtn.disabled = true;
 
-	 	}
-	 });
+	pdftex.compile(doc).then(function(pdf_dataurl) {
+		loader.style.visibility = "hidden";
+		exportBtn.disabled = false;
+
+		var answer = confirm("Your PDF is ready. View now?");
+
+		if (answer) {
+			window.open(pdf_dataurl, '_blank');
+		} else {
+
+		}
+	});
 
 	return doc;
 }
