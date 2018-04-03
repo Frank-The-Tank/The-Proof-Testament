@@ -1,7 +1,6 @@
 .aboutContainer {
   margin-top: 10vh !important;
   margin-left: 10vw !important;
-  // max-height: 35vh;
   float: left;
   display: flex;
   padding-top: 50px;
@@ -18,7 +17,7 @@
   border-radius: 25px;
   width: 100vw;
   overflow: hidden;
-  background-color: #ffedcc;
+  background-color: white;
 
 }
 
@@ -26,9 +25,23 @@
   margin-bottom: -10px;
   font-family: avenir;
   margin-top: 2.5%;
+  font-size: 2em;
 }
 
 .memberDescription {
   font-family: avenir;
   font-size: 18px;
+  margin-top: 5px;
+}
+
+.projectsList {
+  margin-left: 40px;
+}
+
+hr {
+  margin-bottom: 0.1rem;
+}
+
+a:hover {
+  color: #82ad90 !important;
 }

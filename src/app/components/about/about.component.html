@@ -21,7 +21,13 @@
     <div *ngFor="let contributor of contributors" class="left">
       <app-about-user
       [name]="contributor.name"
+      [title]="contributor.title"
       [description]="contributor.description"
+      [projects]="contributor.projects"
+      [linkedIn]="contributor.linkedIn"
+      [gitHub]="contributor.gitHub"
+      [facebook]="contributor.facebook"
+      [twitter]="contributor.twitter"
       [pic]="contributor.pic">
       </app-about-user>
     </div>
