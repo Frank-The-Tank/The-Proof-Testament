@@ -12,7 +12,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 
 import {QuillEditorComponent} from 'ngx-quill/src/quill-editor.component';
-import {AutocompleteBoxComponent} from '../autocomplete-box/autocomplete-box.component';
+
 import {Symbols} from '../../model/symbols';
 
 import 'rxjs/add/operator/debounceTime';

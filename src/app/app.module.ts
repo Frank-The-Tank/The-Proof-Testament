@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -10,6 +10,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
+
 
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -36,7 +37,6 @@ import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.
 import {SymbolPickerService} from './components/symbol-picker/symbol-picker.service';
 import { EditorFormComponent } from './components/editor-form/editor-form.component';
 import {EditorService} from './components/editor/editor.service';
-import { AntlrComponent } from './components/antlr/antlr.component';
 
 
 
@@ -55,8 +55,7 @@ import { AntlrComponent } from './components/antlr/antlr.component';
     AboutUserComponent,
     SymbolPickerComponent,
     EditorFormComponent,
-    DocsComponent,
-    AntlrComponent
+    DocsComponent
   ],
   entryComponents: [ // Components that are added dynamically to page
     EditorComponent,
@@ -74,6 +73,7 @@ import { AntlrComponent } from './components/antlr/antlr.component';
     AngularFontAwesomeModule
   ],
   providers: [BibleService, SymbolPickerService, EditorService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
+    EditorComponent, HomeComponent, AboutComponent, AboutUserComponent, DocsComponent]
 })
 export class AppModule { }
