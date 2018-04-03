@@ -9,6 +9,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 
 import { FooterComponent } from './components/footer/footer.component';
@@ -71,7 +72,8 @@ import {EditorService} from './components/editor/editor.service';
     NgbModule.forRoot(),
     ReactiveFormsModule,
     QuillModule,
-    RouterModule.forRoot(routerConfig)
+    RouterModule.forRoot(routerConfig),
+    AngularFontAwesomeModule
   ],
   providers: [BibleService, SymbolPickerService, EditorService],
   bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,

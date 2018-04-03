@@ -16,13 +16,21 @@
       rate than ever before! Now, without further ado, allow us to introduce the bright
        minds of our development team:</p>
   </div>
+  <div class="row">
   <div class="descriptions">
     <div *ngFor="let contributor of contributors" class="left">
       <app-about-user
       [name]="contributor.name"
+      [title]="contributor.title"
       [description]="contributor.description"
+      [projects]="contributor.projects"
+      [linkedIn]="contributor.linkedIn"
+      [gitHub]="contributor.gitHub"
+      [facebook]="contributor.facebook"
+      [twitter]="contributor.twitter"
       [pic]="contributor.pic">
       </app-about-user>
     </div>
   </div>
+</div>
 </body>

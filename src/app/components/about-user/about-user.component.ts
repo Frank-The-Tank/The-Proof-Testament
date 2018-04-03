@@ -7,15 +7,20 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AboutUserComponent implements OnInit {
 
+  @Input() name: string;
+  @Input() title: string;
+  @Input() description: string;
+  @Input() projects: string[];
+  @Input() linkedIn: string;
+  @Input() gitHub: string;
+  @Input() facebook: string;
+  @Input() twitter: string;
+  @Input() pic: string;
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  @Input()
-  name: string;
-  @Input()
-  description: string;
-  @Input()
-  pic: string;
+
 }

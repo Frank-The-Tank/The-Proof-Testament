@@ -2,11 +2,17 @@
   <div class="aboutContainer row">
     <img class="memberImg col-md-3" src="{{pic}}">
     <div class="col-md-5 aboutInfoContainer">
-      <h1 class="memberName">{{name}}</h1>
+      <h1 class="memberName">{{name}} - {{title}}</h1>
       <hr>
-      <p class="memberDescription">
-        {{description}}
-      </p>
+      <a href="{{linkedIn}}" class="fa fa-linkedin-square fa-3x" style="color:#82ac60" target="_blank"></a>
+      <a href="{{gitHub}}" class="fa fa-github-square fa-3x" style="color:#82ac60" target="_blank"></a>
+      <a href="{{facebook}}" class="fa fa-facebook-square fa-3x" style="color:#82ac60" target="_blank"></a>
+      <a href="{{twitter}}" class="fa fa-twitter-square fa-3x" style="color:#82ac60" target="_blank"></a>
+      <p class="memberDescription">{{description}}</p>
+      <h5>Projects</h5>
+      <ul class="projectsList" *ngFor="let project of projects">
+        <li [innerHTML]="project"></li>
+      </ul>
     </div>
   </div>
 </body>
