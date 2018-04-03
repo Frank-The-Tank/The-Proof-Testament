@@ -1,8 +1,9 @@
-import {Component, Input, Output, EventEmitter, OnInit, ElementRef, ViewChild} from '@angular/core';
+import {
+  Component, Input, Output, EventEmitter, OnInit, ElementRef, ViewChild, AfterContentChecked, AfterContentInit,
+  AfterViewInit, AfterViewChecked
+} from '@angular/core';
 import {Theorem} from '../../model/theorem';
 declare var MathJax: any;
-import { ScrollableDirective } from '../../directives/scrollable.directive'
-import { Observable } from 'rxjs/Observable';
 import { BibleService } from '../bible/bible.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { BibleService } from '../bible/bible.service';
   templateUrl: './theorems-list.component.html',
   styleUrls: ['./theorems-list.component.scss']
 })
-export class TheoremsListComponent implements OnInit {
+export class TheoremsListComponent implements OnInit, AfterContentChecked, AfterViewChecked {
 
   @Input() theorems: Theorem[];
   @Output() clickEvent = new EventEmitter();
@@ -39,8 +40,12 @@ export class TheoremsListComponent implements OnInit {
     }
   }
 
-  ngAfterContentChecked() {
+  ngAfterViewChecked() {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+  }
+
+  ngAfterContentChecked() {
+
   }
 
   insertTheorem(name) {
