@@ -126,7 +126,7 @@ export class AntlrComponent implements SlickListener {
       '\\parindent=0in\n' +
       '\\pagestyle{empty}\n' +
       '\n' +
-      '\\begin{document}\n' +
+      '\\begin{document}\\newcommand{\\unindent}{ \\hspace{-2em}}'+
       '\\begin{tabbing}\n' +
       '99.\\;\\=(m)\\;\\=\\kill\n';
     const theoremsStr = JSON.stringify(theoremInput);
