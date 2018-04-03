@@ -31,7 +31,6 @@ import { AboutUserComponent } from './components/about-user/about-user.component
 import { DocsComponent } from './components/docs/docs.component';
 
 import { QuillModule } from 'ngx-quill';
-import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomplete-box.component';
 import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.component';
 import {SymbolPickerService} from './components/symbol-picker/symbol-picker.service';
 import { EditorFormComponent } from './components/editor-form/editor-form.component';
@@ -53,7 +52,6 @@ import { AntlrComponent } from './components/antlr/antlr.component';
     AboutComponent,
     HomeComponent,
     AboutUserComponent,
-    AutocompleteBoxComponent,
     SymbolPickerComponent,
     EditorFormComponent,
     DocsComponent,
@@ -61,7 +59,6 @@ import { AntlrComponent } from './components/antlr/antlr.component';
   ],
   entryComponents: [ // Components that are added dynamically to page
     EditorComponent,
-    AutocompleteBoxComponent
   ],
   imports: [
     BrowserModule,

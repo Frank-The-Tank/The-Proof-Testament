@@ -241,15 +241,15 @@ export class EditorComponent implements OnInit, OnDestroy {
     let results = '';
     results += compiler.compile(text);
     console.log(results);
-    const pdftex = PDFTeX;
-    pdftex.compile(results).then(function(pdf_dataurl){
-      var answer = confirm("Your PDF is ready. View Now?");
-      if (answer) {
-        window.open(pdf_dataurl, '_blank');
-      }
-    });
-console.log(results);
-    return results;
+//     const pdftex = PDFTeX;
+//     pdftex.compile(results).then(function(pdf_dataurl){
+//       var answer = confirm("Your PDF is ready. View Now?");
+//       if (answer) {
+//         window.open(pdf_dataurl, '_blank');
+//       }
+//     });
+// console.log(results);
+//     return results;
 
   }
 

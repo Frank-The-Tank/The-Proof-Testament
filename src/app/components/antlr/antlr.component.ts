@@ -66,16 +66,11 @@ export class AntlrComponent implements SlickListener {
 
   constructor() {
     this.preamble =
-      '\\documentclass[11pt]{article}\n' +
-      '\\usepackage[pdftex]{graphicx}\n' +
-      '\\usepackage[margin=1in]{geometry}'+
-      '\\usepackage{fancyhdr}\n' +
-      '\\pagestyle{fancy}\n' +
-      '\\usepackage{amsmath,wasysym}\n' +
+      '\\documentclass[11pt]{amsart}\n'+
+      '\\usepackage{times}\n'+
       '\\usepackage{amssymb,latexsym}\n' +
-      '\\usepackage{centernot}'+
-      '\\usepackage{times}\n' +
       '\\usepackage[usenames, dvipsnames]{color}\n' +
+      '\\usepackage{ wasysym }\n' +
       '\n' +
       '\\newcommand{\\lgap}{12pt}                            % Line gap\n' +
       '\\newcommand{\\slgap}{4pt}                            % Small line gap\n' +
