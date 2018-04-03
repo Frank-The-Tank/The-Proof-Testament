@@ -44,6 +44,7 @@ import {SlickLexer} from './SlickLexer';
 import * as theoremInput from './theorems.json';
 
 
+
 @Component({
   selector: 'app-antlr',
   templateUrl: './antlr.component.html',
@@ -70,13 +71,11 @@ export class AntlrComponent implements SlickListener {
       '\\usepackage[margin=1in]{geometry}'+
       '\\usepackage{fancyhdr}\n' +
       '\\pagestyle{fancy}\n' +
-      '\\usepackage{amsmath}\n' +
-      '\\usepackage{amssymb}\n' +
+      '\\usepackage{amsmath,wasysym}\n' +
+      '\\usepackage{amssymb,latexsym}\n' +
       '\\usepackage{centernot}'+
       '\\usepackage{times}\n' +
-      '\\usepackage{amssymb,latexsym}\n' +
       '\\usepackage[usenames, dvipsnames]{color}\n' +
-      '\\usepackage{ wasysym }\n' +
       '\n' +
       '\\newcommand{\\lgap}{12pt}                            % Line gap\n' +
       '\\newcommand{\\slgap}{4pt}                            % Small line gap\n' +

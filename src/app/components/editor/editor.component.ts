@@ -28,7 +28,7 @@ import {EditorService} from './editor.service';
 import {convert} from '../../convert/convert';
 
 import {AntlrComponent} from '../antlr/antlr.component';
-
+import {PDFTeX} from './pdftex/pdftex';
 
 @Component({
   selector: 'app-editor',
@@ -241,6 +241,16 @@ export class EditorComponent implements OnInit, OnDestroy {
     let results = '';
     results += compiler.compile(text);
     console.log(results);
+    const pdftex = PDFTeX;
+    pdftex.compile(results).then(function(pdf_dataurl){
+      var answer = confirm("Your PDF is ready. View Now?");
+      if (answer) {
+        window.open(pdf_dataurl, '_blank');
+      }
+    });
+console.log(results);
+    return results;
+
   }
 
   insertSymbol(selectedVal) {

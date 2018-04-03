@@ -26,9 +26,6 @@ import * as Utils from 'antlr4ts/misc/Utils';
 import { SlickListener } from './SlickListener';
 import { SlickVisitor } from './SlickVisitor';
 
-
-
-
 export class DocContext extends ParserRuleContext {
 	public proof(): ProofContext[];
 	public proof(i: number): ProofContext;
@@ -893,7 +890,6 @@ export class TypedVarContext extends ParserRuleContext {
 		else return visitor.visitChildren(this);
 	}
 }
-
 
 export class SlickParser extends Parser {
 	public static readonly T__0=1;
