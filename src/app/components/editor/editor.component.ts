@@ -63,7 +63,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   lessThanUnicode = '\u003C';
   greaterThanUnicode = '\u003E';
   doesNotEqualUnicode = '\u2262';
-  hintUnicode = '     ' + '\u2329'+ '\u232a';
+  hintUnicode ='\u2329' + '\u232a';
   textSubUnicode = '\u2254';
   genQuantifierUnicode = '\u2605';
   lessThanOrEqUnicode = '\u2264';
@@ -85,7 +85,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   disjunctionUnicode = '\u22c1';
   equivalesUnicode = '\u2261';
   notEquivalesUnicode = '\u2262';
-  doesNotImplyUnicode = '\u21cf'
+  doesNotImplyUnicode = '\u21cf';
   doesNotFollowFromUnicode = '\u21d0';
   universalQuantifierUnicode = '\u2200';
   existentialQuanitiferUnicode = '\u2203';
@@ -96,6 +96,65 @@ export class EditorComponent implements OnInit, OnDestroy {
   realUnicode = '\u211d';
   booleanUnicode = '\u1d539';
 
+  preamble =
+    '\\documentclass[11pt]{amsart}\n' +
+    '\\usepackage{times}\n' +
+    '\\usepackage{amssymb,latexsym}\n' +
+    '\\usepackage[usenames, dvipsnames]{color}\n' +
+    '\\usepackage{ wasysym }\n' +
+    '\n' +
+    '\\newcommand{\\lgap}{12pt}                            % Line gap\n' +
+    '\\newcommand{\\slgap}{4pt}                            % Small line gap\n' +
+    '\\newcommand{\\equivs}{\\ensuremath{\\;\\equiv\\;}}       % Equivales with space\n' +
+    '\\newcommand{\\equivss}{\\ensuremath{\\;\\;\\equiv\\;\\;}}  % Equivales with double space\n' +
+    '\\newcommand{\\nequiv}{\\ensuremath{\\not\\equiv}}       % Inequivalent\n' +
+    '\\newcommand{\\impl}{\\ensuremath{\\Rightarrow}}        % Implies\n' +
+    '\\newcommand{\\nimpl}{\\ensuremath{\\not\\Rightarrow}}   % Does not imply\n' +
+    '\\newcommand{\\foll}{\\ensuremath{\\Leftarrow}}         % Follows from\n' +
+    '\\newcommand{\\nfoll}{\\ensuremath{\\not\\Leftarrow}}    % Does not follow from\n' +
+    '\\newcommand{\\proofbreak}{\\\\ \\\\ \\\\ \\\\}\n' +
+    '\n' +
+    '% These macros are used for quantifications. Thanks to David Gries for sharing\n' +
+    '\\newcommand{\\thedr}{\\rule[-.25ex]{.32mm}{1.75ex}}   % Symbol that separates dummy from range in quantification\n' +
+    '\\newcommand{\\dr}{\\;\\,\\thedr\\,\\;}                    % Symbol that separates dummy from range, with spacing\n' +
+    '\\newcommand{\\rb}{:}                                 % Symbol that separates range from body in quantification\n' +
+    '\\newcommand{\\drrb}{\\;\\thedr\\,{:}\\;}                 % Symbol that separates dummy from body when range is missing\n' +
+    '\\newcommand{\\all}{\\forall}                          % Universal quantification\n' +
+    '\\newcommand{\\ext}{\\exists}                          % Existential quantification\n' +
+    '\\newcommand{\\Gll} {\\langle}                         % Open hint\n' +
+    '\\newcommand{\\Ggg} {\\rangle}                         % Close hint\n' +
+    '\n' +
+    '% Proof\n' +
+    '\\newcommand{\\Step}[1]{\\>{$#1$}}\n' +
+    '%\\newcommand{\\Hint}[1] {\\\\=\\>\\>\\ \\ \\ $\\Gll\\ \\mbox{#1}\\ \\Ggg$ \\\\}   % Single line hint\n' +
+    '\\newcommand{\\Hint}[1] {\\\\=\\>\\>\\ \\ \\ $\\Gll$\\ \\text{#1}\\ $\\Ggg$ \\\\}   % Single line hint\n' +
+    '\\newcommand{\\done}{{\\color{BurntOrange} \\ \\ $//$}}\n' +
+    '\n' +
+    '% Math symbols\n' +
+    '\\newcommand{\\nat}{\\mathbb{N}}\n' +
+    '\\newcommand{\\real}{\\mathbb{R}}\n' +
+    '\\newcommand{\\integer}{\\mathbb{Z}}\n' +
+    '\\newcommand{\\bool}{\\mathbb{B}}\n' +
+    '\n' +
+    '% Single and double quotes\n' +
+    '\\newcommand{\\Lq}{\\mbox{`}}\n' +
+    '\\newcommand{\\Rq}{\\mbox{\'}}\n' +
+    '\\newcommand{\\Lqq}{\\mbox{``}}\n' +
+    '\\newcommand{\\Rqq}{\\mbox{\'\'}}\n' +
+    '\n' +
+    '\n' +
+    '\\oddsidemargin  0.0in\n' +
+    '\\evensidemargin 0.0in\n' +
+    '\\textwidth      6.5in\n' +
+    '\\headheight     0.0in\n' +
+    '\\topmargin      0.0in\n' +
+    '\\textheight=9.0in\n' +
+    '\\parindent=0in\n' +
+    '\\pagestyle{empty}\n' +
+    '\n' +
+    '\\begin{document}\n' +
+    '\\begin{tabbing}\n' +
+    '99.\\;\\=(m)\\;\\=\\kill\n';
 
 
   bindings = {
@@ -178,11 +237,15 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   trial(quill, elementRef) {
-    let text = this.editorInstance.getText();
-    let split = text.split('\n');
-
+    const text = this.editorInstance.getText();
+    const split = text.split('\n');
+    console.log(split);
     const compiler = new AntlrComponent();
-    const results = compiler.compile(split[0]);
+    let results = this.preamble;
+    split.forEach(function (element) {
+      compiler.compile(element);
+    });
+    results += '\\end{tabbing}\\end{document}\n\n';
     console.log(results);
   }
 
@@ -599,7 +662,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2,this.properSubsetOfUnicode);
+        quill.insertText(range.index - 2, this.properSubsetOfUnicode);
       });
 
     // proper superset
@@ -949,7 +1012,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.insertText(range.index - 3, this.notProperSupersetOfUnicode);
       });
 
-    // not a proper superset
+    // not a proper subset
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
@@ -957,7 +1020,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, this.notProperSupersetOfUnicode);
+        quill.insertText(range.index - 3, this.notProperSubsetOfUnicode);
       });
 
     ////////////////////////////////// natural numbers, etc ///////////////////////////////
@@ -1024,7 +1087,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, this.endProofUnicode+this.endProofUnicode);
+        quill.insertText(range.index - 3, this.endProofUnicode + this.endProofUnicode);
       });
   }
 
