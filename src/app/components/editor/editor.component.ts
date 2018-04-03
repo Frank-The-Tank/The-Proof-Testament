@@ -22,7 +22,6 @@ import * as QuillNamespace from 'quill';
 
 const Quill: any = QuillNamespace;
 
-
 import {SymbolPickerService} from '../symbol-picker/symbol-picker.service';
 import {EditorService} from './editor.service';
 
@@ -63,7 +62,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   lessThanUnicode = '\u003C';
   greaterThanUnicode = '\u003E';
   doesNotEqualUnicode = '\u2262';
-  hintUnicode ='<>';
+  hintUnicode ='  '+'\u3008'+'\u3009';
   textSubUnicode = '\u2254';
   genQuantifierUnicode = '\u2605';
   lessThanOrEqUnicode = '\u2264';
@@ -86,7 +85,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   equivalesUnicode = '\u2261';
   notEquivalesUnicode = '\u2262';
   doesNotImplyUnicode = '\u21cf';
-  doesNotFollowFromUnicode = '\u21d0';
+  doesNotFollowFromUnicode = '\u21cd';
   universalQuantifierUnicode = '\u2200';
   existentialQuanitiferUnicode = '\u2203';
   endProofUnicode = '\u2571';
@@ -94,7 +93,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   naturalUnicode = '\u2115';
   rationalUnicode = '\u211a';
   realUnicode = '\u211d';
-  booleanUnicode = '\u1d539';
+  booleanSymbol = '𝔹';
 
   preamble =
     '\\documentclass[11pt]{amsart}\n' +
@@ -241,7 +240,6 @@ export class EditorComponent implements OnInit, OnDestroy {
     const compiler = new AntlrComponent();
     let results = '';
     results += compiler.compile(text);
-    results += '\\end{tabbing}\\end{document}\n\n';
     console.log(results);
   }
 
@@ -255,7 +253,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       case 'equals': {
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.equalsUnicode + '           〈 〉'
+          this.equalsUnicode + this.hintUnicode
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 14);
         this.hideSymbols = true;
@@ -264,7 +262,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       case 'implies': {
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.impliesUnicode + '            〈 〉'
+          this.impliesUnicode + this.hintUnicode
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
@@ -273,7 +271,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       case 'followsFrom': {
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.followsFromUnicode + '            〈 〉'
+          this.followsFromUnicode + this.hintUnicode
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
@@ -282,7 +280,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       case 'lessThan': {
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.lessThanUnicode + '            〈 〉'
+          this.lessThanUnicode + this.hintUnicode
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
@@ -291,7 +289,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       case 'greaterThan': {
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.greaterThanUnicode + '            〈 〉'
+          this.greaterThanUnicode + this.hintUnicode
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
@@ -1072,7 +1070,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.booleanUnicode);
+        quill.insertText(range.index - 2, this.booleanSymbol);
       });
 
     //end of proof

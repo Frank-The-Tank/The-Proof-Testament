@@ -28,8 +28,8 @@ SYMBOL    UNICODE         NAME                        KEYSTROKE
 ⇍         0x21cd          does not follow from        !<<
 ∀         0x2200          universal quantifier        @u
 ∃         0x2203          existential quantifier      @e
-<                 begin hint
->                 end hint
+〈        0x3008          begin hint
+〉        0x3009          end hint
 ╱╱        0x2571 0x2571   end of proof                //
 ℤ         0x2124          integer                     @z
 ℕ         0x2115          natural                     @n

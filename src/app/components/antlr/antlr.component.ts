@@ -1,5 +1,4 @@
-
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ImplicationExprContext} from './SlickParser';
 import {EquivalenceExprContext} from './SlickParser';
 import {AtomContext} from './SlickParser';
@@ -45,7 +44,6 @@ import {SlickLexer} from './SlickLexer';
 import * as theoremInput from './theorems.json';
 
 
-
 @Component({
   selector: 'app-antlr',
   templateUrl: './antlr.component.html',
@@ -67,7 +65,14 @@ export class AntlrComponent implements SlickListener {
 
   constructor() {
     this.preamble =
-      '\\documentclass[11pt]{amsart}\n' +
+      '\\documentclass[11pt]{article}\n' +
+      '\\usepackage[pdftex]{graphicx}\n' +
+      '\\usepackage[margin=1in]{geometry}'+
+      '\\usepackage{fancyhdr}\n' +
+      '\\pagestyle{fancy}\n' +
+      '\\usepackage{amsmath}\n' +
+      '\\usepackage{amssymb}\n' +
+      '\\usepackage{centernot}'+
       '\\usepackage{times}\n' +
       '\\usepackage{amssymb,latexsym}\n' +
       '\\usepackage[usenames, dvipsnames]{color}\n' +
@@ -134,45 +139,47 @@ export class AntlrComponent implements SlickListener {
         '(' + theorem.rule + ') ' + (theorem.name ? '\\textbf{'
         + theorem.name.slice(0, 1).toUpperCase() + theorem.name.slice(1)
         + '}:\\ \\ ' : '\\ \\ ') + theorem.eq;
-      }
+    }
 
-      this.latex = {
-        '⋀': '\\wedge',
-        '⋁': '\\vee',
-        '=': '=',
-        '≡': '\\equiv',
-        '⇒': '\\Rightarrow',
-        '⇐': '\\Leftarrow',
-        '¬': '\\neg',
-        '≢': '\\not \\equiv',
-        '≔': ':='
-      };
+    this.latex = {
+      '⋀': '\\wedge',
+      '⋁': '\\vee',
+      '=': '=',
+      '≡': '\\equiv',
+      '⇒': '\\Rightarrow',
+      '⇐': '\\Leftarrow',
+      '¬': '\\neg',
+      '≢': '\\not \\equiv',
+      '≔': ':='
+    };
 
-      this.output = '';
-      this.stack = [];
+    this.output = '';
+    this.stack = [];
 
   }
+
   public exitDoc = (ctx: DocContext) => {
     this.output += this.preamble;
     while (this.stack.length > 0) {
       this.output += this.stack.shift() + '\n';
     }
-  }
+    this.output += '\\end{tabbing}\\end{document}\n\n';
+  };
 
   public exitProof(ctx: ProofContext) {
     if (ctx.END()) {
       this.stack.push('\\done\n');
     }
-  }
+  };
 
   public exitSep = (ctx: SepContext) => {
     this.stack.push('\\end{tabbing}\n\\newpage\n\\begin{tabbing}\n99.\\;\\=(m)\\;\\=\\kill\n');
-  }
+  };
 
 
   public exitAtom = (ctx: AtomContext) => {
     this.stack.push(ctx.text);
-  }
+  };
 
   public exitJunctionExpr = (ctx: JunctionExprContext) => {
     const rhs = this.stack.pop();
@@ -180,7 +187,7 @@ export class AntlrComponent implements SlickListener {
     // @ts-ignore: Type: 'Terminal Node' Cannot be used as index type
     const x = lhs + ' ' + this.latex[ctx.JOP()] + ' ' + rhs;
     this.stack.push(x);
-  }
+  };
 
   public exitImplicationExpr = (ctx: ImplicationExprContext) => {
     const rhs = this.stack.pop();
@@ -188,7 +195,7 @@ export class AntlrComponent implements SlickListener {
     // @ts-ignore: Type: 'Terminal Node' Cannot be used as index type
     const x = lhs + ' ' + this.latex[ctx.IMPOP()] + ' ' + rhs;
     this.stack.push(x);
-  }
+  };
 
   public exitEquivalenceExpr = (ctx: EquivalenceExprContext) => {
     const rhs = this.stack.pop();
@@ -196,19 +203,19 @@ export class AntlrComponent implements SlickListener {
     // @ts-ignore: Type: 'Terminal Node' Cannot be used as index type
     const x = lhs + ' ' + this.latex[ctx.EQOP] + ' ' + rhs;
     this.stack.push(x);
-  }
+  };
 
   public exitUnaryPrefixExpr = (ctx: UnaryPrefixExprContext) => {
     const rhs = this.stack.pop();
     const x = '\\neg ' + rhs;
     this.stack.push(x);
-  }
+  };
 
   public exitParenExpr = (ctx: ParenExprContext) => {
     const e = this.stack.pop();
     const x = '(' + e + ')';
     this.stack.push(x);
-  }
+  };
 
   public exitLeibnizExpr = (ctx: LeibnizExprContext) => {
     const z = this.stack.pop();
@@ -216,11 +223,11 @@ export class AntlrComponent implements SlickListener {
     const e = this.stack.pop();
     const x = e + '^\{' + v + '\}_\{' + z + '\}';
     this.stack.push(x);
-  }
+  };
 
   public exitStep = (ctx: StepContext) => {
     this.stack.push('\\Step\{' + this.stack.pop() + '\}');
-  }
+  };
 
   public exitHint = (ctx: HintContext) => {
     let token = ctx.COMMENT().text;
@@ -228,17 +235,17 @@ export class AntlrComponent implements SlickListener {
     token = this.removeFm(token);
     const op = this.stack.pop();
     this.stack.push('\\\\$' + this.latex[op] + '$\\>\\>\\ \\ \\ $\\Gll$\\ \\text{' + token + '}\\ $\\Ggg$ \\\\');
-  }
+  };
 
   public exitHintOp = (ctx: HintOpContext) => {
     this.stack.push(ctx.text);
-  }
+  };
 
   public exitTheorem = (ctx: TheoremContext) => {
     // @ts-ignore: Type: 'Terminal Node' Cannot be used as index type
     const theorem = this.bible[ctx.RULENUM()];
     this.stack.push('Prove\\ ' + theorem + '\\\\ \\\\\n');
-  }
+  };
 
   public removeFm(s: string) {
     const ops = Object.keys(this.latex);

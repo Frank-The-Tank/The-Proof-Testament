@@ -47,7 +47,7 @@ setComprehension : '{' typedVar '|' expr ':' expr '}' ;
 functionCall : VAR '.' expr | VAR '(' expr ')' ;
 typedVar : VAR (':' TYPE)? ;
 
-COMMENT : '<' .+? '>' ;
+COMMENT : '〈' .+? '〉' ;
 RULENUM: [1-9][0-9]?'.'[1-9][0-9]?[0-9]?[a-e]?('.'[0-9])? ;
 EVAR : [A-Z] ;
 VAR : [a-z] ;
