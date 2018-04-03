@@ -63,8 +63,68 @@ export class AntlrComponent implements SlickListener {
   private tokens: CommonTokenStream;
   private stack: Array<any>;
   private tree: DocContext;
+  private preamble: string;
 
   constructor() {
+    this.preamble =
+      '\\documentclass[11pt]{amsart}\n' +
+      '\\usepackage{times}\n' +
+      '\\usepackage{amssymb,latexsym}\n' +
+      '\\usepackage[usenames, dvipsnames]{color}\n' +
+      '\\usepackage{ wasysym }\n' +
+      '\n' +
+      '\\newcommand{\\lgap}{12pt}                            % Line gap\n' +
+      '\\newcommand{\\slgap}{4pt}                            % Small line gap\n' +
+      '\\newcommand{\\equivs}{\\ensuremath{\\;\\equiv\\;}}       % Equivales with space\n' +
+      '\\newcommand{\\equivss}{\\ensuremath{\\;\\;\\equiv\\;\\;}}  % Equivales with double space\n' +
+      '\\newcommand{\\nequiv}{\\ensuremath{\\not\\equiv}}       % Inequivalent\n' +
+      '\\newcommand{\\impl}{\\ensuremath{\\Rightarrow}}        % Implies\n' +
+      '\\newcommand{\\nimpl}{\\ensuremath{\\not\\Rightarrow}}   % Does not imply\n' +
+      '\\newcommand{\\foll}{\\ensuremath{\\Leftarrow}}         % Follows from\n' +
+      '\\newcommand{\\nfoll}{\\ensuremath{\\not\\Leftarrow}}    % Does not follow from\n' +
+      '\\newcommand{\\proofbreak}{\\\\ \\\\ \\\\ \\\\}\n' +
+      '\n' +
+      '% These macros are used for quantifications. Thanks to David Gries for sharing\n' +
+      '\\newcommand{\\thedr}{\\rule[-.25ex]{.32mm}{1.75ex}}   % Symbol that separates dummy from range in quantification\n' +
+      '\\newcommand{\\dr}{\\;\\,\\thedr\\,\\;}                    % Symbol that separates dummy from range, with spacing\n' +
+      '\\newcommand{\\rb}{:}                                 % Symbol that separates range from body in quantification\n' +
+      '\\newcommand{\\drrb}{\\;\\thedr\\,{:}\\;}                 % Symbol that separates dummy from body when range is missing\n' +
+      '\\newcommand{\\all}{\\forall}                          % Universal quantification\n' +
+      '\\newcommand{\\ext}{\\exists}                          % Existential quantification\n' +
+      '\\newcommand{\\Gll} {\\langle}                         % Open hint\n' +
+      '\\newcommand{\\Ggg} {\\rangle}                         % Close hint\n' +
+      '\n' +
+      '% Proof\n' +
+      '\\newcommand{\\Step}[1]{\\>{$#1$}}\n' +
+      '%\\newcommand{\\Hint}[1] {\\\\=\\>\\>\\ \\ \\ $\\Gll\\ \\mbox{#1}\\ \\Ggg$ \\\\}   % Single line hint\n' +
+      '\\newcommand{\\Hint}[1] {\\\\=\\>\\>\\ \\ \\ $\\Gll$\\ \\text{#1}\\ $\\Ggg$ \\\\}   % Single line hint\n' +
+      '\\newcommand{\\done}{{\\color{BurntOrange} \\ \\ $//$}}\n' +
+      '\n' +
+      '% Math symbols\n' +
+      '\\newcommand{\\nat}{\\mathbb{N}}\n' +
+      '\\newcommand{\\real}{\\mathbb{R}}\n' +
+      '\\newcommand{\\integer}{\\mathbb{Z}}\n' +
+      '\\newcommand{\\bool}{\\mathbb{B}}\n' +
+      '\n' +
+      '% Single and double quotes\n' +
+      '\\newcommand{\\Lq}{\\mbox{`}}\n' +
+      '\\newcommand{\\Rq}{\\mbox{\'}}\n' +
+      '\\newcommand{\\Lqq}{\\mbox{``}}\n' +
+      '\\newcommand{\\Rqq}{\\mbox{\'\'}}\n' +
+      '\n' +
+      '\n' +
+      '\\oddsidemargin  0.0in\n' +
+      '\\evensidemargin 0.0in\n' +
+      '\\textwidth      6.5in\n' +
+      '\\headheight     0.0in\n' +
+      '\\topmargin      0.0in\n' +
+      '\\textheight=9.0in\n' +
+      '\\parindent=0in\n' +
+      '\\pagestyle{empty}\n' +
+      '\n' +
+      '\\begin{document}\n' +
+      '\\begin{tabbing}\n' +
+      '99.\\;\\=(m)\\;\\=\\kill\n';
     const theoremsStr = JSON.stringify(theoremInput);
     this.bible = {};
     const theorems = JSON.parse(theoremsStr).theorems;
@@ -93,6 +153,7 @@ export class AntlrComponent implements SlickListener {
 
   }
   public exitDoc = (ctx: DocContext) => {
+    this.output += this.preamble;
     while (this.stack.length > 0) {
       this.output += this.stack.shift() + '\n';
     }

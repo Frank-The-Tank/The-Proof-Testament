@@ -63,7 +63,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   lessThanUnicode = '\u003C';
   greaterThanUnicode = '\u003E';
   doesNotEqualUnicode = '\u2262';
-  hintUnicode ='\u2329' + '\u232a';
+  hintUnicode ='<>';
   textSubUnicode = '\u2254';
   genQuantifierUnicode = '\u2605';
   lessThanOrEqUnicode = '\u2264';
@@ -238,13 +238,9 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   trial(quill, elementRef) {
     const text = this.editorInstance.getText();
-    const split = text.split('\n');
-    console.log(split);
     const compiler = new AntlrComponent();
-    let results = this.preamble;
-    split.forEach(function (element) {
-      compiler.compile(element);
-    });
+    let results = '';
+    results += compiler.compile(text);
     results += '\\end{tabbing}\\end{document}\n\n';
     console.log(results);
   }
