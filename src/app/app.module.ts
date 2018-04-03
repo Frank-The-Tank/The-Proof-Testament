@@ -11,6 +11,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
+
 import { FooterComponent } from './components/footer/footer.component';
 
 import { environment } from './../environments/environment';
@@ -32,7 +33,6 @@ import { AboutUserComponent } from './components/about-user/about-user.component
 import { DocsComponent } from './components/docs/docs.component';
 
 import { QuillModule } from 'ngx-quill';
-import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomplete-box.component';
 import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.component';
 import {SymbolPickerService} from './components/symbol-picker/symbol-picker.service';
 import { EditorFormComponent } from './components/editor-form/editor-form.component';
@@ -53,14 +53,12 @@ import {EditorService} from './components/editor/editor.service';
     AboutComponent,
     HomeComponent,
     AboutUserComponent,
-    AutocompleteBoxComponent,
     SymbolPickerComponent,
     EditorFormComponent,
     DocsComponent
   ],
   entryComponents: [ // Components that are added dynamically to page
     EditorComponent,
-    AutocompleteBoxComponent
   ],
   imports: [
     BrowserModule,

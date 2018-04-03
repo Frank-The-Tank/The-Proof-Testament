@@ -1,13 +1,9 @@
 Prove 3.30
 
   p ⋁ false
-=    〈 (3.15) ¬p ≡ p ≡ false 〉
   p ⋁ (¬p ≡ p)
-=    〈 Distributivity of ⋁ over ≡ 〉
   p ⋁ ¬p ≡ p ⋁ p
-=    〈 Excluded middle; Idempotency of ⋁ 〉
   true ≡ p
-=    〈 Identity of ≡ 〉
   p  ╱╱
 
 ------------------------------
@@ -28,7 +24,7 @@ Prove 3.31
 
 Prove 3.32
 
-  p ⋁ q ≡ p ⋁ ¬q
+  p ⋁ q ≢ p ⋁ ¬q
 =    〈 Distributivity of ⋁ over ≡ 〉
   p ⋁ (q ≡ ¬q)
 =    〈 (3.15) p ≡ ¬p ≡ false 〉

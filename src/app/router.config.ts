@@ -3,6 +3,7 @@ import {HomeComponent} from './components/home/home.component';
 import {AboutComponent} from './components/about/about.component';
 import {DocsComponent} from './components/docs/docs.component';
 
+
 export const routerConfig: Route[] = [
   {
     path: 'home',
@@ -14,10 +15,6 @@ export const routerConfig: Route[] = [
   },
   {
     path: 'docs',
-    component: DocsComponent
-  },
-  {
-    path: 'documentation',
     component: DocsComponent
   },
   {

@@ -2,13 +2,14 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "out",
+    "outDir": "./",
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "preserveConstEnums": true,
     "target": "es6",
     "rootDir": ".",
     "typeRoots": [
@@ -16,7 +17,6 @@
     ],
     "lib": [
       "es2017",
-      "es6",
       "dom"
     ]
   }, "exclude":["node_modules",".vscode-test"]

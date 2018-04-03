@@ -25,18 +25,18 @@ import { PDFTeX } from './pdftex/pdftex'
 // convert(input);
 
 export function convert(string) {
-	
-	// Replace strings	
+
+	// Replace strings
 	var resolvedString = string.replace(/<strong>.*:\s?(.*)<\/strong>/gm, "@$1");
-	
+
 	resolvedString = resolvedString.replace(/<strong>/gm, "");
 	resolvedString = resolvedString.replace(/<\/strong>/gm, "");
-	
+
 	// Final document
 	var doc = "";
 
 	// Document settings
-	let docSettings = '\\documentclass[12pt]{article}\n\\usepackage[margin=1in]{geometry}\n\\usepackage{fancyhdr}\n\\pagestyle{fancy}\n\\usepackage{amsmath}\n\\usepackage{amssymb}';
+	let docSettings = '\\documentclass[12pt]{article}\n\\usepackage[margin=1in]{geometry}\n\\usepackage{fancyhdr}\n\\pagestyle{fancy}\n\\usepackage{amsmath}\n\\usepackage{amssymb}\n\\usepackage{centernot}';
 
 	// \n\\usepackage{centernot}\n\\usepackage{setspace}\n\\doublespacing
 
@@ -52,7 +52,7 @@ export function convert(string) {
 	let rhead = ('\\rhead{' + rawHeaders[2] + '}').replace('@', '');
 
 	let header = lhead + '\n' + chead + '\n' + rhead;
-	
+
 	// Content
 	let content = resolvedString.replace(/@.*.$/gm, "").replace(/\n{2,}/gm, "\n");
 
@@ -65,7 +65,7 @@ export function convert(string) {
 	// Format indentation
 	content = content.replace(/\n(<|>|≤|≥|\=\&gt\;|=|⇒|⇐)/gm, "\\newline$1");
 	content = content.replace(/(〉)\n/gm, "$1\\newline\\indent ");
-	
+
 	// Format symbols
 	var symbolMap: { [key: string]: string } = {
 		"〈"	: "\\langle",
@@ -126,13 +126,15 @@ export function convert(string) {
 		"★": "\\star",
 		"¬": "\\neg"
 	};
-		
+
 	for (let symbol in symbolMap) {
 		content = content.replace(RegExp(symbol, "g"), "$" + symbolMap[symbol] + "$");
 	}
-		
+
 	// Newline at end of exercises
 	content = content.replace(/#$/gm, "\\\\ \n");
+
+	content = content + "$\\centernot\\cap$"
 
 	// Assemble the document
 	doc = docSettings + '\n\n' + header + '\n\n\\begin{document}\\newcommand{\\unindent}{ \\hspace{-2em} }' + '\n\n' + content + '\n\n\\end{document}';
