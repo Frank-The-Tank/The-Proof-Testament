@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -32,11 +32,11 @@ import { AboutUserComponent } from './components/about-user/about-user.component
 import { DocsComponent } from './components/docs/docs.component';
 
 import { QuillModule } from 'ngx-quill';
-import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomplete-box.component';
 import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.component';
 import {SymbolPickerService} from './components/symbol-picker/symbol-picker.service';
 import { EditorFormComponent } from './components/editor-form/editor-form.component';
 import {EditorService} from './components/editor/editor.service';
+import { AntlrComponent } from './components/antlr/antlr.component';
 
 
 
@@ -53,14 +53,13 @@ import {EditorService} from './components/editor/editor.service';
     AboutComponent,
     HomeComponent,
     AboutUserComponent,
-    AutocompleteBoxComponent,
     SymbolPickerComponent,
     EditorFormComponent,
-    DocsComponent
+    DocsComponent,
+    AntlrComponent
   ],
   entryComponents: [ // Components that are added dynamically to page
     EditorComponent,
-    AutocompleteBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +74,6 @@ import {EditorService} from './components/editor/editor.service';
     AngularFontAwesomeModule
   ],
   providers: [BibleService, SymbolPickerService, EditorService],
-  bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
-    EditorComponent, HomeComponent, AboutComponent, AboutUserComponent, DocsComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
