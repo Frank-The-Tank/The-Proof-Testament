@@ -75,7 +75,6 @@ import { AntlrComponent } from './components/antlr/antlr.component';
     RouterModule.forRoot(routerConfig)
   ],
   providers: [BibleService, SymbolPickerService, EditorService],
-  bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
-    EditorComponent, HomeComponent, AboutComponent, AboutUserComponent, DocsComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
