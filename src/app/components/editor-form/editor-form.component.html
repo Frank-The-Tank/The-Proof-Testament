@@ -16,7 +16,10 @@
           <option style="display:none" value=""></option>
           <option value="custom">[Custom]</option>
           <option *ngFor="let theorem of (theorems$ | async)" [ngValue]="'(' + theorem.rule + ') ' + (theorem.name || theorem.eq)">
-            {{theorem.rule}}: {{theorem.name || theorem.eq}}
+            {{theorem.rule}}:
+            <span *ngIf="theorem.name">{{theorem.name}}</span>
+            <span *ngIf="!theorem.name && theorem.eq.length < 50">{{theorem.eq}}</span>
+            <span *ngIf="!theorem.name && theorem.eq.length > 50">(Equation to long to display)</span>
           </option>
         </select>
         <input [hidden]="!customProofSelected" type="text" class="form-control">
