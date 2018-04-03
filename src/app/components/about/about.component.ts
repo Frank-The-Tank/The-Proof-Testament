@@ -101,6 +101,28 @@ export class AboutComponent implements OnInit {
       facebook: '#',
       twitter: '#',
       pic: "../../../assets/images/josh.jpg"
+    },
+    {
+      name: "Dr. Stan Warford",
+      title: "The biggest sport's fan",
+      description: "Slick",
+      projects: "",
+      linkedIn: '#',
+      gitHub: '#',
+      facebook: '#',
+      twitter: '#',
+      pic: ""
+    },
+    {
+      name: "Professor Brad Cupp",
+      title: "Capstone Advisor and Teacher",
+      description: "",
+      projects: ['The Proof Testament: LINK', 'The Second Proof Testament: LINK'],
+      linkedIn: '#',
+      gitHub: '#',
+      facebook: '#',
+      twitter: '#',
+      pic: ""
     }
   ];
 
