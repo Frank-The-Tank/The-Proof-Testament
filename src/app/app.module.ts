@@ -11,6 +11,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
+
 import { FooterComponent } from './components/footer/footer.component';
 
 import { environment } from './../environments/environment';
