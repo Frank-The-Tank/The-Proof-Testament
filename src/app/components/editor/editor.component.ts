@@ -161,7 +161,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       key: 13,
       handler: () => {
         this.hideSymbols = false;
-        this.editorInstance.insertText(this.editorInstance.getSelection(), '\n');
+        this.editorInstance.insertText(this.editorInstance.getSelection(), '\n     ');
         this.previousEditorSelection = this.editorInstance.getSelection();
       }
     }
@@ -262,17 +262,17 @@ export class EditorComponent implements OnInit, OnDestroy {
     switch (selectedVal) {
       case 'equals': {
         this.editorInstance.insertText(
-          this.previousEditorSelection,
-          this.equalsUnicode + this.hintUnicode
+          this.previousEditorSelection.index - 5,
+          this.equalsUnicode + '           〈  〉'
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 14);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
         break;
       }
       case 'implies': {
         this.editorInstance.insertText(
-          this.previousEditorSelection,
-          this.impliesUnicode + this.hintUnicode
+          this.previousEditorSelection.index -5,
+          this.impliesUnicode + '            〈  〉'
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
@@ -280,8 +280,8 @@ export class EditorComponent implements OnInit, OnDestroy {
       }
       case 'followsFrom': {
         this.editorInstance.insertText(
-          this.previousEditorSelection,
-          this.followsFromUnicode + this.hintUnicode
+          this.previousEditorSelection.index - 5,
+          this.followsFromUnicode + '            〈  〉'
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
@@ -289,8 +289,8 @@ export class EditorComponent implements OnInit, OnDestroy {
       }
       case 'lessThan': {
         this.editorInstance.insertText(
-          this.previousEditorSelection,
-          this.lessThanUnicode + this.hintUnicode
+          this.previousEditorSelection.index - 5,
+          this.lessThanUnicode + '            〈  〉'
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
@@ -298,8 +298,8 @@ export class EditorComponent implements OnInit, OnDestroy {
       }
       case 'greaterThan': {
         this.editorInstance.insertText(
-          this.previousEditorSelection,
-          this.greaterThanUnicode + this.hintUnicode
+          this.previousEditorSelection.index - 5,
+          this.greaterThanUnicode + '            〈  〉'
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
@@ -323,90 +323,95 @@ export class EditorComponent implements OnInit, OnDestroy {
     });
 
     // implies
-    quill.keyboard.addBinding({key: 'm'}, {
+    quill.keyboard.addBinding({key: '1'}, {
+        empty: false,
         collapsed: true,
-        prefix: /^;i$/,
-        offset: 2,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;i$/
+        // offset: 2,
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.impliesUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+        quill.insertText(range.index - 7, '⇒            〈  〉');
+        quill.setSelection(range.index + 11);
       });
 
     // follows from
-    quill.keyboard.addBinding({key: 'f'}, {
+    quill.keyboard.addBinding({key: '1'}, {
+        empty: false,
         collapsed: true,
-        prefix: /^;f$/,
-        offset: 2,
+        prefix: /[≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;f$/,
+        // offset: 2,
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.followsFromUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+        quill.insertText(range.index - 7, '⇐            〈  〉');
+        quill.setSelection(range.index + 11);
       });
 
     // equals
-    quill.keyboard.addBinding({key: 'q'}, {
+    quill.keyboard.addBinding({key: '1'}, {
+        empty: false,
         collapsed: true,
-        prefix: /^;e$/,
-        offset: 2,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;e$/,
+        // offset: 2,
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.equalsUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+        quill.insertText(range.index - 7, '=            〈  〉');
+        quill.setSelection(range.index + 13);
       });
 
     // less than
-    quill.keyboard.addBinding({key: 't'}, {
+    quill.keyboard.addBinding({key: '1'}, {
+        empty: false,
         collapsed: true,
-        prefix: /^;l$/,
-        offset: 2,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;l$/,
+        // offset: 2,
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.lessThanUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+        quill.insertText(range.index - 7, '<            〈  〉');
+        quill.setSelection(range.index + 13);
       });
 
     // less than or equal to
-    quill.keyboard.addBinding({key: 'e'}, {
+    quill.keyboard.addBinding({key: '2'}, {
+        empty: false,
         collapsed: true,
-        prefix: /^;l$/,
-        offset: 2,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;l$/,
+        // offset: 2,
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.lessThanOrEqUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+        quill.insertText(range.index - 7, '≤            〈  〉');
+        quill.setSelection(range.index + 13);
       });
 
 
     // greater than
-    quill.keyboard.addBinding({key: 't'}, {
-
+    quill.keyboard.addBinding({key: '1'}, {
+        empty: false,
         collapsed: true,
-        prefix: /^;g$/,
-        offset: 2,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;g$/,
+        // offset: 2,
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.greaterThanUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+        quill.insertText(range.index - 7, '>            〈  〉');
+        quill.setSelection(range.index + 13);
       });
 
     // greater than or equal to
-    quill.keyboard.addBinding({key: 'e'}, {
-
+    quill.keyboard.addBinding({key: '3'}, {
+        empty: false,
         collapsed: true,
-        prefix: /^;g$/,
-        offset: 2,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;g$/,
+        // offset: 2,
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.greaterThanorEqUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+        quill.insertText(range.index - 7, '≥            〈  〉');
+        quill.setSelection(range.index + 13);
       });
 
     // ///////////////////////////////////////////inline symbols///////////////////////////////////////////
