@@ -31,6 +31,7 @@ import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutUserComponent } from './components/about-user/about-user.component';
 import { DocsComponent } from './components/docs/docs.component';
+import { AntlrComponent } from './components/antlr/antlr.component';
 
 import { QuillModule } from 'ngx-quill';
 import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.component';
@@ -55,7 +56,8 @@ import {EditorService} from './components/editor/editor.service';
     AboutUserComponent,
     SymbolPickerComponent,
     EditorFormComponent,
-    DocsComponent
+    DocsComponent,
+    AntlrComponent
   ],
   entryComponents: [ // Components that are added dynamically to page
     EditorComponent,
