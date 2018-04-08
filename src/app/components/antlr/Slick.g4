@@ -2,17 +2,45 @@ grammar Slick;
 
 doc : proof (sep proof)* ;
 
-proof : header? step (hint step)* END? ;
+proof : standardProof | caseProof ;
+
+standardProof : header? startExpo? step (hint step)* END? endExpo? ;
+
+startExpo : EXPO ;
+
+endExpo : EXPO ;
 
 sep : '-' '-' '-' '-'+ ;
 
 header : theorem method? ;
 
-theorem : 'Prove' RULENUM ;
+theorem : PROVE RULENUM     # BibleTheorem
+  | PROVE expr              # AdHocTheorem
+;
 
-method : 'Method' methodName ;
+method : 'by' methodName ;
 
-methodName : 'A' | 'B' | 'C' | 'D' ;
+methodName : 'showing' 'equivalence' 'to' 'previous' 'theorem'    # PreviousTheoremMethod
+  | 'showing' 'the' 'LHS' 'is' 'equivalent' 'to' 'the' 'RHS'      # LeftEquivalesRightMethod
+  | 'showing' 'the' 'RHS' 'is' 'equivalent' 'to' 'the' 'LHS'      # RightEquivalesLeftMethod
+  | 'showing' 'the' 'LHS' 'implies' 'the' 'RHS'                   # LeftImpliesRightMethod
+  | 'showing' 'the' 'RHS' 'follows' 'from' 'the' 'LHS'            # RightFollowsLeftMethod
+  | 'assuming' 'the' 'conjuncts' 'of' 'the' 'antecedent'          # AssumingConjunctsMethod
+;
+
+caseProof: theorem 'by' 'case' 'analysis' 'on' VAR caseList caseProof1 caseProof2 ;
+
+caseVariable : 'by' 'case' 'anlaysis' 'on' VAR ;
+
+caseList : 'Must' 'prove' case1 case2 ;
+
+case1 : '(1)' expr ;
+
+case2 : '(2)' expr ;
+
+caseProof1 : 'Proof' 'of' '(1)' standardProof ;
+
+caseProof2 : 'Proof' 'of' '(2)' standardProof ;
 
 step: expr;
 
@@ -48,6 +76,8 @@ functionCall : VAR '.' expr | VAR '(' expr ')' ;
 typedVar : VAR (':' TYPE)? ;
 
 COMMENT : '〈' .+? '〉' ;
+EXPO : '/*' .+? '*/' ;
+PROVE : 'Prove' | 'Reprove' ;
 RULENUM: [1-9][0-9]?'.'[1-9][0-9]?[0-9]?[a-e]?('.'[0-9])? ;
 EVAR : [A-Z] ;
 VAR : [a-z] ;

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -9,7 +9,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import { HttpClientModule } from '@angular/common/http';
+
 
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -30,14 +32,13 @@ import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutUserComponent } from './components/about-user/about-user.component';
 import { DocsComponent } from './components/docs/docs.component';
+import { AntlrComponent } from './components/antlr/antlr.component';
 
 import { QuillModule } from 'ngx-quill';
-import { AutocompleteBoxComponent } from './components/autocomplete-box/autocomplete-box.component';
 import { SymbolPickerComponent } from './components/symbol-picker/symbol-picker.component';
 import {SymbolPickerService} from './components/symbol-picker/symbol-picker.service';
 import { EditorFormComponent } from './components/editor-form/editor-form.component';
 import {EditorService} from './components/editor/editor.service';
-import { AntlrComponent } from './components/antlr/antlr.component';
 
 
 
@@ -54,7 +55,6 @@ import { AntlrComponent } from './components/antlr/antlr.component';
     AboutComponent,
     HomeComponent,
     AboutUserComponent,
-    AutocompleteBoxComponent,
     SymbolPickerComponent,
     EditorFormComponent,
     DocsComponent,
@@ -62,7 +62,6 @@ import { AntlrComponent } from './components/antlr/antlr.component';
   ],
   entryComponents: [ // Components that are added dynamically to page
     EditorComponent,
-    AutocompleteBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +73,8 @@ import { AntlrComponent } from './components/antlr/antlr.component';
     NgbModule.forRoot(),
     ReactiveFormsModule,
     QuillModule,
-    RouterModule.forRoot(routerConfig)
+    RouterModule.forRoot(routerConfig),
+    AngularFontAwesomeModule
   ],
   providers: [BibleService, SymbolPickerService, EditorService],
   bootstrap: [AppComponent]

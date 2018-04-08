@@ -18,13 +18,31 @@ import { TSExprContext } from './SlickParser';
 import { JunctionExprContext } from './SlickParser';
 import { QuantExprContext } from './SlickParser';
 import { UnaryPrefixExprContext } from './SlickParser';
+import { PreviousTheoremMethodContext } from './SlickParser';
+import { RightEquivalesLeftMethodContext } from './SlickParser';
+import { RightFollowsLeftMethodContext } from './SlickParser';
+import { LeftEquivalesRightMethodContext } from './SlickParser';
+import { AssumingConjunctsMethodContext } from './SlickParser';
+import { LeftImpliesRightMethodContext } from './SlickParser';
+import { AdHocTheoremContext } from './SlickParser';
+import { BibleTheoremContext } from './SlickParser';
 import { DocContext } from './SlickParser';
 import { ProofContext } from './SlickParser';
+import { StandardProofContext } from './SlickParser';
+import { StartExpoContext } from './SlickParser';
+import { EndExpoContext } from './SlickParser';
 import { SepContext } from './SlickParser';
 import { HeaderContext } from './SlickParser';
 import { TheoremContext } from './SlickParser';
 import { MethodContext } from './SlickParser';
 import { MethodNameContext } from './SlickParser';
+import { CaseProofContext } from './SlickParser';
+import { CaseVariableContext } from './SlickParser';
+import { CaseListContext } from './SlickParser';
+import { Case1Context } from './SlickParser';
+import { Case2Context } from './SlickParser';
+import { CaseProof1Context } from './SlickParser';
+import { CaseProof2Context } from './SlickParser';
 import { StepContext } from './SlickParser';
 import { ExprContext } from './SlickParser';
 import { HintContext } from './SlickParser';
@@ -167,6 +185,70 @@ export interface SlickVisitor<Result> extends ParseTreeVisitor<Result> {
 	visitUnaryPrefixExpr?: (ctx: UnaryPrefixExprContext) => Result;
 
 	/**
+	 * Visit a parse tree produced by the `PreviousTheoremMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitPreviousTheoremMethod?: (ctx: PreviousTheoremMethodContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `RightEquivalesLeftMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitRightEquivalesLeftMethod?: (ctx: RightEquivalesLeftMethodContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `RightFollowsLeftMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitRightFollowsLeftMethod?: (ctx: RightFollowsLeftMethodContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `LeftEquivalesRightMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitLeftEquivalesRightMethod?: (ctx: LeftEquivalesRightMethodContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `AssumingConjunctsMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitAssumingConjunctsMethod?: (ctx: AssumingConjunctsMethodContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `LeftImpliesRightMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitLeftImpliesRightMethod?: (ctx: LeftImpliesRightMethodContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `AdHocTheorem`
+	 * labeled alternative in `SlickParser.theorem`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitAdHocTheorem?: (ctx: AdHocTheoremContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `BibleTheorem`
+	 * labeled alternative in `SlickParser.theorem`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitBibleTheorem?: (ctx: BibleTheoremContext) => Result;
+
+	/**
 	 * Visit a parse tree produced by `SlickParser.doc`.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -179,6 +261,27 @@ export interface SlickVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitProof?: (ctx: ProofContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `SlickParser.standardProof`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitStandardProof?: (ctx: StandardProofContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `SlickParser.startExpo`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitStartExpo?: (ctx: StartExpoContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `SlickParser.endExpo`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitEndExpo?: (ctx: EndExpoContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by `SlickParser.sep`.
@@ -214,6 +317,55 @@ export interface SlickVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitMethodName?: (ctx: MethodNameContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `SlickParser.caseProof`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitCaseProof?: (ctx: CaseProofContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `SlickParser.caseVariable`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitCaseVariable?: (ctx: CaseVariableContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `SlickParser.caseList`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitCaseList?: (ctx: CaseListContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `SlickParser.case1`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitCase1?: (ctx: Case1Context) => Result;
+
+	/**
+	 * Visit a parse tree produced by `SlickParser.case2`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitCase2?: (ctx: Case2Context) => Result;
+
+	/**
+	 * Visit a parse tree produced by `SlickParser.caseProof1`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitCaseProof1?: (ctx: CaseProof1Context) => Result;
+
+	/**
+	 * Visit a parse tree produced by `SlickParser.caseProof2`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitCaseProof2?: (ctx: CaseProof2Context) => Result;
 
 	/**
 	 * Visit a parse tree produced by `SlickParser.step`.

@@ -18,13 +18,31 @@ import { TSExprContext } from './SlickParser';
 import { JunctionExprContext } from './SlickParser';
 import { QuantExprContext } from './SlickParser';
 import { UnaryPrefixExprContext } from './SlickParser';
+import { PreviousTheoremMethodContext } from './SlickParser';
+import { RightEquivalesLeftMethodContext } from './SlickParser';
+import { RightFollowsLeftMethodContext } from './SlickParser';
+import { LeftEquivalesRightMethodContext } from './SlickParser';
+import { AssumingConjunctsMethodContext } from './SlickParser';
+import { LeftImpliesRightMethodContext } from './SlickParser';
+import { AdHocTheoremContext } from './SlickParser';
+import { BibleTheoremContext } from './SlickParser';
 import { DocContext } from './SlickParser';
 import { ProofContext } from './SlickParser';
+import { StandardProofContext } from './SlickParser';
+import { StartExpoContext } from './SlickParser';
+import { EndExpoContext } from './SlickParser';
 import { SepContext } from './SlickParser';
 import { HeaderContext } from './SlickParser';
 import { TheoremContext } from './SlickParser';
 import { MethodContext } from './SlickParser';
 import { MethodNameContext } from './SlickParser';
+import { CaseProofContext } from './SlickParser';
+import { CaseVariableContext } from './SlickParser';
+import { CaseListContext } from './SlickParser';
+import { Case1Context } from './SlickParser';
+import { Case2Context } from './SlickParser';
+import { CaseProof1Context } from './SlickParser';
+import { CaseProof2Context } from './SlickParser';
 import { StepContext } from './SlickParser';
 import { ExprContext } from './SlickParser';
 import { HintContext } from './SlickParser';
@@ -239,6 +257,110 @@ export interface SlickListener extends ParseTreeListener {
 	exitUnaryPrefixExpr?: (ctx: UnaryPrefixExprContext) => void;
 
 	/**
+	 * Enter a parse tree produced by the `PreviousTheoremMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	enterPreviousTheoremMethod?: (ctx: PreviousTheoremMethodContext) => void;
+	/**
+	 * Exit a parse tree produced by the `PreviousTheoremMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	exitPreviousTheoremMethod?: (ctx: PreviousTheoremMethodContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `RightEquivalesLeftMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	enterRightEquivalesLeftMethod?: (ctx: RightEquivalesLeftMethodContext) => void;
+	/**
+	 * Exit a parse tree produced by the `RightEquivalesLeftMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	exitRightEquivalesLeftMethod?: (ctx: RightEquivalesLeftMethodContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `RightFollowsLeftMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	enterRightFollowsLeftMethod?: (ctx: RightFollowsLeftMethodContext) => void;
+	/**
+	 * Exit a parse tree produced by the `RightFollowsLeftMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	exitRightFollowsLeftMethod?: (ctx: RightFollowsLeftMethodContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `LeftEquivalesRightMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	enterLeftEquivalesRightMethod?: (ctx: LeftEquivalesRightMethodContext) => void;
+	/**
+	 * Exit a parse tree produced by the `LeftEquivalesRightMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	exitLeftEquivalesRightMethod?: (ctx: LeftEquivalesRightMethodContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `AssumingConjunctsMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	enterAssumingConjunctsMethod?: (ctx: AssumingConjunctsMethodContext) => void;
+	/**
+	 * Exit a parse tree produced by the `AssumingConjunctsMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	exitAssumingConjunctsMethod?: (ctx: AssumingConjunctsMethodContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `LeftImpliesRightMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	enterLeftImpliesRightMethod?: (ctx: LeftImpliesRightMethodContext) => void;
+	/**
+	 * Exit a parse tree produced by the `LeftImpliesRightMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	exitLeftImpliesRightMethod?: (ctx: LeftImpliesRightMethodContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `AdHocTheorem`
+	 * labeled alternative in `SlickParser.theorem`.
+	 * @param ctx the parse tree
+	 */
+	enterAdHocTheorem?: (ctx: AdHocTheoremContext) => void;
+	/**
+	 * Exit a parse tree produced by the `AdHocTheorem`
+	 * labeled alternative in `SlickParser.theorem`.
+	 * @param ctx the parse tree
+	 */
+	exitAdHocTheorem?: (ctx: AdHocTheoremContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `BibleTheorem`
+	 * labeled alternative in `SlickParser.theorem`.
+	 * @param ctx the parse tree
+	 */
+	enterBibleTheorem?: (ctx: BibleTheoremContext) => void;
+	/**
+	 * Exit a parse tree produced by the `BibleTheorem`
+	 * labeled alternative in `SlickParser.theorem`.
+	 * @param ctx the parse tree
+	 */
+	exitBibleTheorem?: (ctx: BibleTheoremContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `SlickParser.doc`.
 	 * @param ctx the parse tree
 	 */
@@ -259,6 +381,39 @@ export interface SlickListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitProof?: (ctx: ProofContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `SlickParser.standardProof`.
+	 * @param ctx the parse tree
+	 */
+	enterStandardProof?: (ctx: StandardProofContext) => void;
+	/**
+	 * Exit a parse tree produced by `SlickParser.standardProof`.
+	 * @param ctx the parse tree
+	 */
+	exitStandardProof?: (ctx: StandardProofContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `SlickParser.startExpo`.
+	 * @param ctx the parse tree
+	 */
+	enterStartExpo?: (ctx: StartExpoContext) => void;
+	/**
+	 * Exit a parse tree produced by `SlickParser.startExpo`.
+	 * @param ctx the parse tree
+	 */
+	exitStartExpo?: (ctx: StartExpoContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `SlickParser.endExpo`.
+	 * @param ctx the parse tree
+	 */
+	enterEndExpo?: (ctx: EndExpoContext) => void;
+	/**
+	 * Exit a parse tree produced by `SlickParser.endExpo`.
+	 * @param ctx the parse tree
+	 */
+	exitEndExpo?: (ctx: EndExpoContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `SlickParser.sep`.
@@ -314,6 +469,83 @@ export interface SlickListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitMethodName?: (ctx: MethodNameContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `SlickParser.caseProof`.
+	 * @param ctx the parse tree
+	 */
+	enterCaseProof?: (ctx: CaseProofContext) => void;
+	/**
+	 * Exit a parse tree produced by `SlickParser.caseProof`.
+	 * @param ctx the parse tree
+	 */
+	exitCaseProof?: (ctx: CaseProofContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `SlickParser.caseVariable`.
+	 * @param ctx the parse tree
+	 */
+	enterCaseVariable?: (ctx: CaseVariableContext) => void;
+	/**
+	 * Exit a parse tree produced by `SlickParser.caseVariable`.
+	 * @param ctx the parse tree
+	 */
+	exitCaseVariable?: (ctx: CaseVariableContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `SlickParser.caseList`.
+	 * @param ctx the parse tree
+	 */
+	enterCaseList?: (ctx: CaseListContext) => void;
+	/**
+	 * Exit a parse tree produced by `SlickParser.caseList`.
+	 * @param ctx the parse tree
+	 */
+	exitCaseList?: (ctx: CaseListContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `SlickParser.case1`.
+	 * @param ctx the parse tree
+	 */
+	enterCase1?: (ctx: Case1Context) => void;
+	/**
+	 * Exit a parse tree produced by `SlickParser.case1`.
+	 * @param ctx the parse tree
+	 */
+	exitCase1?: (ctx: Case1Context) => void;
+
+	/**
+	 * Enter a parse tree produced by `SlickParser.case2`.
+	 * @param ctx the parse tree
+	 */
+	enterCase2?: (ctx: Case2Context) => void;
+	/**
+	 * Exit a parse tree produced by `SlickParser.case2`.
+	 * @param ctx the parse tree
+	 */
+	exitCase2?: (ctx: Case2Context) => void;
+
+	/**
+	 * Enter a parse tree produced by `SlickParser.caseProof1`.
+	 * @param ctx the parse tree
+	 */
+	enterCaseProof1?: (ctx: CaseProof1Context) => void;
+	/**
+	 * Exit a parse tree produced by `SlickParser.caseProof1`.
+	 * @param ctx the parse tree
+	 */
+	exitCaseProof1?: (ctx: CaseProof1Context) => void;
+
+	/**
+	 * Enter a parse tree produced by `SlickParser.caseProof2`.
+	 * @param ctx the parse tree
+	 */
+	enterCaseProof2?: (ctx: CaseProof2Context) => void;
+	/**
+	 * Exit a parse tree produced by `SlickParser.caseProof2`.
+	 * @param ctx the parse tree
+	 */
+	exitCaseProof2?: (ctx: CaseProof2Context) => void;
 
 	/**
 	 * Enter a parse tree produced by `SlickParser.step`.

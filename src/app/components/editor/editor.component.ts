@@ -12,7 +12,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 
 import {QuillEditorComponent} from 'ngx-quill/src/quill-editor.component';
-import {AutocompleteBoxComponent} from '../autocomplete-box/autocomplete-box.component';
+
 import {Symbols} from '../../model/symbols';
 
 import 'rxjs/add/operator/debounceTime';
@@ -64,7 +64,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   lessThanUnicode = '\u003C';
   greaterThanUnicode = '\u003E';
   doesNotEqualUnicode = '\u2262';
-  hintUnicode ='  '+'\u3008'+'\u3009';
+  hintUnicode ='          '+'\u3008  \u3009';
   textSubUnicode = '\u2254';
   genQuantifierUnicode = '\u2605';
   lessThanOrEqUnicode = '\u2264';
@@ -158,16 +158,17 @@ export class EditorComponent implements OnInit, OnDestroy {
     '99.\\;\\=(m)\\;\\=\\kill\n';
 
 
-  bindings = {
-    enter: {
-      key: 13,
-      handler: () => {
-        this.hideSymbols = false;
-        this.editorInstance.insertText(this.editorInstance.getSelection(), '\n');
-        this.previousEditorSelection = this.editorInstance.getSelection();
+    bindings = {
+      enter: {
+        key: 13,
+        handler: () => {
+          this.hideSymbols = false;
+          this.editorInstance.insertText(this.editorInstance.getSelection(), '\n     ');
+          this.previousEditorSelection = this.editorInstance.getSelection();
+        }
       }
-    }
-  };
+    };
+
 
   constructor(fb: FormBuilder,
               private factoryResolver: ComponentFactoryResolver,
@@ -240,7 +241,8 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   insertSymbol(selectedVal) {
     this.editorInstance.insertText(this.previousEditorSelection, selectedVal);
-    this.editorInstance.setSelection(this.previousEditorSelection.index + 1);
+    this.editorInstance.setSelection(this.previousEditorSelection.index + selectedVal.length + 1);
+    this.previousEditorSelection = this.editorInstance.getSelection();
   }
 
   symbolSelectorChanged(selectedVal) {
@@ -309,89 +311,95 @@ export class EditorComponent implements OnInit, OnDestroy {
 
     // implies
     quill.keyboard.addBinding({key: 'm'}, {
+        empty: false,
         collapsed: true,
-        prefix: /^;i$/,
-        offset: 2,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;i$/,
+        offset: 7
       },
       (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.impliesUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+        quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 7, this.impliesUnicode +  this.hintUnicode);
+        quill.setSelection(range.index + 6);
       });
 
     // follows from
     quill.keyboard.addBinding({key: 'f'}, {
+        empty: false,
         collapsed: true,
-        prefix: /^;f$/,
-        offset: 2,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;f$/,
+        offset: 7
       },
       (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.followsFromUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+        quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 7, this.followsFromUnicode + this.hintUnicode);
+        quill.setSelection(range.index + 6);
       });
 
     // equals
     quill.keyboard.addBinding({key: 'q'}, {
+        empty: false,
         collapsed: true,
-        prefix: /^;e$/,
-        offset: 2,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;e$/,
+        offset: 7
       },
       (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.equalsUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+        quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 7, this.equalsUnicode +"  " + this.hintUnicode);
+        quill.setSelection(range.index + 8);
       });
 
     // less than
     quill.keyboard.addBinding({key: 't'}, {
+        empty: false,
         collapsed: true,
-        prefix: /^;l$/,
-        offset: 2,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;l$/,
+        offset: 7
       },
       (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.lessThanUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+        quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 7, this.lessThanUnicode + "  " + this.hintUnicode);
+        quill.setSelection(range.index + 8);
       });
 
     // less than or equal to
     quill.keyboard.addBinding({key: 'e'}, {
+        empty:false,
         collapsed: true,
-        prefix: /^;l$/,
-        offset: 2,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;l$/,
+        offset: 7
       },
       (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.lessThanOrEqUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+        quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 7, this.lessThanOrEqUnicode + "  " + this.hintUnicode);
+        quill.setSelection(range.index + 8);
       });
 
 
     // greater than
     quill.keyboard.addBinding({key: 't'}, {
-
+        empty:false,
         collapsed: true,
-        prefix: /^;g$/,
-        offset: 2,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;g$/,
+        offset: 7,
       },
       (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.greaterThanUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+        quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 7, this.greaterThanUnicode + "  " + this.hintUnicode);
+        quill.setSelection(range.index + 8);
       });
 
     // greater than or equal to
     quill.keyboard.addBinding({key: 'e'}, {
-
+        empty:false,
         collapsed: true,
-        prefix: /^;g$/,
-        offset: 2,
+        prefix: /[/≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;g$/,
+        offset: 7,
       },
       (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.greaterThanorEqUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 5);
+
+        quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 7, this.greaterThanorEqUnicode + "  " + this.hintUnicode);
+        quill.setSelection(range.index + 8);
       });
 
     // ///////////////////////////////////////////inline symbols///////////////////////////////////////////
@@ -1122,7 +1130,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       a.click();
 
       loader.style.visibility = "hidden";
-      exportBtn.disabled = false;
+      exportBtn.disabled = false;    
     });
   }
 

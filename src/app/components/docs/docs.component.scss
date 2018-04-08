@@ -3,7 +3,7 @@ table {
   text-align: center;
   font-family: Garamond;
   margin-top: 1.5%;
-  background-color: #e5e5ff;
+  background-color: #d6ffdf; //#e5e5ff;
 }
 
 th, td {
@@ -13,7 +13,7 @@ th, td {
 th {
   font-size: 28px;
   color: white;
-  background-color: #000080;
+  background-color: #27823a;
   font-family: 'Didact Gothic', sans-serif;
 }
 
@@ -36,4 +36,4 @@ body {
   margin-top: 2%;
 }
 
-tr:nth-child(even) {background-color: #ffdcb2;}
+tr:nth-child(even) {background-color: white;}

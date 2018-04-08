@@ -2,7 +2,6 @@ import { Component, OnInit, AfterContentChecked, Output, EventEmitter, OnDestroy
 import { BibleService } from './bible.service';
 import {Theorem} from '../../model/theorem';
 import {ElementRef, ViewChild} from '@angular/core';
-import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'app-bible',
@@ -28,7 +27,6 @@ export class BibleComponent implements OnInit, OnDestroy {
       this.thmUpdateSubscription = this.service.updateTheoremCount(num).subscribe(thm => {
         this.filtered = thm;
       });
-      console.log('page size updated to: ' + num);
     });
   }
 
@@ -50,9 +48,13 @@ export class BibleComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.thmSubscription.unsubscribe();
     this.pageSizeSubscription.unsubscribe();
-    this.thmUpdateSubscription.unsubscribe();
     this.thmFirstSubscription.unsubscribe();
-    this.fieldEmptySubscription.unsubscribe();
+    if (this.thmUpdateSubscription) {
+      this.thmUpdateSubscription.unsubscribe();
+    }
+    if (this.fieldEmptySubscription) {
+      this.fieldEmptySubscription.unsubscribe();
+    }
   }
 
   search(search: string) {
