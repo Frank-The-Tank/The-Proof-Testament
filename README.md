@@ -1,10 +1,12 @@
 # The Proof Testament  
 
  https://prooftestament.com/
+ 
+ ![alt text](./assets/images/logoName.png)
 
 ### Overview
 
-The Proof Testament is a web app used for solving formal mathematical proofs using logic. Created by a team of 8 students at Pepperdine University the app is used in multiple classrooms to allow students and teachers to easily solve mathematical proofs using formal methods.  
+The Proof Testament is a web app used for solving formal mathematical logic proofs. Created by a team of 8 students at Pepperdine University the app is used in multiple classrooms to allow students and teachers to easily solve mathematical proofs using formal methods, and teach students how the field of computational logic works.  
 
 ### Technology
 
@@ -16,7 +18,7 @@ Database: Firebase
 
 Hosting: Firebase Hosting
 
-Parsing: MathJAX 
+Parsing: MathJAX / Antlr
 
 Editor: QuillJS 
 
