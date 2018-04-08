@@ -255,7 +255,7 @@ export class AntlrComponent implements SlickListener {
     token = this.removeFm(token);
     let op = this.stack.pop();
 
-    this.stack.push("\\\\$" + this.latex[op] + "$\\>\\>\\ \\ \\ $\\Gll$\\ " + token + "\\ $\\Ggg$ \\\\");
+    this.stack.push("\\\\$" + this.latex[op] + "$\\>\\>\\ \\ \\ $\\Gll$\\ \\text{" + token + "}\\ $\\Ggg$ \\\\");
   }
 
   public exitHintOp = (ctx : HintOpContext) => {
