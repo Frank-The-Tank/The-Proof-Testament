@@ -1095,6 +1095,12 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   export() {
+    var loader = document.getElementById("exportLoader");
+    var exportBtn = (<HTMLInputElement> document.getElementById("exportBtn"));
+
+    loader.style.visibility = "visible";
+    exportBtn.disabled = true;
+
     const text = this.editorInstance.getText();
     const compiler = new AntlrComponent();
 
@@ -1109,6 +1115,9 @@ export class EditorComponent implements OnInit, OnDestroy {
     }}).subscribe( (data: {pdf: string}) => {
       var pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data["pdf"];
 
+      loader.style.visibility = "hidden";
+      exportBtn.disabled = false;
+    
       window.open(pdfDataURL, '_blank');
     });
   }
