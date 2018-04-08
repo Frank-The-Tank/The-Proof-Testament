@@ -1115,10 +1115,14 @@ export class EditorComponent implements OnInit, OnDestroy {
     }}).subscribe( (data: {pdf: string}) => {
       var pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data["pdf"];
 
+      var a = document.createElement("a");
+      document.body.appendChild(a);
+      a.href = pdfDataURL;
+      a.download = "proof";
+      a.click();
+
       loader.style.visibility = "hidden";
       exportBtn.disabled = false;
-    
-      window.open(pdfDataURL, '_blank');
     });
   }
 
