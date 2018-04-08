@@ -93,6 +93,10 @@ export class EditorComponent implements OnInit, OnDestroy {
   naturalUnicode = '\u2115';
   rationalUnicode = '\u211a';
   realUnicode = '\u211d';
+  nextUnicode = '\u25ef';
+  untilUnicode = '\u2af0';
+  alwaysUnicode = '\u25a1';
+  eventuallyUnicode = '\u25c7';
   booleanSymbol = '𝔹';
 
   preamble =
