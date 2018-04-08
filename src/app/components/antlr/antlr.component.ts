@@ -18,7 +18,6 @@ import { ImplicationExprContext,
          StandardProofContext,
          CaseProofContext,
          SepContext,
-         HeaderContext,
          TheoremContext,
          MethodContext,
          MethodNameContext,
@@ -37,7 +36,17 @@ import { ImplicationExprContext,
          AdHocTheoremContext,
          StartExpoContext,
          EndExpoContext,
-         AssumingConjunctsMethodContext
+         AssumingConjunctsMethodContext,
+         CaseListContext,
+         Case1Context,
+         Case2Context,
+         CaseProof1Context,
+         CaseProof2Context,
+         ContradictionMethodContext,
+         ContrapositiveMethodContext,
+         FunctionDotContext,
+         FunctionParenContext,
+         HeaderContext
 } from './SlickParser';
 
 import {ANTLRInputStream, CommonTokenStream} from 'antlr4ts';
@@ -69,6 +78,8 @@ export class AntlrComponent implements SlickListener {
   private tokens : CommonTokenStream;
   private tree: DocContext;
   private stack : Array<any>;
+  private lineCount: number;
+  private exprCount: number;
 
   constructor() {
     this.preamble =
@@ -157,6 +168,8 @@ export class AntlrComponent implements SlickListener {
 
     this.output = '';
     this.stack = [];
+    this.lineCount = 0; // provide mechanism for counting lines in a single standard proof
+    this.exprCount = 0;
 
   }
 
@@ -186,10 +199,29 @@ export class AntlrComponent implements SlickListener {
     }
   }
 
+  public enterStandardProof = (ctx : StandardProofContext) => {
+    this.lineCount = 0;
+  }
+
   public exitStandardProof = (ctx : StandardProofContext) => {
-    if (ctx.END()) {
-      this.stack.push("\\done\n");
+    let proofText = "";
+    for (let i = 0; i < this.lineCount; i++) {
+      proofText = this.stack.pop() + "\n" + proofText;
     }
+    if (ctx.END()) {
+      proofText += "\\done\n";
+    }
+    this.stack.push(proofText);
+    this.lineCount = 0;
+  }
+
+  public exitHeader = (ctx : HeaderContext) => {
+    let str = "";
+    if (ctx.method()) {
+      str = this.stack.pop();
+    }
+    str = this.stack.pop() + str + "\\\\\n";
+    this.stack.push(str);
   }
 
   public exitSep = (ctx : SepContext) => {
@@ -204,7 +236,7 @@ export class AntlrComponent implements SlickListener {
   public exitJunctionExpr = (ctx : JunctionExprContext) => {
     let rhs = this.stack.pop();
     let lhs = this.stack.pop();
-    //@ts-ignore
+    // @ts-ignore
     let x = lhs + " " + this.latex[ctx.JOP()] + " " + rhs;
     this.stack.push(x);
   }
@@ -212,7 +244,7 @@ export class AntlrComponent implements SlickListener {
   public exitImplicationExpr = (ctx : ImplicationExprContext) => {
     let rhs = this.stack.pop();
     let lhs = this.stack.pop();
-    //@ts-ignore
+    // @ts-ignore
     let x = lhs + " " + this.latex[ctx.IMPOP()] + " " + rhs;
     this.stack.push(x);
   }
@@ -220,7 +252,7 @@ export class AntlrComponent implements SlickListener {
   public exitEquivalenceExpr = (ctx : EquivalenceExprContext) => {
     let rhs = this.stack.pop();
     let lhs = this.stack.pop();
-    //@ts-ignore
+    // @ts-ignore
     let x = lhs + " " + this.latex[ctx.EQOP()] + " " + rhs;
     this.stack.push(x);
   }
@@ -247,15 +279,17 @@ export class AntlrComponent implements SlickListener {
 
   public exitStep = (ctx : StepContext) => {
     this.stack.push("\\Step\{" + this.stack.pop() + "\}");
+    this.lineCount++;
   }
 
   public exitHint = (ctx : HintContext) => {
     let token = ctx.COMMENT().text;
     token = token.substr(1, token.length - 2);
     token = this.removeFm(token);
+    token = token.replace(/(\W)([B-Zb-z])(\W)/g, "$1\\textit{$2}$3");
     let op = this.stack.pop();
-
     this.stack.push("\\\\$" + this.latex[op] + "$\\>\\>\\ \\ \\ $\\Gll$\\ \\text{" + token + "}\\ $\\Ggg$ \\\\");
+    this.lineCount++;
   }
 
   public exitHintOp = (ctx : HintOpContext) => {
@@ -264,31 +298,100 @@ export class AntlrComponent implements SlickListener {
 
   public exitBibleTheorem = (ctx : BibleTheoremContext) => {
     let proveOrReprove = ctx.PROVE();
-    //@ts-ignore
+    // @ts-ignore
     let theorem = this.bible[ctx.RULENUM()];
-    this.stack.push("\\color{blue}" + proveOrReprove + "\\ " + theorem + "\\\\ \\\\\n");
+    this.stack.push("\\color{blue}" + proveOrReprove + "\\ " + theorem + "\\\\\n");
   }
 
   public exitAdHocTheorem = (ctx : AdHocTheoremContext) => {
     let proveOrReprove = ctx.PROVE();
     let theorem = this.stack.pop();
-    this.stack.push("\\color{blue}" + proveOrReprove + "\\ $" + theorem + "$\\\\ \\\\\n")
+    this.stack.push("\\color{blue}" + proveOrReprove + "\\ $" + theorem + "$\\\\\n")
+  }
+
+  private removeNewLine = () => {
+    let e = this.stack.pop();
+    e.replace(/\\\\\\\\$/, "\\\\");
+    this.stack.push(e);
   }
 
   public exitAssumingConjunctsMethod = (ctx : AssumingConjunctsMethodContext) => {
-    this.stack.push("by assuming the conjuncts of the antecedent\\\\\\\\");
+    this.stack.push("\\color{blue}by assuming the conjuncts of the antecedent\\\\\n");
   }
 
-  public enterCaseProof = (ctx: CaseProofContext) => {
-    this.stack.push("by case analysis on " + ctx.VAR() + "\\\\\\\\");
+  public exitContradictionMethod = (ctx : ContradictionMethodContext) => {
+    this.stack.push("\\color{blue}by contradiction\\\\\n");
+  }
+
+  public exitContrapositiveMethod = (ctx : ContrapositiveMethodContext) => {
+    let cp = this.stack.pop();
+    this.stack.push("\\color{blue}by proving the contrapositive: $" + cp + "$\\\\\n");
   }
 
   public exitCaseProof = (ctx : CaseProofContext) => {
-
+    let caseProof2 = this.stack.pop();
+    let caseProof1 = this.stack.pop();
+    let caseList = this.stack.pop();
+    let theorem = this.stack.pop();
+    this.stack.push(theorem + "\\color{blue}by case analysis on " + ctx.VAR() + "\\\\ \\\\\n"
+        + caseList + "\\\\" + caseProof1 + caseProof2);
   }
-  //@ts-ignore
+
+  public exitCaseList = (ctx : CaseListContext) => {
+    let case2 = this.stack.pop();
+    let case1 = this.stack.pop();
+    this.stack.push("Must prove\\\\\\>" + case1 + "\\\\\\>" + case2
+        + "\\\\");
+  }
+
+  public exitCase1 = (ctx : Case1Context) => {
+    let e = this.stack.pop();
+    this.stack.push("(1)\\>$" + e + "$");
+  }
+
+  public exitCase2 = (ctx : Case2Context) => {
+    let e = this.stack.pop();
+    this.stack.push("(2)\\>$" + e + "$");
+  }
+
+  public exitCaseProof1 = (ctx : CaseProof1Context) => {
+    let p = this.stack.pop();
+    this.stack.push("\\underline{Proof of (1)}\\\\\\\\\n" + p + "\\\\\\\\");
+  }
+
+  public exitCaseProof2 = (ctx : CaseProof2Context) => {
+    let p = this.stack.pop();
+    this.stack.push("\\underline{Proof of (2)}\\\\\\\\\n" + p);
+  }
+  // @ts-ignore
   public exitExpo = (ctx : ExpoContext) => {
     this.stack.push("\\text{" + ctx.text + "}");
+  }
+
+  public exitFunctionDot = (ctx : FunctionDotContext) => {
+    let e = this.stack.pop();
+    this.stack.push(ctx.VAR() + "." + e);
+  }
+
+  public exitFunctionParen = (ctx : FunctionParenContext) => {
+    let e = this.stack.pop();
+    this.stack.push(ctx.VAR() + "(" + e + ")");
+  }
+
+  public enterExprlist = (ctx : ExprlistContext) => {
+    this.stack.push("XXXXXXXXXX");
+  }
+
+  public exitExprlist = (ctx : ExprlistContext) => {
+    let str = "";
+    let i = 0;
+    let e = this.stack.pop();
+    while (e !== "XXXXXXXXXX") {
+      str = e + (i > 0? ", ": "") + str;
+      e = this.stack.pop();
+      i++;
+    }
+    this.stack.push(str);
   }
 
   public removeFm(s : string) {
@@ -305,9 +408,10 @@ export class AntlrComponent implements SlickListener {
     s = s.replace(/(\W)([B-Zb-z])(\W)/g, "$1\\textit{$2}$3");
     s = s.replace(/true/g, "\\textit{true}");
     s = s.replace(/false/g, "\\textit{false}");
-    s = s.replace(/\n/g, "\} \\\\\n\\text\{");
-    s = s.replace(/ /g, "\\ \\ ");
-    s = s.substr(0, s.length - 7);
+    s = s.replace(/ /g, "\\ ");
+    s = s.replace(/\n/g, "\}\\\\\n\\text\{");
+    s = s.substr(0, s.length - 6);
+    s += "[\\lgap]\n"
     return s;
   }
 

@@ -22,10 +22,14 @@ import { PreviousTheoremMethodContext } from './SlickParser';
 import { RightEquivalesLeftMethodContext } from './SlickParser';
 import { RightFollowsLeftMethodContext } from './SlickParser';
 import { LeftEquivalesRightMethodContext } from './SlickParser';
+import { ContrapositiveMethodContext } from './SlickParser';
 import { AssumingConjunctsMethodContext } from './SlickParser';
 import { LeftImpliesRightMethodContext } from './SlickParser';
+import { ContradictionMethodContext } from './SlickParser';
 import { AdHocTheoremContext } from './SlickParser';
 import { BibleTheoremContext } from './SlickParser';
+import { FunctionDotContext } from './SlickParser';
+import { FunctionParenContext } from './SlickParser';
 import { DocContext } from './SlickParser';
 import { ProofContext } from './SlickParser';
 import { StandardProofContext } from './SlickParser';
@@ -309,6 +313,19 @@ export interface SlickListener extends ParseTreeListener {
 	exitLeftEquivalesRightMethod?: (ctx: LeftEquivalesRightMethodContext) => void;
 
 	/**
+	 * Enter a parse tree produced by the `ContrapositiveMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	enterContrapositiveMethod?: (ctx: ContrapositiveMethodContext) => void;
+	/**
+	 * Exit a parse tree produced by the `ContrapositiveMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	exitContrapositiveMethod?: (ctx: ContrapositiveMethodContext) => void;
+
+	/**
 	 * Enter a parse tree produced by the `AssumingConjunctsMethod`
 	 * labeled alternative in `SlickParser.methodName`.
 	 * @param ctx the parse tree
@@ -335,6 +352,19 @@ export interface SlickListener extends ParseTreeListener {
 	exitLeftImpliesRightMethod?: (ctx: LeftImpliesRightMethodContext) => void;
 
 	/**
+	 * Enter a parse tree produced by the `ContradictionMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	enterContradictionMethod?: (ctx: ContradictionMethodContext) => void;
+	/**
+	 * Exit a parse tree produced by the `ContradictionMethod`
+	 * labeled alternative in `SlickParser.methodName`.
+	 * @param ctx the parse tree
+	 */
+	exitContradictionMethod?: (ctx: ContradictionMethodContext) => void;
+
+	/**
 	 * Enter a parse tree produced by the `AdHocTheorem`
 	 * labeled alternative in `SlickParser.theorem`.
 	 * @param ctx the parse tree
@@ -359,6 +389,32 @@ export interface SlickListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitBibleTheorem?: (ctx: BibleTheoremContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `FunctionDot`
+	 * labeled alternative in `SlickParser.functionCall`.
+	 * @param ctx the parse tree
+	 */
+	enterFunctionDot?: (ctx: FunctionDotContext) => void;
+	/**
+	 * Exit a parse tree produced by the `FunctionDot`
+	 * labeled alternative in `SlickParser.functionCall`.
+	 * @param ctx the parse tree
+	 */
+	exitFunctionDot?: (ctx: FunctionDotContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `FunctionParen`
+	 * labeled alternative in `SlickParser.functionCall`.
+	 * @param ctx the parse tree
+	 */
+	enterFunctionParen?: (ctx: FunctionParenContext) => void;
+	/**
+	 * Exit a parse tree produced by the `FunctionParen`
+	 * labeled alternative in `SlickParser.functionCall`.
+	 * @param ctx the parse tree
+	 */
+	exitFunctionParen?: (ctx: FunctionParenContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `SlickParser.doc`.

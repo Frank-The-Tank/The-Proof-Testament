@@ -1,6 +1,6 @@
 Prove 3.61
 
-'  ¬q ⇒ ¬p
+  ¬q ⇒ ¬p
 =    〈 (3.59) with p, q ≔ ¬q, ¬p 〉
   ¬¬q ⋁ ¬p
 =    〈 Double negation 〉
@@ -90,4 +90,4 @@ Prove 3.77
 =    〈 (3.66) p ⋀ (p ⇒ q) ≡ p ⋀ q 〉
   p ⋀ q ⇒ q
 =    〈 Strengthening (3.76b) 〉
-  true  ╱╱ '
+  true  ╱╱
