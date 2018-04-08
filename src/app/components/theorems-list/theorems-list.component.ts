@@ -11,7 +11,7 @@ import { BibleService } from '../bible/bible.service';
   templateUrl: './theorems-list.component.html',
   styleUrls: ['./theorems-list.component.scss']
 })
-export class TheoremsListComponent implements OnInit, AfterContentChecked, AfterViewChecked {
+export class TheoremsListComponent implements OnInit, AfterContentChecked {
 
   @Input() theorems: Theorem[];
   @Output() clickEvent = new EventEmitter();
@@ -40,12 +40,8 @@ export class TheoremsListComponent implements OnInit, AfterContentChecked, After
     }
   }
 
-  ngAfterViewChecked() {
-    MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
-  }
-
   ngAfterContentChecked() {
-
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
   }
 
   insertTheorem(name) {
