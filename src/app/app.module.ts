@@ -10,6 +10,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { FooterComponent } from './components/footer/footer.component';
@@ -64,6 +65,7 @@ import {EditorService} from './components/editor/editor.service';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -75,7 +77,6 @@ import {EditorService} from './components/editor/editor.service';
     AngularFontAwesomeModule
   ],
   providers: [BibleService, SymbolPickerService, EditorService],
-  bootstrap: [AppComponent, BibleComponent, FooterComponent, NavbarComponent,
-    EditorComponent, HomeComponent, AboutComponent, AboutUserComponent, DocsComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

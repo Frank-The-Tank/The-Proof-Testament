@@ -30,6 +30,8 @@ import {convert} from '../../convert/convert';
 import {AntlrComponent} from '../antlr/antlr.component';
 import {PDFTeX} from './pdftex/pdftex';
 
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
@@ -175,7 +177,8 @@ export class EditorComponent implements OnInit, OnDestroy {
   constructor(fb: FormBuilder,
               private factoryResolver: ComponentFactoryResolver,
               private symbolService: SymbolPickerService,
-              private editorService: EditorService) {
+              private editorService: EditorService,
+              private http: HttpClient) {
 
     this.infoFilledSubscription = this.editorService.infoFilledChange.subscribe(infoFilled => {
       this.infoFilled = infoFilled;
@@ -238,24 +241,6 @@ export class EditorComponent implements OnInit, OnDestroy {
     }
 
     return symbolShortcut;
-  }
-
-  trial(quill, elementRef) {
-    const text = this.editorInstance.getText();
-    const compiler = new AntlrComponent();
-    let results = '';
-    results += compiler.compile(text);
-    console.log(results);
-//     const pdftex = PDFTeX;
-//     pdftex.compile(results).then(function(pdf_dataurl){
-//       var answer = confirm("Your PDF is ready. View Now?");
-//       if (answer) {
-//         window.open(pdf_dataurl, '_blank');
-//       }
-//     });
-// console.log(results);
-//     return results;
-
   }
 
   insertSymbol(selectedVal) {
@@ -1122,24 +1107,35 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   export() {
-    // Find the text boxes
-    const textBoxes = document.getElementsByClassName('ql-editor');
+    var loader = document.getElementById("exportLoader");
+    var exportBtn = (<HTMLInputElement> document.getElementById("exportBtn"));
 
-    let output = '';
+    loader.style.visibility = "visible";
+    exportBtn.disabled = true;
 
-    // Loop through each text box
-    for (let i = 0; i < textBoxes.length; i++) {
-      const textBox = textBoxes[i];
+    const text = this.editorInstance.getText();
+    const compiler = new AntlrComponent();
 
-      output += '# Exercise ' + (i + 1) + '\n' + textBox.innerHTML + '# \n';
-    }
+    let results = '';
 
-    // Cleanup output manually. Method textContent fails to keep new lines.
-    output = output.replace(/<p>/g, '');
-    output = output.replace(/<\/p>/g, '\n');
-    output = output.replace(/<br>/g, '\n');
+    results += compiler.compile(text);
 
-    convert(output);
+    this.http.post('http://localhost:4201/scribe', {
+      results
+    }, {headers: {
+      "Content-Type": "application/json"
+    }}).subscribe( (data: {pdf: string}) => {
+      var pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data["pdf"];
+
+      var a = document.createElement("a");
+      document.body.appendChild(a);
+      a.href = pdfDataURL;
+      a.download = "proof";
+      a.click();
+
+      loader.style.visibility = "hidden";
+      exportBtn.disabled = false;    
+    });
   }
 
 }

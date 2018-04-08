@@ -3,20 +3,20 @@
 }
 
 quill-editor {
-      display: block;
-      position: fixed;
-      bottom: 60px;
-      top: 75px;
-      width: 56%;
-    }
-    .ng-invalid {
-      border: 1px dashed red;
-    }
+  display: block;
+  position: fixed;
+  bottom: 60px;
+  top: 75px;
+  width: 56%;
+}
+.ng-invalid {
+  border: 1px dashed red;
+}
 
-    /* Set default font-family */
-    [quill-editor-element] {
-      font-family: "Times";
-    }
+/* Set default font-family */
+[quill-editor-element] {
+  font-family: "Times";
+}
 
 .ql-container {
   font-size: 20px;
@@ -37,4 +37,22 @@ quill-editor {
 .functionBtn {
   font-weight: bold;
   line-height: 18px;
+}
+
+#exportBtn:disabled {
+  color: #F1F1F1;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #555555;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
