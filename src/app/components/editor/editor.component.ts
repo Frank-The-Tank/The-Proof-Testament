@@ -30,6 +30,8 @@ import {convert} from '../../convert/convert';
 import {AntlrComponent} from '../antlr/antlr.component';
 import {PDFTeX} from './pdftex/pdftex';
 
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
@@ -170,7 +172,8 @@ export class EditorComponent implements OnInit, OnDestroy {
   constructor(fb: FormBuilder,
               private factoryResolver: ComponentFactoryResolver,
               private symbolService: SymbolPickerService,
-              private editorService: EditorService) {
+              private editorService: EditorService,
+              private http: HttpClient) {
 
     this.infoFilledSubscription = this.editorService.infoFilledChange.subscribe(infoFilled => {
       this.infoFilled = infoFilled;
@@ -233,24 +236,6 @@ export class EditorComponent implements OnInit, OnDestroy {
     }
 
     return symbolShortcut;
-  }
-
-  trial(quill, elementRef) {
-    const text = this.editorInstance.getText();
-    const compiler = new AntlrComponent();
-    let results = '';
-    results += compiler.compile(text);
-    console.log(results);
-    const pdftex = PDFTeX;
-    pdftex.compile(results).then(function(pdf_dataurl){
-      var answer = confirm("Your PDF is ready. View Now?");
-      if (answer) {
-        window.open(pdf_dataurl, '_blank');
-      }
-    });
-console.log(results);
-    return results;
-
   }
 
   insertSymbol(selectedVal) {
@@ -1110,24 +1095,22 @@ console.log(results);
   }
 
   export() {
-    // Find the text boxes
-    const textBoxes = document.getElementsByClassName('ql-editor');
+    const text = this.editorInstance.getText();
+    const compiler = new AntlrComponent();
 
-    let output = '';
+    let results = '';
 
-    // Loop through each text box
-    for (let i = 0; i < textBoxes.length; i++) {
-      const textBox = textBoxes[i];
+    results += compiler.compile(text);
 
-      output += '# Exercise ' + (i + 1) + '\n' + textBox.innerHTML + '# \n';
-    }
+    this.http.post('http://localhost:4201/scribe', {
+      results
+    }, {headers: {
+      "Content-Type": "application/json"
+    }}).subscribe( (data: {pdf: string}) => {
+      var pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data["pdf"];
 
-    // Cleanup output manually. Method textContent fails to keep new lines.
-    output = output.replace(/<p>/g, '');
-    output = output.replace(/<\/p>/g, '\n');
-    output = output.replace(/<br>/g, '\n');
-
-    convert(output);
+      window.open(pdfDataURL, '_blank');
+    });
   }
 
 }

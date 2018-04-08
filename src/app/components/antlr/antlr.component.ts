@@ -71,7 +71,7 @@ export class AntlrComponent implements SlickListener {
       '\\usepackage[margin=1in]{geometry}'+
       '\\usepackage{fancyhdr}\n' +
       '\\pagestyle{fancy}\n' +
-      '\\usepackage{amsmath,wasysym}\n' +
+      '\\usepackage{amsmath}\n' +
       '\\usepackage{amssymb,latexsym}\n' +
       '\\usepackage{centernot}'+
       '\\usepackage{times}\n' +
@@ -233,7 +233,8 @@ export class AntlrComponent implements SlickListener {
     token = token.substr(1, token.length - 2);
     token = this.removeFm(token);
     const op = this.stack.pop();
-    this.stack.push('\\\\$' + this.latex[op] + '$\\>\\>\\ \\ \\ $\\Gll$\\ \\text{' + token + '}\\ $\\Ggg$ \\\\');
+
+    this.stack.push('\\\\$' + this.latex[op] + '$\\>\\>\\ \\ \\ $\\Gll$\\ ' + token + '\\ $\\Ggg$ \\\\');
   };
 
   public exitHintOp = (ctx: HintOpContext) => {

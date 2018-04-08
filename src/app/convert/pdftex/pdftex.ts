@@ -189,7 +189,6 @@ var PDFTeX = function() {
       return self.FS_readFile('/input.pdf');
     }
 
-    // return promise.chain(commands).then(sendCompile).then(getPDF);
     return will.chain(commands, []).then(sendCompile).then(getPDF);
   };
 };

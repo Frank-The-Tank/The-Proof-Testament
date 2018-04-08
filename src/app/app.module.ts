@@ -9,6 +9,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { HttpClientModule } from '@angular/common/http';
 
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -65,6 +66,7 @@ import { AntlrComponent } from './components/antlr/antlr.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
