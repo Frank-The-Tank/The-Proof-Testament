@@ -34,6 +34,8 @@ router.post('/', function(req, res){
 		var base64PDF = chunks.join('');
 		
 		res.status(200).send({'pdf': base64PDF});
+
+		console.log('Scribe processed PDF.')
 	});
 	
 	stream.on('error', (err) => {
