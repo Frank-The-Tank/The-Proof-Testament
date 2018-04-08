@@ -239,24 +239,6 @@ export class EditorComponent implements OnInit, OnDestroy {
     return symbolShortcut;
   }
 
-  trial(quill, elementRef) {
-    const text = this.editorInstance.getText();
-    const compiler = new AntlrComponent();
-    let results = '';
-    results += compiler.compile(text);
-    console.log(results);
-//     const pdftex = PDFTeX;
-//     pdftex.compile(results).then(function(pdf_dataurl){
-//       var answer = confirm("Your PDF is ready. View Now?");
-//       if (answer) {
-//         window.open(pdf_dataurl, '_blank');
-//       }
-//     });
-// console.log(results);
-//     return results;
-
-  }
-
   insertSymbol(selectedVal) {
     this.editorInstance.insertText(this.previousEditorSelection, selectedVal);
     this.editorInstance.setSelection(this.previousEditorSelection.index + selectedVal.length + 1);
@@ -1141,10 +1123,14 @@ export class EditorComponent implements OnInit, OnDestroy {
     }}).subscribe( (data: {pdf: string}) => {
       var pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data["pdf"];
 
+      var a = document.createElement("a");
+      document.body.appendChild(a);
+      a.href = pdfDataURL;
+      a.download = "proof";
+      a.click();
+
       loader.style.visibility = "hidden";
-      exportBtn.disabled = false;
-    
-      window.open(pdfDataURL, '_blank');
+      exportBtn.disabled = false;    
     });
   }
 
