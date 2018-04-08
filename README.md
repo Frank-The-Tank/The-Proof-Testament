@@ -2,7 +2,7 @@
 
  https://prooftestament.com/
  
- ![alt text](./assets/images/logoName.png)
+ ![alt text](./src/assets/images/logoName.png)
 
 ### Overview
 
