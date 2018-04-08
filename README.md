@@ -22,6 +22,14 @@ Database: Firebase
 
 3. When you are finished with your current session make sure to end the NodeJS server session using CTRL-C in terminal/command line.
 
+### Starting the PDF Server
+
+1. Install the separate dependancies for `pdfServer/package.json`.
+
+2. Navigate to the "pdfServer" folder, and run the command `node server.js`.
+
+3. The server will be running on localhost:4201.
+
 ### Additional Help
 If you are receiving the error "Error: Could not find module '@angular-devkit/core'" run npm install @angular-devkit/core --save-dev. This is a fix until the angularCLI developers release a patch.
 
