@@ -12,7 +12,7 @@ The Proof Testament is a web app used for solving formal mathematical logic proo
 
 Frontend: Angular(5) / Bootstrap / Scss
 
-Backend: NodeJS / AngularFire v2.0
+Backend: NodeJS / ExpressJS / AngularFire v2.0
 
 Database: Firebase 
 

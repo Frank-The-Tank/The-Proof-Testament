@@ -1,7 +1,4 @@
-import {
-  Component, Input, Output, EventEmitter, OnInit, ElementRef, ViewChild, AfterContentChecked, AfterContentInit,
-  AfterViewInit, AfterViewChecked
-} from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit, ElementRef, ViewChild, AfterContentChecked} from '@angular/core';
 import {Theorem} from '../../model/theorem';
 declare var MathJax: any;
 import { BibleService } from '../bible/bible.service';

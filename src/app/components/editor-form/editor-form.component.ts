@@ -35,7 +35,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     const outline =
       ('Name: ').bold() +  this.nameText + '<br />' +
       ('Class: ').bold() + this.classText + '<br />' +
-      ('Prove ').bold() + this.proofText + '<br /><br />' +
+      ('Prove: ').bold() + this.proofText + '<br /><br />' +
       ('Heuristic: ').bold() + this.heuristicText + '<br /><br />' +
       ('Proof:').bold()+ this.proof + '<br /><br />';
     this.editorService.submitData(outline);
