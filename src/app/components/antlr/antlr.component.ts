@@ -69,6 +69,7 @@ export class AntlrComponent implements SlickListener {
   private tokens : CommonTokenStream;
   private tree: DocContext;
   private stack : Array<any>;
+  private includePreamble: Boolean;
 
   constructor() {
     this.preamble =
@@ -135,9 +136,13 @@ export class AntlrComponent implements SlickListener {
       '\\begin{document}\\newcommand{\\unindent}{ \\hspace{-2em}}'+
       '\\begin{tabbing}\n' +
       '99.\\;\\=(m)\\;\\=\\kill\n';
+
     const theoremsStr = JSON.stringify(theoremInput);
+
     this.bible = {};
+
     const theorems = JSON.parse(theoremsStr).theorems;
+
     for (let i = 0; i < theorems.length; i++) {
       let theorem = theorems[i];
       this.bible[theorem.rule] = "(" + theorem.rule + ") " + (theorem.name? theorem.name.substr(0,1).toUpperCase() + theorem.name.substr(1) + ":\\ \\ ": "\\ \\ ") + theorem.eq;
@@ -157,7 +162,6 @@ export class AntlrComponent implements SlickListener {
 
     this.output = '';
     this.stack = [];
-
   }
 
   public exitDoc = (ctx : DocContext) => {

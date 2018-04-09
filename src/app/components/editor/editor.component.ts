@@ -305,7 +305,6 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.editorInstance = quill;
 
     quill.on('text-change', function () {
-      console.log('Text change!');
       this.hideSymbols = true;
     });
 
@@ -1102,6 +1101,42 @@ export class EditorComponent implements OnInit, OnDestroy {
     }
   }
 
+  latex() {
+     const text = this.editorInstance.getText();
+     const arrayText = text.split("#");
+
+     // Remove the first element.
+     arrayText.shift();
+
+     if (arrayText.length >= 4) {
+       const name = arrayText[0];
+       const course = arrayText[1];
+       const assignment = arrayText[2];
+
+       const numHeaders = 3;
+
+       for (var i = 0; i < numHeaders; i++) {
+         arrayText.shift();
+       }
+
+       console.log(arrayText);
+
+       var newText = "";
+
+       for (var i = 0; i < arrayText.length; i++) {
+         newText += arrayText[i] + '\n';
+       }
+
+       // Convert to LaTeX
+       const compiler = new AntlrComponent();
+       const results = compiler.compile(newText)
+
+       console.log(results);
+     } else {
+       console.log("Text does not contain headers: Name, Class, and/or Assignment.");
+     }
+  }
+
   export() {
     var loader = document.getElementById("exportLoader");
     var exportBtn = (<HTMLInputElement> document.getElementById("exportBtn"));
@@ -1110,7 +1145,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     exportBtn.disabled = true;
 
     const text = this.editorInstance.getText();
-    const compiler = new AntlrComponent();
+    const compiler = new AntlrComponent(true);
 
     let results = '';
 
