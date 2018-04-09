@@ -14,7 +14,8 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   nameText = '';
   classText = '';
   proofText = '';
-  descriptionText = '';
+  heuristicText = '';
+  proof = "<br />";
   infoFilled: boolean;
   infoFilledSubscription;
   customProofSelected = false;
@@ -34,10 +35,41 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     const outline =
       ('Name: ').bold() +  this.nameText + '<br />' +
       ('Class: ').bold() + this.classText + '<br />' +
-      ('Proof: ').bold() + this.proofText + '<br /><br />' +
-      ('Solution: ').bold() +  '<br />' +
-      this.descriptionText;
+      ('Prove ').bold() + this.proofText + '<br /><br />' +
+      ('Heuristic: ').bold() + this.heuristicText + '<br /><br />' +
+      ('Proof:').bold()+ this.proof + '<br /><br />';
     this.editorService.submitData(outline);
+  }
+
+onHeuristicSelectionChanged(selection) {
+    switch (selection){
+      case "Deduction":
+        this.heuristicText += '<br />' + "To prove P1 ⋀ P2 ⇒ Q, assume P1 and P2 and prove Q." +
+          "<br />" + "You cannot use textual substitution in P1 or P2.";
+        break;
+      case "Case Analysis Expressions":
+        this.heuristicText += '<br />' + "If E[z,true] and E[z, false] are theorems, then so is E[z, p].";
+        break;
+      case "Case Analysis":
+        this.heuristicText += '<br />' + "(p ⋁ q ⋁ r) ⋀ (p ⇒ s) ⋀ (q ⇒ s) ⋀ (r ⇒ s) ⇒ s";
+        break;
+      case "Mutual Implication":
+        this.heuristicText += '<br />' + "To prove P ≡ Q, prove P ⇒ Q and Q ⇒ P."
+        break;
+      case "Truth Implication":
+        this.heuristicText += '<br />' + "To prove P, prove true ⇒ P.";
+        break;
+      case "Induction":
+        console.log('need to fix induction');
+        break;
+      case "Proof by Contradiction":
+        this.heuristicText += '<br />' + "To prove P, prove ¬ P ⇒ false."
+        break;
+      case "Proof by Contrapositive":
+        this.heuristicText += '<br />' + "P ⇒ Q, prove  ¬ Q ⇒  ¬ P."
+        break;
+      default: console.log("didn't click it");
+    }
   }
 
   onProofSelectionChanged(selection) {
@@ -47,6 +79,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       this.customProofSelected = false;
     }
   }
+
 
   ngOnInit() {
     this.theorems$ = this.bibleService.findAllTheorems();

@@ -15,7 +15,7 @@
         <select #proofSelector (change)="onProofSelectionChanged($event.target.value)" [(ngModel)]="proofText" name="proofs" class="form-control">
           <option style="display:none" value=""></option>
           <option value="custom">[Custom]</option>
-          <option *ngFor="let theorem of (theorems$ | async)" [ngValue]="'(' + theorem.rule + ') ' + (theorem.name || theorem.eq)">
+          <option *ngFor="let theorem of (theorems$ | async)" [ngValue]="+ theorem.rule + (theorem.name || theorem.eq)">
             {{theorem.rule}}:
             <span *ngIf="theorem.name">{{theorem.name}}</span>
             <span *ngIf="!theorem.name && theorem.eq.length < 50">{{theorem.eq}}</span>
@@ -25,13 +25,17 @@
         <input #hiddenField [hidden]="!customProofSelected" type="text" class="form-control">
       </div>
       <div class="form-group">
-        <label>Description:</label>
-        <textarea
-          [(ngModel)]="descriptionText"
-          name="description"
-          cols="30" rows="5"
-          class="form-control"
-          placeholder="Proof by mathematical induction... "></textarea>
+        <label>Heurisitc:</label>
+        <select #heurisitcSelector (change)="onHeuristicSelectionChanged($event.target.value)"  [(ngModel)]="heuristicText" name="heuristic" class="form-control">
+          <option value="Deduction">Deduction</option>
+          <option value="Induction">Induction</option>
+          <option value="Case Analysis Expressions">Case Analysis Expressions</option>
+          <option value="Case Analysis">Case Analysis</option>
+          <option value="Mutual Implication">Mutual Implication</option>
+          <option value="Truth Implication">Truth Implication</option>
+          <option value="Proof by Contradiction">Proof by Contradiction</option>
+          <option value="Proof by Contrapositive">Proof by Contrapositive</option>
+        </select>
       </div>
     </fieldset>
     <button (click)="formSubmit(proofSelector.value, hiddenField.value)" class="btn btn-primary">Generate Editor</button>
