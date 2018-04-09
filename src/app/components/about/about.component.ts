@@ -28,7 +28,7 @@ export class AboutComponent implements OnInit {
     {
       name: "Giorgio Catania",
       title: "Antlr/Quilljs Developer",
-      description: "cool guy",
+      description: "Coming from the flat land of Texas, Giorgio now lives in SoCal where he studies to become a Computer Science major at Pepperdine.  He one day wishes to become a software developer.",
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Second Proof Testament: LINK'],
       linkedIn: '#',
       gitHub: 'https://github.com/giorgio19',
@@ -39,8 +39,8 @@ export class AboutComponent implements OnInit {
     {
       name: "Micah Benn",
       title: "Back-End Software Developer",
-      description: "neat guy",
-      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'Portfolio Page: <a href="http://micahbenn.com/ " target="_blank">Portfolio</a>'],
+      description: "My name is Micah Benn, and I've been a self-taught iOS and web developer since 13 years old. I now mainly work with Objective-C, Swift, Python, Java, and HTML/CSS.  After finding out about the iOS SDK, I began creating iOS apps. YouTube, StackOverflow, and GitHub were how I learned. A couple months after I began learning, I released my first app, Map with Camera. Since then, I have been enjoying expanding my skill set. In July 2013, I released Flöcle, a time-based matching game that would be eventually featured by Apple in their ''20 Under 20'' promotion in Asia.",
+      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'Portfolio Page: <a href="http://micahbenn.com/" target="_blank">Portfolio</a>'],
       linkedIn: 'https://www.linkedin.com/in/micahbenn/',
       gitHub: 'https://github.com/micahbenn',
       facebook: '#',
@@ -61,8 +61,8 @@ export class AboutComponent implements OnInit {
     {
       name: "Damir Kaliyev",
       title: "Front-End Software Developer",
-      description: "nice guy",
-      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Second Proof Testament: LINK'],
+      description: "Damir hails from the mystical land of Kazakhstan. He is an avid programmer and hopes to learn everything he can about coding.",
+      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Second Proof Testament: LINK', 'Hydrogen: <a href="https://github.com/nteract/hydrogen/" target="_blank">Github</a>'],
       linkedIn: 'https://www.linkedin.com/in/damir-kaliyev-604368b9/',
       gitHub: 'https://github.com/carenekl',
       facebook: '#',
@@ -104,25 +104,25 @@ export class AboutComponent implements OnInit {
     },
     {
       name: "Dr. Stan Warford",
-      title: "The biggest sport's fan",
-      description: "Slick",
+      title: "The Biggest Sport's Fan",
+      description: "Professor Stan Warford is one of two Computer Science professors at Pepperdine. He spends much of his time teaching students about this passion.",
       projects: "",
       linkedIn: 'https://www.linkedin.com/in/stan-warford-b5a476101/',
       gitHub: 'https://github.com/StanWarford',
       facebook: '#',
       twitter: '#',
-      pic: ""
+      pic: "../../../assets/images/warford.jpg"
     },
     {
       name: "Professor Brad Cupp",
       title: "Capstone Advisor and Teacher",
-      description: "",
+      description: "Professor Brad Cupp is one of two Computer Science professors at Pepperdine. He spends much of his time teaching students about this passion.",
       projects: "",
       linkedIn: '#',
       gitHub: 'https://github.com/Cupp',
       facebook: '#',
       twitter: '#',
-      pic: ""
+      pic: "../../../assets/images/cupp.jpg"
     }
   ];
 
