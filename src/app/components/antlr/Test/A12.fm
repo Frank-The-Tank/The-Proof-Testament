@@ -1,0 +1,127 @@
+[[[
+5.6a)
+
+Let H represent "I will eat my hat."
+The formalization of B's reply is  b ⇒ H.
+So we take as true the expression b ≡ (b ⇒ H).
+]]]
+
+  b ≡ (b ⇒ H)
+=    〈 (3.60) Implication 〉
+  b ≡ b ⋀ H ≡ b
+=    〈 Symmetry of ≡ 〉
+  b ≡ b ≡ b ⋀ H
+=    〈 (3.3) Identity of ≡, twice 〉
+  b ⋀ H
+
+[[[
+Hence B is a knight and must eat his hat.
+]]]
+
+------------------------------
+
+[[[
+5.6b)
+
+The formalization of B's statement is c ⇒ ¬b.
+So we take as true the expression b ≡ c ⇒ ¬b.
+]]]
+
+  b ≡ c ⇒ ¬b
+=    〈 (3.57) Implication 〉
+  b ≡ c ⋁ ¬b ≡ ¬b
+=    〈 Symmetry of ≡ 〉
+  b ≡ ¬b ≡ c ⋁ ¬b
+=    〈 (3.15) 〉
+  false ≡ c ⋁ ¬b
+=    〈 (3.15) 〉
+  ¬(c ⋁ ¬b)
+=    〈 De Morgan 〉
+  ¬c ⋀ ¬¬b
+=    〈 Double negation 〉
+  ¬c ⋀ b
+
+[[[
+Hence B is a knight and C is a knave.
+]]]
+
+------------------------------
+
+[[[
+5.6c)
+
+Let G represent "Gold is on the island."
+The formalization of B's statement is G ≡ b.
+So we take as true the expression b ≡ G ≡ b.
+]]]
+
+  b ≡ G ≡ b
+=    〈 Symmetry of ≡ 〉
+  b ≡ b ≡ G
+=    〈 Identity of ≡, twice 〉
+  G
+
+[[[
+Hence there is gold on the island. However, it cannot be determined whether B
+is a knight or a knave.
+]]]
+
+------------------------------
+
+[[[
+8.1a)
+
+]]]
+e(a.u, w)
+
+[[[
+The function call is type correct.
+]]]
+
+------------------------------
+
+[[[
+8.1b)
+
+]]]
+b.x
+
+[[[
+Incorrect: b takes a parameter of type B, but x is type C.
+]]]
+
+------------------------------
+
+[[[
+8.1c)
+
+]]]
+e(a(c.x), a.u)
+
+[[[
+The function call is type correct.
+]]]
+
+------------------------------
+
+[[[
+8.1d)
+
+]]]
+a(c(b(a.y)))
+
+[[[
+Incorrect: a takes a parameter of type A, but y is of type D.
+]]]
+
+------------------------------
+
+[[[
+8.1e)
+
+]]]
+d(c.x, c.x)
+
+[[[
+Incorrect: The second parameter of d must be type C, but c returns type A.
+]]]

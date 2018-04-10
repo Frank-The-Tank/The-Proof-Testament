@@ -1027,7 +1027,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       });
 
     // not a proper superset
-    quill.keyboard.addBinding({key: 'b'}, {
+    quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
         prefix: /[/╱◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;np$/
@@ -1038,10 +1038,10 @@ export class EditorComponent implements OnInit, OnDestroy {
       });
 
     // not a proper subset
-    quill.keyboard.addBinding({key: 'p'}, {
+    quill.keyboard.addBinding({key: 'b'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/╱◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;ns$/
+        prefix: /[/╱◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a]*;np$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is

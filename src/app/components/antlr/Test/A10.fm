@@ -1,6 +1,6 @@
 Prove (C ⋀ T ⇒ S) ⋀ S ⇒ (C ⇒ T)
 
-/*
+[[[
  We associate identifiers with the primitive propositions:
 
      C : The initialization is correct,
@@ -13,14 +13,14 @@ Prove (C ⋀ T ⇒ S) ⋀ S ⇒ (C ⇒ T)
 
  We calculate:
 
-*/
+]]]
   (C ⋀ T ⇒ S) ⋀ S
 =    〈 (3.59) p ⇒ q ≡ ¬p ⋁ q 〉
   ((C ⋀ T) ⋁ S) ⋀ S
 =    〈 (3.43a) Absorption 〉
   S
 
-/*
+[[[
  At this point, we do not believe that S implies C ⇒ T. The expression
  S ⇒ (C ⇒ T) gives us a hint on what assignment of values for C, T, and S to
  choose so that the original expression is false:
@@ -28,7 +28,7 @@ Prove (C ⋀ T ⇒ S) ⋀ S ⇒ (C ⇒ T)
     S, T, C ≔ true, false, true.
 
  Hence, the argument is invalid.
-*/
+]]]
 
 ------------------------------
 

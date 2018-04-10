@@ -1,0 +1,69 @@
+Prove 9.6
+
+  (∀x | R : P)
+=    〈 (9.3) Trading 〉
+  (∀x |: ¬R ⋁ P)
+=    〈 Distributivity of ⋁ over ∀ 〉
+  P ⋁ (∀x |: ¬R) ╱╱
+
+------------------------------
+
+Prove 9.8
+
+  (∀x | R : true)
+=    〈 (9.3) Trading 〉
+  (∀x |: ¬R ⋁ true)
+=    〈 Distributivity of ⋁ over ∀ 〉
+  true ⋁ (∀x |: ¬R)
+=    〈 Zero of ⋁ 〉
+  true ╱╱
+
+------------------------------
+
+Prove 9.8
+
+  (∀x | R : true)
+=    〈 (9.6) (∀x | R : P) ≡ P ⋁ (∀x |: ¬R) 〉
+  true ⋁ (∀x |: ¬R)
+=    〈 zero of ⋁ 〉
+  true ╱╱
+
+------------------------------
+
+Prove 9.9
+
+  (∀x | R : P ≡ Q) ⇒ ((∀x | R : P) ≡ (∀x | R : Q))
+=    〈 (3.62) P ⇒ (Q ≡ R)  ≡  P ⋀ Q ≡ P ⋀ R 〉
+  (∀x | R : P ≡ Q) ⋀ (∀x | R : P)  ≡  (∀x | R : P ≡ Q) ⋀ (∀x | R : Q)
+=    〈 (8.15) Generalized distibutivity, twice 〉
+  (∀x | R : (P ≡ Q) ⋀ P) ≡ (∀x | R : (P ≡ Q) ⋀ Q)
+=    〈 (3.50) p ⋀ (q ≡ p) ≡ p ⋀ q, twice 〉
+  (∀x | R : P ⋀ Q) ≡ (∀x | R : P ⋀ Q)
+=    〈 (3.3) Identity of ≡ 〉
+  true  ╱╱
+
+------------------------------
+
+Prove 9.11
+
+  (∀x | R : P ⋀ Q)
+=    〈 (8.15) Generalized distributivity 〉
+  (∀x | R : P) ⋀ (∀x | R : Q)
+⇒    〈 (3.76b) Strengthening 〉
+  (∀x | R : P) ╱╱
+
+------------------------------
+
+Prove 9.13
+
+  (∀x |: P)
+=    〈 (8.21) Dummy renaming with y, R ≔ z, true with z chosen not to occur in E 〉
+  (∀z |: P[x ≔ z])
+=    〈 (3.28) Excluded middle with p ≔ z = E 〉
+  (∀z | z = E ⋁ z ≠ E : P[x ≔ z])
+⇒    〈 (9.10) Range weakening 〉
+  (∀z | z = E : P[x ≔ z])
+=    〈 (8.14) One-point rule, z does not occur in E 〉
+  P[x ≔ z][z ≔ E]
+=    〈 Textual substitution 〉
+  P ╱╱

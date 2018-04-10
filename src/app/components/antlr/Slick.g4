@@ -88,7 +88,7 @@ functionCall : VAR '.' expr        # FunctionDot
 typedVar : VAR (':' TYPE)? ;
 
 COMMENT : '〈' .+? '〉' ;
-EXPO : '/*' .+? '*/' ;
+EXPO : '[[[' .+? ']]]' ;
 PROVE : 'Prove' | 'Reprove' ;
 RULENUM: [1-9][0-9]?'.'[1-9][0-9]?[0-9]?[a-z]?('.'[0-9])? ;
 EVAR : [A-Z] ;
