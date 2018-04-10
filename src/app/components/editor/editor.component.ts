@@ -1107,12 +1107,6 @@ export class EditorComponent implements OnInit, OnDestroy {
     }
   }
 
-  addProof() {
-     this.editorInstance.insertText(
-       this.previousEditorSelection, "Prove <number> \n\n\n ----------"
-     );
-  }
-
   export() {
     let loader = document.getElementById("exportLoader");
     let exportBtn = (<HTMLInputElement> document.getElementById("exportBtn"));
