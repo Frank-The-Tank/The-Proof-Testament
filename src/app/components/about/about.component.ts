@@ -95,34 +95,12 @@ export class AboutComponent implements OnInit {
       name: "Josh Myers",
       title: "Front-End Software Developer",
       description: "Josh Myers grew up in Moorpark, CA and discovered his passion for Computer Science throughout his time at Pepperdine. He has thoroughly enjoyed his exposure to mobile app development during his experience debugging and updating software in The Daily Shopper app. Josh’s involvement in The Proof Testament project has convicted him to continue his pursuits to absorb knowledge and hone his skills with the goal of becoming an experienced software developer.",
-      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Daily Shopper: <a href="http://www.dailyshopperapp.com/" target="_blank">App</a>'],
+      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Daily Shopper: <a href="http://www.dailyshopperapp.com/" target="_blank">App Store</a>'],
       linkedIn: 'https://www.linkedin.com/in/joshua-myers-a98b83122/',
       gitHub: 'https://github.com/jamyers2',
       facebook: '#',
       twitter: '#',
       pic: "../../../assets/images/josh.jpg"
-    },
-    {
-      name: "Dr. Stan Warford",
-      title: "The Biggest Sport's Fan",
-      description: "Professor Stan Warford is one of two Computer Science professors at Pepperdine. He spends much of his time teaching students about this passion.",
-      projects: "",
-      linkedIn: 'https://www.linkedin.com/in/stan-warford-b5a476101/',
-      gitHub: 'https://github.com/StanWarford',
-      facebook: '#',
-      twitter: '#',
-      pic: "../../../assets/images/warford.jpg"
-    },
-    {
-      name: "Professor Brad Cupp",
-      title: "Capstone Advisor and Teacher",
-      description: "Professor Brad Cupp is one of two Computer Science professors at Pepperdine. He spends much of his time teaching students about this passion.",
-      projects: "",
-      linkedIn: '#',
-      gitHub: 'https://github.com/Cupp',
-      facebook: '#',
-      twitter: '#',
-      pic: "../../../assets/images/cupp.jpg"
     }
   ];
 
