@@ -457,6 +457,7 @@ public exitRelativeExpr = (ctx : RelativeExprContext) => {
 public exitAdditionExpr = (ctx : AdditionExprContext) => {
   let rhs = this.stack.pop();
   let lhs = this.stack.pop();
+  //@ts-ignore
   this.stack.push(lhs + " " + this.latex[ctx.ADDOP()] + " " + rhs);
 }
 
