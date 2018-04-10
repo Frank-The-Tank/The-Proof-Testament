@@ -1119,6 +1119,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     let results = '';
 
     results += compiler.compile(text);
+    console.log(results);
 
     this.http.post('http://localhost:4201/scribe', {
       results
@@ -1134,7 +1135,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       a.click();
 
       loader.style.visibility = "hidden";
-      exportBtn.disabled = false;    
+      exportBtn.disabled = false;
     });
   }
 
