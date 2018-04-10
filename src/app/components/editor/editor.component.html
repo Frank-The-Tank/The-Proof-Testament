@@ -1,16 +1,17 @@
 <div *ngIf="infoFilled">
   <quill-editor
+    id="quillEditor"
     [(ngModel)]="outline"
     [modules]="modules"
     (onEditorCreated)="addBindingCreated($event)"
     (onSelectionChanged)="updateSelection($event)"
     (onContentChanged)="updateSelection($event)">
-      <div quill-editor-toolbar>
+      <div id="editorToolbar" quill-editor-toolbar>
         <span class="ql-formats">
           <button class='ql-indent' value = "-1"></button>
           <button class='ql-indent' value = "+1"></button>
-
-        </span>        <span class="ql-formats">
+        </span>
+        <span id="inLineHolder" class="ql-formats">
           <select
             id="symbolInLineSelector"
             (change)="insertSymbol($event.target.value)"
