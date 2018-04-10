@@ -15,7 +15,7 @@
         <select #proofSelector (change)="onProofSelectionChanged($event.target.value)" [(ngModel)]="proofText" name="proofs" class="form-control">
           <option style="display:none" value=""></option>
           <option value="custom">[Custom]</option>
-          <option *ngFor="let theorem of (theorems$ | async)" [ngValue]="+ theorem.rule + (theorem.name || theorem.eq)">
+          <option *ngFor="let theorem of (theorems$ | async)" [ngValue]="'(' + theorem.rule + ') ' + (theorem.name || theorem.eq)">
             {{theorem.rule}}:
             <span *ngIf="theorem.name">{{theorem.name}}</span>
             <span *ngIf="!theorem.name && theorem.eq.length < 50">{{theorem.eq}}</span>

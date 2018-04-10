@@ -94,7 +94,7 @@ export class AboutComponent implements OnInit {
     {
       name: "Josh Myers",
       title: "Front-End Software Developer",
-      description: "Hailing from Moorpark, CA, Josh finds enjoyment in eating, playing basketball, and chocolate chip cookies (yes, it's a hobby). One of his fondest memories at Pepperdine should not be disclosed on the public domain, but it involves himself, James Maynard, Korean BBQ, and an exam 4 hours later.",
+      description: "Josh Myers grew up in Moorpark, CA and discovered his passion for Computer Science throughout his time at Pepperdine. He has thoroughly enjoyed his exposure to mobile app development during his experience debugging and updating software in The Daily Shopper app. Josh’s involvement in The Proof Testament project has convicted him to continue his pursuits to absorb knowledge and hone his skills with the goal of becoming an experienced software developer.",
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Daily Shopper: <a href="http://www.dailyshopperapp.com/" target="_blank">App</a>'],
       linkedIn: 'https://www.linkedin.com/in/joshua-myers-a98b83122/',
       gitHub: 'https://github.com/jamyers2',
