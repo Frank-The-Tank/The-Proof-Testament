@@ -40,10 +40,10 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     //   this.descriptionText;
 
     const outline = 
-      '# ' + this.nameText + '<br/>' +
-      '# ' + this.classText + '<br/>' + 
-      '# ' + this.assignmentText + '<br/><br/>' + 
-      '# ' + this.proofText + '<br/>'
+      this.nameText + '<br/>' +
+      this.classText + '<br/>' + 
+      this.assignmentText + '<br/><br/>' + 
+      'Prove ' + this.proofText + '<br/><br/><br/> ----------'
 
     this.editorService.submitData(outline);
   }

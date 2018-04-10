@@ -1107,13 +1107,15 @@ export class EditorComponent implements OnInit, OnDestroy {
     }
   }
 
-  latex() {
-     
+  addProof() {
+     this.editorInstance.insertText(
+       this.previousEditorSelection, "Prove <number> \n\n\n ----------"
+     );
   }
 
   export() {
-    var loader = document.getElementById("exportLoader");
-    var exportBtn = (<HTMLInputElement> document.getElementById("exportBtn"));
+    let loader = document.getElementById("exportLoader");
+    let exportBtn = (<HTMLInputElement> document.getElementById("exportBtn"));
 
     loader.style.visibility = "visible";
     exportBtn.disabled = true;
@@ -1122,36 +1124,43 @@ export class EditorComponent implements OnInit, OnDestroy {
     const arrayText = text.split("\n");
 
     if (arrayText.length >= 3) {
-      const name = "\\textbf{" + (arrayText[0] as string).replace(/#(?:\s)/gm, "") + "}\\\\" + "\n";
-      const course = "\\textbf{" + (arrayText[1] as string).replace(/#(?:\s)/gm, "") + "}\\\\" + "\n";
-      const assignment = "\\textbf{" + (arrayText[2] as string).replace(/#(?:\s)/gm, "") + "}\\\\\\\\" + "\n";
+      const name = (arrayText[0] as string).replace(/\s/gm, "");
+      const course = (arrayText[1] as string).replace(/\s/gm, "");
+      const assignment = (arrayText[2] as string).replace(/\s/gm, "");
 
-      const heading = name + course + assignment
+      const latexName = "\\textbf{" + name + "}\\\\" + "\n";
+      const latexCourse = "\\textbf{" + course + "}\\\\" + "\n";
+      const latexAssignment = "\\textbf{" + assignment + "}\\\\\\\\" + "\n";
+
+      const heading = latexName + latexCourse + latexAssignment
 
       const numHeaders = 3;
 
-      for (var i = 0; i < numHeaders; i++) {
+      for (let i = 0; i < numHeaders; i++) {
        arrayText.shift();
       }
 
       const proofs = arrayText.join("\n");
 
-      var compiler = new AntlrComponent();
+      let compiler = new AntlrComponent();
       let compiledProofs = compiler.compile(proofs);
 
-      var latex = this.preamble + heading + compiledProofs + this.postamble;
+      let latex = this.preamble + heading + compiledProofs + this.postamble;
 
       this.http.post('http://localhost:4201/scribe', {
         latex
       }, {headers: {
         "Content-Type": "application/json"
       }}).subscribe( (data: {pdf: string}) => {
-        var pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data["pdf"];
+        let pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data["pdf"];
 
-        var a = document.createElement("a");
+        const date = new Date()
+        const fullDate = date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
+
+        let a = document.createElement("a");
         document.body.appendChild(a);
         a.href = pdfDataURL;
-        a.download = "proof";
+        a.download = (name + "_" + course + "_" + assignment + "_" + fullDate).replace(/\s/g, "_");
         a.click();
 
         loader.style.visibility = "hidden";
