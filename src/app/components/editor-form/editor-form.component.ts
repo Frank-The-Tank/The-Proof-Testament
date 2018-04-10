@@ -14,6 +14,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   nameText = '';
   classText = '';
   proofText = '';
+  assignmentText = '';
   descriptionText = '';
   infoFilled: boolean;
   infoFilledSubscription;
@@ -31,12 +32,19 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     if (selection === 'custom') {
       this.proofText = hiddenVal;
     }
-    const outline =
-      ('Name: ').bold() +  this.nameText + '<br />' +
-      ('Class: ').bold() + this.classText + '<br />' +
-      ('Proof: ').bold() + this.proofText + '<br /><br />' +
-      ('Solution: ').bold() +  '<br />' +
-      this.descriptionText;
+    // const outline =
+    //   ('Name: ') +  this.nameText + '<br />' +
+    //   ('Class: ') + this.classText + '<br />' +
+    //   ('Proof: ') + this.proofText + '<br /><br />' +
+    //   ('Solution: ').bold() +  '<br />' +
+    //   this.descriptionText;
+
+    const outline = 
+      '# ' + this.nameText + '<br/>' +
+      '# ' + this.classText + '<br/>' + 
+      '# ' + this.assignmentText + '<br/><br/>' + 
+      '# ' + this.proofText + '<br/>'
+
     this.editorService.submitData(outline);
   }
 

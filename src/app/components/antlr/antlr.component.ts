@@ -69,7 +69,6 @@ export class AntlrComponent implements SlickListener {
   private tokens : CommonTokenStream;
   private tree: DocContext;
   private stack : Array<any>;
-  private includePreamble: Boolean;
 
   constructor() {
     this.preamble =
@@ -165,11 +164,11 @@ export class AntlrComponent implements SlickListener {
   }
 
   public exitDoc = (ctx : DocContext) => {
-    this.output += this.preamble;
+    // this.output += this.preamble;
     while (this.stack.length > 0) {
       this.output += this.stack.shift() + "\n";
     }
-    this.output += "\\end{tabbing}\\end{document}\n\n";
+    // this.output += "\\end{tabbing}\\end{document}\n\n";
   }
 
   public exitStartExpo = (ctx : StartExpoContext) => {
@@ -315,7 +314,7 @@ export class AntlrComponent implements SlickListener {
     return s;
   }
 
-  public compile(data: string) {
+  public compile(data) {
     this.input = data;
     this.chars = new ANTLRInputStream(this.input);
     this.lexer = new SlickLexer(this.chars);

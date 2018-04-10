@@ -11,6 +11,10 @@
         <input [(ngModel)]="classText" type="text" name="class" value="" class="form-control">
       </div>
       <div class="form-group">
+        <label>Assignment:</label>
+        <input [(ngModel)]="assignmentText" type="text" name="class" value="" class="form-control">
+      </div>
+      <div class="form-group">
         <label>Proof:</label>
         <select #proofSelector (change)="onProofSelectionChanged($event.target.value)" [(ngModel)]="proofText" name="proofs" class="form-control">
           <option style="display:none" value=""></option>
@@ -24,7 +28,7 @@
         </select>
         <input #hiddenField [hidden]="!customProofSelected" type="text" class="form-control">
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label>Description:</label>
         <textarea
           [(ngModel)]="descriptionText"
@@ -32,7 +36,7 @@
           cols="30" rows="5"
           class="form-control"
           placeholder="Proof by mathematical induction... "></textarea>
-      </div>
+      </div> -->
     </fieldset>
     <button (click)="formSubmit(proofSelector.value, hiddenField.value)" class="btn btn-primary">Generate Editor</button>
   </form>

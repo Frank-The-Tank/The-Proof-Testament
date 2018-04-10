@@ -98,65 +98,71 @@ export class EditorComponent implements OnInit, OnDestroy {
   booleanSymbol = '𝔹';
 
   preamble =
-    '\\documentclass[11pt]{amsart}\n' +
-    '\\usepackage{times}\n' +
-    '\\usepackage{amssymb,latexsym}\n' +
-    '\\usepackage[usenames, dvipsnames]{color}\n' +
-    '\\usepackage{ wasysym }\n' +
-    '\n' +
-    '\\newcommand{\\lgap}{12pt}                            % Line gap\n' +
-    '\\newcommand{\\slgap}{4pt}                            % Small line gap\n' +
-    '\\newcommand{\\equivs}{\\ensuremath{\\;\\equiv\\;}}       % Equivales with space\n' +
-    '\\newcommand{\\equivss}{\\ensuremath{\\;\\;\\equiv\\;\\;}}  % Equivales with double space\n' +
-    '\\newcommand{\\nequiv}{\\ensuremath{\\not\\equiv}}       % Inequivalent\n' +
-    '\\newcommand{\\impl}{\\ensuremath{\\Rightarrow}}        % Implies\n' +
-    '\\newcommand{\\nimpl}{\\ensuremath{\\not\\Rightarrow}}   % Does not imply\n' +
-    '\\newcommand{\\foll}{\\ensuremath{\\Leftarrow}}         % Follows from\n' +
-    '\\newcommand{\\nfoll}{\\ensuremath{\\not\\Leftarrow}}    % Does not follow from\n' +
-    '\\newcommand{\\proofbreak}{\\\\ \\\\ \\\\ \\\\}\n' +
-    '\n' +
-    '% These macros are used for quantifications. Thanks to David Gries for sharing\n' +
-    '\\newcommand{\\thedr}{\\rule[-.25ex]{.32mm}{1.75ex}}   % Symbol that separates dummy from range in quantification\n' +
-    '\\newcommand{\\dr}{\\;\\,\\thedr\\,\\;}                    % Symbol that separates dummy from range, with spacing\n' +
-    '\\newcommand{\\rb}{:}                                 % Symbol that separates range from body in quantification\n' +
-    '\\newcommand{\\drrb}{\\;\\thedr\\,{:}\\;}                 % Symbol that separates dummy from body when range is missing\n' +
-    '\\newcommand{\\all}{\\forall}                          % Universal quantification\n' +
-    '\\newcommand{\\ext}{\\exists}                          % Existential quantification\n' +
-    '\\newcommand{\\Gll} {\\langle}                         % Open hint\n' +
-    '\\newcommand{\\Ggg} {\\rangle}                         % Close hint\n' +
-    '\n' +
-    '% Proof\n' +
-    '\\newcommand{\\Step}[1]{\\>{$#1$}}\n' +
-    '%\\newcommand{\\Hint}[1] {\\\\=\\>\\>\\ \\ \\ $\\Gll\\ \\mbox{#1}\\ \\Ggg$ \\\\}   % Single line hint\n' +
-    '\\newcommand{\\Hint}[1] {\\\\=\\>\\>\\ \\ \\ $\\Gll$\\ \\text{#1}\\ $\\Ggg$ \\\\}   % Single line hint\n' +
-    '\\newcommand{\\done}{{\\color{BurntOrange} \\ \\ $//$}}\n' +
-    '\n' +
-    '% Math symbols\n' +
-    '\\newcommand{\\nat}{\\mathbb{N}}\n' +
-    '\\newcommand{\\real}{\\mathbb{R}}\n' +
-    '\\newcommand{\\integer}{\\mathbb{Z}}\n' +
-    '\\newcommand{\\bool}{\\mathbb{B}}\n' +
-    '\n' +
-    '% Single and double quotes\n' +
-    '\\newcommand{\\Lq}{\\mbox{`}}\n' +
-    '\\newcommand{\\Rq}{\\mbox{\'}}\n' +
-    '\\newcommand{\\Lqq}{\\mbox{``}}\n' +
-    '\\newcommand{\\Rqq}{\\mbox{\'\'}}\n' +
-    '\n' +
-    '\n' +
-    '\\oddsidemargin  0.0in\n' +
-    '\\evensidemargin 0.0in\n' +
-    '\\textwidth      6.5in\n' +
-    '\\headheight     0.0in\n' +
-    '\\topmargin      0.0in\n' +
-    '\\textheight=9.0in\n' +
-    '\\parindent=0in\n' +
-    '\\pagestyle{empty}\n' +
-    '\n' +
-    '\\begin{document}\n' +
-    '\\begin{tabbing}\n' +
-    '99.\\;\\=(m)\\;\\=\\kill\n';
+      '\\documentclass[11pt]{amsart}\n'+
+      '\\usepackage[pdftex]{graphicx}\n' +
+      '\\usepackage[margin=1in]{geometry}'+
+      '\\usepackage{fancyhdr}\n' +
+      '\\pagestyle{fancy}\n' +
+      '\\usepackage{amsmath}\n' +
+      '\\usepackage{amssymb,latexsym}\n' +
+      '\\usepackage{centernot}'+
+      '\\usepackage{times}\n' +
+      '\\usepackage[usenames, dvipsnames]{color}\n' +
+      '\n' +
+      '\\newcommand{\\lgap}{12pt}                            % Line gap\n' +
+      '\\newcommand{\\slgap}{4pt}                            % Small line gap\n' +
+      '\\newcommand{\\equivs}{\\ensuremath{\\;\\equiv\\;}}       % Equivales with space\n' +
+      '\\newcommand{\\equivss}{\\ensuremath{\\;\\;\\equiv\\;\\;}}  % Equivales with double space\n' +
+      '\\newcommand{\\nequiv}{\\ensuremath{\\not\\equiv}}       % Inequivalent\n' +
+      '\\newcommand{\\impl}{\\ensuremath{\\Rightarrow}}        % Implies\n' +
+      '\\newcommand{\\nimpl}{\\ensuremath{\\not\\Rightarrow}}   % Does not imply\n' +
+      '\\newcommand{\\foll}{\\ensuremath{\\Leftarrow}}         % Follows from\n' +
+      '\\newcommand{\\nfoll}{\\ensuremath{\\not\\Leftarrow}}    % Does not follow from\n' +
+      '\\newcommand{\\proofbreak}{\\\\ \\\\ \\\\ \\\\}\n' +
+      '\n' +
+      '% These macros are used for quantifications. Thanks to David Gries for sharing\n' +
+      '\\newcommand{\\thedr}{\\rule[-.25ex]{.32mm}{1.75ex}}   % Symbol that separates dummy from range in quantification\n' +
+      '\\newcommand{\\dr}{\\;\\,\\thedr\\,\\;}                    % Symbol that separates dummy from range, with spacing\n' +
+      '\\newcommand{\\rb}{:}                                 % Symbol that separates range from body in quantification\n' +
+      '\\newcommand{\\drrb}{\\;\\thedr\\,{:}\\;}                 % Symbol that separates dummy from body when range is missing\n' +
+      '\\newcommand{\\all}{\\forall}                          % Universal quantification\n' +
+      '\\newcommand{\\ext}{\\exists}                          % Existential quantification\n' +
+      '\\newcommand{\\Gll} {\\langle}                         % Open hint\n' +
+      '\\newcommand{\\Ggg} {\\rangle}                         % Close hint\n' +
+      '\n' +
+      '% Proof\n' +
+      '\\newcommand{\\Step}[1]{\\>{$#1$}}\n' +
+      '%\\newcommand{\\Hint}[1] {\\\\=\\>\\>\\ \\ \\ $\\Gll\\ \\mbox{#1}\\ \\Ggg$ \\\\}   % Single line hint\n' +
+      '\\newcommand{\\Hint}[1] {\\\\=\\>\\>\\ \\ \\ $\\Gll$\\ \\text{#1}\\ $\\Ggg$ \\\\}   % Single line hint\n' +
+      '\\newcommand{\\done}{{\\color{BurntOrange} \\ \\ $//$}}\n' +
+      '\n' +
+      '% Math symbols\n' +
+      '\\newcommand{\\nat}{\\mathbb{N}}\n' +
+      '\\newcommand{\\real}{\\mathbb{R}}\n' +
+      '\\newcommand{\\integer}{\\mathbb{Z}}\n' +
+      '\\newcommand{\\bool}{\\mathbb{B}}\n' +
+      '\n' +
+      '% Single and double quotes\n' +
+      '\\newcommand{\\Lq}{\\mbox{`}}\n' +
+      '\\newcommand{\\Rq}{\\mbox{\'}}\n' +
+      '\\newcommand{\\Lqq}{\\mbox{``}}\n' +
+      '\\newcommand{\\Rqq}{\\mbox{\'\'}}\n' +
+      '\n' +
+      '\n' +
+      '\\oddsidemargin  0.0in\n' +
+      '\\evensidemargin 0.0in\n' +
+      '\\textwidth      6.5in\n' +
+      '\\headheight     0.0in\n' +
+      '\\topmargin      0.0in\n' +
+      '\\textheight=9.0in\n' +
+      '\\parindent=0in\n' +
+      '\\pagestyle{empty}\n' +
+      '\n' +
+      '\\begin{document}\\newcommand{\\unindent}{ \\hspace{-2em}}'+
+      '\\begin{tabbing}\n' +
+      '99.\\;\\=(m)\\;\\=\\kill\n';
 
+    postamble = "\\end{tabbing}\\end{document}\n\n";
 
     bindings = {
       enter: {
@@ -1102,39 +1108,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   latex() {
-     const text = this.editorInstance.getText();
-     const arrayText = text.split("#");
-
-     // Remove the first element.
-     arrayText.shift();
-
-     if (arrayText.length >= 4) {
-       const name = arrayText[0];
-       const course = arrayText[1];
-       const assignment = arrayText[2];
-
-       const numHeaders = 3;
-
-       for (var i = 0; i < numHeaders; i++) {
-         arrayText.shift();
-       }
-
-       console.log(arrayText);
-
-       var newText = "";
-
-       for (var i = 0; i < arrayText.length; i++) {
-         newText += arrayText[i] + '\n';
-       }
-
-       // Convert to LaTeX
-       const compiler = new AntlrComponent();
-       const results = compiler.compile(newText)
-
-       console.log(results);
-     } else {
-       console.log("Text does not contain headers: Name, Class, and/or Assignment.");
-     }
+     
   }
 
   export() {
@@ -1145,28 +1119,47 @@ export class EditorComponent implements OnInit, OnDestroy {
     exportBtn.disabled = true;
 
     const text = this.editorInstance.getText();
-    const compiler = new AntlrComponent(true);
+    const arrayText = text.split("\n");
 
-    let results = '';
+    if (arrayText.length >= 3) {
+      const name = "\\textbf{" + (arrayText[0] as string).replace(/#(?:\s)/gm, "") + "}\\\\" + "\n";
+      const course = "\\textbf{" + (arrayText[1] as string).replace(/#(?:\s)/gm, "") + "}\\\\" + "\n";
+      const assignment = "\\textbf{" + (arrayText[2] as string).replace(/#(?:\s)/gm, "") + "}\\\\\\\\" + "\n";
 
-    results += compiler.compile(text);
+      const heading = name + course + assignment
 
-    this.http.post('http://localhost:4201/scribe', {
-      results
-    }, {headers: {
-      "Content-Type": "application/json"
-    }}).subscribe( (data: {pdf: string}) => {
-      var pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data["pdf"];
+      const numHeaders = 3;
 
-      var a = document.createElement("a");
-      document.body.appendChild(a);
-      a.href = pdfDataURL;
-      a.download = "proof";
-      a.click();
+      for (var i = 0; i < numHeaders; i++) {
+       arrayText.shift();
+      }
 
-      loader.style.visibility = "hidden";
-      exportBtn.disabled = false;    
-    });
+      const proofs = arrayText.join("\n");
+
+      var compiler = new AntlrComponent();
+      let compiledProofs = compiler.compile(proofs);
+
+      var latex = this.preamble + heading + compiledProofs + this.postamble;
+
+      this.http.post('http://localhost:4201/scribe', {
+        latex
+      }, {headers: {
+        "Content-Type": "application/json"
+      }}).subscribe( (data: {pdf: string}) => {
+        var pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data["pdf"];
+
+        var a = document.createElement("a");
+        document.body.appendChild(a);
+        a.href = pdfDataURL;
+        a.download = "proof";
+        a.click();
+
+        loader.style.visibility = "hidden";
+        exportBtn.disabled = false;    
+      });
+    } else {
+      console.log("Text does not contain headers: Name, Class, and/or Assignment.");
+    }
   }
 
 }
