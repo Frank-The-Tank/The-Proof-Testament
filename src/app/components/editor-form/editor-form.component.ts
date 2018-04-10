@@ -37,7 +37,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       ('Class: ').bold() + this.classText + '<br />' +
       ('Prove: ').bold() + this.proofText + '<br /><br />' +
       ('Heuristic: ').bold() + this.heuristicText + '<br /><br />' +
-      ('Proof:').bold()+ this.proof + '<br /><br />';
+      ('Proof:').bold();
     this.editorService.submitData(outline);
   }
 
