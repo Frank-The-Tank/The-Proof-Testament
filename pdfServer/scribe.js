@@ -15,7 +15,7 @@ router.use(cors());
 router.options('/', cors());
 
 router.post('/', function(req, res){
-	// console.log(req.body.latex);
+	console.log(req.body.latex);
 	
 	const input = req.body.latex
 	const output = base64.encode()
