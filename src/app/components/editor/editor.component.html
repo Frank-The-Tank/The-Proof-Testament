@@ -40,8 +40,11 @@
         <span class ="ql-formats">
           <button (click)="export()" id="exportBtn" class="functionBtn">Export</button>
         </span>
-        <span class="ql-formats" style="float: right;">
+        <span class="ql-formats">
           <div class="loader" id="exportLoader" style="visibility: hidden;"></div>
+        </span>
+        <span class="ql-formats" style="float:right">
+          <button (click)="addNewThm()" class="functionBtn fa fa-plus-circle"></button>
         </span>
       </div>
   </quill-editor>

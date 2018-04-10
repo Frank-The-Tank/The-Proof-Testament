@@ -102,6 +102,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   alwaysUnicode = '\u25a1';
   eventuallyUnicode = '\u25c7';
   booleanSymbol = '𝔹';
+  plusUnicode ='\u002B';
 
   preamble =
     '\\documentclass[11pt]{amsart}\n' +
@@ -304,6 +305,10 @@ export class EditorComponent implements OnInit, OnDestroy {
         break;
       }
     }
+  }
+
+  addNewThm() {
+    this.editorService.toggleFormFilled();
   }
 
   addBindingCreated(quill) {
