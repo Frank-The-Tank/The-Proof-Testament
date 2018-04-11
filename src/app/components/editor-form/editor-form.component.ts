@@ -16,7 +16,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   courseText = '';
   assignmentText = '';
   proofText = '';
-  heuristicText = 'by showing equivalence to a previous theorem <br />Proof: <br />';
+  heuristicText = 'by showing equivalence to a previous theorem <br />Proof:';
   infoFilled: boolean;
   infoFilledSubscription;
   customProofSelected = false;
@@ -39,7 +39,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       ('Name: ').bold() +  this.nameText + '<br />' +
       ('Course: ').bold() + this.courseText + '<br />' +
       ('Assignment: ').bold() +  this.assignmentText + '<br /><br />' +
-      'Prove ' + this.proofText + '<br />' + this.heuristicText + '<br />';
+      'Prove ' + this.proofText + '<br />' + this.heuristicText + '<br /><br />';
     this.editorService.submitData(outline);
   }
 
