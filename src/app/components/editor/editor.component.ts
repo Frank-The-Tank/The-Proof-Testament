@@ -60,7 +60,7 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   equalsUnicode = '\u003D';
   impliesUnicode = '\u21D2';
-  followsFromUnicode = '\u21d0';
+  followsFromUnicode = '\u21d0 ';
   lessThanUnicode = '\u003C';
   greaterThanUnicode = '\u003E';
   doesNotEqualUnicode = '\u2262';
@@ -497,7 +497,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.followsFromUnicode);
+        quill.insertText(range.index - 2, ' '+ this.followsFromUnicode + ' ');
       });
 
     // less than
@@ -510,7 +510,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.lessThanUnicode);
+        quill.insertText(range.index - 2, ' ' + this.lessThanUnicode + ' ');
       });
 
     // less than or equal to
@@ -521,7 +521,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.lessThanOrEqUnicode);
+        quill.insertText(range.index - 2, ' ' + this.lessThanOrEqUnicode + ' ');
       });
 
     // greater than
@@ -532,7 +532,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.greaterThanUnicode);
+        quill.insertText(range.index - 2, ' ' + this.greaterThanUnicode + ' ');
       });
 
 
@@ -544,7 +544,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.greaterThanorEqUnicode);
+        quill.insertText(range.index - 2, ' ' + this.greaterThanorEqUnicode + ' ');
       });
 
     // left hint bracket
@@ -577,7 +577,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.impliesUnicode);
+        quill.insertText(range.index - 2, ' ' + this.impliesUnicode + ' ');
       });
 
     // equival
@@ -588,7 +588,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.equivalesUnicode);
+        quill.insertText(range.index - 2, ' ' + this.equivalesUnicode + ' ');
       });
 
     // textual subsitution
@@ -599,7 +599,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.textSubUnicode);
+        quill.insertText(range.index - 2, ' ' + this.textSubUnicode+ ' ');
       });
 
     // element of
@@ -610,7 +610,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.elementOfUnicode);
+        quill.insertText(range.index - 2, ' ' + this.elementOfUnicode + ' ');
       });
 
     // universe
@@ -632,7 +632,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.properSubsetOfUnicode);
+        quill.insertText(range.index - 2, ' ' + this.properSubsetOfUnicode + ' ');
       });
 
     // proper superset
@@ -643,7 +643,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.properSupersetOfUnicode);
+        quill.insertText(range.index - 2, ' ' + this.properSupersetOfUnicode + ' ');
       });
 
     // subset
@@ -654,7 +654,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.subsetOfUnicode);
+        quill.insertText(range.index - 2, ' ' + this.subsetOfUnicode + ' ');
       });
 
     // superset
@@ -665,7 +665,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.supersetOfUnicode);
+        quill.insertText(range.index - 2, ' ' + this.supersetOfUnicode+ ' ');
       });
 
     // empty set
@@ -676,7 +676,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.emptySetUnicode);
+        quill.insertText(range.index - 2, ' ' + this.emptySetUnicode + ' ');
       });
 
 
@@ -688,7 +688,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.unionUnicode);
+        quill.insertText(range.index - 2, ' ' + this.unionUnicode + ' ');
       });
 
     // intersection
@@ -699,7 +699,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.intersectionUnicode);
+        quill.insertText(range.index - 2, ' ' + this.intersectionUnicode + ' ');
       });
 
     // complement
@@ -722,7 +722,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.disjunctionUnicode);
+        quill.insertText(range.index - 2, ' ' + this.disjunctionUnicode + ' ');
       });
 
     // conjunction
@@ -733,7 +733,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.conjuctionUnicode);
+        quill.insertText(range.index - 2, ' ' + this.conjuctionUnicode + ' ');
       });
 
     // for all
@@ -744,7 +744,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.universalQuantifierUnicode);
+        quill.insertText(range.index - 2, ' ' + this.universalQuantifierUnicode);
       });
 
     // there exists
@@ -755,7 +755,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.existentialQuanitiferUnicode);
+        quill.insertText(range.index - 2, ' ' + this.existentialQuanitiferUnicode);
       });
 
     // power set
@@ -902,7 +902,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, this.doesNotImplyUnicode);
+        quill.insertText(range.index - 3, ' ' + this.doesNotImplyUnicode + ' ');
       });
 
     // does not follow from
@@ -913,7 +913,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, this.doesNotFollowFromUnicode);
+        quill.insertText(range.index - 3, ' ' + this.doesNotFollowFromUnicode + ' ');
       });
 
     // not equal
@@ -924,7 +924,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, this.doesNotEqualUnicode);
+        quill.insertText(range.index - 3, ' ' + this.doesNotEqualUnicode + ' ');
       });
 
     //not equivales
@@ -935,7 +935,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, this.notEquivalesUnicode);
+        quill.insertText(range.index - 3, ' ' + this.notEquivalesUnicode + ' ');
       });
 
     // not element of
@@ -946,7 +946,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, this.notElementOfUnicode);
+        quill.insertText(range.index - 3, ' ' + this.notElementOfUnicode + ' ');
       });
 
     // not a subset
@@ -957,7 +957,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, this.notSubsetOf);
+        quill.insertText(range.index - 3, ' ' + this.notSubsetOf + ' ');
       });
 
     // not a superset
@@ -968,7 +968,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, this.notSupersetOfUnicode);
+        quill.insertText(range.index - 3, ' ' + this.notSupersetOfUnicode + ' ');
       });
 
     // not a proper superset
@@ -979,7 +979,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, this.notProperSupersetOfUnicode);
+        quill.insertText(range.index - 3, ' ' + this.notProperSupersetOfUnicode + ' ');
       });
 
     // not a proper subset
@@ -990,7 +990,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, this.notProperSubsetOfUnicode);
+        quill.insertText(range.index - 3, ' ' + this.notProperSubsetOfUnicode + ' ');
       });
 
     ////////////////////////////////// natural numbers, etc ///////////////////////////////
@@ -1228,7 +1228,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         },
         (range, context) => {
           quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-          quill.insertText(range.index - 3, '∑');
+          quill.insertText(range.index - 3, ' ∑');
         });
 
               //or-and
@@ -1239,7 +1239,7 @@ export class EditorComponent implements OnInit, OnDestroy {
                 },
                 (range, context) => {
                   quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-                  quill.insertText(range.index - 3, '∏');
+                  quill.insertText(range.index - 3, ' ∏');
                 });
   }
 
