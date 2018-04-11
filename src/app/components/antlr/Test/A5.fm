@@ -1,5 +1,7 @@
 Prove 3.12
+by showing equivalence to a previous theorem
 
+Proof:
   ¬¬p ≡ p
 =    〈 (3.11) ¬p ≡ q ≡ p ≡ ¬q, with p, q ≔ ¬p, p 〉
   ¬p ≡ ¬p
@@ -9,7 +11,9 @@ Prove 3.12
 ------------------------------
 
 Prove 3.13
+by showing equivalence to a previous theorem
 
+Proof:
   ¬false
 =    〈 Definition of false (3.8) 〉
   ¬¬true
@@ -19,7 +23,9 @@ Prove 3.13
 ------------------------------
 
 Prove 3.14
+by showing equivalence to a previous theorem
 
+Proof:
   p ≢ q
 =    〈 Definition of ≢ (3.10) 〉
   ¬(p ≡ q)
@@ -29,7 +35,9 @@ Prove 3.14
 ------------------------------
 
 Prove 3.19
+by showing equivalence to a previous theorem
 
+Proof:
   p ≢ q ≡ r
 =    〈 Definition of ≢ (3.10) with p, q ≔ p, q ≡ r〉
   ¬(p ≡ q ≡ r)
