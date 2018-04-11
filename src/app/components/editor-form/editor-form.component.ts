@@ -3,6 +3,7 @@ import {EditorService} from '../editor/editor.service';
 import {BibleService} from '../bible/bible.service';
 import {Theorem} from '../../model/theorem';
 import {Observable} from 'rxjs/Observable';
+import {Heuristic} from '../../model/heuristic';
 
 @Component({
   selector: 'app-editor-form',
@@ -12,14 +13,16 @@ import {Observable} from 'rxjs/Observable';
 export class EditorFormComponent implements OnInit, OnDestroy {
 
   nameText = '';
-  classText = '';
+  courseText = '';
+  assignmentText = '';
   proofText = '';
-  heuristicText = '';
-  proof = "<br />";
+  heuristicText = 'by showing equivalence to a previous theorem <br />Proof: <br />';
   infoFilled: boolean;
   infoFilledSubscription;
   customProofSelected = false;
   theorems$: Observable<Theorem[]>;
+  heuristic: Heuristic[];
+
 
   constructor(private editorService: EditorService, private bibleService: BibleService) {
     this.infoFilledSubscription = this.editorService.infoFilledChange.subscribe(infoFilled => {
@@ -34,42 +37,13 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     }
     const outline =
       ('Name: ').bold() +  this.nameText + '<br />' +
-      ('Class: ').bold() + this.classText + '<br />' +
-      ('Prove: ').bold() + this.proofText + '<br /><br />' +
-      ('Heuristic: ').bold() + this.heuristicText + '<br /><br />' +
-      ('Proof:').bold();
+      ('Course: ').bold() + this.courseText + '<br />' +
+      ('Assignment: ').bold() +  this.assignmentText + '<br /><br />' +
+      'Prove ' + this.proofText + '<br />' + this.heuristicText + '<br />';
     this.editorService.submitData(outline);
   }
 
 onHeuristicSelectionChanged(selection) {
-    switch (selection){
-      case "Deduction":
-        this.heuristicText += '<br />' + "To prove P1 ⋀ P2 ⇒ Q, assume P1 and P2 and prove Q." +
-          "<br />" + "You cannot use textual substitution in P1 or P2.";
-        break;
-      case "Case Analysis Expressions":
-        this.heuristicText += '<br />' + "If E[z,true] and E[z, false] are theorems, then so is E[z, p].";
-        break;
-      case "Case Analysis":
-        this.heuristicText += '<br />' + "(p ⋁ q ⋁ r) ⋀ (p ⇒ s) ⋀ (q ⇒ s) ⋀ (r ⇒ s) ⇒ s";
-        break;
-      case "Mutual Implication":
-        this.heuristicText += '<br />' + "To prove P ≡ Q, prove P ⇒ Q and Q ⇒ P."
-        break;
-      case "Truth Implication":
-        this.heuristicText += '<br />' + "To prove P, prove true ⇒ P.";
-        break;
-      case "Induction":
-        console.log('need to fix induction');
-        break;
-      case "Proof by Contradiction":
-        this.heuristicText += '<br />' + "To prove P, prove ¬ P ⇒ false."
-        break;
-      case "Proof by Contrapositive":
-        this.heuristicText += '<br />' + "P ⇒ Q, prove  ¬ Q ⇒  ¬ P."
-        break;
-      default: console.log("didn't click it");
-    }
   }
 
   onProofSelectionChanged(selection) {
@@ -83,6 +57,22 @@ onHeuristicSelectionChanged(selection) {
 
   ngOnInit() {
     this.theorems$ = this.bibleService.findAllTheorems();
+    this.heuristic = [
+      {name: 'Prove Equivalent to Previous Theorem', description: 'by showing equivalence to a previous theorem <br /><br /><u>Proof:</u>'},
+      {name: 'Deduction', description: 'by assuming conjunct of antecedent <br /><br /><u>Proof:</u>'},
+      {name: 'Case Analysis', description: 'by case analysis on p <br />' +
+        ' prove <br />' +
+        '  (1) true ⋀ (q ⋁ r) ≡ (true ⋀ q) ⋁ (true ⋀ r) <br />' +
+        '  (2) false ⋀ (q ⋁ r) ≡ (false ⋀ q) ⋁ (false ⋀ r)<br /><br />' +
+        'Proof of (1)<br /><br />' +
+        'Proof of (2)<br /><br />'
+      },
+      {name: 'Mutual Implication', description: 'To prove P ≡ Q, prove P ⇒ Q and Q ⇒ P.<br /><br /><u>Proof:</u>'},
+      {name: 'Truth Implication', description: 'To prove P, prove true ⇒ P.<br /><br /><u>Proof:</u>'},
+      {name: 'Induction', description: 'by mathematical induction<br /><br /><u>Proof:</u>'},
+      {name: 'Proof by Contradiction', description: 'by contradiction<br /><br /><u>Proof:</u>'},
+      {name: 'Proof by Contrapositive', description: 'by proving the contrapositive: <br /><br /><u>Proof:</u>'}];
+
   }
 
   ngOnDestroy() {

@@ -7,15 +7,21 @@
         <input [(ngModel)]="nameText" type="text" name="proof" value="" class="form-control">
       </div>
       <div class="form-group">
-        <label>Class:</label>
-        <input [(ngModel)]="classText" type="text" name="class" value="" class="form-control">
+        <label>Course:</label>
+        <input [(ngModel)]="courseText" type="text" name="class" value="" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Assignment:</label>
+        <input [(ngModel)]="assignmentText" type="text" name="assignment" value="" class="form-control">
       </div>
       <div class="form-group">
         <label>Proof:</label>
-        <select #proofSelector (change)="onProofSelectionChanged($event.target.value)" [(ngModel)]="proofText" name="proofs" class="form-control">
+        <select #proofSelector (change)="onProofSelectionChanged($event.target.value)" [(ngModel)]="proofText"
+                name="proofs" class="form-control">
           <option style="display:none" value=""></option>
           <option value="custom">[Custom]</option>
-          <option *ngFor="let theorem of (theorems$ | async)" [ngValue]="'(' + theorem.rule + ') ' + (theorem.name || theorem.eq)">
+          <option *ngFor="let theorem of (theorems$ | async)"
+                  [ngValue]="'(' + theorem.rule + ')'">
             {{theorem.rule}}:
             <span *ngIf="theorem.name">{{theorem.name}}</span>
             <span *ngIf="!theorem.name && theorem.eq.length < 50">{{theorem.eq}}</span>
@@ -26,18 +32,15 @@
       </div>
       <div class="form-group">
         <label>Heurisitc:</label>
-        <select #heurisitcSelector (change)="onHeuristicSelectionChanged($event.target.value)"  [(ngModel)]="heuristicText" name="heuristic" class="form-control">
-          <option value="Deduction">Deduction</option>
-          <option value="Induction">Induction</option>
-          <option value="Case Analysis Expressions">Case Analysis Expressions</option>
-          <option value="Case Analysis">Case Analysis</option>
-          <option value="Mutual Implication">Mutual Implication</option>
-          <option value="Truth Implication">Truth Implication</option>
-          <option value="Proof by Contradiction">Proof by Contradiction</option>
-          <option value="Proof by Contrapositive">Proof by Contrapositive</option>
+        <select #heuristicSelector (change)="onHeuristicSelectionChanged($event.target.value)"
+                [(ngModel)]="heuristicText" name="heuristic" class="form-control">
+          <option *ngFor="let he of heuristic" [ngValue]="he.description">
+            {{he.name}}
+          </option>
         </select>
       </div>
     </fieldset>
-    <button (click)="formSubmit(proofSelector.value, hiddenField.value)" class="btn btn-primary">Generate Editor</button>
+    <button (click)="formSubmit(proofSelector.value, hiddenField.value)" class="btn btn-primary">Generate Editor
+    </button>
   </form>
 </div>
