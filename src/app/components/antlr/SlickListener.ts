@@ -8,16 +8,19 @@ import { EquivalenceExprContext } from './SlickParser';
 import { AtomContext } from './SlickParser';
 import { RelativeExprContext } from './SlickParser';
 import { SetEnumExprContext } from './SlickParser';
+import { ArrayExprContext } from './SlickParser';
 import { FunctionCallExprContext } from './SlickParser';
 import { AdditionExprContext } from './SlickParser';
 import { LeibnizExprContext } from './SlickParser';
 import { SetCompExprContext } from './SlickParser';
 import { GeneralExprContext } from './SlickParser';
+import { InverseCallExprContext } from './SlickParser';
 import { ParenExprContext } from './SlickParser';
 import { TSExprContext } from './SlickParser';
-import { JunctionExprContext } from './SlickParser';
 import { QuantExprContext } from './SlickParser';
+import { JunctionExprContext } from './SlickParser';
 import { UnaryPrefixExprContext } from './SlickParser';
+import { EmptyRExprContext } from './SlickParser';
 import { PreviousTheoremMethodContext } from './SlickParser';
 import { RightEquivalesLeftMethodContext } from './SlickParser';
 import { RightFollowsLeftMethodContext } from './SlickParser';
@@ -30,6 +33,8 @@ import { AdHocTheoremContext } from './SlickParser';
 import { BibleTheoremContext } from './SlickParser';
 import { FunctionDotContext } from './SlickParser';
 import { FunctionParenContext } from './SlickParser';
+import { TheoremHeaderContext } from './SlickParser';
+import { ExerciseHeaderContext } from './SlickParser';
 import { DocContext } from './SlickParser';
 import { ProofContext } from './SlickParser';
 import { StandardProofContext } from './SlickParser';
@@ -53,9 +58,11 @@ import { HintContext } from './SlickParser';
 import { HintOpContext } from './SlickParser';
 import { VarlistContext } from './SlickParser';
 import { ExprlistContext } from './SlickParser';
+import { EmptyRangeExprContext } from './SlickParser';
 import { QuantifiedExprContext } from './SlickParser';
 import { SetEnumerationContext } from './SlickParser';
 import { SetComprehensionContext } from './SlickParser';
+import { InverseCallContext } from './SlickParser';
 import { FunctionCallContext } from './SlickParser';
 import { TypedVarContext } from './SlickParser';
 
@@ -131,6 +138,19 @@ export interface SlickListener extends ParseTreeListener {
 	exitSetEnumExpr?: (ctx: SetEnumExprContext) => void;
 
 	/**
+	 * Enter a parse tree produced by the `ArrayExpr`
+	 * labeled alternative in `SlickParser.expr`.
+	 * @param ctx the parse tree
+	 */
+	enterArrayExpr?: (ctx: ArrayExprContext) => void;
+	/**
+	 * Exit a parse tree produced by the `ArrayExpr`
+	 * labeled alternative in `SlickParser.expr`.
+	 * @param ctx the parse tree
+	 */
+	exitArrayExpr?: (ctx: ArrayExprContext) => void;
+
+	/**
 	 * Enter a parse tree produced by the `FunctionCallExpr`
 	 * labeled alternative in `SlickParser.expr`.
 	 * @param ctx the parse tree
@@ -196,6 +216,19 @@ export interface SlickListener extends ParseTreeListener {
 	exitGeneralExpr?: (ctx: GeneralExprContext) => void;
 
 	/**
+	 * Enter a parse tree produced by the `InverseCallExpr`
+	 * labeled alternative in `SlickParser.expr`.
+	 * @param ctx the parse tree
+	 */
+	enterInverseCallExpr?: (ctx: InverseCallExprContext) => void;
+	/**
+	 * Exit a parse tree produced by the `InverseCallExpr`
+	 * labeled alternative in `SlickParser.expr`.
+	 * @param ctx the parse tree
+	 */
+	exitInverseCallExpr?: (ctx: InverseCallExprContext) => void;
+
+	/**
 	 * Enter a parse tree produced by the `ParenExpr`
 	 * labeled alternative in `SlickParser.expr`.
 	 * @param ctx the parse tree
@@ -222,19 +255,6 @@ export interface SlickListener extends ParseTreeListener {
 	exitTSExpr?: (ctx: TSExprContext) => void;
 
 	/**
-	 * Enter a parse tree produced by the `JunctionExpr`
-	 * labeled alternative in `SlickParser.expr`.
-	 * @param ctx the parse tree
-	 */
-	enterJunctionExpr?: (ctx: JunctionExprContext) => void;
-	/**
-	 * Exit a parse tree produced by the `JunctionExpr`
-	 * labeled alternative in `SlickParser.expr`.
-	 * @param ctx the parse tree
-	 */
-	exitJunctionExpr?: (ctx: JunctionExprContext) => void;
-
-	/**
 	 * Enter a parse tree produced by the `QuantExpr`
 	 * labeled alternative in `SlickParser.expr`.
 	 * @param ctx the parse tree
@@ -248,6 +268,19 @@ export interface SlickListener extends ParseTreeListener {
 	exitQuantExpr?: (ctx: QuantExprContext) => void;
 
 	/**
+	 * Enter a parse tree produced by the `JunctionExpr`
+	 * labeled alternative in `SlickParser.expr`.
+	 * @param ctx the parse tree
+	 */
+	enterJunctionExpr?: (ctx: JunctionExprContext) => void;
+	/**
+	 * Exit a parse tree produced by the `JunctionExpr`
+	 * labeled alternative in `SlickParser.expr`.
+	 * @param ctx the parse tree
+	 */
+	exitJunctionExpr?: (ctx: JunctionExprContext) => void;
+
+	/**
 	 * Enter a parse tree produced by the `UnaryPrefixExpr`
 	 * labeled alternative in `SlickParser.expr`.
 	 * @param ctx the parse tree
@@ -259,6 +292,19 @@ export interface SlickListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitUnaryPrefixExpr?: (ctx: UnaryPrefixExprContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `EmptyRExpr`
+	 * labeled alternative in `SlickParser.expr`.
+	 * @param ctx the parse tree
+	 */
+	enterEmptyRExpr?: (ctx: EmptyRExprContext) => void;
+	/**
+	 * Exit a parse tree produced by the `EmptyRExpr`
+	 * labeled alternative in `SlickParser.expr`.
+	 * @param ctx the parse tree
+	 */
+	exitEmptyRExpr?: (ctx: EmptyRExprContext) => void;
 
 	/**
 	 * Enter a parse tree produced by the `PreviousTheoremMethod`
@@ -415,6 +461,32 @@ export interface SlickListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitFunctionParen?: (ctx: FunctionParenContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `TheoremHeader`
+	 * labeled alternative in `SlickParser.header`.
+	 * @param ctx the parse tree
+	 */
+	enterTheoremHeader?: (ctx: TheoremHeaderContext) => void;
+	/**
+	 * Exit a parse tree produced by the `TheoremHeader`
+	 * labeled alternative in `SlickParser.header`.
+	 * @param ctx the parse tree
+	 */
+	exitTheoremHeader?: (ctx: TheoremHeaderContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `ExerciseHeader`
+	 * labeled alternative in `SlickParser.header`.
+	 * @param ctx the parse tree
+	 */
+	enterExerciseHeader?: (ctx: ExerciseHeaderContext) => void;
+	/**
+	 * Exit a parse tree produced by the `ExerciseHeader`
+	 * labeled alternative in `SlickParser.header`.
+	 * @param ctx the parse tree
+	 */
+	exitExerciseHeader?: (ctx: ExerciseHeaderContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `SlickParser.doc`.
@@ -670,6 +742,17 @@ export interface SlickListener extends ParseTreeListener {
 	exitExprlist?: (ctx: ExprlistContext) => void;
 
 	/**
+	 * Enter a parse tree produced by `SlickParser.emptyRangeExpr`.
+	 * @param ctx the parse tree
+	 */
+	enterEmptyRangeExpr?: (ctx: EmptyRangeExprContext) => void;
+	/**
+	 * Exit a parse tree produced by `SlickParser.emptyRangeExpr`.
+	 * @param ctx the parse tree
+	 */
+	exitEmptyRangeExpr?: (ctx: EmptyRangeExprContext) => void;
+
+	/**
 	 * Enter a parse tree produced by `SlickParser.quantifiedExpr`.
 	 * @param ctx the parse tree
 	 */
@@ -701,6 +784,17 @@ export interface SlickListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitSetComprehension?: (ctx: SetComprehensionContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `SlickParser.inverseCall`.
+	 * @param ctx the parse tree
+	 */
+	enterInverseCall?: (ctx: InverseCallContext) => void;
+	/**
+	 * Exit a parse tree produced by `SlickParser.inverseCall`.
+	 * @param ctx the parse tree
+	 */
+	exitInverseCall?: (ctx: InverseCallContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `SlickParser.functionCall`.

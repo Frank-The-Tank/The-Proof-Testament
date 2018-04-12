@@ -1,4 +1,4 @@
-/*
+[[[
 5.1a)
 
 Let T represent the program terminating
@@ -9,7 +9,7 @@ The argument is (¬T ⋁ N) ⋀ (N ⇒ M) ⋀ T  ⇒  M
 
 The argument is a theorem by the following proof.
 
-*/
+]]]
 
   (¬T ⋁ N) ⋀ (N ⇒ M) ⋀ T
 =    〈 Absorption (3.44a) 〉
@@ -21,7 +21,7 @@ The argument is a theorem by the following proof.
 
 ------------------------------
 
-/*
+[[[
 5.1c)
 
 Let M represent a man being on the moon.
@@ -32,7 +32,7 @@ The argument is (M ⇒ C) ⋀ (C ⇒ I) ⋀ (¬M ⋁ ¬C)  ⇒  ¬C ⋁ I
 
 The argument is a theorem by the following proof.
 
-*/
+]]]
 
   (M ⇒ C) ⋀ (C ⇒ I) ⋀ (¬M ⋁ ¬C)
 ⇒    〈 Strengthening (3.76b) 〉
@@ -43,7 +43,7 @@ The argument is a theorem by the following proof.
 
 ------------------------------
 
-/*
+[[[
 5.1d)
 
 Let J represent Joe loves Mary.
@@ -54,7 +54,7 @@ The argument is (J ⇒ M ⋁ F) ⋀ F  ⇒  (M ⇒ ¬J)
 
 The argument is not a theorem by counterexample (J, true), (M, true), (F, true)
 
-*/
+]]]
 
   (true ⇒ true ⋁ true) ⋀ true ⇒ (true ⇒ ¬true)
 =    〈 zero of ⋁, ¬true ≡ false 〉

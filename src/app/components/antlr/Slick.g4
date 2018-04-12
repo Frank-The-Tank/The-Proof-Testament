@@ -4,7 +4,7 @@ doc : proof (sep proof)* ;
 
 proof : standardProof | caseProof ;
 
-standardProof : header? startExpo? step (hint step)* END? endExpo? ;
+standardProof : header? startExpo? 'Proof' ':' step (hint step)* END? endExpo? ;
 
 startExpo : EXPO ;
 
@@ -12,15 +12,17 @@ endExpo : EXPO ;
 
 sep : '-' '-' '-' '-'+ ;
 
-header : theorem method? ;
+header : (theorem method?)        # TheoremHeader
+  | 'Exercise' RULENUM            # ExerciseHeader
+;
 
-theorem : PROVE RULENUM     # BibleTheorem
-  | PROVE expr              # AdHocTheorem
+theorem : PROVE '(' RULENUM ')'    # BibleTheorem
+  | PROVE expr                     # AdHocTheorem
 ;
 
 method : 'by' methodName ;
 
-methodName : 'showing' 'equivalence' 'to' 'previous' 'theorem'    # PreviousTheoremMethod
+methodName : 'showing' 'equivalence' 'to' 'a' 'previous' 'theorem'    # PreviousTheoremMethod
   | 'showing' 'the' 'LHS' 'is' 'equivalent' 'to' 'the' 'RHS'      # LeftEquivalesRightMethod
   | 'showing' 'the' 'RHS' 'is' 'equivalent' 'to' 'the' 'LHS'      # RightEquivalesLeftMethod
   | 'showing' 'the' 'LHS' 'implies' 'the' 'RHS'                   # LeftImpliesRightMethod
@@ -48,10 +50,15 @@ step: expr;
 
 expr : expr '[' varlist '≔' exprlist ']'    # TSExpr
    | expr '[' VAR ',' expr ']'              # LeibnizExpr
+   | VAR '[' expr ']'                       # ArrayExpr
+   | quantifiedExpr                         # QuantExpr
+   | inverseCall                            # InverseCallExpr
    | functionCall                           # FunctionCallExpr
    | '¬' expr                               # UnaryPrefixExpr
+   | emptyRangeExpr                         # EmptyRExpr
+   | quantifiedExpr                         # QuantExpr
    | expr ADDOP expr                        # AdditionExpr
-   | expr '★' expr                          # GeneralExpr
+   | expr '%' expr                          # GeneralExpr
    | expr RELOP expr                        # RelativeExpr
    | expr JOP expr                          # JunctionExpr
    | expr IMPOP expr                        # ImplicationExpr
@@ -61,7 +68,6 @@ expr : expr '[' varlist '≔' exprlist ']'    # TSExpr
    | 'true'                                 # Atom
    | 'false'                                # Atom
    | NUM                                    # Atom
-   | quantifiedExpr                         # QuantExpr
    | setEnumeration                         # SetEnumExpr
    | setComprehension                       # SetCompExpr
    | '(' expr ')'                           # ParenExpr
@@ -71,18 +77,20 @@ hint : hintOp COMMENT ;
 hintOp : RELOP | IMPOP | EQOP ;
 varlist : typedVar (',' typedVar)* ;
 exprlist : expr (',' expr)* ;
+emptyRangeExpr : '(' QUANTIFIER varlist '|' ':' expr ')' ;
 quantifiedExpr : '(' QUANTIFIER varlist '|' expr ':' expr ')' ;
 setEnumeration : '{' (expr (',' expr)*)? '}' ;
 setComprehension : '{' typedVar '|' expr ':' expr '}' ;
+inverseCall : 'inv' '.' functionCall ;
 functionCall : VAR '.' expr        # FunctionDot
   | VAR '(' exprlist ')'           # FunctionParen
 ;
 typedVar : VAR (':' TYPE)? ;
 
 COMMENT : '〈' .+? '〉' ;
-EXPO : '/*' .+? '*/' ;
+EXPO : '[[[' .+? ']]]' ;
 PROVE : 'Prove' | 'Reprove' ;
-RULENUM: [1-9][0-9]?'.'[1-9][0-9]?[0-9]?[a-e]?('.'[0-9])? ;
+RULENUM: [1-9][0-9]?'.'[1-9][0-9]?[0-9]?[a-z]?('.'[0-9])? ;
 EVAR : [A-Z] ;
 VAR : [a-z] ;
 TYPE : 'ℤ' | 'ℕ' | 'ℤ+' | 'ℤ-' | 'ℚ' | 'ℝ' | 'ℝ+' | '𝔹' ;
@@ -92,6 +100,6 @@ RELOP : '=' | '≠' | '<' | '>' | '≤' | '≥' | '∈' | '⊂' | '⊆' | '⊃' 
 JOP : '⋀' | '⋁' ;
 IMPOP : '⇒'| '⇐' | '⇏' | '⇍';
 EQOP : '≡' | '≢' ;
-QUANTIFIER : '★' | '∀' | '∃' ;
+QUANTIFIER : '*' | '∀' | '∃' | '∑' | '∏' ;
 WS : [ \t\r\n]+ -> channel(HIDDEN) ;
 END : '╱╱' ;

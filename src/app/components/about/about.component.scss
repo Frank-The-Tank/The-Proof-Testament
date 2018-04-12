@@ -46,3 +46,29 @@
   margin-left: 4%;
   position: relative;
 }
+
+.profRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.profCol {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+.profPic {
+  border-radius: 25%;
+  margin-bottom: 2%;
+}
+
+.title {
+  margin-bottom: 2%;
+}
+
+.profs {
+  margin-bottom: 2%;
+}
