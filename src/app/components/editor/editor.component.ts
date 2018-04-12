@@ -102,7 +102,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   alwaysUnicode = '\u25a1';
   eventuallyUnicode = '\u25c7';
   booleanSymbol = '𝔹';
-  plusUnicode ='\u002B';
+  plusUnicode = '\u002B';
 
 
   bindings = {
@@ -366,27 +366,27 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.setSelection(range.index + 3);
       });
 
-      // close curly brace
-      quill.keyboard.addBinding({key: 219 , shiftKey: true}, {
-          // empty: false,
-          collapsed: true,
-          prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
-        },
-        (range, context) => {
-          quill.insertText(range.index, ' {  } ');
-          quill.setSelection(range.index + 3);
-        });
+    // close curly brace
+    quill.keyboard.addBinding({key: 219, shiftKey: true}, {
+        // empty: false,
+        collapsed: true,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
+      },
+      (range, context) => {
+        quill.insertText(range.index, ' {  } ');
+        quill.setSelection(range.index + 3);
+      });
 
-        //close square brackets
-        quill.keyboard.addBinding({key: 219}, {
-            // empty: false,
-            collapsed: true,
-            prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
-          },
-          (range, context) => {
-            quill.insertText(range.index, ' [  ] ');
-            quill.setSelection(range.index + 3);
-          });
+    //close square brackets
+    quill.keyboard.addBinding({key: 219}, {
+        // empty: false,
+        collapsed: true,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
+      },
+      (range, context) => {
+        quill.insertText(range.index, ' [  ] ');
+        quill.setSelection(range.index + 3);
+      });
 
 
     // p
@@ -530,7 +530,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' '+ this.followsFromUnicode + ' ');
+        quill.insertText(range.index - 2, ' ' + this.followsFromUnicode + ' ');
       });
 
     // less than
@@ -632,7 +632,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.textSubUnicode+ ' ');
+        quill.insertText(range.index - 2, ' ' + this.textSubUnicode + ' ');
       });
 
     // element of
@@ -698,7 +698,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.supersetOfUnicode+ ' ');
+        quill.insertText(range.index - 2, ' ' + this.supersetOfUnicode + ' ');
       });
 
     // empty set
@@ -1253,27 +1253,27 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
       });
 
-      //and-or, sum
-      quill.keyboard.addBinding({key: 'm'}, {
-          empty: false,
-          collapsed: true,
-          prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;su$/
-        },
-        (range, context) => {
-          quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-          quill.insertText(range.index - 3, ' ∑');
-        });
+    //and-or, sum
+    quill.keyboard.addBinding({key: 'm'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;su$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 3, ' ∑');
+      });
 
-              //or-and
-              quill.keyboard.addBinding({key: 'm'}, {
-                  empty: false,
-                  collapsed: true,
-                  prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ns$/
-                },
-                (range, context) => {
-                  quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-                  quill.insertText(range.index - 3, ' ∏');
-                });
+    //or-and
+    quill.keyboard.addBinding({key: 'm'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ns$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 3, ' ∏');
+      });
   }
 
   setControl() {
@@ -1298,26 +1298,26 @@ export class EditorComponent implements OnInit, OnDestroy {
     exportBtn.disabled = true;
 
     const text = this.editorInstance.getText();
-    const arrayText = text.split("\n");
+    const arrayText = text.split('\n');
 
     if (arrayText.length >= 3) {
-      const name = (arrayText[0] as string).replace(/Name:(?:\s)(.*)/gm, "$1")
-      const course = (arrayText[1] as string).replace(/Course:(?:\s)(.*)/gm, "$1")
-      const assignment = (arrayText[2] as string).replace(/Assignment:(?:\s)(.*)/gm, "$1");
+      const name = (arrayText[0] as string).replace(/Name:(?:\s)(.*)/gm, '$1');
+      const course = (arrayText[1] as string).replace(/Course:(?:\s)(.*)/gm, '$1');
+      const assignment = (arrayText[2] as string).replace(/Assignment:(?:\s)(.*)/gm, '$1');
 
-      const latexName = "\\textbf{" + name + "}\\\\" + "\n";
-      const latexCourse = "\\textbf{" + course + "}\\\\" + "\n";
-      const latexAssignment = "\\textbf{" + assignment + "}\\\\\\\\" + "\n";
+      const latexName = '\\textbf{' + name + '}\\\\' + '\n';
+      const latexCourse = '\\textbf{' + course + '}\\\\' + '\n';
+      const latexAssignment = '\\textbf{' + assignment + '}\\\\\\\\' + '\n';
 
-      const heading = latexName + latexCourse + latexAssignment
+      const heading = latexName + latexCourse + latexAssignment;
 
       const numHeaders = 3;
 
       for (let i = 0; i < numHeaders; i++) {
-       arrayText.shift();
+        arrayText.shift();
       }
 
-      const proofs = arrayText.join("\n");
+      const proofs = arrayText.join('\n');
 
       let compiler = new AntlrComponent();
       let compiledProofs = compiler.compile(proofs);
@@ -1326,25 +1326,28 @@ export class EditorComponent implements OnInit, OnDestroy {
 
       this.http.post('http://localhost:4201/scribe', {
         latex
-      }, {headers: {
-        "Content-Type": "application/json"
-      }}).subscribe( (data: {pdf: string}) => {
-        let pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data["pdf"];
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).subscribe((data: { pdf: string }) => {
+        let pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data['pdf'];
 
-        const date = new Date()
-        const fullDate = date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
+        const date = new Date();
+        const fullDate = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear();
 
-        let a = document.createElement("a");
+        let a = document.createElement('a');
         document.body.appendChild(a);
         a.href = pdfDataURL;
-        a.download = (course + "_" + assignment + "_" + fullDate).replace(/\s/g, "_");
+        a.download = (course + '_' + assignment + '_' + fullDate).replace(/\s/g, '_');
         a.click();
 
-        loader.style.visibility = "hidden";
-        exportBtn.disabled = false;    
+        loader.style.visibility = 'hidden';
+        exportBtn.disabled = false;
       });
     } else {
-      console.log("Text does not contain headers: Name, Class, and/or Assignment.");
+      console.log('Text does not contain headers: Name, Class, and/or Assignment.');
     }
 
-}}
+  }
+}
