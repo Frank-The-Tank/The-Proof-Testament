@@ -14,9 +14,9 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 
   nameText = '';
   courseText = '';
+  heuristicText = '';
   assignmentText = '';
   proofText = '';
-  heuristicText = 'by showing equivalence to a previous theorem <br />Proof:';
   infoFilled: boolean;
   infoFilledSubscription;
   customProofSelected = false;
@@ -35,11 +35,14 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     if (selection === 'custom') {
       this.proofText = hiddenVal;
     }
+    if (this.heuristicText === ''){
+        this.heuristicText = 'by showing equivalence to a previous theorem' + '<br /><br /><u>Proof:</u>';
+    }
     const outline =
       ('Name: ').bold() +  this.nameText + '<br />' +
       ('Course: ').bold() + this.courseText + '<br />' +
       ('Assignment: ').bold() +  this.assignmentText + '<br /><br />' +
-      'Prove ' + this.proofText + '<br />' + this.heuristicText + '<br /><br />';
+      'Prove ' + this.proofText + '<br />' + this.heuristicText;
     this.editorService.submitData(outline);
   }
 
