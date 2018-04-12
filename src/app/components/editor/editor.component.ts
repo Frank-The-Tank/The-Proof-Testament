@@ -1170,10 +1170,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*plu$/
       },
       (range, context) => {
-        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, 'plus ', {'bold': true, 'italic': true});
+        quill.deleteText(range.index - 4, 4); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 4, ' plus ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
+        quill.insertText(range.index + 5, ' ');
       });
 
     //gcd
@@ -1183,10 +1184,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*gc$/
       },
       (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'gcd ', {'bold': true, 'italic': true});
+        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 3, ' gcd ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
+        quill.insertText(range.index + 4, ' ');
       });
 
       // lcm
@@ -1196,10 +1198,11 @@ export class EditorComponent implements OnInit, OnDestroy {
           prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lc$/
         },
         (range, context) => {
-          quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-          quill.insertText(range.index - 2, 'lcm ', {'bold': true, 'italic': true});
+          quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+          quill.insertText(range.index - 3, ' lcm ', {'bold': true, 'italic': true});
           quill.format('bold', false);
           quill.format('italic', false);
+          quill.insertText(range.index + 4, ' ');
         });
 
     //mod
@@ -1209,10 +1212,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*mo$/
       },
       (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'mod ', {'bold': true, 'italic': true});
+        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 3, ' mod ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
+        quill.insertText(range.index + 4, ' ');
       });
 
     //lcd
@@ -1222,10 +1226,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lc$/
       },
       (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'lcd ', {'bold': true, 'italic': true});
+        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 3, ' lcd ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
+        quill.insertText(range.index + 4, ' ');
       });
 
     //lub lowest upper bound
@@ -1235,10 +1240,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lu$/
       },
       (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'lub ', {'bold': true, 'italic': true});
+        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 3, ' lub ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
+        quill.insertText(range.index + 4, ' ');
       });
 
     //glb greatest lower bound
@@ -1248,10 +1254,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*gl$/
       },
       (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'glb ', {'bold': true, 'italic': true});
+        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 3, ' glb ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
+        quill.insertText(range.index + 4, ' ');
       });
 
     //abs
@@ -1261,10 +1268,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*ab$/
       },
       (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'abs ', {'bold': true, 'italic': true});
+        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 3, ' abs ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
+        quill.insertText(range.index + 4, ' ');
       });
 
     //true
@@ -1274,9 +1282,10 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*tru$/
       },
       (range, context) => {
-        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, 'true ', 'italic', true);
+        quill.deleteText(range.index - 4, 4); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 4, ' true ', {'italic': true, 'bold': false});
         quill.format('italic', false);
+        quill.insertText(range.index + 4, ' ');
       });
 
     //false
@@ -1286,9 +1295,10 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*fals$/
       },
       (range, context) => {
-        quill.deleteText(range.index - 4, 4); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 4, 'false ', 'italic', true);
+        quill.deleteText(range.index - 5, 5); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 5, ' false ', {'italic': true, 'bold': false});
         quill.format('italic', false);
+        quill.insertText(range.index + 5, ' ');
       });
 
     //sum
