@@ -13,6 +13,7 @@ import {Heuristic} from '../../model/heuristic';
 export class EditorFormComponent implements OnInit, OnDestroy {
 
   nameText = '';
+  pinText = '';
   courseText = '';
   heuristicText = '';
   assignmentText = '';
@@ -39,7 +40,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
         this.heuristicText = 'by showing equivalence to a previous theorem' + '<br /><br /><u>Proof:</u>';
     }
     const outline =
-      ('Name: ').bold() +  this.nameText + '<br />' +
+      ('Name: ').bold() +  this.nameText + " #" + this.pinText + '<br />' +
       ('Course: ').bold() + this.courseText + '<br />' +
       ('Assignment: ').bold() +  this.assignmentText + '<br /><br />' +
       'Prove ' + this.proofText + '<br />' + this.heuristicText;
