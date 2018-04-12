@@ -44,7 +44,7 @@ export class BibleComponent implements OnInit, OnDestroy {
         }
       );
   }
-
+  
   ngOnDestroy() {
     this.thmSubscription.unsubscribe();
     this.pageSizeSubscription.unsubscribe();
