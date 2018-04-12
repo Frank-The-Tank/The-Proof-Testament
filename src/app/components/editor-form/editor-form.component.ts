@@ -39,8 +39,8 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     if (this.heuristicText === '') {
       this.heuristicText = '<br /><u>Proof:</u>';
     }
-    if (this.assignmentText!=''){
-      this.assignmentText = "A" + this.assignmentText;
+    if (this.assignmentText !== '') {
+      this.assignmentText = 'A' + this.assignmentText;
     }
     const outline =
       this.pinText + ' ' + this.nameText + '<br />' +
@@ -66,7 +66,8 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     this.heuristic = [
       {name: 'Prove Equivalent to Previous Theorem', description: 'by showing equivalence to a previous theorem <br /><br /><u>Proof:</u>'},
       {name: 'Deduction', description: 'by assuming conjunct of antecedent <br /><br /><u>Proof:</u>'},
-      {name: 'Case Analysis', description: 'by case analysis on p <br />' +
+      {
+        name: 'Case Analysis', description: 'by case analysis on p <br />' +
         ' prove <br />' +
         '  (1) true ⋀ (q ⋁ r) ≡ (true ⋀ q) ⋁ (true ⋀ r) <br />' +
         '  (2) false ⋀ (q ⋁ r) ≡ (false ⋀ q) ⋁ (false ⋀ r)<br /><br />' +
@@ -187,7 +188,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       {rule: '(8.13)', name: '   Empty range'},
       {rule: '(8.14)', name: '   One-point rule'},
       {rule: '(8.15)', name: '   Distributivity'},
-      {rule: '(8.16)',name:'Range split: (★x | R ⋁ S : P) = (★x | R : P) ★ (★x | S : P)'},
+      {rule: '(8.16)', name: 'Range split: (★x | R ⋁ S : P) = (★x | R : P) ★ (★x | S : P)'},
       {rule: '(8.17)', name: '   Range split: (★x | R ⋁ S : P) ★ (★x | R ⋀ S : P) = (★x | R : P) ★ (★x | S | P)'},
       {rule: '(8.18)', name: '   Range split for idempotent ★'},
       {rule: '(8.19)', name: '   Interchange of dummies'},
