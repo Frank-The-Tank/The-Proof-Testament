@@ -28,7 +28,7 @@ export class AboutComponent implements OnInit {
     {
       name: "Giorgio Catania",
       title: "Antlr/Quilljs Developer",
-      description: "Coming from the flat land of Texas, Giorgio now lives in SoCal where he studies to become a Computer Science major at Pepperdine.  He one day wishes to become a software developer.",
+      description: "Coming from the flat land of Texas, Giorgio now lives in SoCal. He joined Pepperdine not knowing what convo was nor that the school was religiously affiliated. But it all worked out and he now studies to finish his Computer Science and Mathematics major. He one day wishes to work at Google, Amazon, or Apple.",
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>'],
       linkedIn: '#',
       gitHub: 'https://github.com/giorgio19',
