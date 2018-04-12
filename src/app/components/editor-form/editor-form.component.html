@@ -25,7 +25,7 @@
           <option style="display:none" value=""></option>
           <option value="custom">[Custom]</option>
           <option *ngFor="let theorem of whatTheorem" [ngValue]="theorem.number">
-            {{theorem.number}}: {{theorem.name}}
+            {{theorem.rule}}: {{theorem.name}}
           </option>
         </select>
         <input #hiddenField [hidden]="!customProofSelected" type="text" class="form-control">
