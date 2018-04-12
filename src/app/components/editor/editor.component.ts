@@ -914,7 +914,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.insertText(range.index - 2, ' ∘ ');
       });
 
-    // floating dot
+    // dot product
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
@@ -1188,6 +1188,19 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('bold', false);
         quill.format('italic', false);
       });
+
+      // lcm
+      quill.keyboard.addBinding({key: 'm'}, {
+          empty: false,
+          collapsed: true,
+          prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lc$/
+        },
+        (range, context) => {
+          quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+          quill.insertText(range.index - 2, 'lcm ', {'bold': true, 'italic': true});
+          quill.format('bold', false);
+          quill.format('italic', false);
+        });
 
     //mod
     quill.keyboard.addBinding({key: 'd'}, {
