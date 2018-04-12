@@ -70,7 +70,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   textSubUnicode = '\u2254';
   genQuantifierUnicode = '\u2605';
   lessThanOrEqUnicode = '\u2264';
-  greaterThanorEqUnicode = '\u2265';
+  greaterThanOrEqUnicode = '\u2265';
   elementOfUnicode = '\u2208';
   notElementOfUnicode = '\u2209';
   properSubsetOfUnicode = '\u2282';
@@ -195,47 +195,72 @@ export class EditorComponent implements OnInit, OnDestroy {
   symbolSelectorChanged(selectedVal) {
     switch (selectedVal) {
       case 'equals': {
+        this.editorInstance.deleteText(0,5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.equalsUnicode + this.hintUnicode
+          this.equalsUnicode + '  '+ this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 14);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
         this.hideSymbols = true;
         break;
       }
       case 'implies': {
+        this.editorInstance.deleteText(0,5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.impliesUnicode + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 9);
         this.hideSymbols = true;
         break;
       }
       case 'followsFrom': {
+        this.editorInstance.deleteText(0,5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.followsFromUnicode + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 9);
         this.hideSymbols = true;
         break;
       }
       case 'lessThan': {
+        this.editorInstance.deleteText(0,5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.lessThanUnicode + this.hintUnicode
+          this.lessThanUnicode + '  '+ this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
         this.hideSymbols = true;
         break;
       }
       case 'greaterThan': {
+        this.editorInstance.deleteText(0,5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.greaterThanUnicode + this.hintUnicode
+          this.greaterThanUnicode + ' ' + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
+        this.hideSymbols = true;
+        break;
+      }
+      case 'greaterThanOrEq': {
+        this.editorInstance.deleteText(0,5);
+        this.editorInstance.insertText(
+          this.previousEditorSelection,
+          this.greaterThanOrEqUnicode + '  ' + this.hintUnicode
+        );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
+        this.hideSymbols = true;
+        break;
+      }
+      case 'lessThanOrEq': {
+        this.editorInstance.deleteText(0,5);
+        this.editorInstance.insertText(
+          this.previousEditorSelection,
+          this.lessThanOrEqUnicode + '  ' + this.hintUnicode
+        );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
         this.hideSymbols = true;
         break;
       }
@@ -349,7 +374,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       (range, context) => {
 
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 7, this.greaterThanorEqUnicode + '  ' + this.hintUnicode);
+        quill.insertText(range.index - 7, this.greaterThanOrEqUnicode + '  ' + this.hintUnicode);
         quill.setSelection(range.index + 8);
       });
 
@@ -577,7 +602,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.greaterThanorEqUnicode + ' ');
+        quill.insertText(range.index - 2, ' ' + this.greaterThanOrEqUnicode + ' ');
       });
 
     // left hint bracket
@@ -799,7 +824,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' Ρ ');
+        quill.insertText(range.index - 2, ' P ');
       });
 
     // up arrow
@@ -1253,7 +1278,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
       });
 
-    //and-or, sum
+    //sum
     quill.keyboard.addBinding({key: 'm'}, {
         empty: false,
         collapsed: true,
@@ -1264,16 +1289,28 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.insertText(range.index - 3, ' ∑');
       });
 
-    //or-and
-    quill.keyboard.addBinding({key: 'm'}, {
+    //product
+    quill.keyboard.addBinding({key: 'd'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ns$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;pr$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ∏');
       });
+
+      //wp
+      quill.keyboard.addBinding({key: 'p'}, {
+          empty: false,
+          collapsed: true,
+          prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*w$/
+        },
+        (range, context) => {
+          quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+          quill.insertText(range.index - 2, 'wp.S.R ','italic', true);
+          quill.format('italic', false);
+        });
   }
 
   setControl() {

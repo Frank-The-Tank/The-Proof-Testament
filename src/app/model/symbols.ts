@@ -8,7 +8,7 @@ export enum Symbols {
   'emptySet' = '\u2205 &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;es',
   'union' = '\u222A &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;un',
   'intersection' = '\u2229 &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;in',
-  'powerSet' = '\u2118 &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;ps',
+  'powerSet' = '<i>P</i> &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;ps',
   'gets' = '\u2254 &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;=',
   'genericQuantifier' = '\u2605 &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;st',
   'atLeast' = '\u2264 &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;ge',
