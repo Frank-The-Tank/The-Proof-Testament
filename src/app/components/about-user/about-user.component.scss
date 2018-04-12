@@ -15,7 +15,7 @@
 .aboutInfoContainer {
   z-index: 2;
   border-radius: 25px;
-  width: 100vw;
+  max-width: 100%; // width: 100vw;
   overflow: hidden;
   background-color: white;
 

@@ -3,6 +3,7 @@ import {EditorService} from '../editor/editor.service';
 import {BibleService} from '../bible/bible.service';
 import {Theorem} from '../../model/theorem';
 import {Observable} from 'rxjs/Observable';
+import {Heuristic} from '../../model/heuristic';
 
 @Component({
   selector: 'app-editor-form',
@@ -12,14 +13,16 @@ import {Observable} from 'rxjs/Observable';
 export class EditorFormComponent implements OnInit, OnDestroy {
 
   nameText = '';
-  classText = '';
-  proofText = '';
+  courseText = '';
+  heuristicText = '';
   assignmentText = '';
-  descriptionText = '';
+  proofText = '';
   infoFilled: boolean;
   infoFilledSubscription;
   customProofSelected = false;
   theorems$: Observable<Theorem[]>;
+  heuristic: Heuristic[];
+
 
   constructor(private editorService: EditorService, private bibleService: BibleService) {
     this.infoFilledSubscription = this.editorService.infoFilledChange.subscribe(infoFilled => {
@@ -32,20 +35,18 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     if (selection === 'custom') {
       this.proofText = hiddenVal;
     }
-    // const outline =
-    //   ('Name: ') +  this.nameText + '<br />' +
-    //   ('Class: ') + this.classText + '<br />' +
-    //   ('Proof: ') + this.proofText + '<br /><br />' +
-    //   ('Solution: ').bold() +  '<br />' +
-    //   this.descriptionText;
-
-    const outline = 
-      this.nameText + '<br/>' +
-      this.classText + '<br/>' + 
-      this.assignmentText + '<br/><br/>' + 
-      'Prove ' + this.proofText + '<br/><br/><br/> ----------'
-
+    if (this.heuristicText === ''){
+        this.heuristicText = 'by showing equivalence to a previous theorem' + '<br /><br /><u>Proof:</u>';
+    }
+    const outline =
+      ('Name: ').bold() +  this.nameText + '<br />' +
+      ('Course: ').bold() + this.courseText + '<br />' +
+      ('Assignment: ').bold() +  this.assignmentText + '<br /><br />' +
+      'Prove ' + this.proofText + '<br />' + this.heuristicText;
     this.editorService.submitData(outline);
+  }
+
+onHeuristicSelectionChanged(selection) {
   }
 
   onProofSelectionChanged(selection) {
@@ -56,8 +57,25 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     }
   }
 
+
   ngOnInit() {
     this.theorems$ = this.bibleService.findAllTheorems();
+    this.heuristic = [
+      {name: 'Prove Equivalent to Previous Theorem', description: 'by showing equivalence to a previous theorem <br /><br /><u>Proof:</u>'},
+      {name: 'Deduction', description: 'by assuming conjunct of antecedent <br /><br /><u>Proof:</u>'},
+      {name: 'Case Analysis', description: 'by case analysis on p <br />' +
+        ' prove <br />' +
+        '  (1) true ⋀ (q ⋁ r) ≡ (true ⋀ q) ⋁ (true ⋀ r) <br />' +
+        '  (2) false ⋀ (q ⋁ r) ≡ (false ⋀ q) ⋁ (false ⋀ r)<br /><br />' +
+        'Proof of (1)<br /><br />' +
+        'Proof of (2)<br /><br />'
+      },
+      {name: 'Mutual Implication', description: 'To prove P ≡ Q, prove P ⇒ Q and Q ⇒ P.<br /><br /><u>Proof:</u>'},
+      {name: 'Truth Implication', description: 'To prove P, prove true ⇒ P.<br /><br /><u>Proof:</u>'},
+      {name: 'Induction', description: 'by mathematical induction<br /><br /><u>Proof:</u>'},
+      {name: 'Proof by Contradiction', description: 'by contradiction<br /><br /><u>Proof:</u>'},
+      {name: 'Proof by Contrapositive', description: 'by proving the contrapositive: <br /><br /><u>Proof:</u>'}];
+
   }
 
   ngOnDestroy() {

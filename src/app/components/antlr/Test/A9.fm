@@ -1,5 +1,5 @@
-Prove 4.1
-
+Prove (4.1)
+Proof:
   q ⇒ p
 =    〈 Assume conjunct p 〉
   q ⇒ true
@@ -8,8 +8,8 @@ Prove 4.1
 
 ------------------------------
 
-Prove 3.77
-
+Prove (3.77)
+Proof:
   q
 =    〈 (3.57) 〉
   p ⇒ q ≡ p ⋁ q

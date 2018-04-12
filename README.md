@@ -1,12 +1,26 @@
-# The Proof Testament   
+# The Proof Testament  
 
-Web App made for use in formal methods and other logic courses at Pepperdine University
+ https://prooftestament.com/
+ 
+ ![alt text](./src/assets/images/logoName.png)
 
-Frontend: Angular5
+### Overview
 
-Backend: NodeJS + ExpressJS
+The Proof Testament is a web app used for solving formal mathematical logic proofs. Created by a team of 8 students at Pepperdine University the app is used in multiple classrooms to allow students and teachers to easily solve mathematical proofs using formal methods, and teach students how the field of computational logic works.  
 
-Database: Firebase
+### Technology
+
+Frontend: Angular(5) / Bootstrap / Scss
+
+Backend: NodeJS / ExpressJS / AngularFire v2.0
+
+Database: Firebase 
+
+Hosting: Firebase Hosting
+
+Parsing: MathJAX / Antlr
+
+Editor: QuillJS 
 
 ### Download and Setup
 

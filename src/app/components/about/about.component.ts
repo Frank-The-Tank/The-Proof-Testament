@@ -28,8 +28,8 @@ export class AboutComponent implements OnInit {
     {
       name: "Giorgio Catania",
       title: "Antlr/Quilljs Developer",
-      description: "cool guy",
-      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Second Proof Testament: LINK'],
+      description: "Coming from the flat land of Texas, Giorgio now lives in SoCal where he studies to become a Computer Science major at Pepperdine.  He one day wishes to become a software developer.",
+      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>'],
       linkedIn: '#',
       gitHub: 'https://github.com/giorgio19',
       facebook: '#',
@@ -39,8 +39,8 @@ export class AboutComponent implements OnInit {
     {
       name: "Micah Benn",
       title: "Back-End Software Developer",
-      description: "neat guy",
-      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'Portfolio Page: <a href="http://micahbenn.com/ " target="_blank">Portfolio</a>'],
+      description: "My name is Micah Benn, and I've been a self-taught iOS and web developer since 13 years old. I now mainly work with Objective-C, Swift, Python, Java, and HTML/CSS.  After finding out about the iOS SDK, I began creating iOS apps. YouTube, StackOverflow, and GitHub were how I learned. A couple months after I began learning, I released my first app, Map with Camera. Since then, I have been enjoying expanding my skill set. In July 2013, I released Flöcle, a time-based matching game that would be eventually featured by Apple in their ''20 Under 20'' promotion in Asia.",
+      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'Portfolio Page: <a href="http://micahbenn.com/" target="_blank">Portfolio</a>'],
       linkedIn: 'https://www.linkedin.com/in/micahbenn/',
       gitHub: 'https://github.com/micahbenn',
       facebook: '#',
@@ -51,7 +51,7 @@ export class AboutComponent implements OnInit {
       name: "Drake Ramsdall",
       title: "Front-End Software Developer",
       description: "Drake was born and raised in the city of Tacoma, Washington. From a young age, he has always had a goal of creating his own video game one day. Drake hopes that, through the things that he has learned at Pepperdine University and outside of school, he will be able to accomplish that feat and create the next big game.",
-      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Second Proof Testament: LINK'],
+      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>'],
       linkedIn: '#',
       gitHub: 'https://github.com/deerake',
       facebook: '#',
@@ -61,8 +61,8 @@ export class AboutComponent implements OnInit {
     {
       name: "Damir Kaliyev",
       title: "Front-End Software Developer",
-      description: "nice guy",
-      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Second Proof Testament: LINK'],
+      description: "Damir hails from the mystical land of Kazakhstan. He is an avid programmer and hopes to learn everything he can about coding.",
+      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'Hydrogen: <a href="https://github.com/nteract/hydrogen/" target="_blank">Github</a>'],
       linkedIn: 'https://www.linkedin.com/in/damir-kaliyev-604368b9/',
       gitHub: 'https://github.com/carenekl',
       facebook: '#',
@@ -73,7 +73,7 @@ export class AboutComponent implements OnInit {
       name: "Zack Rhodes",
       title: "Database Development and Management",
       description: "Born in Seattle, Washington and raised in the barren wasteland that is known as Palm Springs, California, Zack is an aspiring Computer Science student and hopes to become a software engineer post-graduation.",
-      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Second Proof Testament: LINK'],
+      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>'],
       linkedIn: 'https://www.linkedin.com/in/zackery-rhodes-32884a149/',
       gitHub: 'https://github.com/ruskimagic',
       facebook: 'https://www.facebook.com/zack.rhodes.35',
@@ -84,7 +84,7 @@ export class AboutComponent implements OnInit {
       name: "James Maynard",
       title: "Front-End Software Developer",
       description: 'This is James. James is a proud Naperville native. James will rave for hours about Chicago deep dish pies. James has a wide variety of catchphrases, including “dope”, “fasho”, and “I’m the man.” James’ idol is Ross Rhea ("Goon" or bust).',
-      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Second Proof Testament: LINK'],
+      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>'],
       linkedIn: 'https://www.linkedin.com/in/james-maynard-ba9837120/',
       gitHub: 'https://github.com/JamesMaynard26',
       facebook: '#',
@@ -94,35 +94,13 @@ export class AboutComponent implements OnInit {
     {
       name: "Josh Myers",
       title: "Front-End Software Developer",
-      description: "Hailing from Moorpark, CA, Josh finds enjoyment in eating, playing basketball, and chocolate chip cookies (yes, it's a hobby). One of his fondest memories at Pepperdine should not be disclosed on the public domain, but it involves himself, James Maynard, Korean BBQ, and an exam 4 hours later.",
-      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Daily Shopper: <a href="http://www.dailyshopperapp.com/" target="_blank">App</a>'],
+      description: "Josh Myers grew up in Moorpark, CA and discovered his passion for Computer Science throughout his time at Pepperdine. He has thoroughly enjoyed his exposure to mobile app development during his experience debugging and updating software in The Daily Shopper app. Josh’s involvement in The Proof Testament project has convicted him to continue his pursuits to absorb knowledge and hone his skills with the goal of becoming an experienced software developer.",
+      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Daily Shopper: <a href="http://www.dailyshopperapp.com/" target="_blank">App Store</a>'],
       linkedIn: 'https://www.linkedin.com/in/joshua-myers-a98b83122/',
       gitHub: 'https://github.com/jamyers2',
       facebook: '#',
       twitter: '#',
       pic: "../../../assets/images/josh.jpg"
-    },
-    {
-      name: "Dr. Stan Warford",
-      title: "The biggest sport's fan",
-      description: "Slick",
-      projects: "",
-      linkedIn: 'https://www.linkedin.com/in/stan-warford-b5a476101/',
-      gitHub: 'https://github.com/StanWarford',
-      facebook: '#',
-      twitter: '#',
-      pic: ""
-    },
-    {
-      name: "Professor Brad Cupp",
-      title: "Capstone Advisor and Teacher",
-      description: "",
-      projects: "",
-      linkedIn: '#',
-      gitHub: 'https://github.com/Cupp',
-      facebook: '#',
-      twitter: '#',
-      pic: ""
     }
   ];
 

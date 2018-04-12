@@ -1,5 +1,5 @@
 Prove 3.85a
-
+Proof:
   p ⇒ E[z, p]
 =    〈 Identity of ≡ 〉
   (p ≡ true) ⇒ E[z, p]
@@ -11,7 +11,7 @@ Prove 3.85a
 ------------------------------
 
 Prove 3.85b
-
+Proof:
   q ⋀ p ⇒ E[z, p]
 =    〈 Identity of ≡ 〉
   q ⋀ (p ≡ true) ⇒ E[z, p]
@@ -23,7 +23,7 @@ Prove 3.85b
 ------------------------------
 
 Prove 4.1
-
+Proof:
   q ⇒ p
 =    〈 (3.59) 〉
   ¬q ⋁ p
@@ -33,7 +33,7 @@ Prove 4.1
 ------------------------------
 
 Prove 4.3
-
+Proof:
   p ⋀ r ⇒ q ⋀ r
 =    〈 (3.59) 〉
   ¬(p ⋀ r) ⋁ (q ⋀ r)
