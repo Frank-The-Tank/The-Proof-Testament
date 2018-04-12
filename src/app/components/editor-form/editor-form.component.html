@@ -24,7 +24,7 @@
                 name="proofs" class="form-control">
           <option style="display:none" value=""></option>
           <option value="custom">[Custom]</option>
-          <option *ngFor="let theorem of whatTheorem" [ngValue]="theorem.number">
+          <option *ngFor="let theorem of whatTheorem" [ngValue]="theorem.rule">
             {{theorem.rule}}: {{theorem.name}}
           </option>
         </select>

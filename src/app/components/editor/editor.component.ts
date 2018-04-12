@@ -1300,18 +1300,20 @@ export class EditorComponent implements OnInit, OnDestroy {
     const text = this.editorInstance.getText();
     const arrayText = text.split('\n');
 
-    if (arrayText.length >= 3) {
+    if (arrayText.length >= 4) {
       const name = (arrayText[0] as string).replace(/Name:(?:\s)(.*)/gm, '$1');
-      const course = (arrayText[1] as string).replace(/Course:(?:\s)(.*)/gm, '$1');
-      const assignment = (arrayText[2] as string).replace(/Assignment:(?:\s)(.*)/gm, '$1');
+      const pin = (arrayText[1] as string).replace(/Pin:(?:\s)(.*)/gm, '$1');
+      const course = (arrayText[2] as string).replace(/Course:(?:\s)(.*)/gm, '$1');
+      const assignment = (arrayText[3] as string).replace(/Assignment:(?:\s)(.*)/gm, '$1');
 
       const latexName = '\\textbf{' + name + '}\\\\' + '\n';
+      const latexPin = '\\textbf{' + 'Pin: ' + pin + '}\\\\' + '\n';
       const latexCourse = '\\textbf{' + course + '}\\\\' + '\n';
-      const latexAssignment = '\\textbf{' + assignment + '}\\\\\\\\' + '\n';
+      const latexAssignment = '\\textbf{' + "A"+ assignment + '}\\\\\\\\' + '\n';
 
-      const heading = latexName + latexCourse + latexAssignment;
+      const heading = latexName + latexPin + latexCourse + latexAssignment;
 
-      const numHeaders = 3;
+      const numHeaders = 4;
 
       for (let i = 0; i < numHeaders; i++) {
         arrayText.shift();
@@ -1339,7 +1341,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         let a = document.createElement('a');
         document.body.appendChild(a);
         a.href = pdfDataURL;
-        a.download = (course + '_' + assignment + '_' + fullDate).replace(/\s/g, '_');
+        a.download = (pin + 'a' + assignment + 'written').replace(/\s/g, '_');
         a.click();
 
         loader.style.visibility = 'hidden';
