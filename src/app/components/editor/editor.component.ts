@@ -63,7 +63,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   followsFromUnicode = '\u21d0 ';
   lessThanUnicode = '\u003C';
   greaterThanUnicode = '\u003E';
-  doesNotEqualUnicode = '\u2262';
+  doesNotEqualUnicode = '\u2260';
   leftBracketUnicode = '\u3008';
   rightBracketUnicode = '\u3009';
   hintUnicode = '          ' + this.leftBracketUnicode + '  ' + this.rightBracketUnicode;
@@ -78,7 +78,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   properSupersetOfUnicode = '\u2283';
   supersetOfUnicode = '\u2287';
   notProperSubsetOfUnicode = '\u2284';
-  notSubsetOf = '\u2288';
+  notSubsetOf = '\u2289';
   notProperSupersetOfUnicode = '\u2285';
   notSupersetOfUnicode = '\u2289';
   unionUnicode = '\u222a';
@@ -1075,7 +1075,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       });
 
     //rational
-    quill.keyboard.addBinding({key: 'a'}, {
+    quill.keyboard.addBinding({key: 'l'}, {
         empty: false,
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
