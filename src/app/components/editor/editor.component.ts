@@ -1298,29 +1298,53 @@ export class EditorComponent implements OnInit, OnDestroy {
     exportBtn.disabled = true;
 
     const text = this.editorInstance.getText();
-    const compiler = new AntlrComponent();
+    const arrayText = text.split("\n");
 
-    let results = '';
+    if (arrayText.length >= 3) {
+      const name = (arrayText[0] as string).replace(/Name:(?:\s)(.*)/gm, "$1")
+      const course = (arrayText[1] as string).replace(/Course:(?:\s)(.*)/gm, "$1")
+      const assignment = (arrayText[2] as string).replace(/Assignment:(?:\s)(.*)/gm, "$1");
 
-    results += compiler.compile(text);
+      const latexName = "\\textbf{" + name + "}\\\\" + "\n";
+      const latexCourse = "\\textbf{" + course + "}\\\\" + "\n";
+      const latexAssignment = "\\textbf{" + assignment + "}\\\\\\\\" + "\n";
 
-    this.http.post('http://localhost:4201/scribe', {
-      results
-    }, {
-      headers: {
-        'Content-Type': 'application/json'
+      const heading = latexName + latexCourse + latexAssignment
+
+      const numHeaders = 3;
+
+      for (let i = 0; i < numHeaders; i++) {
+       arrayText.shift();
       }
-    }).subscribe((data: { pdf: string }) => {
-      const pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data['pdf'];
 
-      const a = document.createElement('a');
-      document.body.appendChild(a);
-      a.href = pdfDataURL;
-      a.download = 'proof';
-      a.click();
+      const proofs = arrayText.join("\n");
 
-      loader.style.visibility = 'hidden';
-      exportBtn.disabled = false;
-    });
+      let compiler = new AntlrComponent();
+      let compiledProofs = compiler.compile(proofs);
+
+      let latex = compiler.preamble + heading + compiledProofs + compiler.postamble;
+
+      this.http.post('http://localhost:4201/scribe', {
+        latex
+      }, {headers: {
+        "Content-Type": "application/json"
+      }}).subscribe( (data: {pdf: string}) => {
+        let pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data["pdf"];
+
+        const date = new Date()
+        const fullDate = date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
+
+        let a = document.createElement("a");
+        document.body.appendChild(a);
+        a.href = pdfDataURL;
+        a.download = (course + "_" + assignment + "_" + fullDate).replace(/\s/g, "_");
+        a.click();
+
+        loader.style.visibility = "hidden";
+        exportBtn.disabled = false;    
+      });
+    } else {
+      console.log("Text does not contain headers: Name, Class, and/or Assignment.");
+    }
 
 }}

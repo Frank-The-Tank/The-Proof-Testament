@@ -152,6 +152,7 @@ export class AntlrComponent implements SlickListener {
     '\\begin{tabbing} \n' +
     '99.\\;\\=(m)\\;\\=\\kill \n';
 
+  postamble = "\\end{tabbing}\\end{document}\n\n";
 
   constructor() {
     const theoremsStr = JSON.stringify(theoremInput);
@@ -201,11 +202,11 @@ export class AntlrComponent implements SlickListener {
   }
 
   public exitDoc = (ctx: DocContext) => {
-    this.output += this.preamble;
+    // this.output += this.preamble;
     while (this.stack.length > 0) {
       this.output += this.stack.shift() + '\n';
     }
-    this.output += "\\end{tabbing}\\end{document}\n\n";
+    // this.output += "\\end{tabbing}\\end{document}\n\n";
   };
 
   public exitStartExpo = (ctx: StartExpoContext) => {
