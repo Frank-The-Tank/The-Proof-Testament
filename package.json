@@ -97,6 +97,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/mocha": "^2.2.48",
     "@types/node": "^6.0.101",
+    "antlr4ts-cli": "^0.4.0-alpha.4",
     "codelyzer": "^4.2.1",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",

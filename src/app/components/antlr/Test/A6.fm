@@ -1,5 +1,5 @@
-Prove 3.30
-
+Prove (3.30)
+Proof:
   p ⋁ false
 =    〈 (3.15) ¬p ≡ p ≡ false 〉
   p ⋁ (¬p ≡ p)
@@ -12,8 +12,8 @@ Prove 3.30
 
 ------------------------------
 
-Prove 3.31
-
+Prove (3.31)
+Proof:
   (p ⋁ q) ⋁ (p ⋁ r)
 =    〈 Associativity of ⋁ 〉
   p ⋁ (q ⋁ p) ⋁ r
@@ -26,8 +26,8 @@ Prove 3.31
 
 ------------------------------
 
-Prove 3.32
-
+Prove (3.32)
+Proof:
   p ⋁ q ≡ p ⋁ ¬q
 =    〈 Distributivity of ⋁ over ≡ 〉
   p ⋁ (q ≡ ¬q)
@@ -38,8 +38,8 @@ Prove 3.32
 
 ------------------------------
 
-Prove 3.36
-
+Prove (3.36)
+Proof:
   p ⋀ q
 =    〈 golden rule 〉
   p ≡ q ≡ p ⋁ q
@@ -52,8 +52,8 @@ Prove 3.36
 
 ------------------------------
 
-Prove 3.38
-
+Prove (3.38)
+Proof:
   p ⋀ p ≡ p
 =    〈 golden rule with q ≔ p 〉
   p ⋁ p ≡ p
@@ -62,8 +62,8 @@ Prove 3.38
 
 ------------------------------
 
-Prove 3.47a
-
+Prove (3.47a)
+Proof:
   ¬(p ⋀ q)
 =    〈 Golden rule 〉
   ¬(p ≡ q ≡ p ⋁ q)
@@ -76,8 +76,8 @@ Prove 3.47a
 
 ------------------------------
 
-Prove 3.47b
-
+Prove (3.47b)
+Proof:
   ¬(p ⋁ q)
 =    〈 Double negation, twice 〉
   ¬(¬¬p ⋁ ¬¬q)

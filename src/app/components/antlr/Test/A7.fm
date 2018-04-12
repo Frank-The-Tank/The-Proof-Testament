@@ -1,5 +1,5 @@
-Prove 3.61
-
+Prove (3.61)
+Proof:
   ¬q ⇒ ¬p
 =    〈 (3.59) with p, q ≔ ¬q, ¬p 〉
   ¬¬q ⋁ ¬p
@@ -12,8 +12,8 @@ Prove 3.61
 
 ------------------------------
 
-Prove 3.63
-
+Prove (3.63)
+Proof:
   p ⇒ q ≡ p ⇒ r
 =    〈 Implication (3.59), twice 〉
   ¬p ⋁ q ≡ ¬p ⋁ r
@@ -24,8 +24,8 @@ Prove 3.63
 
 ------------------------------
 
-Prove 3.65
-
+Prove (3.65)
+Proof:
   p ⋀ q ⇒ r
 =    〈 Implication (3.59) 〉
   ¬(p ⋀ q) ⋁ r
@@ -40,8 +40,8 @@ Prove 3.65
 
 ------------------------------
 
-Prove 3.70
-
+Prove (3.70)
+Proof:
   p ⋁ q ⇒ p ⋀ q
 =    〈 Implication (3.59) 〉
   ¬(p ⋁ q) ⋁ (p ⋀ q)
@@ -52,8 +52,8 @@ Prove 3.70
 
 ------------------------------
 
-Prove 3.71
-
+Prove (3.71)
+Proof:
   p ⇒ p
 =    〈 Implication (3.59) 〉
   ¬p ⋁ p
@@ -62,8 +62,8 @@ Prove 3.71
 
 ------------------------------
 
-Prove 3.72
-
+Prove (3.72)
+Proof:
   p ⇒ true
 =    〈 Implication (3.59) 〉
   ¬p ⋁ true
@@ -72,8 +72,8 @@ Prove 3.72
 
 ------------------------------
 
-Prove 3.76a
-
+Prove (3.76a)
+Proof:
   p ⇒ p ⋁ q
 =    〈 Implication (3.59) 〉
   ¬p ⋁ p ⋁ q
@@ -84,8 +84,8 @@ Prove 3.76a
 
 ------------------------------
 
-Prove 3.77
-
+Prove (3.77)
+Proof:
   p ⋀ (p ⇒ q) ⇒ q
 =    〈 (3.66) p ⋀ (p ⇒ q) ≡ p ⋀ q 〉
   p ⋀ q ⇒ q

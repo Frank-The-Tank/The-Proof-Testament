@@ -1498,6 +1498,8 @@ export class TypedVarContext extends ParserRuleContext {
 		else return visitor.visitChildren(this);
 	}
 }
+
+
 export class SlickParser extends Parser {
 	public static readonly T__0=1;
 	public static readonly T__1=2;

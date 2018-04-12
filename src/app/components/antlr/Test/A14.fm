@@ -1,5 +1,5 @@
 Prove 8.22
-
+Proof:
   (*y | R[x ≔ f.y] : P[x ≔ f.y])
 =    〈 One-point rule 〉
   (*y | R[x ≔ f.y] : (*x | x = f.y : P))
