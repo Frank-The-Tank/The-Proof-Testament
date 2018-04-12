@@ -63,14 +63,14 @@ export class EditorComponent implements OnInit, OnDestroy {
   followsFromUnicode = '\u21d0 ';
   lessThanUnicode = '\u003C';
   greaterThanUnicode = '\u003E';
-  doesNotEqualUnicode = '\u2262';
+  doesNotEqualUnicode = '\u2260';
   leftBracketUnicode = '\u3008';
   rightBracketUnicode = '\u3009';
   hintUnicode = '          ' + this.leftBracketUnicode + '  ' + this.rightBracketUnicode;
   textSubUnicode = '\u2254';
   genQuantifierUnicode = '\u2605';
   lessThanOrEqUnicode = '\u2264';
-  greaterThanorEqUnicode = '\u2265';
+  greaterThanOrEqUnicode = '\u2265';
   elementOfUnicode = '\u2208';
   notElementOfUnicode = '\u2209';
   properSubsetOfUnicode = '\u2282';
@@ -78,7 +78,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   properSupersetOfUnicode = '\u2283';
   supersetOfUnicode = '\u2287';
   notProperSubsetOfUnicode = '\u2284';
-  notSubsetOf = '\u2288';
+  notSubsetOf = '\u2289';
   notProperSupersetOfUnicode = '\u2285';
   notSupersetOfUnicode = '\u2289';
   unionUnicode = '\u222a';
@@ -102,7 +102,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   alwaysUnicode = '\u25a1';
   eventuallyUnicode = '\u25c7';
   booleanSymbol = '𝔹';
-  plusUnicode ='\u002B';
+  plusUnicode = '\u002B';
 
 
   bindings = {
@@ -187,7 +187,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   insertSymbol(selectedVal) {
-    this.editorInstance.insertText(this.previousEditorSelection, selectedVal);
+    this.editorInstance.insertText(this.previousEditorSelection, selectedVal.substring(0, selectedVal.length - 15));
     this.editorInstance.setSelection(this.previousEditorSelection.index + selectedVal.length + 1);
     this.previousEditorSelection = this.editorInstance.getSelection();
   }
@@ -195,47 +195,72 @@ export class EditorComponent implements OnInit, OnDestroy {
   symbolSelectorChanged(selectedVal) {
     switch (selectedVal) {
       case 'equals': {
+        this.editorInstance.deleteText(0,5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.equalsUnicode + this.hintUnicode
+          this.equalsUnicode + '  '+ this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 14);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
         this.hideSymbols = true;
         break;
       }
       case 'implies': {
+        this.editorInstance.deleteText(0,5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.impliesUnicode + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 9);
         this.hideSymbols = true;
         break;
       }
       case 'followsFrom': {
+        this.editorInstance.deleteText(0,5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.followsFromUnicode + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 9);
         this.hideSymbols = true;
         break;
       }
       case 'lessThan': {
+        this.editorInstance.deleteText(0,5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.lessThanUnicode + this.hintUnicode
+          this.lessThanUnicode + '  '+ this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
         this.hideSymbols = true;
         break;
       }
       case 'greaterThan': {
+        this.editorInstance.deleteText(0,5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.greaterThanUnicode + this.hintUnicode
+          this.greaterThanUnicode + ' ' + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
+        this.hideSymbols = true;
+        break;
+      }
+      case 'greaterThanOrEq': {
+        this.editorInstance.deleteText(0,5);
+        this.editorInstance.insertText(
+          this.previousEditorSelection,
+          this.greaterThanOrEqUnicode + '  ' + this.hintUnicode
+        );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
+        this.hideSymbols = true;
+        break;
+      }
+      case 'lessThanOrEq': {
+        this.editorInstance.deleteText(0,5);
+        this.editorInstance.insertText(
+          this.previousEditorSelection,
+          this.lessThanOrEqUnicode + '  ' + this.hintUnicode
+        );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
         this.hideSymbols = true;
         break;
       }
@@ -349,7 +374,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       (range, context) => {
 
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 7, this.greaterThanorEqUnicode + '  ' + this.hintUnicode);
+        quill.insertText(range.index - 7, this.greaterThanOrEqUnicode + '  ' + this.hintUnicode);
         quill.setSelection(range.index + 8);
       });
 
@@ -366,27 +391,27 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.setSelection(range.index + 3);
       });
 
-      // close curly brace
-      quill.keyboard.addBinding({key: 219 , shiftKey: true}, {
-          // empty: false,
-          collapsed: true,
-          prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
-        },
-        (range, context) => {
-          quill.insertText(range.index, ' {  } ');
-          quill.setSelection(range.index + 3);
-        });
+    // close curly brace
+    quill.keyboard.addBinding({key: 219, shiftKey: true}, {
+        // empty: false,
+        collapsed: true,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
+      },
+      (range, context) => {
+        quill.insertText(range.index, ' {  } ');
+        quill.setSelection(range.index + 3);
+      });
 
-        //close square brackets
-        quill.keyboard.addBinding({key: 219}, {
-            // empty: false,
-            collapsed: true,
-            prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
-          },
-          (range, context) => {
-            quill.insertText(range.index, ' [  ] ');
-            quill.setSelection(range.index + 3);
-          });
+    //close square brackets
+    quill.keyboard.addBinding({key: 219}, {
+        // empty: false,
+        collapsed: true,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
+      },
+      (range, context) => {
+        quill.insertText(range.index, ' [  ] ');
+        quill.setSelection(range.index + 3);
+      });
 
 
     // p
@@ -530,7 +555,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' '+ this.followsFromUnicode + ' ');
+        quill.insertText(range.index - 2, ' ' + this.followsFromUnicode + ' ');
       });
 
     // less than
@@ -577,7 +602,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.greaterThanorEqUnicode + ' ');
+        quill.insertText(range.index - 2, ' ' + this.greaterThanOrEqUnicode + ' ');
       });
 
     // left hint bracket
@@ -632,7 +657,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.textSubUnicode+ ' ');
+        quill.insertText(range.index - 2, ' ' + this.textSubUnicode + ' ');
       });
 
     // element of
@@ -698,7 +723,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.supersetOfUnicode+ ' ');
+        quill.insertText(range.index - 2, ' ' + this.supersetOfUnicode + ' ');
       });
 
     // empty set
@@ -799,7 +824,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' Ρ ');
+        quill.insertText(range.index - 2, ' P ');
       });
 
     // up arrow
@@ -1050,7 +1075,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       });
 
     //rational
-    quill.keyboard.addBinding({key: 'a'}, {
+    quill.keyboard.addBinding({key: 'l'}, {
         empty: false,
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
@@ -1253,27 +1278,39 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
       });
 
-      //and-or, sum
-      quill.keyboard.addBinding({key: 'm'}, {
+    //sum
+    quill.keyboard.addBinding({key: 'm'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;su$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 3, ' ∑');
+      });
+
+    //product
+    quill.keyboard.addBinding({key: 'd'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;pr$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 3, ' ∏');
+      });
+
+      //wp
+      quill.keyboard.addBinding({key: 'p'}, {
           empty: false,
           collapsed: true,
-          prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;su$/
+          prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*w$/
         },
         (range, context) => {
-          quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-          quill.insertText(range.index - 3, ' ∑');
+          quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+          quill.insertText(range.index - 2, 'wp.S.R ','italic', true);
+          quill.format('italic', false);
         });
-
-              //or-and
-              quill.keyboard.addBinding({key: 'm'}, {
-                  empty: false,
-                  collapsed: true,
-                  prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ns$/
-                },
-                (range, context) => {
-                  quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-                  quill.insertText(range.index - 3, ' ∏');
-                });
   }
 
   setControl() {
@@ -1298,26 +1335,28 @@ export class EditorComponent implements OnInit, OnDestroy {
     exportBtn.disabled = true;
 
     const text = this.editorInstance.getText();
-    const arrayText = text.split("\n");
+    const arrayText = text.split('\n');
 
-    if (arrayText.length >= 3) {
-      const name = (arrayText[0] as string).replace(/Name:(?:\s)(.*)/gm, "$1")
-      const course = (arrayText[1] as string).replace(/Course:(?:\s)(.*)/gm, "$1")
-      const assignment = (arrayText[2] as string).replace(/Assignment:(?:\s)(.*)/gm, "$1");
+    if (arrayText.length >= 4) {
+      const name = (arrayText[0] as string).replace(/Name:(?:\s)(.*)/gm, '$1');
+      const pin = (arrayText[1] as string).replace(/Pin:(?:\s)(.*)/gm, '$1');
+      const course = (arrayText[2] as string).replace(/Course:(?:\s)(.*)/gm, '$1');
+      const assignment = (arrayText[3] as string).replace(/Assignment:(?:\s)(.*)/gm, '$1');
 
-      const latexName = "\\textbf{" + name + "}\\\\" + "\n";
-      const latexCourse = "\\textbf{" + course + "}\\\\" + "\n";
-      const latexAssignment = "\\textbf{" + assignment + "}\\\\\\\\" + "\n";
+      const latexName = '\\textbf{' + name + '}\\\\' + '\n';
+      const latexPin = '\\textbf{' + 'Pin: ' + pin + '}\\\\' + '\n';
+      const latexCourse = '\\textbf{' + course + '}\\\\' + '\n';
+      const latexAssignment = '\\textbf{' + "A"+ assignment + '}\\\\\\\\' + '\n';
 
-      const heading = latexName + latexCourse + latexAssignment
+      const heading = latexName + latexPin + latexCourse + latexAssignment;
 
-      const numHeaders = 3;
+      const numHeaders = 4;
 
       for (let i = 0; i < numHeaders; i++) {
-       arrayText.shift();
+        arrayText.shift();
       }
 
-      const proofs = arrayText.join("\n");
+      const proofs = arrayText.join('\n');
 
       let compiler = new AntlrComponent();
       let compiledProofs = compiler.compile(proofs);
@@ -1326,25 +1365,28 @@ export class EditorComponent implements OnInit, OnDestroy {
 
       this.http.post('http://localhost:4201/scribe', {
         latex
-      }, {headers: {
-        "Content-Type": "application/json"
-      }}).subscribe( (data: {pdf: string}) => {
-        let pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data["pdf"];
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).subscribe((data: { pdf: string }) => {
+        let pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data['pdf'];
 
-        const date = new Date()
-        const fullDate = date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
+        const date = new Date();
+        const fullDate = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear();
 
-        let a = document.createElement("a");
+        let a = document.createElement('a');
         document.body.appendChild(a);
         a.href = pdfDataURL;
-        a.download = (course + "_" + assignment + "_" + fullDate).replace(/\s/g, "_");
+        a.download = (pin + 'a' + assignment + 'written').replace(/\s/g, '_');
         a.click();
 
-        loader.style.visibility = "hidden";
-        exportBtn.disabled = false;    
+        loader.style.visibility = 'hidden';
+        exportBtn.disabled = false;
       });
     } else {
-      console.log("Text does not contain headers: Name, Class, and/or Assignment.");
+      console.log('Text does not contain headers: Name, Class, and/or Assignment.');
     }
 
-}}
+  }
+}

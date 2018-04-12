@@ -111,10 +111,6 @@ IMPLICATION
 (3.82.1) Transitivity of ≡: (p ≡ q) ⋀ (q ≡ r)  ⇒  (p ≡ r)
 (3.82.2) (p ≡ q) ⇒ (p ⇒ q)
 
-------------------------------
-
-LEIBNIZ AS AN AXIOM
-
 (3.83) Axiom, Leibniz: e = f  ⇒  E[z,e] = E[z,f]
 (3.84a) Substitution: (e = f) ⋀ E[z,e]  ≡  (e = f) ⋀ E[z,f]
 (3.84b) Substitution: (e = f) ⇒ E[z,e]  ≡  (e = f) ⇒ E[z,f]
@@ -127,17 +123,9 @@ LEIBNIZ AS AN AXIOM
 (3.88) Replace by false: p ⋁ E[z,p]  ≡  p ⋁ E[z,false]
 (3.89) Shannon: E[z,p]  ≡  (p ⋀ E[z,true]) ⋁ (¬p ⋀ E[z,false])
 
-------------------------------
-
-ADDITIONAL THEOREMS CONCERNING IMPLICATION
-
 (4.1) p ⇒ (q ⇒ p)
 (4.2) Monotonicity of ⋁: (p ⇒ q)  ⇒  (p ⋁ r ⇒ q ⋁ r)
 (4.3) Monotonicity of ⋀: (p ⇒ q)  ⇒  (p ⋀ r ⇒ q ⋀ r)
-
-------------------------------
-
-PROOF TECHNIQUE METATHEOREMS
 
 (4.4) Deduction (assume conjuncts of the antecedent):
   To prove P1 ⋀ P2 ⇒ Q, assume P1 and P2, and prove Q.
@@ -148,10 +136,6 @@ PROOF TECHNIQUE METATHEOREMS
 (4.7.1) Truth implication: To prove P, prove true ⇒ P.
 (4.9) Proof by contradiction: To prove P, prove ¬P ⇒ false.
 (4.12) Proof by contrapositive: To prove P ⇒ Q, prove ¬Q ⇒ ¬P.
-
-------------------------------
-
-GENERAL LAWS OF QUANTIFICATION
 
 (8.13) Axiom, Empty range: (★x | false : P) = u
 (8.14) Axiom, One-point rule: (★x | x = E : P) = P[x ≔ E]
@@ -165,11 +149,6 @@ GENERAL LAWS OF QUANTIFICATION
 (8.22) Change of dummy: (★x | R : P) = (★y | R[x ≔ f.y] : P[x ≔ f.y])
 (8.23a) Split off term: (★i | 0 ≤ i < n + 1 : P) = (★i | 0 ≤ i < n : P) ★ P[i ≔ n]
 (8.23b) Split off term: (★i | 0 ≤ i < n + 1 : P) = P[i ≔ 0] ★ (★i | 0 < i < n + 1 : P)
-
-------------------------------
-
-UNIVERSAL QUANTIFICATION
-
 (9.2) Axiom, Trading: (∀x | R : P) ≡ (∀x |: R ⇒ P)
 (9.3a) Trading: (∀x | R : P) ≡ (∀x |: ¬R ⋁ P)
 (9.3b) Trading: (∀x | R : P) ≡ (∀x |: R ⋀ P ≡ R)
@@ -189,11 +168,6 @@ UNIVERSAL QUANTIFICATION
 (9.12) Monotonicity of ∀: (∀x | R : Q ⇒ P) ⇒ ((∀x | R : Q) ⇒ (∀x | R : P))
 (9.13) Instantiation: (∀x |: P) ⇒ P[x ≔ E]
 (9.14) Metatheorem: P is a theorem iff (∀x |: P) is a theorem.
-
-------------------------------
-
-EXISTENTIAL QUANTIFICATION
-
 (9.17) Axiom, Generalized De Morgan: (∃x | R : P) ≡ ¬(∀x | R : ¬P)
 (9.18a) Generalized De Morgan: ¬(∃x | R : ¬P) ≡ (∀x | R : P)
 (9.18b) Generalized De Morgan: ¬(∃x | R : P) ≡ (∀x | R : ¬P)
@@ -212,9 +186,3 @@ EXISTENTIAL QUANTIFICATION
 (9.28) ∃-Introduction: P[x ≔ E] ⇒ (∃x |: P)
 (9.29) Interchange of quantificiation: (∃x | R : (∀y | Q : P)) ⇒ (∀y | Q : (∃x | R : P))
 (9.30) (∃x | R : P) ⇒ Q is a theorem iff (R ⋀ P)[x ≔ y] ⇒ Q is a theorem.
-
-------------------------------
-
-A THEORY OF SETS
-
-(11.2) {e0, ..., e(n-1)} =

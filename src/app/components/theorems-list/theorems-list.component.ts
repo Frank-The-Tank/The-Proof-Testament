@@ -1,8 +1,7 @@
 import {Component, Input, Output, EventEmitter, OnInit, ElementRef, ViewChild, AfterContentChecked} from '@angular/core';
 import {Theorem} from '../../model/theorem';
-declare var MathJax: any;
 import { BibleService } from '../bible/bible.service';
-
+declare var MathJax: any;
 @Component({
   selector: 'app-theorems-list',
   templateUrl: './theorems-list.component.html',
