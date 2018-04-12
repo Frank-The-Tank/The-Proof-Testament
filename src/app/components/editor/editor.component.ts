@@ -195,17 +195,17 @@ export class EditorComponent implements OnInit, OnDestroy {
   symbolSelectorChanged(selectedVal) {
     switch (selectedVal) {
       case 'equals': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.equalsUnicode + '  '+ this.hintUnicode
+          this.equalsUnicode + '  ' + this.hintUnicode
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
         this.hideSymbols = true;
         break;
       }
       case 'implies': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.impliesUnicode + this.hintUnicode
@@ -215,7 +215,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         break;
       }
       case 'followsFrom': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.followsFromUnicode + this.hintUnicode
@@ -225,17 +225,17 @@ export class EditorComponent implements OnInit, OnDestroy {
         break;
       }
       case 'lessThan': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.lessThanUnicode + '  '+ this.hintUnicode
+          this.lessThanUnicode + '  ' + this.hintUnicode
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
         this.hideSymbols = true;
         break;
       }
       case 'greaterThan': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.greaterThanUnicode + ' ' + this.hintUnicode
@@ -245,7 +245,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         break;
       }
       case 'greaterThanOrEq': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.greaterThanOrEqUnicode + '  ' + this.hintUnicode
@@ -255,7 +255,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         break;
       }
       case 'lessThanOrEq': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.lessThanOrEqUnicode + '  ' + this.hintUnicode
@@ -292,8 +292,9 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;i$/,
         offset: 7
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.impliesUnicode + this.hintUnicode);
         quill.setSelection(range.index + 6);
@@ -306,8 +307,9 @@ quill.format('italic', false);
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;f$/,
         offset: 7
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.followsFromUnicode + this.hintUnicode);
         quill.setSelection(range.index + 6);
@@ -320,8 +322,9 @@ quill.format('italic', false);
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/,
         offset: 7
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.equalsUnicode + '  ' + this.hintUnicode);
         quill.setSelection(range.index + 8);
@@ -334,8 +337,9 @@ quill.format('italic', false);
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/,
         offset: 7
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.lessThanUnicode + '  ' + this.hintUnicode);
         quill.setSelection(range.index + 8);
@@ -348,8 +352,9 @@ quill.format('italic', false);
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/,
         offset: 7
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.lessThanOrEqUnicode + '  ' + this.hintUnicode);
         quill.setSelection(range.index + 8);
@@ -363,8 +368,9 @@ quill.format('italic', false);
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;g$/,
         offset: 7,
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.greaterThanUnicode + '  ' + this.hintUnicode);
         quill.setSelection(range.index + 8);
@@ -377,8 +383,9 @@ quill.format('italic', false);
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;g$/,
         offset: 7,
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
 
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.greaterThanOrEqUnicode + '  ' + this.hintUnicode);
@@ -393,8 +400,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.insertText(range.index, ' (  ) ');
         quill.setSelection(range.index + 3);
       });
@@ -405,8 +413,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.insertText(range.index, ' {  } ');
         quill.setSelection(range.index + 3);
       });
@@ -417,8 +426,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.insertText(range.index, ' [  ] ');
         quill.setSelection(range.index + 3);
       });
@@ -430,8 +440,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;i$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ≺ ');
       });
@@ -443,8 +454,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⪯ ');
       });
@@ -455,8 +467,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;t$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⪰ ');
       });
@@ -467,8 +480,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;t$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ≻ ');
       });
@@ -479,8 +493,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;h$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' # ');
       });
@@ -491,8 +506,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;s$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' σ ');
       });
@@ -503,8 +519,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' π ');
       });
@@ -515,8 +532,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;j$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⨝ ');
       });
@@ -527,8 +545,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;b$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' Ο ');
       });
@@ -539,8 +558,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;b$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' Ω ');
       });
@@ -551,8 +571,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;b$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' Θ ');
       });
@@ -563,8 +584,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' 𝜙 ');
       });
@@ -575,8 +597,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;f$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.followsFromUnicode + ' ');
       });
@@ -589,8 +612,9 @@ quill.format('italic', false);
 
         // missing * and - and + characters and ^
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.lessThanUnicode + ' ');
       });
@@ -601,8 +625,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.lessThanOrEqUnicode + ' ');
       });
@@ -613,8 +638,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;g$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.greaterThanUnicode + ' ');
       });
@@ -626,8 +652,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;g$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.greaterThanOrEqUnicode + ' ');
       });
@@ -638,8 +665,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.leftBracketUnicode);
       });
@@ -650,8 +678,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.rightBracketUnicode);
       });
@@ -671,14 +700,15 @@ quill.format('italic', false);
 
     // equival
     quill.keyboard.addBinding({key: 'q'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
-      }, (range, context) => { quill.format('bold', false);
+      empty: false,
+      collapsed: true,
+      prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
+    }, (range, context) => {
+      quill.format('bold', false);
       quill.format('italic', false);
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.equivalesUnicode + ' ');
-      });
+      quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+      quill.insertText(range.index - 2, ' ' + this.equivalesUnicode + ' ');
+    });
 
     // textual subsitution
     quill.keyboard.addBinding({key: 's'}, {
@@ -686,8 +716,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;t$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.textSubUnicode + ' ');
       });
@@ -698,8 +729,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.elementOfUnicode + ' ');
       });
@@ -710,8 +742,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;u$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' Ʊ ');
       });
@@ -722,8 +755,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.properSubsetOfUnicode + ' ');
       });
@@ -734,8 +768,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.properSupersetOfUnicode + ' ');
       });
@@ -746,8 +781,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;s$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.subsetOfUnicode + ' ');
       });
@@ -758,8 +794,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;s$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.supersetOfUnicode + ' ');
       });
@@ -770,8 +807,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.emptySetUnicode + ' ');
       });
@@ -783,8 +821,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;u$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.unionUnicode + ' ');
       });
@@ -795,8 +834,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;i$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.intersectionUnicode + ' ');
       });
@@ -807,8 +847,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;c$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ~ ');
       });
@@ -820,8 +861,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;o$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.disjunctionUnicode + ' ');
       });
@@ -832,8 +874,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;a$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.conjuctionUnicode + ' ');
       });
@@ -844,8 +887,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;f$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.universalQuantifierUnicode);
       });
@@ -856,8 +900,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.existentialQuanitiferUnicode);
       });
@@ -868,8 +913,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' P ');
       });
@@ -880,8 +926,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;u$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ↑ ');
       });
@@ -892,8 +939,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' → ');
       });
@@ -904,8 +952,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ← ');
       });
@@ -916,8 +965,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;d$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ↓ ');
       });
@@ -927,8 +977,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;c$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' × ');
       });
@@ -939,8 +990,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;d$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ÷ ');
       });
@@ -951,8 +1003,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;f$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ∙ ');
       });
@@ -963,8 +1016,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;f$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ∘ ');
       });
@@ -975,8 +1029,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;d$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⋅ ');
       });
@@ -987,8 +1042,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;s$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.genQuantifierUnicode);
       });
@@ -1004,8 +1060,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;no$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ¬ ');
       });
@@ -1016,8 +1073,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ni$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ' + this.doesNotImplyUnicode + ' ');
       });
@@ -1028,8 +1086,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;nf$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ' + this.doesNotFollowFromUnicode + ' ');
       });
@@ -1040,8 +1099,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ne$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ' + this.doesNotEqualUnicode + ' ');
       });
@@ -1052,8 +1112,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ne$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ' + this.notEquivalesUnicode + ' ');
       });
@@ -1064,8 +1125,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ne$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ' + this.notElementOfUnicode + ' ');
       });
@@ -1076,8 +1138,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ns$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ' + this.notSubsetOf + ' ');
       });
@@ -1088,8 +1151,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ns$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ' + this.notSupersetOfUnicode + ' ');
       });
@@ -1100,8 +1164,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;np$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ' + this.notProperSupersetOfUnicode + ' ');
       });
@@ -1112,8 +1177,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;np$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ' + this.notProperSubsetOfUnicode + ' ');
       });
@@ -1125,8 +1191,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;n$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.naturalUnicode);
       });
@@ -1137,8 +1204,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;i$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.integerUnicode);
       });
@@ -1149,8 +1217,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.rationalUnicode);
       });
@@ -1161,8 +1230,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.realUnicode);
       });
@@ -1173,8 +1243,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;b$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.booleanSymbol);
       });
@@ -1185,8 +1256,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;en$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, this.endProofUnicode + this.endProofUnicode);
       });
@@ -1198,8 +1270,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;nx$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, this.nextUnicode);
       });
@@ -1210,8 +1283,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ut$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, this.untilUnicode);
       });
@@ -1222,8 +1296,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ev$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, this.eventuallyUnicode);
       });
@@ -1234,8 +1309,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;al$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, this.alwaysUnicode);
       });
@@ -1246,10 +1322,11 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*plu$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, ' plus', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 3, ' plus ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
@@ -1260,27 +1337,29 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*gc$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' gcd', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' gcd ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
 
-      // lcm
-      quill.keyboard.addBinding({key: 'm'}, {
-          empty: false,
-          collapsed: true,
-          prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lc$/
-        },
-        (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
-          quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-          quill.insertText(range.index - 2, ' lcm', {'bold': true, 'italic': true});
-          quill.format('bold', false);
-          quill.format('italic', false);
-        });
+    // lcm
+    quill.keyboard.addBinding({key: 'm'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lc$/
+      },
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' lcm ', {'bold': true, 'italic': true});
+        quill.format('bold', false);
+        quill.format('italic', false);
+      });
 
     //mod
     quill.keyboard.addBinding({key: 'd'}, {
@@ -1288,10 +1367,11 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*mo$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' mod', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' mod ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
@@ -1302,10 +1382,11 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lc$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' lcd', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' lcd ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
@@ -1316,10 +1397,11 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lu$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' lub', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' lub ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
@@ -1330,10 +1412,11 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*gl$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' glb', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' glb ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
@@ -1344,10 +1427,11 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*ab$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' abs', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' abs ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
@@ -1358,10 +1442,11 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*tru$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, ' true', {'italic': true, 'bold': false});
+        quill.insertText(range.index - 3, 'true', {'italic': true, 'bold': false});
         quill.format('bold', false);
         quill.format('italic', false);
       });
@@ -1372,10 +1457,11 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*fals$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 4, 4); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 4, ' false', {'italic': true, 'bold': false});
+        quill.insertText(range.index - 4, 'false', {'italic': true, 'bold': false});
         quill.format('bold', false);
         quill.format('italic', false);
       });
@@ -1386,8 +1472,9 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;su$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ∑');
       });
@@ -1398,24 +1485,24 @@ quill.format('italic', false);
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;pr$/
       },
-      (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
+      (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ∏');
       });
 
-      //wp
-      quill.keyboard.addBinding({key: 'p'}, {
-          empty: false,
-          collapsed: true,
-          prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*w$/
-        },
-        (range, context) => { quill.format('bold', false);
-quill.format('italic', false);
-          quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
-          quill.insertText(range.index - 1, 'wp.S.R ','italic', true);
-          quill.format('italic', false);
-        });
+    //wp
+    quill.keyboard.addBinding({key: 'p'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*w$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 1, 'wp.S.R ', 'italic', true);
+        quill.format('italic', false);
+      });
   }
 
   setControl() {
@@ -1442,20 +1529,20 @@ quill.format('italic', false);
     const text = this.editorInstance.getText();
     const arrayText = text.split('\n');
 
-    if (arrayText.length >= 4) {
-      const name = (arrayText[0] as string).replace(/Name:(?:\s)(.*)/gm, '$1');
-      const pin = (arrayText[1] as string).replace(/Pin:(?:\s)(.*)/gm, '$1');
-      const course = (arrayText[2] as string).replace(/Course:(?:\s)(.*)/gm, '$1');
-      const assignment = (arrayText[3] as string).replace(/Assignment:(?:\s)(.*)/gm, '$1');
+    if (arrayText.length >= 3) {
+      const name = (arrayText[0] as string);
+      const pin = (arrayText[0] as string).split(' ',1);
+      const course = (arrayText[1] as string);
+      const assignment = (arrayText[2] as string);
 
-      const latexName = '\\textbf{' + name + '}\\\\' + '\n';
-      const latexPin = '\\textbf{' + 'Pin: ' + pin + '}\\\\' + '\n';
+
+      const latexName = '\\#' + '\\textbf{' + name + '}\\\\' + '\n';
       const latexCourse = '\\textbf{' + course + '}\\\\' + '\n';
-      const latexAssignment = '\\textbf{' + "A"+ assignment + '}\\\\\\\\' + '\n';
+      const latexAssignment = '\\textbf{' + assignment + '}\\\\\\\\' + '\n';
 
-      const heading = latexName + latexPin + latexCourse + latexAssignment;
+      const heading = latexName + latexCourse + latexAssignment;
 
-      const numHeaders = 4;
+      const numHeaders = 3;
 
       for (let i = 0; i < numHeaders; i++) {
         arrayText.shift();

@@ -37,13 +37,15 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       this.proofText = hiddenVal;
     }
     if (this.heuristicText === '') {
-      this.heuristicText = 'by showing equivalence to a previous theorem' + '<br /><br /><u>Proof:</u>';
+      this.heuristicText = '<br /><u>Proof:</u>';
+    }
+    if (this.assignmentText!=''){
+      this.assignmentText = "A" + this.assignmentText;
     }
     const outline =
-      ('Name: ').bold() + this.nameText + '<br />' +
-      ('Pin: ').bold() + this.pinText + '<br />' +
-      ('Course: ').bold() + this.courseText + '<br />' +
-      ('Assignment: ').bold() + this.assignmentText + '<br /><br />' +
+      this.pinText + ' ' + this.nameText + '<br />' +
+      this.courseText + '<br />' +
+      this.assignmentText + '<br /><br />' +
       'Prove ' + this.proofText + '<br />' + this.heuristicText;
     this.editorService.submitData(outline);
   }
