@@ -192,6 +192,12 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.previousEditorSelection = this.editorInstance.getSelection();
   }
 
+  insertSymbolFromBible(selectedVal) {
+    this.editorInstance.insertText(this.previousEditorSelection, selectedVal);
+    this.editorInstance.setSelection(this.previousEditorSelection.index + selectedVal.length + 1);
+    this.previousEditorSelection = this.editorInstance.getSelection();
+  }
+
   symbolSelectorChanged(selectedVal) {
     switch (selectedVal) {
       case 'equals': {
