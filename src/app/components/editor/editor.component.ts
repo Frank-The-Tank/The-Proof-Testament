@@ -71,7 +71,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   genQuantifierUnicode = '\u2605';
   lessThanOrEqUnicode = '\u2264 ';
   greaterThanOrEqUnicode = '\u2265 ';
-  elementOfUnicode = '\u2208 ';
+  elementOfUnicode = ' \u2208 ';
   notElementOfUnicode = ' \u2209 ';
   properSubsetOfUnicode = ' \u2282 ';
   subsetOfUnicode = ' \u2286 ';
