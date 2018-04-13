@@ -1,3 +1,118 @@
-<input class="bibleInput input-group" type="text" placeholder="Search..." (keyup)="search(input.value)" #input>
 
-<app-theorems-list [theorems]="filtered" (clickEvent)="insertIntoEditorComp($event)"></app-theorems-list>
+
+<!-- <div class="col-md-12">
+<div class="input-group" id="adv-search"> -->
+<div>
+<input class="bibleInput input-group" type="text" placeholder="Search..." (keyup)="search(input.value)" #input/>
+
+<!-- <div class="row">
+  <div class="col"> -->
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter by</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button type="button" class="dropdown-item" value="" (click)="search(All.value)" #All>All Chapters</button>
+        <button type="button" class="dropdown-item" value="3." (click)="search($event.target.value)" >Chapter 3 </button>
+        <button type="button" class="dropdown-item" value="4." (click)="search($event.target.value)" >Chapter 4 </button>
+        <button type="button" class="dropdown-item" value="8." (click)="search($event.target.value)" >Chapter 8 </button>
+        <button type="button" class="dropdown-item" value="9." (click)="search($event.target.value)" >Chapter 9 </button>
+        <button type="button" class="dropdown-item" value="11." (click)="search($event.target.value)">Chapter 11 </button>
+        <button type="button" class="dropdown-item" value="p." (click)="search($event.target.value)" >Chapter p </button>
+        <button type="button" class="dropdown-item" value="12." (click)="search($event.target.value)">Chapter 12 </button>
+        <button type="button" class="dropdown-item" value="14." (click)="search($event.target.value)">Chapter 14 </button>
+
+      <!-- <button class="dropdown-item" onclick="search()">Something else is here</button> -->
+
+
+                                      <!-- <form class="form-horizontal" role="form"> -->
+                                        <!-- <div class="form-group">
+                                          <label for="filter">Filter by</label> -->
+                                          <!-- <select class="form-control">
+                                              <option (click)="search(input.value)" value="6" selected>Chapter 1</option>
+                                              <option value="1">Featured</option>
+                                              <option value="2">Most popular</option>
+                                              <option value="3">Top rated</option>
+                                              <option value="4">Most commented</option>
+                                          </select> -->
+                                        <!-- </div> -->
+
+                                    <!-- </form> -->
+
+
+
+
+
+
+
+      </div>
+    </div>
+    <!-- </div>
+  </div> -->
+
+<div>
+  <br>
+  <app-theorems-list [theorems]="filtered" (clickEvent)="insertIntoEditorComp($event)"></app-theorems-list>
+
+</div>
+
+
+
+<!--
+<div class="dropdown">
+<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Filter by
+</button>
+<div class="dropdown-menu dropdown-menu-right" role="menu">
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="Stuff"> Filter by </label>
+      <select class="form-control" id="Stuff">
+        <button class="dropdown-item">1 </button>
+        <button class="dropdown-item">2 </button>
+        <button class="dropdown-item">3 </button>
+<div class="dropdown-menu" aira-labelledby="dropdownMenuButton">
+  <a class="dropdown-item" href="#"> Action </a>
+</select>
+</div>
+</form>
+</div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="input-group-btn">
+
+                    <div class="btn-group" role="group">
+                      <div class="dropdown dropdown-lg">
+                       <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                            <div class="dropdown-menu dropdown-menu-right" role="menu">
+                              <form class="form-horizontal" role="form">
+                                 <div class="form-group">
+                                  <label for="Stuff">Search by</label>
+                                     <select class="form-control" id="Stuff">
+                                       <option>1</option>
+                                         <option value="0" selected>All Chapters</option>
+                                        <option value="1">Chapter 1</option>
+                                        <option value="2">Chapter 2</option>
+                                        <option value="3">Chapter 3</option>
+                                        <option value="4">Chapter 4</option>
+                                    </select>
+                                  </div>
+
+                                   <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </form>
+                            </div>
+                        </div>
+                       <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    </div>
+                </div>
+            </div>
+</div> -->
+<!-- <app-theorems-list [theorems]="filtered" (clickEvent)="insertIntoEditorComp($event)"></app-theorems-list> -->

@@ -72,6 +72,22 @@ export class BibleComponent implements OnInit, OnDestroy {
     ));
   }
 
+  // DOOOOOOOOO
+//   search(search: ) {
+//     if (search === '') {
+//       this.fieldEmptySubscription = this.service.fillFirstTheorems()
+//         .subscribe(
+//           theorems => {
+//             this.filtered = theorems;
+//           }
+//         );
+//     }
+//   this.filtered = this.allTheorems.filter(theorem =>
+//     theorem.rule.includes(search) ||
+//      (theorem.name[i] && theorem.name.toLowerCase().includes(search.toLowerCase())
+//   ));
+// }
+
   insertIntoEditorComp(name) {
     this.secondClickEvent.emit(name);
   }
