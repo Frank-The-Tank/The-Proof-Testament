@@ -43,9 +43,10 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       this.assignmentText = 'A' + this.assignmentText;
     }
     const outline =
-      this.pinText + ' ' + this.nameText + '<br />' +
-      this.courseText + '<br />' +
-      this.assignmentText + '<br /><br />' +
+      ('Name: ').bold() + this.nameText + '<br />' +
+      ('Pin: ').bold() + this.pinText + '<br />' +
+      ('Course: ').bold() + this.courseText + '<br />' +
+      ('Assignment: ').bold() + this.assignmentText + '<br /><br />' + 
       'Prove ' + this.proofText + '<br />' + this.heuristicText;
     this.editorService.submitData(outline);
   }
