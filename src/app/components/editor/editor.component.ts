@@ -165,7 +165,6 @@ export class EditorComponent implements OnInit, OnDestroy {
       .subscribe(data => {
         console.log('native fromControl value changes with debounce', data);
       });
-
   }
 
   ngOnDestroy() {
@@ -1527,58 +1526,84 @@ export class EditorComponent implements OnInit, OnDestroy {
     exportBtn.disabled = true;
 
     const text = this.editorInstance.getText();
-    const arrayText = text.split('\n');
 
-    if (arrayText.length >= 3) {
-      const name = (arrayText[0] as string).replace(/Name:(?:\s)(.*)/gm, "$1")
-       const pin = (arrayText[1] as string).replace(/Pin: #(?:\s)(.*)/gm, "$1")
-     const course = (arrayText[2] as string).replace(/Course:(?:\s)(.*)/gm, "$1")
-     const assignment = (arrayText[3] as string).replace(/Assignment:(?:\s)(.*)/gm, "$1");
+    const pin = text.match(/Pin\:(?:\s)(.*)/m);
+    const assignment = text.match(/Assignment\:(?:\s)(.*)/m);
 
-
-      const latexName = '\\#' + '\\textbf{' + pin + ' ' + name + '}\\\\' + '\n';
-      const latexCourse = '\\textbf{' + course + '}\\\\' + '\n';
-      const latexAssignment = '\\textbf{' + assignment + '}\\\\\\\\' + '\n';
-
-      const heading = latexName + latexCourse + latexAssignment;
-
-      const numHeaders = 3;
-
-      for (let i = 0; i < numHeaders; i++) {
-        arrayText.shift();
+    this.http.post('http://localhost:4201/scribe/pdf', {
+      text
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
       }
+    }).subscribe((data: { base64: string }) => {
+      const pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data['base64'];
 
-      const proofs = arrayText.join('\n');
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.href = pdfDataURL;
+      
+      a.download = (pin + 'a' + assignment + 'written').replace(/\s/g, '_');
+      
+      a.download = "proof";
 
-      let compiler = new AntlrComponent();
-      let compiledProofs = compiler.compile(proofs);
+      a.click();
 
-      let latex = compiler.preamble + heading + compiledProofs + compiler.postamble;
+      loader.style.visibility = 'hidden';
+      exportBtn.disabled = false;
+    });
 
-      this.http.post('http://localhost:4201/scribe', {
-        latex
-      }, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).subscribe((data: { pdf: string }) => {
-        let pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data['pdf'];
+    // const arrayText = text.split('\n');
 
-        const date = new Date();
-        const fullDate = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear();
+    // const numHeaders = 4;
 
-        let a = document.createElement('a');
-        document.body.appendChild(a);
-        a.href = pdfDataURL;
-        a.download = (pin + 'a' + assignment + 'written').replace(/\s/g, '_');
-        a.click();
+    // if (arrayText.length >= 4) {
+    //   const name = (arrayText[0] as string).replace(/Name:(?:\s)(.*)/gm, '$1');
+    //   const pin = ((arrayText[1] as string)).replace(/Pin:(?:\s)(.*)/gm, '$1');
+    //   const course = (arrayText[2] as string).replace(/Course:(?:\s)(.*)/gm, '$1');
+    //   const assignment = (arrayText[3] as string).replace(/Assignment:(?:\s)(.*)/gm, '$1');
 
-        loader.style.visibility = 'hidden';
-        exportBtn.disabled = false;
-      });
-    } else {
-      console.log('Text does not contain headers: Name, Class, and/or Assignment.');
-    }
+    //   const latexName = '\\textbf{' + name + '}\\\\' + '\n';
+    //   const latexPin = '\\textbf{' + 'Pin: ' + pin + '}\\\\' + '\n';
+    //   const latexCourse = '\\textbf{' + course + '}\\\\' + '\n';
+    //   const latexAssignment = '\\textbf{' + "A"+ assignment + '}\\\\\\\\' + '\n';
 
+    //   const heading = latexName + latexPin + latexCourse + latexAssignment;
+
+    //   for (let i = 0; i < numHeaders; i++) {
+    //     arrayText.shift();
+    //   }
+
+    //   const proofs = arrayText.join('\n');
+
+    //   let compiler = new AntlrComponent();
+    //   let compiledProofs = compiler.compile(proofs);
+
+    //   let latex = compiler.preamble + heading + compiledProofs + compiler.postamble;
+
+    //   this.http.post('http://localhost:4201/scribe/pdf', {
+    //     text
+    //   }, {
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   }).subscribe((data: { base64: string }) => {
+    //     let pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data['base64'];
+
+    //     let a = document.createElement('a');
+    //     document.body.appendChild(a);
+    //     a.href = pdfDataURL;
+    //     a.download = (pin + 'a' + assignment + 'written').replace(/\s/g, '_');
+    //     a.click();
+
+    //     loader.style.visibility = 'hidden';
+    //     exportBtn.disabled = false;
+    //   });
+    // } else {
+    //   alert("Please include the default headers.");
+
+    //   loader.style.visibility = 'hidden';
+    //   exportBtn.disabled = false;
+    // }
   }
 }
