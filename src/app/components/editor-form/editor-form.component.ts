@@ -72,6 +72,11 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     this.editorService.addProofToData(outline);
   }
 
+  cancelAddNewProof() {
+    this.editorService.setEditorNonEmpty(true);
+    this.editorService.toggleFormFilled();
+  }
+
   onHeuristicSelectionChanged(selection) {
   }
 
