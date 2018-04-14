@@ -10,7 +10,8 @@
           <button class='ql-indent' value="-1"></button>
           <button class='ql-indent' value="+1"></button>
 
-        </span> <span class="ql-formats">
+        </span>
+        <span id='symbolSelction' class="ql-formats">
           <select
             id="symbolInLineSelector"
             (change)="insertSymbol($event.target.value)"
@@ -41,9 +42,13 @@
       <span class="ql-formats">
           <button (click)="export()" id="exportBtn" class="functionBtn">Export</button>
         </span>
+      <span class="ql-formats" style="float:right">
+        <button (click)="addNewThm()" class="fa fa-plus-circle" style="color:rgb(130, 172, 96)"></button>
+      </span>
       <span class="ql-formats" style="float: right;">
           <div class="loader" id="exportLoader" style="visibility: hidden;"></div>
-        </span>
+      </span>
+
     </div>
   </quill-editor>
 </div>

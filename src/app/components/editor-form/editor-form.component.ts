@@ -16,10 +16,14 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   pinText = '';
   courseText = '';
   heuristicText = '';
+  addHeuristicText = '';
   assignmentText = '';
   proofText = '';
+  addProofText = '';
   infoFilled: boolean;
-  infoFilledSubscription;
+  private infoFilledSubscription;
+  editorEmpty: boolean;
+  private editorEmptySubscription;
   customProofSelected = false;
   whatTheorem: whatTheorem[];
   heuristic: Heuristic[];
@@ -29,15 +33,22 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     this.infoFilledSubscription = this.editorService.infoFilledChange.subscribe(infoFilled => {
       this.infoFilled = infoFilled;
     });
+    this.editorEmptySubscription = this.editorService.editorEmptyChange.subscribe(value => {
+      this.editorEmpty = value;
+    });
   }
 
   formSubmit(selection, hiddenVal) {
     this.editorService.toggleFormFilled();
+    this.editorService.setEditorNonEmpty(true);
     if (selection === 'custom') {
       this.proofText = hiddenVal;
     }
     if (this.heuristicText === '') {
-      this.heuristicText = 'by showing equivalence to a previous theorem' + '<br /><br /><u>Proof:</u>';
+      this.heuristicText = '<br /><u>Proof:</u>';
+    }
+    if (this.assignmentText !== '') {
+      this.assignmentText = 'A' + this.assignmentText;
     }
     const outline =
       ('Name: ').bold() + this.nameText + '<br />' +
@@ -46,6 +57,24 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       ('Assignment: ').bold() + this.assignmentText + '<br /><br />' +
       'Prove ' + this.proofText + '<br />' + this.heuristicText;
     this.editorService.submitData(outline);
+  }
+
+  addNewProof(proof, hiddenVal) {
+    this.editorService.setEditorNonEmpty(true);
+    this.editorService.toggleFormFilled();
+    if (proof === 'custom') {
+      this.addProofText = hiddenVal;
+    }
+    if (this.addHeuristicText === '') {
+      this.addHeuristicText = '<br /><u>Proof:</u>';
+    }
+    const outline = 'Prove ' + this.addProofText + '<br />' + this.addHeuristicText;
+    this.editorService.addProofToData(outline);
+  }
+
+  cancelAddNewProof() {
+    this.editorService.setEditorNonEmpty(true);
+    this.editorService.toggleFormFilled();
   }
 
   onHeuristicSelectionChanged(selection) {
@@ -64,7 +93,8 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     this.heuristic = [
       {name: 'Prove Equivalent to Previous Theorem', description: 'by showing equivalence to a previous theorem <br /><br /><u>Proof:</u>'},
       {name: 'Deduction', description: 'by assuming conjunct of antecedent <br /><br /><u>Proof:</u>'},
-      {name: 'Case Analysis', description: 'by case analysis on p <br />' +
+      {
+        name: 'Case Analysis', description: 'by case analysis on p <br />' +
         ' prove <br />' +
         '  (1) true ⋀ (q ⋁ r) ≡ (true ⋀ q) ⋁ (true ⋀ r) <br />' +
         '  (2) false ⋀ (q ⋁ r) ≡ (false ⋀ q) ⋁ (false ⋀ r)<br /><br />' +
@@ -78,13 +108,9 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       {name: 'Proof by Contrapositive', description: 'by proving the contrapositive: <br /><br /><u>Proof:</u>'}];
 
     this.whatTheorem = [
-      {rule: '(3.1)', name: 'Associativity of ≡'},
-      {rule: '(3.2)', name: 'Symmetry of ≡'},
-      {rule: '(3.3)', name: 'Identity of ≡'},
       {rule: '(3.4)', name: 'true'},
       {rule: '(3.5)', name: 'Reflexivity of ≡'},
       {rule: '(3.8)', name: ' Definition of false'},
-      {rule: '(3.9)', name: '  Distributivity of ¬ over ≡'},
       {rule: '(3.10)', name: ' Definition of ≢'},
       {rule: '(3.11)', name: ' ¬p ≡ q ≡ p ≡ ¬q'},
       {rule: '(3.12)', name: ' Double negation'},
@@ -96,16 +122,10 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       {rule: '(3.18)', name: ' Mutual associativity'},
       {rule: '(3.19)', name: ' Mutual interchangeability'},
       {rule: '(3.19.1)', name: ' p ≢ p ≢ q  ≡  q'},
-      {rule: '(3.24)', name: '  Symmetry of ⋁'},
-      {rule: '(3.25)', name: '  Associativity of ⋁'},
-      {rule: '(3.26)', name: '  Idempotency of ⋁'},
-      {rule: '(3.27)', name: '  Distributivity of ⋁ over ≡'},
-      {rule: '(3.28)', name: '  Excluded middle'},
       {rule: '(3.29)', name: ' Zero of ⋁'},
       {rule: '(3.30)', name: ' Identity of ⋁'},
       {rule: '(3.31)', name: ' Distributivity of ⋁ over ⋁'},
       {rule: '(3.32)', name: 'p ⋁ q ≡ p ⋁ ¬q ≡ p'},
-      {rule: '(3.35)', name: '   Golden rule: p ⋀ q ≡ p ≡ q ≡ p ⋁ q'},
       {rule: '(3.36)', name: ' Symmetry of ⋀: p ⋀ q ≡ q ⋀ p'},
       {rule: '(3.37)', name: ' Associativity of ⋀: (p ⋀ q) ⋀ r  ≡  p ⋀ (q ⋀ r)'},
       {rule: '(3.38)', name: ' Idempotency of ⋀: p ⋀ p ≡ p'},
@@ -129,7 +149,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       {rule: '(3.53)', name: ' Exclusive or'},
       {rule: '(3.55)', name: ' (p ⋀ q) ⋀ r ≡ p ≡ q ≡ r ≡ p ⋁ q ≡ q ⋁ r ≡ r ⋁ p ≡ p ⋁ q ⋁ r'},
       {rule: '(3.57)', name: ' Definition of Implication'},
-      {rule: '(3.58)', name: '   Consequence'},
       {rule: '(3.59)', name: ' Implication'},
       {rule: '(3.60)', name: ' Implication'},
       {rule: '(3.61)', name: ' Contrapositive'},
@@ -168,7 +187,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       {rule: '(3.82c)', name: ' Transitivity: (p ⇒ q) ⋀ (q ≡ r)  ⇒  (p ⇒ r)'},
       {rule: '(3.82.1)', name: ' Transitivity of ≡'},
       {rule: '(3.82.2)', name: ' (p ≡ q) ⇒ (p ⇒ q)'},
-      {rule: '(3.83)', name: '   Leibniz'},
       {rule: '(3.84a)', name: ' Substitution: (e = f) ⋀ E[z,e]  ≡  (e = f) ⋀ E[z,f]'},
       {rule: '(3.84b)', name: ' Substitution: (e = f) ⇒ E[z,e]  ≡  (e = f) ⇒ E[z,f]'},
       {rule: '(3.84c)', name: ' Substitution: q ⋀ (e = f) ⇒ E[z,e]  ≡  q ⋀ (e = f) ⇒ E[z,f]'},
@@ -182,19 +200,9 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       {rule: '(4.1)', name: 'p ⇒ (q ⇒ p)'},
       {rule: '(4.2)', name: ' Monotonicity of ⋁'},
       {rule: '(4.3)', name: ' Monotonicity of ⋀'},
-      {rule: '(8.13)', name: '   Empty range'},
-      {rule: '(8.14)', name: '   One-point rule'},
-      {rule: '(8.15)', name: '   Distributivity'},
-      {rule: '(8.16)',name:'Range split: (★x | R ⋁ S : P) = (★x | R : P) ★ (★x | S : P)'},
-      {rule: '(8.17)', name: '   Range split: (★x | R ⋁ S : P) ★ (★x | R ⋀ S : P) = (★x | R : P) ★ (★x | S | P)'},
-      {rule: '(8.18)', name: '   Range split for idempotent ★'},
-      {rule: '(8.19)', name: '   Interchange of dummies'},
-      {rule: '(8.20)', name: '   Nesting'},
-      {rule: '(8.21)', name: '   Dummy renaming'},
       {rule: '(8.22)', name: ' Change of dummy'},
       {rule: '(8.23a)', name: ' Split off term'},
       {rule: '(8.23b)', name: ' Split off term'},
-      {rule: '(9.2)', name: '   Trading: (∀x | R : P) ≡ (∀x |: R ⇒ P)'},
       {rule: '(9.3a)', name: ' Trading: (∀x | R : P) ≡ (∀x |: ¬R ⋁ P)'},
       {rule: '(9.3b)', name: ' Trading: (∀x | R : P) ≡ (∀x |: R ⋀ P ≡ R)'},
       {rule: '(9.3c)', name: ' Trading: (∀x | R : P) ≡ (∀x |: R ⋁ P ≡ P)'},
@@ -203,7 +211,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       {rule: '(9.4c)', name: ' Trading: (∀x | Q ⋀ R : P) ≡ (∀x | Q : R ⋀ P ≡ R)'},
       {rule: '(9.4d)', name: ' Trading: (∀x | Q ⋀ R : P) ≡ (∀x | Q : R ⋁ P ≡ P)'},
       {rule: '(9.4.1)', name: ' Universal double trading'},
-      {rule: '(9.5)', name: '   Distributivity of ⋁ over ∀'},
       {rule: '(9.6)', name: ' (∀x | R : P) ≡ P ⋁ (∀x |: ¬R)'},
       {rule: '(9.7)', name: ' Distributivity of ⋀ over ∀'},
       {rule: '(9.8)', name: ' (∀x | R : true) ≡ true'},
@@ -213,7 +220,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       {rule: '(9.12)', name: ' Monotonicity of ∀'},
       {rule: '(9.13)', name: ' Instantiation'},
       {rule: '(9.14)', name: ' Metatheorem'},
-      {rule: '(9.17)', name: 'Generalized De Morgan: (∃x | R : P) ≡ ¬(∀x | R : ¬P)'},
       {rule: '(9.18a)', name: ' Generalized De Morgan: ¬(∃x | R : ¬P) ≡ (∀x | R : P)'},
       {rule: '(9.18b)', name: ' Generalized De Morgan: ¬(∃x | R : P) ≡ (∀x | R : ¬P)'},
       {rule: '(9.18c)', name: ' Generalized De Morgan: (∃x | R : ¬P) ≡ ¬(∀x | R : P)'},
@@ -236,5 +242,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.infoFilledSubscription.unsubscribe();
+    this.editorEmptySubscription.unsubscribe();
   }
 }

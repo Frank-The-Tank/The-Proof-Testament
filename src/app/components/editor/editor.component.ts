@@ -52,50 +52,51 @@ export class EditorComponent implements OnInit, OnDestroy {
   private infoFilledSubscription;
   outline: string;
   private outlineSubscription;
+  private additionalProofSubscription;
   hideSymbols = true;
   private hideSymbolsSubscription;
   isReadOnly = false;
   form: FormGroup;
   modules = {};
 
-  equalsUnicode = '\u003D';
-  impliesUnicode = '\u21D2';
+  equalsUnicode = '\u003D ';
+  impliesUnicode = '\u21D2 ';
   followsFromUnicode = '\u21d0 ';
-  lessThanUnicode = '\u003C';
-  greaterThanUnicode = '\u003E';
-  doesNotEqualUnicode = '\u2260';
+  lessThanUnicode = '\u003C ';
+  greaterThanUnicode = '\u003E ';
+  doesNotEqualUnicode = '\u2260 ';
   leftBracketUnicode = '\u3008';
   rightBracketUnicode = '\u3009';
   hintUnicode = '          ' + this.leftBracketUnicode + '  ' + this.rightBracketUnicode;
-  textSubUnicode = '\u2254';
+  textSubUnicode = ' \u2254 ';
   genQuantifierUnicode = '\u2605';
-  lessThanOrEqUnicode = '\u2264';
-  greaterThanOrEqUnicode = '\u2265';
-  elementOfUnicode = '\u2208';
-  notElementOfUnicode = '\u2209';
-  properSubsetOfUnicode = '\u2282';
-  subsetOfUnicode = '\u2286';
-  properSupersetOfUnicode = '\u2283';
-  supersetOfUnicode = '\u2287';
-  notProperSubsetOfUnicode = '\u2284';
-  notSubsetOf = '\u2289';
-  notProperSupersetOfUnicode = '\u2285';
-  notSupersetOfUnicode = '\u2289';
-  unionUnicode = '\u222a';
-  intersectionUnicode = '\u2229';
-  emptySetUnicode = '\u2205';
-  conjuctionUnicode = '\u22c0';
-  disjunctionUnicode = '\u22c1';
-  equivalesUnicode = '\u2261';
-  notEquivalesUnicode = '\u2262';
-  doesNotImplyUnicode = '\u21cf';
-  doesNotFollowFromUnicode = '\u21cd';
-  universalQuantifierUnicode = '\u2200';
-  existentialQuanitiferUnicode = '\u2203';
+  lessThanOrEqUnicode = '\u2264 ';
+  greaterThanOrEqUnicode = '\u2265 ';
+  elementOfUnicode = ' \u2208 ';
+  notElementOfUnicode = ' \u2209 ';
+  properSubsetOfUnicode = ' \u2282 ';
+  subsetOfUnicode = ' \u2286 ';
+  properSupersetOfUnicode = ' \u2283 ';
+  supersetOfUnicode = ' \u2287 ';
+  notProperSubsetOfUnicode = ' \u2284 ';
+  notSubsetOf = ' \u2289 ';
+  notProperSupersetOfUnicode = ' \u2285 ';
+  notSupersetOfUnicode = ' \u2289 ';
+  unionUnicode = ' \u222a ';
+  intersectionUnicode = ' \u2229 ';
+  emptySetUnicode = ' \u2205 ';
+  conjuctionUnicode = ' \u22c0 ';
+  disjunctionUnicode = ' \u22c1 ';
+  equivalesUnicode = ' \u2261 ';
+  notEquivalesUnicode = ' \u2262 ';
+  doesNotImplyUnicode = ' \u21cf ';
+  doesNotFollowFromUnicode = ' \u21cd ';
+  universalQuantifierUnicode = ' \u2200';
+  existentialQuanitiferUnicode = ' \u2203';
   endProofUnicode = '\u2571';
   integerUnicode = '\u2124';
-  naturalUnicode = '\u2115';
-  rationalUnicode = '\u211a';
+  naturalUnicode = '\u2115 ';
+  rationalUnicode = '\u211a ';
   realUnicode = '\u211d';
   nextUnicode = '\u25cb';
   untilUnicode = '\u02af';
@@ -129,6 +130,10 @@ export class EditorComponent implements OnInit, OnDestroy {
 
     this.outlineSubscription = this.editorService.outlineChange.subscribe(outline => {
       this.outline = outline;
+    });
+
+    this.additionalProofSubscription = this.editorService.outlineAdditionChange.subscribe(proof => {
+      this.outline += '<br />' + proof;
     });
 
     this.hideSymbolsSubscription = this.editorService.hideSymbolsChange.subscribe(hideSymbols => {
@@ -167,6 +172,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.infoFilledSubscription.unsubscribe();
     this.outlineSubscription.unsubscribe();
     this.hideSymbolsSubscription.unsubscribe();
+    this.additionalProofSubscription.unsubscribe();
   }
 
   generateSymbolShortcut(symbolIdentifier) {
@@ -192,75 +198,81 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.previousEditorSelection = this.editorInstance.getSelection();
   }
 
+  insertSymbolFromBible(selectedVal) {
+    this.editorInstance.insertText(this.previousEditorSelection, selectedVal);
+    this.editorInstance.setSelection(this.previousEditorSelection.index + selectedVal.length + 1);
+    this.previousEditorSelection = this.editorInstance.getSelection();
+  }
+
   symbolSelectorChanged(selectedVal) {
     switch (selectedVal) {
       case 'equals': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.equalsUnicode + '  '+ this.hintUnicode
+          this.equalsUnicode + '  ' + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 12);
         this.hideSymbols = true;
         break;
       }
       case 'implies': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.impliesUnicode + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 9);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 10);
         this.hideSymbols = true;
         break;
       }
       case 'followsFrom': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.followsFromUnicode + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 9);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 10);
         this.hideSymbols = true;
         break;
       }
       case 'lessThan': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.lessThanUnicode + '  '+ this.hintUnicode
+          this.lessThanUnicode + '  ' + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 12);
         this.hideSymbols = true;
         break;
       }
       case 'greaterThan': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
-          this.greaterThanUnicode + ' ' + this.hintUnicode
+          this.greaterThanUnicode + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 12);
         this.hideSymbols = true;
         break;
       }
       case 'greaterThanOrEq': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.greaterThanOrEqUnicode + '  ' + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 12);
         this.hideSymbols = true;
         break;
       }
       case 'lessThanOrEq': {
-        this.editorInstance.deleteText(0,5);
+        this.editorInstance.deleteText(0, 5);
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.lessThanOrEqUnicode + '  ' + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 11);
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 12);
         this.hideSymbols = true;
         break;
       }
@@ -295,7 +307,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       (range, context) => {
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.impliesUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 6);
+        quill.setSelection(range.index + 7);
       });
 
     // follows from
@@ -308,7 +320,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       (range, context) => {
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.followsFromUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 6);
+        quill.setSelection(range.index + 7);
       });
 
     // equals
@@ -321,7 +333,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       (range, context) => {
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.equalsUnicode + '  ' + this.hintUnicode);
-        quill.setSelection(range.index + 8);
+        quill.setSelection(range.index + 9);
       });
 
     // less than
@@ -332,9 +344,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         offset: 7
       },
       (range, context) => {
+
+
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.lessThanUnicode + '  ' + this.hintUnicode);
-        quill.setSelection(range.index + 8);
+        quill.setSelection(range.index + 9);
       });
 
     // less than or equal to
@@ -347,7 +361,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       (range, context) => {
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.lessThanOrEqUnicode + '  ' + this.hintUnicode);
-        quill.setSelection(range.index + 8);
+        quill.setSelection(range.index + 9);
       });
 
 
@@ -361,7 +375,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       (range, context) => {
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.greaterThanUnicode + '  ' + this.hintUnicode);
-        quill.setSelection(range.index + 8);
+        quill.setSelection(range.index + 9);
       });
 
     // greater than or equal to
@@ -372,10 +386,9 @@ export class EditorComponent implements OnInit, OnDestroy {
         offset: 7,
       },
       (range, context) => {
-
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.greaterThanOrEqUnicode + '  ' + this.hintUnicode);
-        quill.setSelection(range.index + 8);
+        quill.setSelection(range.index + 9);
       });
 
     // ///////////////////////////////////////////inline symbols///////////////////////////////////////////
@@ -387,6 +400,8 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.insertText(range.index, ' (  ) ');
         quill.setSelection(range.index + 3);
       });
@@ -398,17 +413,21 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.insertText(range.index, ' {  } ');
         quill.setSelection(range.index + 3);
       });
 
-    //close square brackets
+    // close square brackets
     quill.keyboard.addBinding({key: 219}, {
         // empty: false,
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.insertText(range.index, ' [  ] ');
         quill.setSelection(range.index + 3);
       });
@@ -421,8 +440,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;i$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ≺ ');
+        quill.insertText(range.index - 2, '≺ ');
+          quill.setSelection(range.index);
       });
 
 
@@ -433,8 +455,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ⪯ ');
+        quill.insertText(range.index - 2, '⪯ ');
+        quill.setSelection(range.index);
       });
 
     // poset inverted
@@ -444,8 +469,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;t$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ⪰ ');
+        quill.insertText(range.index - 2, '⪰ ');
+          quill.setSelection(range.index);
       });
 
     // p inverted
@@ -455,8 +483,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;t$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ≻ ');
+        quill.insertText(range.index - 2, '≻ ');
+          quill.setSelection(range.index);
       });
 
     // hash
@@ -466,8 +497,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;h$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' # ');
+        quill.insertText(range.index - 2, '# ');
+          quill.setSelection(range.index);
       });
 
     // sigma
@@ -477,8 +511,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;s$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' σ ');
+        quill.insertText(range.index - 2, 'σ ');
+          quill.setSelection(range.index);
       });
 
     // pi
@@ -488,8 +525,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' π ');
+        quill.insertText(range.index - 2, 'π ');
+          quill.setSelection(range.index);
       });
 
     // natural join
@@ -499,8 +539,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;j$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ⨝ ');
+        quill.insertText(range.index - 2, '⨝ ');
+          quill.setSelection(range.index);
       });
 
     // big-O
@@ -510,8 +553,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;b$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' Ο ');
+        quill.insertText(range.index - 2, 'Ο ');
+          quill.setSelection(range.index);
       });
 
     // big omega
@@ -521,8 +567,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;b$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' Ω ');
+        quill.insertText(range.index - 2, 'Ω ');
+          quill.setSelection(range.index);
       });
 
     // big theta
@@ -532,8 +581,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;b$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' Θ ');
+        quill.insertText(range.index - 2, 'Θ ');
+          quill.setSelection(range.index);
       });
 
     // phi
@@ -543,8 +595,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' 𝜙 ');
+        quill.insertText(range.index - 2, '𝜙 ');
+          quill.setSelection(range.index);
       });
 
     // follows from
@@ -554,8 +609,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;f$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.followsFromUnicode + ' ');
+        quill.insertText(range.index - 2, this.followsFromUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // less than
@@ -567,8 +625,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         // missing * and - and + characters and ^
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.lessThanUnicode + ' ');
+        quill.insertText(range.index - 2, ' ' + this.lessThanUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // less than or equal to
@@ -578,8 +639,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.lessThanOrEqUnicode + ' ');
+        quill.insertText(range.index - 2, ' ' + this.lessThanOrEqUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // greater than
@@ -589,8 +653,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;g$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.greaterThanUnicode + ' ');
+        quill.insertText(range.index - 2, ' ' + this.greaterThanUnicode);
+          quill.setSelection(range.index + 1);
       });
 
 
@@ -601,8 +668,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;g$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.greaterThanOrEqUnicode + ' ');
+        quill.insertText(range.index - 2, ' ' + this.greaterThanOrEqUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // left hint bracket
@@ -612,8 +682,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.leftBracketUnicode);
+        quill.insertText(range.index - 2, this.leftBracketUnicode + ' ');
+          quill.setSelection(range.index);
       });
 
     // right hint bracket
@@ -623,31 +696,39 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.rightBracketUnicode);
+          quill.setSelection(range.index);
       });
 
     // implies
     quill.keyboard.addBinding({key: 'm'}, {
         empty: false,
         collapsed: true,
-        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;i$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]* ;i$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.impliesUnicode + ' ');
+        quill.insertText(range.index - 2, ' ' + this.impliesUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // equival
     quill.keyboard.addBinding({key: 'q'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.equivalesUnicode + ' ');
-      });
+      empty: false,
+      collapsed: true,
+      prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
+    }, (range, context) => {
+      quill.format('bold', false);
+      quill.format('italic', false);
+      quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+      quill.insertText(range.index - 2, this.equivalesUnicode);
+        quill.setSelection(range.index + 1);
+    });
 
     // textual subsitution
     quill.keyboard.addBinding({key: 's'}, {
@@ -656,8 +737,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;t$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.textSubUnicode + ' ');
+        quill.insertText(range.index - 2, this.textSubUnicode);
+        quill.setSelection(range.index + 1);
       });
 
     // element of
@@ -667,8 +751,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.elementOfUnicode + ' ');
+        quill.insertText(range.index - 2, this.elementOfUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // universe
@@ -678,8 +765,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;u$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' Ʊ ');
+        quill.insertText(range.index - 2, 'Ʊ ');
+          quill.setSelection(range.index + 1);
       });
 
     // proper subset
@@ -689,8 +779,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.properSubsetOfUnicode + ' ');
+        quill.insertText(range.index - 2, this.properSubsetOfUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // proper superset
@@ -700,8 +793,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.properSupersetOfUnicode + ' ');
+        quill.insertText(range.index - 2, this.properSupersetOfUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // subset
@@ -711,8 +807,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;s$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.subsetOfUnicode + ' ');
+        quill.insertText(range.index - 2, this.subsetOfUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // superset
@@ -722,8 +821,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;s$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.supersetOfUnicode + ' ');
+        quill.insertText(range.index - 2, this.supersetOfUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // empty set
@@ -733,8 +835,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.emptySetUnicode + ' ');
+        quill.insertText(range.index - 2, this.emptySetUnicode);
+          quill.setSelection(range.index + 1);
       });
 
 
@@ -745,8 +850,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;u$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.unionUnicode + ' ');
+        quill.insertText(range.index - 2, this.unionUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // intersection
@@ -756,8 +864,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;i$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.intersectionUnicode + ' ');
+        quill.insertText(range.index - 2, this.intersectionUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // complement
@@ -767,8 +878,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;c$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ~ ');
+        quill.insertText(range.index - 2, '~ ');
+          quill.setSelection(range.index);
       });
 
 
@@ -779,8 +893,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;o$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.disjunctionUnicode + ' ');
+        quill.insertText(range.index - 2, this.disjunctionUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // conjunction
@@ -790,8 +907,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;a$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.conjuctionUnicode + ' ');
+        quill.insertText(range.index - 2, this.conjuctionUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // for all
@@ -802,7 +922,8 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.universalQuantifierUnicode);
+        quill.insertText(range.index - 2, this.universalQuantifierUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // there exists
@@ -812,8 +933,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ' + this.existentialQuanitiferUnicode);
+        quill.insertText(range.index - 2, this.existentialQuanitiferUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // power set
@@ -823,8 +947,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' P ');
+        quill.insertText(range.index - 2, 'P ');
+          quill.setSelection(range.index);
       });
 
     // up arrow
@@ -834,8 +961,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;u$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ↑ ');
+        quill.insertText(range.index - 2, '↑ ');
+          quill.setSelection(range.index);
       });
 
     // right arrow
@@ -845,8 +975,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' → ');
+        quill.insertText(range.index - 2, '→ ');
+          quill.setSelection(range.index);
       });
 
     // left arrow
@@ -856,8 +989,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ← ');
+        quill.insertText(range.index - 2, '← ');
+          quill.setSelection(range.index);
       });
 
     // down arrow
@@ -867,8 +1003,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;d$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ↓ ');
+        quill.insertText(range.index - 2, '↓ ');
+          quill.setSelection(range.index);
       });
     // cross product
     quill.keyboard.addBinding({key: 'p'}, {
@@ -877,8 +1016,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;c$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' × ');
+        quill.insertText(range.index - 2, '× ');
+          quill.setSelection(range.index);
       });
 
     // division symbol
@@ -888,8 +1030,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;d$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ÷ ');
+        quill.insertText(range.index - 2, '÷ ');
+          quill.setSelection(range.index);
       });
 
     // function composition
@@ -899,8 +1044,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;f$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ∙ ');
+        quill.insertText(range.index - 2, '∙ ');
+          quill.setSelection(range.index);
       });
 
     // function product
@@ -910,19 +1058,25 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;f$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ∘ ');
+        quill.insertText(range.index - 2, '∘ ');
+          quill.setSelection(range.index);
       });
 
-    // floating dot
+    // dot product
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;d$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, ' ⋅ ');
+        quill.insertText(range.index - 2, '⋅ ');
+          quill.setSelection(range.index);
       });
 
     // star
@@ -932,8 +1086,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;s$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.genQuantifierUnicode);
+          quill.setSelection(range.index);
       });
 
 
@@ -948,8 +1105,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;no$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ¬ ');
+          quill.setSelection(range.index);
       });
 
     // does not imply
@@ -959,8 +1119,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ni$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, ' ' + this.doesNotImplyUnicode + ' ');
+        quill.insertText(range.index - 3, this.doesNotImplyUnicode);
+          quill.setSelection(range.index);
       });
 
     // does not follow from
@@ -970,8 +1133,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;nf$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, ' ' + this.doesNotFollowFromUnicode + ' ');
+        quill.insertText(range.index - 3, this.doesNotFollowFromUnicode);
+          quill.setSelection(range.index);
       });
 
     // not equal
@@ -981,19 +1147,25 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ne$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, ' ' + this.doesNotEqualUnicode + ' ');
+        quill.insertText(range.index - 3, this.doesNotEqualUnicode);
+          quill.setSelection(range.index);
       });
 
-    //not equivales
+    // not equivales
     quill.keyboard.addBinding({key: 'v'}, {
         empty: false,
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ne$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, ' ' + this.notEquivalesUnicode + ' ');
+        quill.insertText(range.index - 3, this.notEquivalesUnicode);
+          quill.setSelection(range.index);
       });
 
     // not element of
@@ -1003,8 +1175,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ne$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, ' ' + this.notElementOfUnicode + ' ');
+        quill.insertText(range.index - 3, this.notElementOfUnicode);
+          quill.setSelection(range.index);
       });
 
     // not a subset
@@ -1014,8 +1189,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ns$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, ' ' + this.notSubsetOf + ' ');
+        quill.insertText(range.index - 3, this.notSubsetOf);
+          quill.setSelection(range.index);
       });
 
     // not a superset
@@ -1025,8 +1203,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ns$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, ' ' + this.notSupersetOfUnicode + ' ');
+        quill.insertText(range.index - 3, this.notSupersetOfUnicode);
+          quill.setSelection(range.index);
       });
 
     // not a proper superset
@@ -1036,8 +1217,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;np$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, ' ' + this.notProperSupersetOfUnicode + ' ');
+        quill.insertText(range.index - 3, this.notProperSupersetOfUnicode);
+          quill.setSelection(range.index);
       });
 
     // not a proper subset
@@ -1047,8 +1231,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;np$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, ' ' + this.notProperSubsetOfUnicode + ' ');
+        quill.insertText(range.index - 3, this.notProperSubsetOfUnicode);
+          quill.setSelection(range.index);
       });
 
     ////////////////////////////////// natural numbers, etc ///////////////////////////////
@@ -1059,8 +1246,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;n$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.naturalUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     // integers
@@ -1070,8 +1260,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;i$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.integerUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     //rational
@@ -1081,8 +1274,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.rationalUnicode);
+          quill.setSelection(range.index);
       });
 
     //real numbers
@@ -1092,8 +1288,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.realUnicode);
+          quill.setSelection(range.index);
       });
 
     //booleans
@@ -1103,8 +1302,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;b$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, this.booleanSymbol);
+        quill.insertText(range.index - 2, this.booleanSymbol );
+          quill.setSelection(range.index);
       });
 
     //end of proof
@@ -1114,8 +1316,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;en$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, this.endProofUnicode + this.endProofUnicode);
+          quill.setSelection(range.index);
       });
 
     ////////////////////////// temporal //////////////////////////
@@ -1126,8 +1331,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;nx$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, this.nextUnicode);
+          quill.setSelection(range.index);
       });
 
     //until
@@ -1137,8 +1345,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ut$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, this.untilUnicode);
+          quill.setSelection(range.index + 1);
       });
 
     //eventually
@@ -1148,8 +1359,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ev$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, this.eventuallyUnicode);
+          quill.setSelection(range.index);
       });
 
     //always
@@ -1159,8 +1373,11 @@ export class EditorComponent implements OnInit, OnDestroy {
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;al$/
       },
       (range, context) => {
+        quill.format('bold', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, this.alwaysUnicode);
+          quill.setSelection(range.index);
       });
 
     //plus
@@ -1171,7 +1388,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, 'plus ', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 3, ' plus ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
@@ -1184,9 +1401,23 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'gcd ', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' gcd ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
+      });
+
+    // lcm
+    quill.keyboard.addBinding({key: 'm'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lc$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 2, ' lcm ', {'bold': true, 'italic': true});
+        quill.format('bold', false);
+        quill.format('italic', false);
+
       });
 
     //mod
@@ -1197,51 +1428,13 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'mod ', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' mod ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
+
       });
 
-    //lcd
-    quill.keyboard.addBinding({key: 'd'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lc$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'lcd ', {'bold': true, 'italic': true});
-        quill.format('bold', false);
-        quill.format('italic', false);
-      });
-
-    //lub lowest upper bound
-    quill.keyboard.addBinding({key: 'b'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lu$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'lub ', {'bold': true, 'italic': true});
-        quill.format('bold', false);
-        quill.format('italic', false);
-      });
-
-    //glb greatest lower bound
-    quill.keyboard.addBinding({key: 'b'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*gl$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'glb ', {'bold': true, 'italic': true});
-        quill.format('bold', false);
-        quill.format('italic', false);
-      });
-
-    //abs
+    // abs
     quill.keyboard.addBinding({key: 's'}, {
         empty: false,
         collapsed: true,
@@ -1252,9 +1445,10 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.insertText(range.index - 2, 'abs ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
+
       });
 
-    //true
+    // true
     quill.keyboard.addBinding({key: 'e'}, {
         empty: false,
         collapsed: true,
@@ -1264,9 +1458,10 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, 'true ', 'italic', true);
         quill.format('italic', false);
+
       });
 
-    //false
+    // false
     quill.keyboard.addBinding({key: 'e'}, {
         empty: false,
         collapsed: true,
@@ -1276,9 +1471,10 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.deleteText(range.index - 4, 4); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 4, 'false ', 'italic', true);
         quill.format('italic', false);
+
       });
 
-    //sum
+    // sum
     quill.keyboard.addBinding({key: 'm'}, {
         empty: false,
         collapsed: true,
@@ -1287,9 +1483,10 @@ export class EditorComponent implements OnInit, OnDestroy {
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ∑');
+          quill.setSelection(range.index);
       });
 
-    //product
+    // product
     quill.keyboard.addBinding({key: 'd'}, {
         empty: false,
         collapsed: true,
@@ -1297,29 +1494,24 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, ' ∏');
+        quill.insertText(range.index - 3, '∏');
+          quill.setSelection(range.index);
       });
 
-      //wp
-      quill.keyboard.addBinding({key: 'p'}, {
-          empty: false,
-          collapsed: true,
-          prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*w$/
-        },
-        (range, context) => {
-          quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-          quill.insertText(range.index - 2, 'wp.S.R ','italic', true);
-          quill.format('italic', false);
-        });
+    // wp
+    quill.keyboard.addBinding({key: 'p'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Z]*w$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 1, 'wp.().R ', 'italic', true);
+        quill.format('italic', false);
+          quill.setSelection(range.index+3);
+      });
   }
 
-  setControl() {
-    this.form.setControl('editor', new FormControl('test - new Control'));
-  }
-
-  setFocus($event) {
-    $event.focus();
-  }
 
   updateSelection($event: any) {
     if (this.editorInstance.getSelection()) {

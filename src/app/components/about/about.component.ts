@@ -28,7 +28,7 @@ export class AboutComponent implements OnInit {
     {
       name: "Giorgio Catania",
       title: "Antlr/Quilljs Developer",
-      description: "Coming from the flat land of Texas, Giorgio now lives in SoCal where he studies to become a Computer Science major at Pepperdine.  He one day wishes to become a software developer.",
+      description: "Coming from the flat land of Texas, Giorgio now lives in SoCal. He joined Pepperdine not knowing what convo was nor that the school was religiously affiliated. But it all worked out and he now studies to finish his Computer Science and Mathematics major. He one day wishes to work at Google, Amazon, or Apple.",
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>'],
       linkedIn: '#',
       gitHub: 'https://github.com/giorgio19',
@@ -61,7 +61,7 @@ export class AboutComponent implements OnInit {
     {
       name: "Damir Kaliyev",
       title: "Front-End Software Developer",
-      description: "Damir hails from the mystical land of Kazakhstan. He is an avid programmer and hopes to learn everything he can about coding.",
+      description: "A Kazakhstan native, Damir Kaliyev is an avid computer programmer. His interests in Computer Science include web programming, video game development, and data science. He will be attending Bentley University in Boston, Massachusetts in Fall 2018 to complete his Master’s Degree in Business Analytics. In five years, Damir envisions himself as a strategic consultant in a non-profit organization.",
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'Hydrogen: <a href="https://github.com/nteract/hydrogen/" target="_blank">Github</a>'],
       linkedIn: 'https://www.linkedin.com/in/damir-kaliyev-604368b9/',
       gitHub: 'https://github.com/carenekl',
@@ -72,7 +72,7 @@ export class AboutComponent implements OnInit {
     {
       name: "Zack Rhodes",
       title: "Database Development and Management",
-      description: "Born in Seattle, Washington and raised in the barren wasteland that is known as Palm Springs, California, Zack is an aspiring Computer Science student and hopes to become a software engineer post-graduation.",
+      description: "Zack Rhodes is an aspiring Computer Science student born in Seattle, Washington. He competed and excelled in Division-I water polo at Pepperdine University and he is a member of the United States National Water Polo team. Throughout his time at Pepperdine, the most compelling topics he found in the Computer Science curriculum were Formal Methods, Computer Networks, and Computer Systems.",
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>'],
       linkedIn: 'https://www.linkedin.com/in/zackery-rhodes-32884a149/',
       gitHub: 'https://github.com/ruskimagic',
@@ -83,7 +83,7 @@ export class AboutComponent implements OnInit {
     {
       name: "James Maynard",
       title: "Front-End Software Developer",
-      description: 'This is James. James is a proud Naperville native. James will rave for hours about Chicago deep dish pies. James has a wide variety of catchphrases, including “dope”, “fasho”, and “I’m the man.” James’ idol is Ross Rhea ("Goon" or bust).',
+      description: 'James Maynard grew up in Naperville, Illinois and came to Pepperdine University with the original intent of pursuing a degree in Dentistry. After realizing that being a dentist is way less fun and interesting than being a computer programmer, he made the decision to switch his major to Computer Science and Mathematics. James has hopes of pursuing a career in chip design or some other aspect of Computer Hardware in the future.',
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>'],
       linkedIn: 'https://www.linkedin.com/in/james-maynard-ba9837120/',
       gitHub: 'https://github.com/JamesMaynard26',

@@ -1,4 +1,4 @@
-<div *ngIf="!infoFilled">
+<div *ngIf="!infoFilled && !editorEmpty">
   <form>
     <fieldset>
       <legend>Editor Form</legend>
@@ -42,5 +42,36 @@
     </fieldset>
     <button (click)="formSubmit(proofSelector.value, hiddenField.value)" class="btn btn-primary">Generate Editor
     </button>
+  </form>
+</div>
+
+<div *ngIf="!infoFilled && editorEmpty">
+  <form>
+    <fieldset>
+      <legend>Add a Proof</legend>
+      <div class="form-group">
+        <label>Proof: </label>
+        <select #addProofSelector (change)="onProofSelectionChanged($event.target.value)" [(ngModel)]="addProofText"
+                name="proofs" class="form-control">
+          <option style="display:none" value=""></option>
+          <option value="custom">[Custom]</option>
+          <option *ngFor="let theorem of whatTheorem" [ngValue]="theorem.rule">
+            {{theorem.rule}}: {{theorem.name}}
+          </option>
+        </select>
+        <input #addHiddenField [hidden]="!customProofSelected" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Heuristic: </label>
+        <select #addHeuristicSelector (change)="onHeuristicSelectionChanged($event.target.value)"
+                [(ngModel)]="addHeuristicText" name="heuristic" class="form-control">
+          <option *ngFor="let he of heuristic" [ngValue]="he.description">
+            {{he.name}}
+          </option>
+        </select>
+      </div>
+    </fieldset>
+    <button (click)="addNewProof(addProofSelector.value, addHiddenField.value)" class="btn btn-primary">Add Proof</button>
+    <button (click)="cancelAddNewProof()" class="btn btn-primary" style="background-color:lightcoral; border-color:lightcoral;">Cancel</button>
   </form>
 </div>
