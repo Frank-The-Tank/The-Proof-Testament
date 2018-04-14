@@ -1,0 +1,77 @@
+Prove (3.73) true ⇒ p ≡ p
+
+  true ⇒ p
+=    〈 (3.59) 〉
+  ¬true ⋁ p
+=    〈 ¬true ≡ false 〉
+  false ⋁ p
+=    〈 identity of ⋁ 〉
+  p  ╱╱
+
+------------------------------
+
+Prove (3.76.1) p ⋀ q ⇒ p ⋁ r
+
+  p ⋀ q ⇒ p ⋁ r
+=    〈 (3.59) 〉
+  ¬(p ⋀ q) ⋁ p ⋁ r
+=    〈 De Morgan 〉
+  ¬p ⋁ ¬q ⋁ p ⋁ r
+=    〈 symmetry of ≡, excluded middle 〉
+  true ⋁ ¬q ⋁ r
+=    〈 zero of ⋁ 〉
+  true  ╱╱
+
+------------------------------
+
+Prove (3.32) p ⋁ q ≡ p ⋁ ¬q ≡ p
+
+  p ⋁ q ≡ p ⋁ ¬q
+=    〈 distributivity of ⋁ over ≡ 〉
+  p ⋁ (q ≡ ¬q)
+=    〈 (3.15) 〉
+  p ⋁ false
+=    〈 identity of ⋁ 〉
+  p  ╱╱
+
+------------------------------
+
+Prove (3.49) p ⋀ (q ≡ r) ≡ p ⋀ r ≡ p ⋀ q ≡ p
+
+  p ⋀ r ≡ p ⋀ q ≡ p
+=    〈 golden rule, twice 〉
+  p ≡ r ≡ p ⋁ r ≡ p ≡ q ≡ p ⋁ q ≡ p
+=    〈 symmetry of ≡, reflexivity of ≡ 〉
+  p ⋁ q ≡ p ⋁ r ≡ p ≡ q ≡ r
+=    〈 distributivity of ⋁ over ≡ 〉
+  p ⋁ (q ≡ r) ≡ p ≡ q ≡ r
+=    〈 golden rule 〉
+  p ⋀ (q ≡ r)  ╱╱
+
+------------------------------
+
+Prove (3.44b) p ⋁ (¬p ⋀ q) ≡ p ⋁ q
+
+  p ⋁ (¬p ⋀ q)
+=    〈 golden rule 〉
+  p ⋁ (¬p ≡ q ≡ ¬p ⋁ q)
+=    〈 distributivity of ⋁ over ≡ 〉
+  p ⋁ ¬p ≡ p ⋁ q ≡ p ⋁ ¬p ⋁ q
+=    〈 excluded middle, twice 〉
+  true ≡ p ⋁ q ≡ true ⋁ q
+=    〈 zero of ⋁ 〉
+  true ≡ p ⋁ q ≡ true
+=    〈 identity of ≡, twice 〉
+  p ⋁ q ╱╱
+
+
+-- OR --
+
+
+  p ⋁ (¬p ⋀ q)
+=    〈 distributivity of ⋁ over ⋀ 〉
+  (p ⋁ ¬p) ⋀ (p ⋁ q)
+=    〈 excluded middle 〉
+  true ⋀ (p ⋁ q)
+=    〈 identity of ⋀ 〉
+  p ⋁ q ╱╱

@@ -19,8 +19,6 @@ var PDFTeX = function() {
     var data = JSON.parse(ev.data);
     var msg_id;
 
-    console.log(data);
-
     if(!('command' in data))
       console.log("missing command!", data);
     switch(data['command']) {
@@ -43,17 +41,14 @@ var PDFTeX = function() {
     }
   }
 
-  // var onready = new promise.Promise();
   var onready = new will.Will();
 
   var promises = [];
   var chunkSize = undefined;
 
   var sendCommand = function(cmd) {
-    // var p = new promise.Promise();
     var w = new will.Will();
 
-    // var msg_id = promises.push(p)-1;
     var msg_id = promises.push(w) - 1;
 
     onready.then(function() {
@@ -61,7 +56,6 @@ var PDFTeX = function() {
       worker.postMessage(JSON.stringify(cmd));
     });
 
-    // return p;
     return w;
   };
 
@@ -106,7 +100,6 @@ var PDFTeX = function() {
     return size;
   };
 
-
   var createCommand = function(command) {
     self[command] = function() {
       var args = [].concat.apply([], arguments);
@@ -117,6 +110,7 @@ var PDFTeX = function() {
       });
     }
   }
+
   createCommand('FS_createDataFile'); // parentPath, filename, data, canRead, canWrite
   createCommand('FS_readFile'); // filename
   createCommand('FS_unlink'); // filename
@@ -133,22 +127,20 @@ var PDFTeX = function() {
   }
 
   self.compile = function(source_code) {
-    // var p = new promise.Promise();
     var w = new will.Will();
 
     self.compileRaw(source_code).then(function(binary_pdf) {
       if(binary_pdf === false) {
-        // return p.done(false);
         return w.done(false);
       }
 
       var pdf_dataurl = 'data:application/pdf;charset=binary;base64,' + window.btoa(binary_pdf);
 
-      // return p.done(pdf_dataurl);
+      // var base64PDF = window.btoa(binary_pdf);
+
       return w.done(pdf_dataurl);
     });
 
-    // return p;
     return w;
   }
 
@@ -189,7 +181,6 @@ var PDFTeX = function() {
       return self.FS_readFile('/input.pdf');
     }
 
-    // return promise.chain(commands).then(sendCompile).then(getPDF);
     return will.chain(commands, []).then(sendCompile).then(getPDF);
   };
 };

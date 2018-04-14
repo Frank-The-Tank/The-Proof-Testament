@@ -38,8 +38,12 @@ router.post('/', function(req, res){
 		console.log('Scribe processed PDF.')
 	});
 	
+	pdf.on('error', (err) => {
+		console.log("pdf error");
+	});
+
 	stream.on('error', (err) => {
-		res.status(500).send(err);
+		console.log("pdf error");
 	});
 });
 

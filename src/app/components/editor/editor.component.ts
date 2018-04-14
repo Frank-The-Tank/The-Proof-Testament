@@ -1335,11 +1335,16 @@ export class EditorComponent implements OnInit, OnDestroy {
     exportBtn.disabled = true;
 
     const text = this.editorInstance.getText();
+
+    console.log(text);
+
     const arrayText = text.split('\n');
+
+    const numHeaders = 4;
 
     if (arrayText.length >= 4) {
       const name = (arrayText[0] as string).replace(/Name:(?:\s)(.*)/gm, '$1');
-      const pin = (arrayText[1] as string).replace(/Pin:(?:\s)(.*)/gm, '$1');
+      const pin = ((arrayText[1] as string)).replace(/Pin:(?:\s)(.*)/gm, '$1');
       const course = (arrayText[2] as string).replace(/Course:(?:\s)(.*)/gm, '$1');
       const assignment = (arrayText[3] as string).replace(/Assignment:(?:\s)(.*)/gm, '$1');
 
@@ -1349,8 +1354,6 @@ export class EditorComponent implements OnInit, OnDestroy {
       const latexAssignment = '\\textbf{' + "A"+ assignment + '}\\\\\\\\' + '\n';
 
       const heading = latexName + latexPin + latexCourse + latexAssignment;
-
-      const numHeaders = 4;
 
       for (let i = 0; i < numHeaders; i++) {
         arrayText.shift();
@@ -1363,17 +1366,14 @@ export class EditorComponent implements OnInit, OnDestroy {
 
       let latex = compiler.preamble + heading + compiledProofs + compiler.postamble;
 
-      this.http.post('http://localhost:4201/scribe', {
-        latex
+      this.http.post('http://localhost:4201/scribe/pdf', {
+        text
       }, {
         headers: {
           'Content-Type': 'application/json'
         }
-      }).subscribe((data: { pdf: string }) => {
-        let pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data['pdf'];
-
-        const date = new Date();
-        const fullDate = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear();
+      }).subscribe((data: { base64: string }) => {
+        let pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data['base64'];
 
         let a = document.createElement('a');
         document.body.appendChild(a);
@@ -1385,7 +1385,10 @@ export class EditorComponent implements OnInit, OnDestroy {
         exportBtn.disabled = false;
       });
     } else {
-      console.log('Text does not contain headers: Name, Class, and/or Assignment.');
+      alert("Please include the default headers.");
+
+      loader.style.visibility = 'hidden';
+      exportBtn.disabled = false;
     }
 
   }

@@ -99,7 +99,7 @@ export class AntlrComponent implements SlickListener {
     '\\usepackage{times} \n' +
     '\\usepackage{amssymb,latexsym}\n' +
     '\\usepackage[usenames, dvipsnames]{color}\n' +
-    '\\usepackage{ wasysym } \n\n' +
+    // '\\usepackage{ wasysym } \n\n' +
 
     '\\newcommand{\\lgap}{12pt}                            % Line gap \n' +
     '\\newcommand{\\slgap}{4pt}                            % Small line gap \n' +
