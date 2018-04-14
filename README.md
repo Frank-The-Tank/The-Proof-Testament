@@ -38,11 +38,11 @@ Editor: QuillJS
 
 ### Starting the PDF Server
 
-1. Install the separate dependancies for `pdfServer/package.json`.
+1. Install separate dependancies in Scribe with `npm install`.
 
-2. Navigate to the "pdfServer" folder, and run the command `node server.js`.
+2. Start the server with `ts-node server`.
 
-3. The server will be running on localhost:4201.
+3. The server will be runnign on localhsot:4201.
 
 ### Additional Help
 If you are receiving the error "Error: Could not find module '@angular-devkit/core'" run npm install @angular-devkit/core --save-dev. This is a fix until the angularCLI developers release a patch.

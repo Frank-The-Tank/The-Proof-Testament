@@ -1,0 +1,81 @@
+Prove p ⋀ true ≡ p
+
+  p ⋀ true
+=    〈 golden rule 〉
+  p ≡ true ≡ p ⋁ true
+=    〈 zero of ⋁ 〉
+  p ≡ true ≡ true
+=    〈 true ≡ q ≡ q 〉
+  p ≡ true
+=    〈 true ≡ q ≡ q 〉
+  p ╱╱
+
+
+  p ⇒ (q ≡ r)
+=    〈 (3.60) p ⇒ q  ≡  p ⋀ q ≡ p 〉
+  p ⋀ (q ≡ r) ≡ p
+=    〈 p ⋀ (q ≡ r) ≡ p ⋀ q ≡ p ⋀ r ≡ p 〉
+  p ⋀ q ≡ p ⋀ r ≡ p ≡ p
+=    〈 reflexivity of ≡ 〉
+  p ⋀ q ≡ p ⋀ r ≡ true
+=    〈 identity of ≡ 〉
+  p ⋀ q ≡ p ⋀ r ╱╱
+
+------------------------------
+
+  p ⇒ (q ≡ r)
+=    〈 (3.60) p ⇒ q ≡ p ⋀ q ≡ p 〉
+  p ⋀ (q ≡ r) ≡ p
+=    〈 p ⋀ (q ≡ r) ≡ p ⋀ q ≡ p ⋀ r ≡ p 〉
+  p ⋀ q ≡ p ⋀ r ≡ p ≡ p
+=    〈 reflexivity of = 〉
+
+
+
+  p ⋀ true
+=    〈 golden rule 〉
+  p ≡ true ≡ p ⋁ true
+=    〈 zero of ⋁ 〉
+  p ≡ true ≡ true
+=    〈 true ≡ q ≡ q 〉
+  p ≡ true
+=    〈 true ≡ q ≡ q 〉
+  p ╱╱
+
+  p  ≡  ≡  ≡  ≡  ≡  ≡ 7896456165465498
+
+
+
+
+Prove p ⋀ true ≡ p
+
+  p ⋀ true
+=    〈 p ⋀ q ≡ p ≡ q ≡ p ⋁ q 〉
+  p ≡ true ≡ p ⋁ true
+=    〈 zero of ⋁ 〉
+  p ≡ true ≡ true
+=    〈 identity of ≡ 〉
+  p ≡ true
+=    〈 id of ≡ 〉
+  p  ╱╱
+
+------------------------------
+
+  p ⋀ true
+=    〈 golden rule 〉
+  p ≡ true ≡ p ⋁ true
+=    〈 zero of ⋁ 〉
+  p ≡ true ≡ true
+=    〈 id of ⋁ 〉
+  p ≡ true
+=    〈 id of ⋁ 〉
+  p  ╱╱
+
+------------------------------
+
+⋀ ⋁ ¬ ≡ (∀x | 0 ≤ x : x = y)
+
+
+  p ⋀ true ≡ p
+=    〈 golden rule 〉
+  p ≡ 
