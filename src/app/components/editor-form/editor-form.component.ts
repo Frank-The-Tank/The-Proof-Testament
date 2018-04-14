@@ -68,7 +68,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     if (this.addHeuristicText === '') {
       this.addHeuristicText = '<br /><u>Proof:</u>';
     }
-    const outline = 'Prove ' + this.addProofText + '<br />' + this.addHeuristicText;
+    const outline = 'Prove ' + this.addProofText + '<br />' + this.addHeuristicText + '<br /><br /> <i>proof here</i> <br/><br/>----';
     this.editorService.addProofToData(outline);
   }
 

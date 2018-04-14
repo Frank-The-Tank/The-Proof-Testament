@@ -26,6 +26,10 @@ var PDF = function() {
 			
 			const chunks = [];
 			
+			pdf.on('error', (error) => {
+				rejecter(error);
+			});
+
 			stream.on('data', (chunk) => {
 				chunks.push(chunk.toString());
 			});
@@ -36,8 +40,8 @@ var PDF = function() {
 				resolver(base64PDF);
 			});
 			
-			stream.on('error', () => {
-				rejecter('Error converting file.');
+			stream.on('error', (error) => {
+				rejecter(error);
 			});
 		});
 		
