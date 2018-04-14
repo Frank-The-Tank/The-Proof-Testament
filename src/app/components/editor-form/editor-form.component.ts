@@ -16,10 +16,14 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   pinText = '';
   courseText = '';
   heuristicText = '';
+  addHeuristicText = '';
   assignmentText = '';
   proofText = '';
+  addProofText = '';
   infoFilled: boolean;
-  infoFilledSubscription;
+  private infoFilledSubscription;
+  editorEmpty: boolean;
+  private editorEmptySubscription;
   customProofSelected = false;
   whatTheorem: whatTheorem[];
   heuristic: Heuristic[];
@@ -29,10 +33,14 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     this.infoFilledSubscription = this.editorService.infoFilledChange.subscribe(infoFilled => {
       this.infoFilled = infoFilled;
     });
+    this.editorEmptySubscription = this.editorService.editorEmptyChange.subscribe(value => {
+      this.editorEmpty = value;
+    });
   }
 
   formSubmit(selection, hiddenVal) {
     this.editorService.toggleFormFilled();
+    this.editorService.setEditorNonEmpty(true);
     if (selection === 'custom') {
       this.proofText = hiddenVal;
     }
@@ -46,9 +54,22 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       ('Name: ').bold() + this.nameText + '<br />' +
       ('Pin: ').bold() + this.pinText + '<br />' +
       ('Course: ').bold() + this.courseText + '<br />' +
-      ('Assignment: ').bold() + this.assignmentText + '<br /><br />' + 
+      ('Assignment: ').bold() + this.assignmentText + '<br /><br />' +
       'Prove ' + this.proofText + '<br />' + this.heuristicText;
     this.editorService.submitData(outline);
+  }
+
+  addNewProof(proof, hiddenVal) {
+    this.editorService.setEditorNonEmpty(true);
+    this.editorService.toggleFormFilled();
+    if (proof === 'custom') {
+      this.addProofText = hiddenVal;
+    }
+    if (this.addHeuristicText === '') {
+      this.addHeuristicText = '<br /><u>Proof:</u>';
+    }
+    const outline = 'Prove ' + this.addProofText + '<br />' + this.addHeuristicText;
+    this.editorService.addProofToData(outline);
   }
 
   onHeuristicSelectionChanged(selection) {
@@ -216,5 +237,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.infoFilledSubscription.unsubscribe();
+    this.editorEmptySubscription.unsubscribe();
   }
 }

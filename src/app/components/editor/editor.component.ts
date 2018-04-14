@@ -52,6 +52,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   private infoFilledSubscription;
   outline: string;
   private outlineSubscription;
+  private additionalProofSubscription;
   hideSymbols = true;
   private hideSymbolsSubscription;
   isReadOnly = false;
@@ -131,6 +132,10 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.outline = outline;
     });
 
+    this.additionalProofSubscription = this.editorService.outlineAdditionChange.subscribe(proof => {
+      this.outline += '<br />' + proof;
+    });
+
     this.hideSymbolsSubscription = this.editorService.hideSymbolsChange.subscribe(hideSymbols => {
       this.hideSymbols = hideSymbols;
     });
@@ -167,6 +172,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.infoFilledSubscription.unsubscribe();
     this.outlineSubscription.unsubscribe();
     this.hideSymbolsSubscription.unsubscribe();
+    this.additionalProofSubscription.unsubscribe();
   }
 
   generateSymbolShortcut(symbolIdentifier) {
