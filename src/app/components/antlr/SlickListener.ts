@@ -40,6 +40,7 @@ import { ProofContext } from './SlickParser';
 import { StandardProofContext } from './SlickParser';
 import { StartExpoContext } from './SlickParser';
 import { EndExpoContext } from './SlickParser';
+import { ProofHeadContext } from './SlickParser';
 import { SepContext } from './SlickParser';
 import { HeaderContext } from './SlickParser';
 import { TheoremContext } from './SlickParser';
@@ -542,6 +543,17 @@ export interface SlickListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitEndExpo?: (ctx: EndExpoContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `SlickParser.proofHead`.
+	 * @param ctx the parse tree
+	 */
+	enterProofHead?: (ctx: ProofHeadContext) => void;
+	/**
+	 * Exit a parse tree produced by `SlickParser.proofHead`.
+	 * @param ctx the parse tree
+	 */
+	exitProofHead?: (ctx: ProofHeadContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `SlickParser.sep`.

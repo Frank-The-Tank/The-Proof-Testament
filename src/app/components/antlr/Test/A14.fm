@@ -1,19 +1,20 @@
-Prove 8.22
+Prove (8.22)
+
 Proof:
   (*y | R[x ≔ f.y] : P[x ≔ f.y])
-=    〈 One-point rule 〉
+=    〈 One-point rule 〉
   (*y | R[x ≔ f.y] : (*x | x = f.y : P))
-=    〈 (8.20) Nesting 〉
+=    〈 (8.20) Nesting 〉
   (*x,y | R[x ≔ f.y] ⋀ x = f.y : P)
-=    〈 (3.84a) Substitution 〉
+=    〈 (3.84a) Substitution 〉
   (*x,y | R[x ≔ x] ⋀ x = f.y : P)
-=    〈 Property of textual substitution 〉
+=    〈 Property of textual substitution 〉
   (*x,y | R ⋀ x = f.y : P)
-=    〈 Definition of inverse 〉
+=    〈 Definition of inverse 〉
   (*x,y | R ⋀ y = inv.f.x : P)
-=    〈 (8.20) Nesting 〉
+=    〈 (8.20) Nesting 〉
   (*x | R : (*y | y = inv.f.x : P))
-=    〈 One-point rule 〉
+=    〈 One-point rule 〉
   (*x | R : P[y ≔ inv.f.x])
-=    〈 Textual substitution, ¬occurs('y', 'P') 〉
+=    〈 Textual substitution, ¬occurs('y', 'P') 〉
   (*x | R : P)  ╱╱
