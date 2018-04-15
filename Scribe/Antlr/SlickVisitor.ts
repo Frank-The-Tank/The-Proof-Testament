@@ -40,6 +40,7 @@ import { ProofContext } from './SlickParser';
 import { StandardProofContext } from './SlickParser';
 import { StartExpoContext } from './SlickParser';
 import { EndExpoContext } from './SlickParser';
+import { ProofHeadContext } from './SlickParser';
 import { SepContext } from './SlickParser';
 import { HeaderContext } from './SlickParser';
 import { TheoremContext } from './SlickParser';
@@ -365,6 +366,13 @@ export interface SlickVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitEndExpo?: (ctx: EndExpoContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `SlickParser.proofHead`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitProofHead?: (ctx: ProofHeadContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by `SlickParser.sep`.

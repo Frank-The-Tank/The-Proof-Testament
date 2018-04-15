@@ -1,4 +1,4 @@
-import { AbstractScribe as scribe } from '../Scribe';
+import { AbstractScribe as scribe } from '../AbstractScribe';
 
 import { LaTeX } from './LaTeX';
 
@@ -17,12 +17,12 @@ var PDF = function() {
 			rejecter = reject;
 		});
 		
-		scribe.write(string).then((result) => {
-			const input = result;
+		scribe.write(string).then((input) => {
 			const output = base64.encode();
 			
 			const pdf = nodeLatex(input);
-			const stream = pdf.pipe(output);
+			
+			pdf.pipe(output);
 			
 			const chunks = [];
 			
@@ -30,17 +30,17 @@ var PDF = function() {
 				rejecter(error);
 			});
 
-			stream.on('data', (chunk) => {
-				chunks.push(chunk.toString());
+			output.on('data', (chunk) => {
+				chunks.push(chunk);
 			});
-			
-			stream.on('end', () => {
+
+			output.on('end', () => {
 				const base64PDF = chunks.join('');
 
 				resolver(base64PDF);
 			});
-			
-			stream.on('error', (error) => {
+
+			output.on('error', (error) => {
 				rejecter(error);
 			});
 		});

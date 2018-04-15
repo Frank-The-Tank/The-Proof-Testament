@@ -20,3 +20,4 @@ AbstractScribe.prototype = {
 const instance = new AbstractScribe();
 
 export { instance as AbstractScribe }
+

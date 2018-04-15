@@ -1,4 +1,4 @@
-import { AbstractScribe as scribe } from '../Scribe';
+import { AbstractScribe as scribe } from '../AbstractScribe';
 
 import { PDF } from '../Scribes/PDF';
 import { RTF } from '../Scribes/RTF';
@@ -26,8 +26,6 @@ router.post('/:type', (req, res) => {
 	scribe.setScribe(scribes[type]);
 
 	scribe.write(text).then((result) => {
-		console.log(result);
-
 		res.status(200).send({"base64": result});
 	}).catch((error) => {
 		console.log(error);
