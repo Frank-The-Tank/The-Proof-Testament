@@ -30,7 +30,7 @@ router.post('/:type', (req, res) => {
 	}).catch((error) => {
 		console.log(error);
 
-		res.status(501).send('Unable to process file. Check for valid formatting.');
+		res.status(501).send('Unable to process entry. Please check for valid formatting and headers.');
 	});
 });
 
