@@ -169,18 +169,36 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       document.getElementById('addReproveDiv').style.display = 'none';
       document.getElementById('addExNumDiv').style.display = 'none';
       document.getElementById('addExerciseDiv').style.display = 'none';
+      document.getElementById('addProveBtn').style.backgroundColor = '#82ac60';
+      document.getElementById('addProveBtn').style.borderColor = '#82ac60';
+      document.getElementById('addReproveBtn').style.backgroundColor = 'grey';
+      document.getElementById('addReproveBtn').style.borderColor = 'grey';
+      document.getElementById('addExerciseBtn').style.backgroundColor = 'grey';
+      document.getElementById('addExerciseBtn').style.borderColor = 'grey';
     } else if (value ===  'reprove'){
       document.getElementById('addMethod').style.display = 'block';
       document.getElementById('addProofDiv').style.display = 'none';
       document.getElementById('addReproveDiv').style.display = 'block';
       document.getElementById('addExNumDiv').style.display = 'none';
       document.getElementById('addExerciseDiv').style.display = 'none';
+      document.getElementById('addProveBtn').style.backgroundColor = 'grey';
+      document.getElementById('addProveBtn').style.borderColor = 'grey';
+      document.getElementById('addReproveBtn').style.backgroundColor = '#82ac60';
+      document.getElementById('addReproveBtn').style.borderColor = '#82ac60';
+      document.getElementById('addExerciseBtn').style.backgroundColor = 'grey';
+      document.getElementById('addExerciseBtn').style.borderColor = 'grey';
     } else if (value === 'exercise') {
       document.getElementById('addMethod').style.display = 'none';
       document.getElementById('addProofDiv').style.display = 'none';
       document.getElementById('addReproveDiv').style.display = 'none';
       document.getElementById('addExNumDiv').style.display = 'block';
       document.getElementById('addExerciseDiv').style.display = 'block';
+      document.getElementById('addProveBtn').style.backgroundColor = 'grey';
+      document.getElementById('addProveBtn').style.borderColor = 'grey';
+      document.getElementById('addReproveBtn').style.backgroundColor = 'grey';
+      document.getElementById('addReproveBtn').style.borderColor = 'grey';
+      document.getElementById('addExerciseBtn').style.backgroundColor = '#82ac60';
+      document.getElementById('addExerciseBtn').style.borderColor = '#82ac60';
     }
   }
 

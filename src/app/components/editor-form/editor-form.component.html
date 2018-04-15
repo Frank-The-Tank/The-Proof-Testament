@@ -6,15 +6,6 @@
       <h3 class ="panel-title">Editor Form</h3>
       </div>
       <div class="panel-body">
-        <div class = 'form-group'>
-              <button id="proveBtn" name="intention" (click)="intentionChosen('prove')" class="btn btn-primary"
-              value="prove"> Prove </button>
-              <button id="reproveBtn" name="intention" (click)="intentionChosen('reprove')" class="btn btn-primary"
-              value="reprove"> Reprove </button>
-              <button id="exerciseBtn" name="intention" (click)="intentionChosen('exercise')" class="btn btn-primary"
-              value="exercise"> Exercise </button>
-        </div>
-
       <div class="form-group">
         <label>Name:</label>
         <input [(ngModel)]="nameText" type="text" name="proof" value="" class="form-control">
@@ -92,8 +83,17 @@
 </div>
 
 <div class ="pannel-footer">
+  <div class = 'form-group'>
     <button (click)="formSubmit(proofSelector.value, hiddenField.value)" class="btn btn-primary">Generate Editor
     </button>
+        <button id="proveBtn" name="intention" (click)="intentionChosen('prove')" class="btn btn-primary"
+        value="prove"> Prove </button>
+        <button id="reproveBtn" name="intention" (click)="intentionChosen('reprove')" class="btn btn-primary"
+        value="reprove"> Reprove </button>
+        <button id="exerciseBtn" name="intention" (click)="intentionChosen('exercise')" class="btn btn-primary"
+        value="exercise"> Exercise </button>
+
+  </div>
   </div>
 </div>
 </fieldset>
