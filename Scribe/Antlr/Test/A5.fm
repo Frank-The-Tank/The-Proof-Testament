@@ -1,45 +1,45 @@
 Prove (3.12)
-by showing equivalence to a previous theorem
+by showing equivalence to previous theorem
 
 Proof:
   ¬¬p ≡ p
-=    〈 (3.11) ¬p ≡ q ≡ p ≡ ¬q, with p, q ≔ ¬p, p 〉
+=    〈 (3.11) ¬p ≡ q ≡ p ≡ ¬q, with p, q ≔ ¬p, p 〉
   ¬p ≡ ¬p
-=    〈 Identity of ≡ 〉
+=    〈 Identity of ≡ 〉
   true  ╱╱
 
 ------------------------------
 
 Prove (3.13)
-by showing equivalence to a previous theorem
+by showing equivalence to previous theorem
 
 Proof:
   ¬false
-=    〈 Definition of false (3.8) 〉
+=    〈 (3.8) Definition of false 〉
   ¬¬true
-=    〈 Double negation 〉
+=    〈 Double negation 〉
   true  ╱╱
 
 ------------------------------
 
 Prove (3.14)
-by showing equivalence to a previous theorem
+by showing equivalence to previous theorem
 
 Proof:
   p ≢ q
-=    〈 Definition of ≢ (3.10) 〉
+=    〈 (3.10) Definition of ≢ 〉
   ¬(p ≡ q)
-=    〈 Distributivity of ¬ over ≡ (3.9) 〉
+=    〈 (3.10) Distributivity of ¬ over ≡ 〉
   ¬p ≡ q  ╱╱
 
 ------------------------------
 
 Prove (3.19)
-by showing equivalence to a previous theorem
+by showing equivalence to previous theorem
 
 Proof:
   p ≢ q ≡ r
-=    〈 Definition of ≢ (3.10) with p, q ≔ p, q ≡ r〉
+=    〈 (3.10) Definition of ≢ with p, q ≔ p, q ≡ r〉
   ¬(p ≡ q ≡ r)
-=    〈 Definition of ≢ (3.10) with p, q ≔ p ≡ q, r 〉
+=    〈 (3.10) Definition of ≢ with p, q ≔ p ≡ q, r 〉
   p ≡ q ≢ r  ╱╱

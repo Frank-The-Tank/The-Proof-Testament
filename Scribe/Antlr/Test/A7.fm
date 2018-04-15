@@ -1,93 +1,109 @@
 Prove (3.61)
+by showing the LHS is equivalent to the RHS
+
 Proof:
   ¬q ⇒ ¬p
-=    〈 (3.59) with p, q ≔ ¬q, ¬p 〉
+=    〈 (3.59) with p, q ≔ ¬q, ¬p 〉
   ¬¬q ⋁ ¬p
-=    〈 Double negation 〉
+=    〈 Double negation 〉
   q ⋁ ¬p
-=    〈 Symmetry of ⋁ 〉
+=    〈 Symmetry of ⋁ 〉
   ¬p ⋁ q
-=    〈 (3.59) 〉
+=    〈 (3.59) 〉
   p ⇒ q  ╱╱
 
 ------------------------------
 
 Prove (3.63)
+by showing the RHS is equivalent to the LHS
+
 Proof:
   p ⇒ q ≡ p ⇒ r
-=    〈 Implication (3.59), twice 〉
+=    〈 Implication (3.59), twice 〉
   ¬p ⋁ q ≡ ¬p ⋁ r
-=    〈 Distributivity of ⋁ over ≡ 〉
+=    〈 Distributivity of ⋁ over ≡ 〉
   ¬p ⋁ (q ≡ r)
-=    〈 Implication (3.59) 〉
+=    〈 Implication (3.59) 〉
   p ⇒ (q ≡ r)  ╱╱
 
 ------------------------------
 
 Prove (3.65)
+by showing the LHS is equivalent to the RHS
+
 Proof:
   p ⋀ q ⇒ r
-=    〈 Implication (3.59) 〉
+=    〈 Implication (3.59) 〉
   ¬(p ⋀ q) ⋁ r
-=    〈 De Morgan 〉
+=    〈 De Morgan 〉
   ¬p ⋁ ¬q ⋁ r
-=    〈 Associativity of ⋁ 〉
+=    〈 Associativity of ⋁ 〉
   ¬p ⋁ (¬q ⋁ r)
-=    〈 Implication (3.59) 〉
+=    〈 Implication (3.59) 〉
   ¬p ⋁ (q ⇒ r)
-=    〈 Implication (3.59) 〉
+=    〈 Implication (3.59) 〉
   p ⇒ (q ⇒ r)  ╱╱
 
 ------------------------------
 
 Prove (3.70)
+by showing the LHS is equivalent to the RHS
+
 Proof:
   p ⋁ q ⇒ p ⋀ q
-=    〈 Implication (3.59) 〉
+=    〈 Implication (3.59) 〉
   ¬(p ⋁ q) ⋁ (p ⋀ q)
-=    〈 De Morgan 〉
+=    〈 De Morgan 〉
   (¬p ⋀ ¬q) ⋁ (p ⋀ q)
-=    〈 Alternate definition of ≡ 〉
+=    〈 Alternate definition of ≡ 〉
   p ≡ q  ╱╱
 
 ------------------------------
 
 Prove (3.71)
+by showing equivalence to previous theorem
+
 Proof:
   p ⇒ p
-=    〈 Implication (3.59) 〉
+=    〈 Implication (3.59) 〉
   ¬p ⋁ p
-=    〈 Excluded middle 〉
+=    〈 Excluded middle 〉
   true  ╱╱
 
 ------------------------------
 
 Prove (3.72)
+by showing the LHS is equivalent to the RHS
+
 Proof:
   p ⇒ true
-=    〈 Implication (3.59) 〉
+=    〈 Implication (3.59) 〉
   ¬p ⋁ true
-=    〈 Zero of ⋁ 〉
+=    〈 Zero of ⋁ 〉
   true  ╱╱
 
 ------------------------------
 
 Prove (3.76a)
+by showing equivalence to previous theorem
+
 Proof:
   p ⇒ p ⋁ q
-=    〈 Implication (3.59) 〉
+=    〈 Implication (3.59) 〉
   ¬p ⋁ p ⋁ q
-=    〈 Excluded middle 〉
+=    〈 Excluded middle 〉
   true ⋁ q
-=    〈 Zero of ⋁ 〉
+=    〈 Zero of ⋁ 〉
   true  ╱╱
 
 ------------------------------
 
 Prove (3.77)
+by showing equivalence to previous theorem
+
 Proof:
   p ⋀ (p ⇒ q) ⇒ q
-=    〈 (3.66) p ⋀ (p ⇒ q) ≡ p ⋀ q 〉
+=    〈 (3.66) p ⋀ (p ⇒ q) ≡ p ⋀ q 〉
   p ⋀ q ⇒ q
-=    〈 Strengthening (3.76b) 〉
+=    〈 Strengthening (3.76b) 〉
   true  ╱╱

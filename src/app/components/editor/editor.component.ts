@@ -27,7 +27,6 @@ import {EditorService} from './editor.service';
 
 import {convert} from '../../convert/convert';
 
-import {AntlrComponent} from '../antlr/antlr.component';
 import {PDFTeX} from './pdftex/pdftex';
 
 import {HttpClient} from '@angular/common/http';
