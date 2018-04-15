@@ -22,6 +22,19 @@
             <label>Assignment:</label>
             <input [(ngModel)]="assignmentText" type="text" name="assignment" value="" class="form-control">
           </div>
+          <div class='form-group'>
+
+            <button id="proveBtn" name="intention" (click)="intentionChosen('prove')" class="btn btn-primary"
+                    value="prove"> Prove
+            </button>
+            <button id="reproveBtn" name="intention" (click)="intentionChosen('reprove')" class="btn btn-primary"
+                    value="reprove"> Reprove
+            </button>
+            <button id="exerciseBtn" name="intention" (click)="intentionChosen('exercise')" class="btn btn-primary"
+                    value="exercise"> Exercise
+            </button>
+
+          </div>
           <div class="form-group">
             <div id="proofDiv" class="hide">
               <label>Proof:</label>
@@ -83,20 +96,9 @@
         </div>
 
         <div class="pannel-footer">
-          <div class='form-group'>
-            <button (click)="formSubmit(proofSelector.value, hiddenField.value)" class="btn btn-primary">Generate Editor
-            </button>
-            <button id="proveBtn" name="intention" (click)="intentionChosen('prove')" class="btn btn-primary"
-                    value="prove"> Prove
-            </button>
-            <button id="reproveBtn" name="intention" (click)="intentionChosen('reprove')" class="btn btn-primary"
-                    value="reprove"> Reprove
-            </button>
-            <button id="exerciseBtn" name="intention" (click)="intentionChosen('exercise')" class="btn btn-primary"
-                    value="exercise"> Exercise
-            </button>
 
-          </div>
+          <button (click)="formSubmit(proofSelector.value, hiddenField.value)" class="btn btn-primary">Generate Editor
+          </button>
         </div>
       </div>
     </fieldset>
