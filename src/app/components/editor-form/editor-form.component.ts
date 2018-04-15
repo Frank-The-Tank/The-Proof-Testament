@@ -31,6 +31,8 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   assignmentText = '';
   proofText = '';
   addProofText = '';
+  addReproveText = '';
+  reproveText = '';
   intention = '';
   infoFilled: boolean;
   exerciseText = '';
@@ -77,7 +79,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
         outline += 'Prove ' + this.proofText + '<br />' + this.heuristicText;
         break;
       case 'reprove':
-        outline += 'Reprove ' + this.proofText + '<br />' + this.heuristicText;
+        outline += 'Reprove ' + this.reproveText + '<br />' + this.heuristicText;
         break;
       case 'exercise':
         outline += 'Exercise ' + this.exNumText + '<br /><br />' + this.exerciseText;
@@ -102,7 +104,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
         outline += 'Prove ' + this.addProofText + '<br />' + this.addHeuristicText;
         break;
       case 'reprove':
-        outline += 'Reprove ' + this.addProofText + '<br />' + this.addHeuristicText;
+        outline += 'Reprove ' + this.addReproveText + '<br />' + this.addHeuristicText;
         break;
       case 'exercise':
         outline += 'Exercise ' + this.addExNumText + '<br /><br />' + this.addExerciseText;
@@ -120,14 +122,22 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 
   intentionChosen(value) {
     this.intention = value;
-    if (value === 'prove' || value === 'reprove') {
+    if (value === 'prove'){
       document.getElementById('method').style.display = 'block';
       document.getElementById('proofDiv').style.display = 'block';
+      document.getElementById('reproveDiv').style.display = 'none';
+      document.getElementById('exNumDiv').style.display = 'none';
+      document.getElementById('exerciseDiv').style.display = 'none';
+    } else if(value === 'reprove'){
+      document.getElementById('method').style.display = 'block';
+      document.getElementById('proofDiv').style.display = 'none';
+      document.getElementById('reproveDiv').style.display = 'block';
       document.getElementById('exNumDiv').style.display = 'none';
       document.getElementById('exerciseDiv').style.display = 'none';
     } else if (value === 'exercise') {
       document.getElementById('method').style.display = 'none';
       document.getElementById('proofDiv').style.display = 'none';
+      document.getElementById('reproveDiv').style.display = 'none';
       document.getElementById('exNumDiv').style.display = 'block';
       document.getElementById('exerciseDiv').style.display = 'block';
     }
@@ -135,14 +145,22 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 
   addIntentionChosen(value) {
     this.addIntention = value;
-    if (value === 'prove' || value === 'reprove') {
+    if (value === 'prove'){
       document.getElementById('addMethod').style.display = 'block';
       document.getElementById('addProofDiv').style.display = 'block';
+      document.getElementById('addReproveDiv').style.display = 'none';
+      document.getElementById('addExNumDiv').style.display = 'none';
+      document.getElementById('addExerciseDiv').style.display = 'none';
+    } else if (value ===  'reprove'){
+      document.getElementById('addMethod').style.display = 'block';
+      document.getElementById('addProofDiv').style.display = 'none';
+      document.getElementById('addReproveDiv').style.display = 'block';
       document.getElementById('addExNumDiv').style.display = 'none';
       document.getElementById('addExerciseDiv').style.display = 'none';
     } else if (value === 'exercise') {
       document.getElementById('addMethod').style.display = 'none';
       document.getElementById('addProofDiv').style.display = 'none';
+      document.getElementById('addReproveDiv').style.display = 'none';
       document.getElementById('addExNumDiv').style.display = 'block';
       document.getElementById('addExerciseDiv').style.display = 'block';
     }
@@ -161,18 +179,18 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.heuristic = [
       {name: 'Prove Equivalent to Previous Theorem', description: 'by showing equivalence to previous theorem <br /><br /><u>Proof:</u>'},
-      {name: 'Show LHS is Equivalent to RHS ', description: 'by showing the LHS is equivalent to the RHS'},
-      {name: 'Show LHS Implies RHS ', description: 'by showing the LHS implies the RHS'},
-      {name: 'Show RHS is Equivalent to LHS ', description: 'by showing the RHS is equivalent to the LHS'},
-      {name: 'Show RHS Follows From LHS ', description: 'by showing the RHS follows from the LHS'},
+      {name: 'Show LHS is Equivalent to RHS ', description: 'by showing the LHS is equivalent to the RHS <br /><br /><u>Proof:</u>'},
+      {name: 'Show LHS Implies RHS ', description: 'by showing the LHS implies the RHS <br /><br /><u>Proof:</u>'},
+      {name: 'Show RHS is Equivalent to LHS ', description: 'by showing the RHS is equivalent to the LHS <br /><br /><u>Proof:</u>'},
+      {name: 'Show RHS Follows From LHS ', description: 'by showing the RHS follows from the LHS <br /><br /><u>Proof:</u>'},
       {name: 'Deduction', description: 'by assuming conjunct of antecedent <br /><br /><u>Proof:</u>'},
       {
-        name: 'Case Analysis', description: 'by case analysis on p <br />' +
+        name: 'Case Analysis', description: 'by case analysis on p <br /><br />' +
         'Must prove <br />' +
         '  (1) true ⋀ (q ⋁ r) ≡ (true ⋀ q) ⋁ (true ⋀ r) <br />' +
         '  (2) false ⋀ (q ⋁ r) ≡ (false ⋀ q) ⋁ (false ⋀ r)<br /><br />' +
-        '(1) Proof<br /><br />' +
-        '(2) Proof<br /><br />'
+        '(1) Proof<br />' +
+        '(2) Proof<br />'
       },
       {name: 'Mutual Implication', description: 'To prove P ≡ Q, prove P ⇒ Q and Q ⇒ P.<br /><br /><u>Proof:</u>'},
       {name: 'Truth Implication', description: 'To prove P, prove true ⇒ P.<br /><br /><u>Proof:</u>'},
