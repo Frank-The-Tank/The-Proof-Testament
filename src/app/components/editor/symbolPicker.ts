@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {EditorService} from './editor.service';
 
 import * as QuillNamespace from 'quill';
+
 const Quill: any = QuillNamespace;
 const Keyboard = Quill.import('modules/keyboard');
 
 export interface Config {
   container: string;
-  selector: 'equals'|'implies'|'followsFrom';
+  selector: 'equals' | 'implies' | 'followsFrom';
 }
 
 export interface QuillInstance {
@@ -27,7 +28,7 @@ export default class SymbolPicker {
 
     switch (this.options.selector) {
       case 'equals': {
-        container.addEventListener('click', function() {
+        container.addEventListener('click', function () {
           console.log('FRANK: EQUALS PRESSED');
           quill.insertText(quill.getSelection(), '=            〈  〉');
           console.log('EDITOR SERVICE: ' + this.editorService);
@@ -36,7 +37,7 @@ export default class SymbolPicker {
         break;
       }
       case 'implies': {
-        container.addEventListener('click', function() {
+        container.addEventListener('click', function () {
           console.log('FRANK: IMPLIES PRESSED');
           quill.insertText(quill.getSelection(), '=>            〈  〉');
           this.editorService.toggleHideSymbols();
@@ -45,7 +46,7 @@ export default class SymbolPicker {
       }
       default: {
         console.log('FRANK: selectionChoice set to non-understood value (' + this.options.selector + ')');
-        container.addEventListener('click', function() {
+        container.addEventListener('click', function () {
           quill.insertText(quill.getSelection(), '\nINVALID STRING');
           this.editorService.toggleHideSymbols();
         });

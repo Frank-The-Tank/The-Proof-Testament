@@ -122,7 +122,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 
   intentionChosen(value) {
     this.intention = value;
-    if (value === 'prove'){
+    if (value === 'prove') {
       document.getElementById('method').style.display = 'block';
       document.getElementById('proofDiv').style.display = 'block';
       document.getElementById('reproveDiv').style.display = 'none';
@@ -134,7 +134,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       document.getElementById('reproveBtn').style.borderColor = 'grey';
       document.getElementById('exerciseBtn').style.backgroundColor = 'grey';
       document.getElementById('exerciseBtn').style.borderColor = 'grey';
-    } else if(value === 'reprove'){
+    } else if (value === 'reprove') {
       document.getElementById('method').style.display = 'block';
       document.getElementById('proofDiv').style.display = 'none';
       document.getElementById('reproveDiv').style.display = 'block';
@@ -163,7 +163,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 
   addIntentionChosen(value) {
     this.addIntention = value;
-    if (value === 'prove'){
+    if (value === 'prove') {
       document.getElementById('addMethod').style.display = 'block';
       document.getElementById('addProofDiv').style.display = 'block';
       document.getElementById('addReproveDiv').style.display = 'none';
@@ -175,7 +175,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       document.getElementById('addReproveBtn').style.borderColor = 'grey';
       document.getElementById('addExerciseBtn').style.backgroundColor = 'grey';
       document.getElementById('addExerciseBtn').style.borderColor = 'grey';
-    } else if (value ===  'reprove'){
+    } else if (value === 'reprove') {
       document.getElementById('addMethod').style.display = 'block';
       document.getElementById('addProofDiv').style.display = 'none';
       document.getElementById('addReproveDiv').style.display = 'block';

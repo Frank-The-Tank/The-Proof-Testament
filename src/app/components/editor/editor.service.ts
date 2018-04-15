@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 
 @Injectable()
@@ -14,7 +14,8 @@ export class EditorService {
   outlineChange: Subject<string> = new Subject<string>();
   outlineAdditionChange: Subject<string> = new Subject<string>();
 
-  constructor() {}
+  constructor() {
+  }
 
   toggleFormFilled() {
     this.infoFilledChange.next(!this.infoFilled);

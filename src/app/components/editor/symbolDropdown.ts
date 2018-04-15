@@ -21,7 +21,6 @@ export default class SymbolDropdown {
     // console.log(container.innerHTML);
 
 
-
     // const placeholderPickerItems = Array.prototype.slice.call(document.querySelectorAll('.ql-placeholder .ql-picker-item'));
     //
     // placeholderPickerItems.forEach(item => item.textContent = item.dataset.value);

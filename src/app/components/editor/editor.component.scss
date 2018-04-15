@@ -9,6 +9,7 @@ quill-editor {
   top: 75px;
   width: 56%;
 }
+
 .ng-invalid {
   border: 1px dashed red;
 }
@@ -44,18 +45,21 @@ quill-editor {
 }
 
 .loader {
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #555555;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    animation: spin 1s linear infinite;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #555555;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 1s linear infinite;
 }
 
-
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 #inLineHolder {
