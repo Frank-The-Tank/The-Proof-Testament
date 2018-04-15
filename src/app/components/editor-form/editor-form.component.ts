@@ -92,20 +92,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.heuristic = [
       {name: 'Prove Equivalent to Previous Theorem', description: 'by showing equivalence to previous theorem <br /><br /><u>Proof:</u>'},
-      {name: 'Deduction', description: 'by assuming conjunct of antecedent <br /><br /><u>Proof:</u>'},
-      {
-        name: 'Case Analysis', description: 'by case analysis on p <br />' +
-        ' prove <br />' +
-        '  (1) true ⋀ (q ⋁ r) ≡ (true ⋀ q) ⋁ (true ⋀ r) <br />' +
-        '  (2) false ⋀ (q ⋁ r) ≡ (false ⋀ q) ⋁ (false ⋀ r)<br /><br />' +
-        'Proof of (1)<br /><br />' +
-        'Proof of (2)<br /><br />'
-      },
-      {name: 'Mutual Implication', description: 'To prove P ≡ Q, prove P ⇒ Q and Q ⇒ P.<br /><br /><u>Proof:</u>'},
-      {name: 'Truth Implication', description: 'To prove P, prove true ⇒ P.<br /><br /><u>Proof:</u>'},
-      {name: 'Induction', description: 'by mathematical induction<br /><br /><u>Proof:</u>'},
-      {name: 'Proof by Contradiction', description: 'by contradiction<br /><br /><u>Proof:</u>'},
-      {name: 'Proof by Contrapositive', description: 'by proving the contrapositive: <br /><br /><u>Proof:</u>'},
       {name: 'Formalization of English Argument', description:'[[[ <br />' +
       'Let  represent a man being on the moon. <br />' +
       'Let C represent the moon being made of cheese. <br />' +
@@ -114,8 +100,26 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       'The argument is (M ⇒ C) ⋀ (C ⇒ I) ⋀ (¬M ⋁ ¬C)  ⇒  ¬C ⋁ I <br /><br />' +
 
       'The argument is a theorem by the following proof.<br /><br />'+
-      ']]]<br />' + '<u>Proof:</u>'
-    }
+      ']]]<br />' + '<u>Proof:</u>'},
+      {name:"Show LHS is Equivalent to RHS ",description:"by showing the LHS is equivalent to the RHS"},
+      {name:"Show LHS Implies RHS ",description:"by showing the LHS implies the RHS"},
+      {name:"Show RHS is Equivalent to LHS ",description:"by showing the RHS is equivalent to the LHS"},
+      {name:"Show RHS Follows From LHS ",description:"by showing the RHS follows from the LHS"},
+      {name: 'Deduction', description: 'by assuming conjunct of antecedent <br /><br /><u>Proof:</u>'},
+      {
+        name: 'Case Analysis', description: 'by case analysis on p <br />' +
+        'Must prove <br />' +
+        '  (1) true ⋀ (q ⋁ r) ≡ (true ⋀ q) ⋁ (true ⋀ r) <br />' +
+        '  (2) false ⋀ (q ⋁ r) ≡ (false ⋀ q) ⋁ (false ⋀ r)<br /><br />' +
+        '(1) Proof<br /><br />' +
+        '(2) Proof<br /><br />'
+      },
+      {name: 'Mutual Implication', description: 'To prove P ≡ Q, prove P ⇒ Q and Q ⇒ P.<br /><br /><u>Proof:</u>'},
+      {name: 'Truth Implication', description: 'To prove P, prove true ⇒ P.<br /><br /><u>Proof:</u>'},
+      {name: 'Induction', description: 'by mathematical induction<br /><br /><u>Proof:</u>'},
+      {name: 'Proof by Contradiction', description: 'by contradiction<br /><br /><u>Proof:</u>'},
+      {name: 'Proof by Contrapositive', description: 'by proving the contrapositive: <br /><br /><u>Proof:</u>'}
+
     ];
 
     this.whatTheorem = [
