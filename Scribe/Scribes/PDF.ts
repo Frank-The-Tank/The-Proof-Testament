@@ -43,6 +43,8 @@ var PDF = function() {
 			output.on('error', (error) => {
 				rejecter(error);
 			});
+		}).catch((error) => {
+			rejecter(error);
 		});
 		
 		return promise;
