@@ -3,6 +3,7 @@ import {Theorem} from '../../model/theorem';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Injectable, OnInit} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable()
 export class BibleService {
