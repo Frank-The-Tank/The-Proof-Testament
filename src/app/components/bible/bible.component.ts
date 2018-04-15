@@ -73,6 +73,7 @@ export class BibleComponent implements OnInit, OnDestroy {
     console.log(search);
   }
 
+  // Leaving this in case something messed up.
   // search(search: string) {
   //   if (search === '') {
   //     this.fieldEmptySubscription = this.service.fillFirstTheorems()
@@ -87,6 +88,8 @@ export class BibleComponent implements OnInit, OnDestroy {
   //      (theorem.name && theorem.name.toLowerCase().includes(search.toLowerCase())
   //   ));
   // }
+  
   insertIntoEditorComp(name) {
     this.secondClickEvent.emit(name);
   }
+}
