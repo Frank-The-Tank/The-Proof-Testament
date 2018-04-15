@@ -1,3 +1,4 @@
+// @ts-ignore
 var app = require('./app');
 var port = 4201;
 
