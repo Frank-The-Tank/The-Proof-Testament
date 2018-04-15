@@ -30,10 +30,8 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   intention = '';
   infoFilled: boolean;
   exerciseText = '';
+  exNumText= '';
   proofMethod = true;
-  reprove: boolean;
-  exerciseWithProof: boolean;
-  exerciseWithoutProof: boolean;
   private infoFilledSubscription;
   editorEmpty: boolean;
   private editorEmptySubscription;
@@ -78,12 +76,8 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       case 'reprove':
         outline += 'Reprove ' + this.proofText + '<br />' + this.heuristicText;
         break;
-      case 'exWProof':
-        outline += 'Exercise ' + this.exerciseText + '<br />' + this.heuristicText;
-        break;
-      case 'exWOProof':
-        outline += 'Exercise ' + this.exerciseText + '<br /><br /><i>answer goes here</i><br /><br /><br />' +
-          '[[[ <br /> <i>any explanation here</i> <br /> ]]]';
+      case 'exercise':
+        outline += 'Exercise ' + this.exNumText + '<br /><br />' + this.exerciseText;
         break;
       default:
         break;
@@ -93,6 +87,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   }
 
   addNewProof(proof, hiddenVal) {
+    this.intention = '';
     this.editorService.setEditorNonEmpty(true);
     this.editorService.toggleFormFilled();
     if (proof === 'custom') {
@@ -114,11 +109,13 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     if (value === 'prove' || value === 'reprove') {
       document.getElementById('method').style.display = 'block';
       document.getElementById('proofDiv').style.display = 'block';
-      document.getElementById('exerWProof').style.display = 'none';
-    } else if (value === 'exWProof') {
+      document.getElementById('exNumDiv').style.display= 'none';
+      document.getElementById('exerciseDiv').style.display = 'none';
+    } else if (value === 'exercise') {
       document.getElementById('method').style.display = 'none';
       document.getElementById('proofDiv').style.display = 'none';
-      document.getElementById('exerWProof').style.display = 'block';
+      document.getElementById('exNumDiv').style.display= 'block';
+      document.getElementById('exerciseDiv').style.display = 'block';
     }
 
 
@@ -159,16 +156,14 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     ];
 
     this.exHeuristic = [
-      {name: 'Formalization of English Argument', description: '[[[ <br />' +
-        'Let  represent a man being on the moon. <br />' +
-        'Let C represent the moon being made of cheese. <br />' +
-        'Let I represent the statement \'I am a monkey.\' <br /> <br />' +
-
-        'The argument is (M ⇒ C) ⋀ (C ⇒ I) ⋀ (¬M ⋁ ¬C)  ⇒  ¬C ⋁ I <br /><br />' +
-
+      {name: 'Formalization of Argument', description: '[[[ <br />' +
+        'Declare variables <br /> <br />' +
+        'State what argument is <br /> <br />' +
         'The argument is a theorem by the following proof.<br /><br />' +
-        ']]]<br />' + '<u>Proof:</u>'
-      }
+        ']]]<br />' + '<u>Proof:</u> <br /> <br />' +'[[[<br /> <br /> ]]]'
+      },
+      {name: 'Exercise with Proof', description: 'Proof:'},
+      {name: 'Answer Exercise', description: " "}
     ];
 
     this.whatTheorem = [
