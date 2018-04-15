@@ -2,6 +2,31 @@
   <form>
     <fieldset>
       <legend>Editor Form</legend>
+      <div class="form-group" [formGroup]="intent">
+        <label> Intention: </label>
+        <div class="form-control">
+          <label for="prove" class="radio-inline">
+            <input id="prove" type="radio" formControlName="intention" value="prove" [(ngModel)]="intention"
+                   (click)="intentionChosen($event.target.value)">
+            Prove
+          </label>
+          <label for="reprove" class="radio-inline">
+            <input id="reprove" type="radio" formControlName="intention" value="reprove" [(ngModel)]="intention"
+                   (click)="intentionChosen($event.target.value)">
+            Reprove
+          </label>
+          <label for="exWProof" class="radio-inline">
+            <input id="exWProof" type="radio" formControlName="intention" value="exWProof" [(ngModel)]="intention"
+                   (click)="intentionChosen($event.target.value)">
+            Exercise With Proof
+          </label>
+          <label for="exWOProof" class="radio-inline">
+            <input id="exWOProof" type="radio" formControlName="intention" value="exWOProof" [(ngModel)]="intention"
+                   (click)="intentionChosen($event.target.value)">
+            Exercise Without Proof
+          </label>
+        </div>
+      </div>
       <div class="form-group">
         <label>Name:</label>
         <input [(ngModel)]="nameText" type="text" name="proof" value="" class="form-control">
@@ -18,28 +43,8 @@
         <label>Assignment:</label>
         <input [(ngModel)]="assignmentText" type="text" name="assignment" value="" class="form-control">
       </div>
-      <div class="form-group" [formGroup]="intent">
-        <label> Intention: </label>
-        <div class="form-control">
-          <label for="prove" class="radio-inline">
-            <input id="prove" type="radio" formControlName="intention" value="prove" [(ngModel)]="intention" (click)="intentionChosen($event.target.value)">
-            Prove
-          </label>
-          <label for="reprove" class="radio-inline">
-            <input id="reprove" type="radio" formControlName="intention" value="reprove" [(ngModel)]="intention">
-            Reprove
-          </label>
-          <label for="exWProof" class="radio-inline">
-            <input id="exWProof" type="radio" formControlName="intention" value="exWProof" [(ngModel)]="intention">
-            Exercise With Proof
-          </label>
-          <label for="exWOProof" class="radio-inline">
-            <input id="exWOProof" type="radio" formControlName="intention" value="exWOProof" [(ngModel)]="intention">
-            Exercise Without Proof
-          </label>
-        </div>
-      </div>
       <div class="form-group">
+        <div id="proofDiv" class="hide">
         <label>Proof:</label>
         <select #proofSelector (change)="onProofSelectionChanged($event.target.value)" [(ngModel)]="proofText"
                 name="proofs" class="form-control">
@@ -50,18 +55,31 @@
           </option>
         </select>
         <input #hiddenField [hidden]="!customProofSelected" type="text" class="form-control">
-      </div>
+      </div></div>
 
-      <div *ngIf="intent.value===prove" class="form-group">
-        <label>Method:</label>
+      <div class="form-group">
+        <div id="method" class="hide">
+          <label>Proof Method:</label>
         <select #heuristicSelector (change)="onHeuristicSelectionChanged($event.target.value)"
                 [(ngModel)]="heuristicText" name="heuristic" class="form-control">
           <option *ngFor="let he of heuristic" [ngValue]="he.description">
             {{he.name}}
           </option>
         </select>
-      </div>
+      </div></div>
+
+      <div class="form-group">
+        <div id="exerWProof" class="hide">
+        <label>Exercise Method:</label>
+        <select #heuristicSelector [(ngModel)]="exerciseText" name="exHeuristic" class="form-control">
+          <option *ngFor="let ex of exHeuristic" [ngValue]="ex.description">
+            {{ex.name}}
+          </option>
+        </select>
+      </div></div>
+
     </fieldset>
+    <br/>
     <button (click)="formSubmit(proofSelector.value, hiddenField.value)" class="btn btn-primary">Generate Editor
     </button>
   </form>
@@ -84,8 +102,8 @@
         <input #addHiddenField [hidden]="!customProofSelected" type="text" class="form-control">
       </div>
       <div class="form-group">
-        <label>Heuristic: </label>
-        <select #addHeuristicSelector (change)="onHeuristicSelectionChanged($event.target.value)"
+        <label>Proof Method: </label>
+        <select #addHeuristicSelector
                 [(ngModel)]="addHeuristicText" name="heuristic" class="form-control">
           <option *ngFor="let he of heuristic" [ngValue]="he.description">
             {{he.name}}
@@ -93,9 +111,11 @@
         </select>
       </div>
     </fieldset>
-    <button (click)="addNewProof(addProofSelector.value, addHiddenField.value)" class="btn btn-primary">Add Proof</button>
-    <button (click)="cancelAddNewProof()" class="btn btn-primary" style="background-color:lightcoral; border-color:lightcoral;">Cancel</button>
+    <button (click)="addNewProof(addProofSelector.value, addHiddenField.value)" class="btn btn-primary">Add Proof
+    </button>
+    <button (click)="cancelAddNewProof()" class="btn btn-primary"
+            style="background-color:lightcoral; border-color:lightcoral;">Cancel
+    </button>
   </form>
 </div>
 
-<p>Form value: {{ intent.value | json }}</p>

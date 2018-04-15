@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {EditorService} from '../editor/editor.service';
 import {Heuristic} from '../../model/heuristic';
 import {whatTheorem} from '../../model/whatTheorem';
-import { RadioControlValueAccessor } from '@angular/forms';
+import {RadioControlValueAccessor} from '@angular/forms';
 import {FormControl, FormGroup} from '@angular/forms';
 
 declare var MathJax: any;
@@ -15,9 +15,9 @@ declare var MathJax: any;
 export class EditorFormComponent implements OnInit, OnDestroy {
 
 
-  intent= new FormGroup({
-  intention: new FormControl('prove'),
-});
+  intent = new FormGroup({
+    intention: new FormControl('prove'),
+  });
 
   nameText = '';
   pinText = '';
@@ -27,16 +27,19 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   assignmentText = '';
   proofText = '';
   addProofText = '';
-  intention= '';
+  intention = '';
   infoFilled: boolean;
-  proofMethod: boolean;
+  exerciseText = '';
+  proofMethod = true;
+  reprove: boolean;
   exerciseWithProof: boolean;
-  exerciseWithoutProof:boolean;
+  exerciseWithoutProof: boolean;
   private infoFilledSubscription;
   editorEmpty: boolean;
   private editorEmptySubscription;
   customProofSelected = false;
   whatTheorem: whatTheorem[];
+  exHeuristic: Heuristic[];
   heuristic: Heuristic[];
 
 
@@ -62,12 +65,30 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       this.assignmentText = 'A' + this.assignmentText;
     }
 
-    const outline =
+    let outline =
       ('Name: ').bold() + this.nameText + '<br />' +
       ('Pin: ').bold() + this.pinText + '<br />' +
       ('Course: ').bold() + this.courseText + '<br />' +
-      ('Assignment: ').bold() + this.assignmentText + '<br /><br />' +
-      'Prove ' + this.proofText + '<br />' + this.heuristicText;
+      ('Assignment: ').bold() + this.assignmentText + '<br /><br />';
+
+    switch (this.intention) {
+      case 'prove':
+        outline += 'Prove ' + this.proofText + '<br />' + this.heuristicText;
+        break;
+      case 'reprove':
+        outline += 'Reprove ' + this.proofText + '<br />' + this.heuristicText;
+        break;
+      case 'exWProof':
+        outline += 'Exercise ' + this.exerciseText + '<br />' + this.heuristicText;
+        break;
+      case 'exWOProof':
+        outline += 'Exercise ' + this.exerciseText + '<br /><br /><i>answer goes here</i><br /><br /><br />' +
+          '[[[ <br /> <i>any explanation here</i> <br /> ]]]';
+        break;
+      default:
+        break;
+    }
+
     this.editorService.submitData(outline);
   }
 
@@ -89,14 +110,20 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     this.editorService.toggleFormFilled();
   }
 
-  intentionChosen(value){
-    if(value === "prove"){
-      console.log(" chose prove");
+  intentionChosen(value) {
+    if (value === 'prove' || value === 'reprove') {
+      document.getElementById('method').style.display = 'block';
+      document.getElementById('proofDiv').style.display = 'block';
+      document.getElementById('exerWProof').style.display = 'none';
+    } else if (value === 'exWProof') {
+      document.getElementById('method').style.display = 'none';
+      document.getElementById('proofDiv').style.display = 'none';
+      document.getElementById('exerWProof').style.display = 'block';
     }
+
+
   }
 
-  onHeuristicSelectionChanged(selection) {
-  }
 
   onProofSelectionChanged(selection) {
     if (selection === 'custom') {
@@ -110,19 +137,10 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.heuristic = [
       {name: 'Prove Equivalent to Previous Theorem', description: 'by showing equivalence to previous theorem <br /><br /><u>Proof:</u>'},
-      {name: 'Formalization of English Argument', description:'[[[ <br />' +
-      'Let  represent a man being on the moon. <br />' +
-      'Let C represent the moon being made of cheese. <br />' +
-      "Let I represent the statement 'I am a monkey.' <br /> <br />" +
-
-      'The argument is (M ⇒ C) ⋀ (C ⇒ I) ⋀ (¬M ⋁ ¬C)  ⇒  ¬C ⋁ I <br /><br />' +
-
-      'The argument is a theorem by the following proof.<br /><br />'+
-      ']]]<br />' + '<u>Proof:</u>'},
-      {name:"Show LHS is Equivalent to RHS ",description:"by showing the LHS is equivalent to the RHS"},
-      {name:"Show LHS Implies RHS ",description:"by showing the LHS implies the RHS"},
-      {name:"Show RHS is Equivalent to LHS ",description:"by showing the RHS is equivalent to the LHS"},
-      {name:"Show RHS Follows From LHS ",description:"by showing the RHS follows from the LHS"},
+      {name: 'Show LHS is Equivalent to RHS ', description: 'by showing the LHS is equivalent to the RHS'},
+      {name: 'Show LHS Implies RHS ', description: 'by showing the LHS implies the RHS'},
+      {name: 'Show RHS is Equivalent to LHS ', description: 'by showing the RHS is equivalent to the LHS'},
+      {name: 'Show RHS Follows From LHS ', description: 'by showing the RHS follows from the LHS'},
       {name: 'Deduction', description: 'by assuming conjunct of antecedent <br /><br /><u>Proof:</u>'},
       {
         name: 'Case Analysis', description: 'by case analysis on p <br />' +
@@ -138,6 +156,19 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       {name: 'Proof by Contradiction', description: 'by contradiction<br /><br /><u>Proof:</u>'},
       {name: 'Proof by Contrapositive', description: 'by proving the contrapositive: <br /><br /><u>Proof:</u>'}
 
+    ];
+
+    this.exHeuristic = [
+      {name: 'Formalization of English Argument', description: '[[[ <br />' +
+        'Let  represent a man being on the moon. <br />' +
+        'Let C represent the moon being made of cheese. <br />' +
+        'Let I represent the statement \'I am a monkey.\' <br /> <br />' +
+
+        'The argument is (M ⇒ C) ⋀ (C ⇒ I) ⋀ (¬M ⋁ ¬C)  ⇒  ¬C ⋁ I <br /><br />' +
+
+        'The argument is a theorem by the following proof.<br /><br />' +
+        ']]]<br />' + '<u>Proof:</u>'
+      }
     ];
 
     this.whatTheorem = [
