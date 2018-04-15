@@ -4,11 +4,13 @@ doc : proof (sep proof)* ;
 
 proof : standardProof | caseProof ;
 
-standardProof : header? startExpo? 'Proof' ':' step (hint step)* END? endExpo? ;
+standardProof : header? startExpo? proofHead? ':'? step (hint step)* END? endExpo? ;
 
 startExpo : EXPO ;
 
 endExpo : EXPO ;
+
+proofHead : 'Proof';
 
 sep : '-' '-' '-' '-'+ ;
 
@@ -22,7 +24,7 @@ theorem : PROVE '(' RULENUM ')'    # BibleTheorem
 
 method : 'by' methodName ;
 
-methodName : 'showing' 'equivalence' 'to' 'a' 'previous' 'theorem'    # PreviousTheoremMethod
+methodName : 'showing' 'equivalence' 'to' 'previous' 'theorem'    # PreviousTheoremMethod
   | 'showing' 'the' 'LHS' 'is' 'equivalent' 'to' 'the' 'RHS'      # LeftEquivalesRightMethod
   | 'showing' 'the' 'RHS' 'is' 'equivalent' 'to' 'the' 'LHS'      # RightEquivalesLeftMethod
   | 'showing' 'the' 'LHS' 'implies' 'the' 'RHS'                   # LeftImpliesRightMethod
@@ -42,9 +44,9 @@ case1 : '(1)' expr ;
 
 case2 : '(2)' expr ;
 
-caseProof1 : 'Proof' 'of' '(1)' standardProof ;
+caseProof1 : '(1)' standardProof ;
 
-caseProof2 : 'Proof' 'of' '(2)' standardProof ;
+caseProof2 : '(2)' standardProof ;
 
 step: expr;
 

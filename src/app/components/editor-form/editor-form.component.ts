@@ -91,7 +91,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.heuristic = [
-      {name: 'Prove Equivalent to Previous Theorem', description: 'by showing equivalence to a previous theorem <br /><br /><u>Proof:</u>'},
+      {name: 'Prove Equivalent to Previous Theorem', description: 'by showing equivalence to previous theorem <br /><br /><u>Proof:</u>'},
       {name: 'Deduction', description: 'by assuming conjunct of antecedent <br /><br /><u>Proof:</u>'},
       {
         name: 'Case Analysis', description: 'by case analysis on p <br />' +
@@ -105,7 +105,18 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       {name: 'Truth Implication', description: 'To prove P, prove true ⇒ P.<br /><br /><u>Proof:</u>'},
       {name: 'Induction', description: 'by mathematical induction<br /><br /><u>Proof:</u>'},
       {name: 'Proof by Contradiction', description: 'by contradiction<br /><br /><u>Proof:</u>'},
-      {name: 'Proof by Contrapositive', description: 'by proving the contrapositive: <br /><br /><u>Proof:</u>'}];
+      {name: 'Proof by Contrapositive', description: 'by proving the contrapositive: <br /><br /><u>Proof:</u>'},
+      {name: 'Formalization of English Argument', description:'[[[ <br />' +
+      'Let  represent a man being on the moon. <br />' +
+      'Let C represent the moon being made of cheese. <br />' +
+      "Let I represent the statement 'I am a monkey.' <br /> <br />" +
+
+      'The argument is (M ⇒ C) ⋀ (C ⇒ I) ⋀ (¬M ⋁ ¬C)  ⇒  ¬C ⋁ I <br /><br />' +
+
+      'The argument is a theorem by the following proof.<br /><br />'+
+      ']]]<br />' + '<u>Proof:</u>'
+    }
+    ];
 
     this.whatTheorem = [
       {rule: '(3.4)', name: 'true'},

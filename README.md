@@ -1,7 +1,7 @@
 # The Proof Testament  
 
  https://prooftestament.com/
- 
+
  ![alt text](./src/assets/images/logoName.png)
 
 ### Overview
@@ -14,13 +14,13 @@ Frontend: Angular(5) / Bootstrap / Scss
 
 Backend: NodeJS / ExpressJS / AngularFire v2.0
 
-Database: Firebase 
+Database: Firebase
 
 Hosting: Firebase Hosting
 
 Parsing: MathJAX / Antlr
 
-Editor: QuillJS 
+Editor: QuillJS
 
 ### Download and Setup
 
@@ -37,12 +37,15 @@ Editor: QuillJS
 3. When you are finished with your current session make sure to end the NodeJS server session using CTRL-C in terminal/command line.
 
 ### Starting the PDF Server
+1. cd to Scribe
 
-1. Install separate dependancies in Scribe with `npm install`.
+2. Install separate dependancies in Scribe with `npm install`.
 
-2. Start the server with `ts-node server`.
+3. cd Server/
 
-3. The server will be runnign on localhsot:4201.
+4. Start the server with `ts-node server`.
+
+3. The server will be running on localhost:4201.
 
 ### Additional Help
 If you are receiving the error "Error: Could not find module '@angular-devkit/core'" run npm install @angular-devkit/core --save-dev. This is a fix until the angularCLI developers release a patch.

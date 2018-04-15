@@ -1,3 +1,21 @@
+<div>
 <input class="bibleInput input-group" type="text" placeholder="Search..." (keyup)="search(input.value)" #input>
-
-<app-theorems-list [theorems]="filtered" (clickEvent)="insertIntoEditorComp($event)"></app-theorems-list>
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter by</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button type="button" class="dropdown-item" value="" (click)="search(All.value)" #All>All Chapters</button>
+        <button type="button" class="dropdown-item" value="3." (click)="search($event.target.value)">Chapter 3 </button>
+        <button type="button" class="dropdown-item" value="4." (click)="search($event.target.value)">Chapter 4 </button>
+        <button type="button" class="dropdown-item" value="8." (click)="search($event.target.value)">Chapter 8 </button>
+        <button type="button" class="dropdown-item" value="9." (click)="search($event.target.value)">Chapter 9 </button>
+        <button type="button" class="dropdown-item" value="11." (click)="search($event.target.value)">Chapter 11 </button>
+        <button type="button" class="dropdown-item" value="p." (click)="search($event.target.value)">Chapter p </button>
+        <button type="button" class="dropdown-item" value="12." (click)="search($event.target.value)">Chapter 12 </button>
+        <button type="button" class="dropdown-item" value="14." (click)="search($event.target.value)">Chapter 14 </button>
+      </div>
+    </div>
+</div>
+<div>
+  <br>
+  <app-theorems-list [theorems]="filtered" (clickEvent)="insertIntoEditorComp($event)"></app-theorems-list>
+</div>
