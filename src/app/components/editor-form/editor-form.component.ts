@@ -188,7 +188,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
         ']]]<br />' + ' <br />' + '[[[<br /> <br /> ]]]'
       },
       {name: 'Exercise with Proof', description: '[[[<br /> <br />]]]<br /> <br />Proof:'},
-      {name: 'Answer Exercise', description: ' '}
+      {name: 'Answer Exercise', description: '<br /> <br /> [[[ <br /> <br /> ]]] '}
     ];
 
     this.whatTheorem = [
