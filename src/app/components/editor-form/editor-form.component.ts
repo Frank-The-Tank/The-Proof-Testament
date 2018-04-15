@@ -24,14 +24,16 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   courseText = '';
   heuristicText = '';
   addHeuristicText = '';
+  addIntention = '';
+  addExNumText = '';
+  addExerciseText = '';
   assignmentText = '';
   proofText = '';
   addProofText = '';
   intention = '';
   infoFilled: boolean;
   exerciseText = '';
-  exNumText= '';
-  proofMethod = true;
+  exNumText = '';
   private infoFilledSubscription;
   editorEmpty: boolean;
   private editorEmptySubscription;
@@ -86,17 +88,16 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     this.editorService.submitData(outline);
   }
 
-  addNewProof(proof, hiddenVal) {
-    this.intention = '';
+  addNewProof() {
     this.editorService.setEditorNonEmpty(true);
     this.editorService.toggleFormFilled();
-    if (proof === 'custom') {
-      this.addProofText = hiddenVal;
-    }
+
     if (this.addHeuristicText === '') {
       this.addHeuristicText = '<br /><u>Proof:</u>';
     }
-    const outline = 'Prove ' + this.addProofText + '<br />' + this.addHeuristicText + '<br /><br /> <i>proof here</i> <br/><br/>----';
+
+
+    const outline = 'Prove';
     this.editorService.addProofToData(outline);
   }
 
@@ -109,16 +110,28 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     if (value === 'prove' || value === 'reprove') {
       document.getElementById('method').style.display = 'block';
       document.getElementById('proofDiv').style.display = 'block';
-      document.getElementById('exNumDiv').style.display= 'none';
+      document.getElementById('exNumDiv').style.display = 'none';
       document.getElementById('exerciseDiv').style.display = 'none';
     } else if (value === 'exercise') {
       document.getElementById('method').style.display = 'none';
       document.getElementById('proofDiv').style.display = 'none';
-      document.getElementById('exNumDiv').style.display= 'block';
+      document.getElementById('exNumDiv').style.display = 'block';
       document.getElementById('exerciseDiv').style.display = 'block';
     }
+  }
 
-
+  addIntentionChosen(value) {
+    if (value === 'prove' || value === 'reprove') {
+      document.getElementById('addMethod').style.display = 'block';
+      document.getElementById('addProofDiv').style.display = 'block';
+      document.getElementById('addExNumDiv').style.display = 'none';
+      document.getElementById('addExerciseDiv').style.display = 'none';
+    } else if (value === 'exercise') {
+      document.getElementById('addMethod').style.display = 'none';
+      document.getElementById('addProofDiv').style.display = 'none';
+      document.getElementById('addExNumDiv').style.display = 'block';
+      document.getElementById('addExerciseDiv').style.display = 'block';
+    }
   }
 
 
@@ -156,14 +169,15 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     ];
 
     this.exHeuristic = [
-      {name: 'Formalization of Argument', description: '[[[ <br />' +
+      {
+        name: 'Formalization of Argument', description: '[[[ <br />' +
         'Declare variables <br /> <br />' +
         'State what argument is <br /> <br />' +
         'The argument is a theorem by the following proof.<br /><br />' +
-        ']]]<br />' + '<u>Proof:</u> <br /> <br />' +'[[[<br /> <br /> ]]]'
+        ']]]<br />' + '<u>Proof:</u> <br /> <br />' + '[[[<br /> <br /> ]]]'
       },
       {name: 'Exercise with Proof', description: 'Proof:'},
-      {name: 'Answer Exercise', description: " "}
+      {name: 'Answer Exercise', description: ' '}
     ];
 
     this.whatTheorem = [
