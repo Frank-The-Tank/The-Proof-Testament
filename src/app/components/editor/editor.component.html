@@ -9,14 +9,14 @@
         <span class="ql-formats">
           <button class='ql-indent' value="-1"></button>
           <button class='ql-indent' value="+1"></button>
-
         </span>
         <span id='symbolSelction' class="ql-formats">
           <select
             id="symbolInLineSelector"
-            (change)="insertSymbol($event.target.value)"
+            (change)="insertSymbol($event.target)"
             class="ql-size"
             title="symbolSelect">
+            <option value="-1">Symbols</option>
             <option
               *ngFor="let symbol of keys(symbols)"
               [ngValue]="symbol"
