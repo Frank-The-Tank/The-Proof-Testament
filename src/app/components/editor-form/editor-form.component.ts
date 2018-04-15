@@ -17,6 +17,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 
   intent = new FormGroup({
     intention: new FormControl('prove'),
+
   });
 
   nameText = '';
@@ -118,6 +119,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   }
 
   intentionChosen(value) {
+    this.intention = value;
     if (value === 'prove' || value === 'reprove') {
       document.getElementById('method').style.display = 'block';
       document.getElementById('proofDiv').style.display = 'block';
@@ -132,6 +134,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   }
 
   addIntentionChosen(value) {
+    this.addIntention = value;
     if (value === 'prove' || value === 'reprove') {
       document.getElementById('addMethod').style.display = 'block';
       document.getElementById('addProofDiv').style.display = 'block';

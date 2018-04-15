@@ -1,27 +1,20 @@
 <div *ngIf="!infoFilled && !editorEmpty">
   <form>
     <fieldset>
-      <legend>Editor Form</legend>
-      <div class="form-group" [formGroup]="intent">
-        <label> Intention: </label>
-        <div class="form-control">
-          <label for="prove" class="radio-inline">
-            <input id="prove" type="radio" formControlName="intention" value="prove" [(ngModel)]="intention"
-                   (click)="intentionChosen($event.target.value)">
-            Prove
-          </label>
-          <label for="reprove" class="radio-inline">
-            <input id="reprove" type="radio" formControlName="intention" value="reprove" [(ngModel)]="intention"
-                   (click)="intentionChosen($event.target.value)">
-            Reprove
-          </label>
-          <label for="exercise" class="radio-inline">
-            <input id="exercise" type="radio" formControlName="intention" value="exercise" [(ngModel)]="intention"
-                   (click)="intentionChosen($event.target.value)">
-            Exercise
-          </label>
-        </div>
+      <div class="panel panel-primary">
+        <div class = "panel-heading">
+      <h3 class ="panel-title">Editor Form</h3>
       </div>
+      <div class="panel-body">
+        <div class = 'form-group'>
+              <button id="prove" name="intention" (click)="intentionChosen('prove')" class="btn btn-primary"
+              value="prove"> Prove </button>
+              <button id="reprove" name="intention" (click)="intentionChosen('reprove')" class="btn btn-primary"
+              value="reprove"> Reprove </button>
+              <button id="exercise" name="intention" (click)="intentionChosen('exercise')" class="btn btn-primary"
+              value="exercise"> Exercise </button>
+        </div>
+
       <div class="form-group">
         <label>Name:</label>
         <input [(ngModel)]="nameText" type="text" name="proof" value="" class="form-control">
@@ -82,39 +75,33 @@
           </select>
         </div>
       </div>
+</div>
 
-    </fieldset>
-    <br/>
+<div class ="pannel-footer">
     <button (click)="formSubmit(proofSelector.value, hiddenField.value)" class="btn btn-primary">Generate Editor
     </button>
+  </div>
+</div>
+</fieldset>
   </form>
 </div>
 
 <div *ngIf="!infoFilled && editorEmpty">
   <form>
     <fieldset>
-      <legend>New Problem</legend>
-      <div class="form-group" [formGroup]="intent">
-        <label> Intention: </label>
-        <div class="form-control">
-          <label for="prove" class="radio-inline">
-            <input id="addProve" type="radio" formControlName="intention" value="prove" [(ngModel)]="addIntention"
-                   (click)="addIntentionChosen($event.target.value)">
-            Prove
-          </label>
-          <label for="reprove" class="radio-inline">
-            <input id="addReprove" type="radio" formControlName="intention" value="reprove" [(ngModel)]="addIntention"
-                   (click)="addIntentionChosen($event.target.value)">
-            Reprove
-          </label>
-          <label for="exercise" class="radio-inline">
-            <input id="addExercise" type="radio" formControlName="intention" value="exercise" [(ngModel)]="addIntention"
-                   (click)="addIntentionChosen($event.target.value)">
-            Exercise
-          </label>
-        </div>
+      <div class="panel panel-primary">
+        <div class = "panel-heading">
+      <h3 class ="panel-title">New Problem</h3>
       </div>
-      <div class="form-group">
+          <div class="panel-body">
+            <div class = 'form-group'>
+                  <button id="prove" name="intention" (click)="addIntentionChosen('prove')" class="btn btn-primary"
+                  value="prove"> Prove </button>
+                  <button id="reprove" name="intention" (click)="addIntentionChosen('reprove')" class="btn btn-primary"
+                  value="reprove"> Reprove </button>
+                  <button id="exercise" name="intention" (click)="addIntentionChosen('exercise')" class="btn btn-primary"
+                  value="exercise"> Exercise </button>
+            </div>
         <div id="addProofDiv" class="hide">
           <label>Proof:</label>
           <select #proofSelector (change)="onProofSelectionChanged($event.target.value)" [(ngModel)]="addProofText"
@@ -127,7 +114,7 @@
           </select>
           <input #addhiddenField [hidden]="!customProofSelected" type="text" class="form-control">
         </div>
-      </div>
+
 
       <div class="form-group">
         <div id="addExNumDiv" class="hide">
@@ -158,11 +145,18 @@
           </select>
         </div>
       </div>
-    </fieldset>
+    </div>
+
+    <div class ="pannel-footer">
+
+
     <button (click)="addNewProof()" class="btn btn-primary">Add Proof
     </button>
     <button (click)="cancelAddNewProof()" class="btn btn-primary"
             style="background-color:lightcoral; border-color:lightcoral;">Cancel
     </button>
+  </div>
+</div>
+        </fieldset>
   </form>
 </div>
