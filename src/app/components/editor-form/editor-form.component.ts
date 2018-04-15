@@ -185,9 +185,9 @@ export class EditorFormComponent implements OnInit, OnDestroy {
         'Declare variables <br /> <br />' +
         'State what argument is <br /> <br />' +
         'The argument is a theorem by the following proof.<br /><br />' +
-        ']]]<br />' + '<u>Proof:</u> <br /> <br />' + '[[[<br /> <br /> ]]]'
+        ']]]<br />' + ' <br />' + '[[[<br /> <br /> ]]]'
       },
-      {name: 'Exercise with Proof', description: 'Proof:'},
+      {name: 'Exercise with Proof', description: '[[[<br /> <br />]]]<br /> <br />Proof:'},
       {name: 'Answer Exercise', description: ' '}
     ];
 
