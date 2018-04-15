@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "antlr4ts": "cd src/app/components/antlr && antlr4ts -visitor Slick.g4"
+    "antlr4ts": "cd Scribe/Antlr && antlr4ts -visitor Slick.g4"
   },
   "private": true,
   "dependencies": {

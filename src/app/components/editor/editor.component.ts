@@ -27,7 +27,6 @@ import {EditorService} from './editor.service';
 
 import {convert} from '../../convert/convert';
 
-import {AntlrComponent} from '../antlr/antlr.component';
 import {PDFTeX} from './pdftex/pdftex';
 
 import {HttpClient} from '@angular/common/http';
@@ -1542,9 +1541,9 @@ export class EditorComponent implements OnInit, OnDestroy {
       const a = document.createElement('a');
       document.body.appendChild(a);
       a.href = pdfDataURL;
-      
+
       a.download = (pin + 'a' + assignment + 'written').replace(/\s/g, '_');
-      
+
       a.download = "proof";
 
       a.click();

@@ -1,23 +1,27 @@
 Prove (4.1)
+by assuming the conjuncts of the antecedent
+
 Proof:
   q ⇒ p
-=    〈 Assume conjunct p 〉
+=    〈 Assume conjunct p 〉
   q ⇒ true
-=    〈 Right zero of ⇒ 〉
+=    〈 Right zero of ⇒ 〉
   true  ╱╱
 
 ------------------------------
 
 Prove (3.77)
+by assuming the conjuncts of the antecedent
+
 Proof:
   q
-=    〈 (3.57) 〉
+=    〈 (3.57) 〉
   p ⇒ q ≡ p ⋁ q
-=    〈 Assume conjunct p ⇒ q 〉
+=    〈 Assume conjunct p ⇒ q 〉
   true ≡ p ⋁ q
-=    〈 Identity of ≡ 〉
+=    〈 Identity of ≡ 〉
   p ⋁ q
-=    〈 Assume conjunct p 〉
+=    〈 Assume conjunct p 〉
   true ⋁ q
-=    〈 Zero of ⋁ 〉
+=    〈 Zero of ⋁ 〉
   true  ╱╱
