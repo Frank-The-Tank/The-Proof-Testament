@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {EditorService} from '../editor/editor.service';
 import {Heuristic} from '../../model/heuristic';
 import {whatTheorem} from '../../model/whatTheorem';
+import { RadioControlValueAccessor } from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 
 declare var MathJax: any;
 
@@ -12,6 +14,11 @@ declare var MathJax: any;
 })
 export class EditorFormComponent implements OnInit, OnDestroy {
 
+
+  intent= new FormGroup({
+  intention: new FormControl('prove'),
+});
+
   nameText = '';
   pinText = '';
   courseText = '';
@@ -20,7 +27,11 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   assignmentText = '';
   proofText = '';
   addProofText = '';
+  intention= '';
   infoFilled: boolean;
+  proofMethod: boolean;
+  exerciseWithProof: boolean;
+  exerciseWithoutProof:boolean;
   private infoFilledSubscription;
   editorEmpty: boolean;
   private editorEmptySubscription;
@@ -50,6 +61,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     if (this.assignmentText !== '') {
       this.assignmentText = 'A' + this.assignmentText;
     }
+
     const outline =
       ('Name: ').bold() + this.nameText + '<br />' +
       ('Pin: ').bold() + this.pinText + '<br />' +
@@ -75,6 +87,12 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   cancelAddNewProof() {
     this.editorService.setEditorNonEmpty(true);
     this.editorService.toggleFormFilled();
+  }
+
+  intentionChosen(value){
+    if(value === "prove"){
+      console.log(" chose prove");
+    }
   }
 
   onHeuristicSelectionChanged(selection) {

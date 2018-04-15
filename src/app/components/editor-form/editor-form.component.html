@@ -18,23 +18,23 @@
         <label>Assignment:</label>
         <input [(ngModel)]="assignmentText" type="text" name="assignment" value="" class="form-control">
       </div>
-      <div class="form-group">
+      <div class="form-group" [formGroup]="intent">
         <label> Intention: </label>
         <div class="form-control">
-          <label class="radio-inline">
-            <input type="radio" value="prove">
+          <label for="prove" class="radio-inline">
+            <input id="prove" type="radio" formControlName="intention" value="prove" [(ngModel)]="intention" (click)="intentionChosen($event.target.value)">
             Prove
           </label>
-          <label class="radio-inline">
-            <input type="radio" value="reprove">
+          <label for="reprove" class="radio-inline">
+            <input id="reprove" type="radio" formControlName="intention" value="reprove" [(ngModel)]="intention">
             Reprove
           </label>
-          <label class="radio-inline">
-            <input type="radio" value="exWProof">
+          <label for="exWProof" class="radio-inline">
+            <input id="exWProof" type="radio" formControlName="intention" value="exWProof" [(ngModel)]="intention">
             Exercise With Proof
           </label>
-          <label class="radio-inline">
-            <input type="radio" value="exWOProof">
+          <label for="exWOProof" class="radio-inline">
+            <input id="exWOProof" type="radio" formControlName="intention" value="exWOProof" [(ngModel)]="intention">
             Exercise Without Proof
           </label>
         </div>
@@ -52,7 +52,7 @@
         <input #hiddenField [hidden]="!customProofSelected" type="text" class="form-control">
       </div>
 
-      <div class="form-group">
+      <div *ngIf="intent.value===prove" class="form-group">
         <label>Method:</label>
         <select #heuristicSelector (change)="onHeuristicSelectionChanged($event.target.value)"
                 [(ngModel)]="heuristicText" name="heuristic" class="form-control">
@@ -97,3 +97,5 @@
     <button (click)="cancelAddNewProof()" class="btn btn-primary" style="background-color:lightcoral; border-color:lightcoral;">Cancel</button>
   </form>
 </div>
+
+<p>Form value: {{ intent.value | json }}</p>
