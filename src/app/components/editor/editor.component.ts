@@ -53,6 +53,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   private outlineSubscription;
   hideSymbols = true;
   private hideSymbolsSubscription;
+  private additionalProofSubscription;
   isReadOnly = false;
   form: FormGroup;
   modules = {};
@@ -134,6 +135,10 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.hideSymbols = hideSymbols;
     });
 
+    this.additionalProofSubscription = this.editorService.outlineAdditionChange.subscribe(proof => {
+      this.outline += '<br />' + proof;
+    });
+
     this.form = fb.group({
       editor: ['test']
     });
@@ -166,6 +171,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.infoFilledSubscription.unsubscribe();
     this.outlineSubscription.unsubscribe();
     this.hideSymbolsSubscription.unsubscribe();
+    this.additionalProofSubscription.unsubscribe();
   }
 
   generateSymbolShortcut(symbolIdentifier) {

@@ -16,7 +16,7 @@ var RTF = function() {
 		
 		return promise;
 	};
-}
+};
 
 const instance = new RTF();
 
