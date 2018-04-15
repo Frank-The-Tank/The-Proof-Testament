@@ -35,11 +35,15 @@ var LaTeX = function() {
 
 			const compiler = new Antlr();
 
-			const compiledProofs = compiler.compile(proofs);
+			try {
+				const compiledProofs = compiler.compile(proofs);
 
-			const latex = compiler.preamble + heading + compiledProofs + compiler.postamble;
+				const latex = compiler.preamble + heading + compiledProofs + compiler.postamble;
 
-			resolver(latex);
+				resolver(latex);
+			} catch(error) {
+				rejecter(error);
+			}
 		} else {
 			rejecter('Insufficient amount of headers.');
 		}
