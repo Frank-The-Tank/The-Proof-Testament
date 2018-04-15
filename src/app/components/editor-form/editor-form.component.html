@@ -1,7 +1,11 @@
 <div *ngIf="!infoFilled && !editorEmpty">
   <form>
     <fieldset>
-      <legend>Editor Form</legend>
+      <div class="panel panel-primary">
+        <div class = "panel-heading">
+      <h3 class ="panel-title">Editor Form</h3>
+      </div>
+      <div class="panel-body">
       <div class="form-group" [formGroup]="intent">
         <label> Intention: </label>
         <div class="form-control">
@@ -82,18 +86,25 @@
           </select>
         </div>
       </div>
+</div>
 
-    </fieldset>
-    <br/>
+<div class ="pannel-footer">
     <button (click)="formSubmit(proofSelector.value, hiddenField.value)" class="btn btn-primary">Generate Editor
     </button>
+  </div>
+</div>
+</fieldset>
   </form>
 </div>
 
 <div *ngIf="!infoFilled && editorEmpty">
   <form>
     <fieldset>
-      <legend>New Problem</legend>
+      <div class="panel panel-primary">
+        <div class = "panel-heading">
+      <h3 class ="panel-title">New Problem</h3>
+      </div>
+          <div class="panel-body">
       <div class="form-group" [formGroup]="intent">
         <label> Intention: </label>
         <div class="form-control">
@@ -158,11 +169,18 @@
           </select>
         </div>
       </div>
-    </fieldset>
+    </div>
+
+    <div class ="pannel-footer">
+
+
     <button (click)="addNewProof()" class="btn btn-primary">Add Proof
     </button>
     <button (click)="cancelAddNewProof()" class="btn btn-primary"
             style="background-color:lightcoral; border-color:lightcoral;">Cancel
     </button>
+  </div>
+</div>
+        </fieldset>
   </form>
 </div>
