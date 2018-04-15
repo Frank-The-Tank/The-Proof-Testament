@@ -67,29 +67,26 @@ export class BibleComponent implements OnInit, OnDestroy {
         );
     }
     this.filtered = this.allTheorems.filter(theorem =>
-      theorem.rule.includes(search) ||
+      theorem.rule.includes(search) && theorem.rule.startsWith(search) ||
        (theorem.name && theorem.name.toLowerCase().includes(search.toLowerCase())
     ));
+    console.log(search);
   }
 
-  // DOOOOOOOOO
-//   search(search: ) {
-//     if (search === '') {
-//       this.fieldEmptySubscription = this.service.fillFirstTheorems()
-//         .subscribe(
-//           theorems => {
-//             this.filtered = theorems;
-//           }
-//         );
-//     }
-//   this.filtered = this.allTheorems.filter(theorem =>
-//     theorem.rule.includes(search) ||
-//      (theorem.name[i] && theorem.name.toLowerCase().includes(search.toLowerCase())
-//   ));
-// }
-
+  // search(search: string) {
+  //   if (search === '') {
+  //     this.fieldEmptySubscription = this.service.fillFirstTheorems()
+  //       .subscribe(
+  //         theorems => {
+  //           this.filtered = theorems;
+  //         }
+  //       );
+  //   }
+  //   this.filtered = this.allTheorems.filter(theorem =>
+  //     theorem.rule.includes(search) ||
+  //      (theorem.name && theorem.name.toLowerCase().includes(search.toLowerCase())
+  //   ));
+  // }
   insertIntoEditorComp(name) {
     this.secondClickEvent.emit(name);
   }
-
-}
