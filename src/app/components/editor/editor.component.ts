@@ -242,10 +242,28 @@ export class EditorComponent implements OnInit, OnDestroy {
         this.hideSymbols = true;
         break;
       }
+      case 'lessThanOrEqUnicode': {
+        this.editorInstance.insertText(
+          this.previousEditorSelection,
+          this.lessThanOrEqUnicode + this.hintUnicode
+        );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.hideSymbols = true;
+        break;
+      }
       case 'greaterThan': {
         this.editorInstance.insertText(
           this.previousEditorSelection,
           this.greaterThanUnicode + this.hintUnicode
+        );
+        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.hideSymbols = true;
+        break;
+      }
+      case 'greaterThanOrEq': {
+        this.editorInstance.insertText(
+          this.previousEditorSelection,
+          this.greaterThanorEqUnicode + this.hintUnicode
         );
         this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
         this.hideSymbols = true;
