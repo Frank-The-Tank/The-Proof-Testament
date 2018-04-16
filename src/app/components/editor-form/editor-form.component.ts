@@ -227,7 +227,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
         'Must prove <br />' +
         '  (1) true ⋀ (q ⋁ r) ≡ (true ⋀ q) ⋁ (true ⋀ r) <br />' +
         '  (2) false ⋀ (q ⋁ r) ≡ (false ⋀ q) ⋁ (false ⋀ r)<br /><br />' +
-        '(1) Proof<br />' +
+        '(1) Proof<br /><br />' +
         '(2) Proof<br />'
       },
       {name: 'Mutual Implication', description: 'To prove P ≡ Q, prove P ⇒ Q and Q ⇒ P.<br /><br /><u>Proof:</u>'},

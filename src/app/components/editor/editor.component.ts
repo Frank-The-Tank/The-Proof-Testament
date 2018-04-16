@@ -225,6 +225,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.previousEditorSelection - this.spacing,
           this.equalsUnicode + this.padding  + this.hintUnicode
         );
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
         this.hideSymbols = true;
         break;
@@ -234,6 +235,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.previousEditorSelection - this.spacing,
           this.impliesUnicode + this.hintUnicode
         );
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
         this.hideSymbols = true;
         break;
@@ -243,6 +245,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.previousEditorSelection - this.spacing,
           this.followsFromUnicode + this.hintUnicode
         );
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
         this.hideSymbols = true;
         break;
@@ -252,6 +255,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.previousEditorSelection - this.spacing,
           this.lessThanUnicode + this.padding + this.hintUnicode
         );
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
         this.hideSymbols = true;
         break;
@@ -261,6 +265,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.previousEditorSelection - this.spacing,
           this.lessThanOrEqUnicode + this.padding + this.hintUnicode
         );
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
         this.hideSymbols = true;
         break;
@@ -270,6 +275,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.previousEditorSelection - this.spacing,
           this.greaterThanUnicode + this.padding + this.hintUnicode
         );
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
         this.hideSymbols = true;
         break;
@@ -279,6 +285,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.previousEditorSelection - this.spacing,
           this.greaterThanorEqUnicode + this.padding + this.hintUnicode
         );
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
         this.hideSymbols = true;
         break;
