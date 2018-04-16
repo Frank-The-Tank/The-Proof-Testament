@@ -52,7 +52,7 @@ export class AboutComponent implements OnInit {
       title: "Front-End Software Developer",
       description: "Drake was born and raised in the city of Tacoma, Washington. From a young age, he has always had a goal of creating his own video game one day. Drake hopes that, through the things that he has learned at Pepperdine University and outside of school, he will be able to accomplish that feat and create the next big game.",
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>'],
-      linkedIn: '#',
+      linkedIn: 'https://www.linkedin.com/in/drake-ramsdall-07a007149/',
       gitHub: 'https://github.com/deerake',
       facebook: '#',
       twitter: '#',
@@ -77,7 +77,7 @@ export class AboutComponent implements OnInit {
       linkedIn: 'https://www.linkedin.com/in/zackery-rhodes-32884a149/',
       gitHub: 'https://github.com/ruskimagic',
       facebook: 'https://www.facebook.com/zack.rhodes.35',
-      twitter: '',
+      twitter: '#',
       pic: "../../../assets/images/zach.jpg"
     },
     {
