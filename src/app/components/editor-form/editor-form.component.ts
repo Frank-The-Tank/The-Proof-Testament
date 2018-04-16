@@ -35,6 +35,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
   reproveText = '';
   intention = '';
   infoFilled: boolean;
+  requiredFieldsFilled = true;
   exerciseText = '';
   exNumText = '';
   private infoFilledSubscription;
@@ -55,7 +56,12 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     });
   }
 
-  formSubmit(selection, hiddenVal) {
+  formSubmit(selection, hiddenVal, valid) {
+    if (!valid) {
+      this.requiredFieldsFilled = false;
+      return;
+    }
+    this.requiredFieldsFilled = true;
     this.editorService.toggleFormFilled();
     this.editorService.setEditorNonEmpty(true);
     if (selection === 'custom') {

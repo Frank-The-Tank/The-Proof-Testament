@@ -1,5 +1,5 @@
 <div *ngIf="!infoFilled && !editorEmpty">
-  <form>
+  <form #editorForm="ngForm">
     <fieldset>
       <div class="panel panel-primary">
         <div class="panel-heading">
@@ -7,20 +7,24 @@
         </div>
         <div class="panel-body">
           <div class="form-group">
-            <label>Name:</label>
-            <input [(ngModel)]="nameText" type="text" name="proof" value="" class="form-control">
+            <label for="name">Name:</label>
+            <input [(ngModel)]="nameText" type="text" name="name" value="" id="name" class="form-control" #name="ngModel" required>
+            <div [hidden]="requiredFieldsFilled || name.valid" class="alert alert-danger">Name is required</div>
           </div>
           <div class="form-group">
-            <label>Pin:</label>
-            <input [(ngModel)]="pinText" type="text" name="pin" value="" class="form-control">
+            <label for="pin">Pin:</label>
+            <input [(ngModel)]="pinText" type="text" name="pin" value="" id="pin" class="form-control" #pin="ngModel" required>
+            <div [hidden]="requiredFieldsFilled || pin.valid" class="alert alert-danger">Pin is required</div>
           </div>
           <div class="form-group">
             <label>Course:</label>
-            <input [(ngModel)]="courseText" type="text" name="class" value="" class="form-control">
+            <input [(ngModel)]="courseText" type="text" name="course" value="" id="course" #course="ngModel" class="form-control" required>
+            <div [hidden]="requiredFieldsFilled || course.valid" class="alert alert-danger">Course is required</div>
           </div>
           <div class="form-group">
             <label>Assignment:</label>
-            <input [(ngModel)]="assignmentText" type="text" name="assignment" value="" class="form-control">
+            <input [(ngModel)]="assignmentText" type="text" name="assignment" value="" id="assignment" #assignment="ngModel" class="form-control" required>
+            <div [hidden]="requiredFieldsFilled || assignment.valid" class="alert alert-danger">Assignment is required</div>
           </div>
           <div class='form-group'>
 
@@ -97,8 +101,7 @@
 
         <div class="pannel-footer">
 
-          <button (click)="formSubmit(proofSelector.value, hiddenField.value)" class="btn btn-primary">Generate Editor
-          </button>
+          <button class="btn btn-primary" (click)="formSubmit(proofSelector.value, hiddenField.value, editorForm.form.valid)">Generate Editor</button>
         </div>
       </div>
     </fieldset>
