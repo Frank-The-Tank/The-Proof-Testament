@@ -227,7 +227,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
         'Must prove <br />' +
         '  (1) true ⋀ (q ⋁ r) ≡ (true ⋀ q) ⋁ (true ⋀ r) <br />' +
         '  (2) false ⋀ (q ⋁ r) ≡ (false ⋀ q) ⋁ (false ⋀ r)<br /><br />' +
-        '(1) Proof<br /><br />' +
+        '(1) Proof<br />' +
         '(2) Proof<br />'
       },
       {name: 'Mutual Implication', description: 'To prove P ≡ Q, prove P ⇒ Q and Q ⇒ P.<br /><br /><u>Proof:</u>'},
@@ -238,17 +238,17 @@ export class EditorFormComponent implements OnInit, OnDestroy {
 
     ];
 
-    this.exHeuristic = [
-      {
-        name: 'Formalization of Argument', description: '[[[ <br />' +
-        'Declare variables <br /> <br />' +
-        'State what argument is <br /> <br />' +
-        'The argument is a theorem by the following proof.<br /><br />' +
-        ']]]<br />' + ' <br />' + '[[[<br /> <br /> ]]]'
-      },
-      {name: 'Exercise with Proof', description: '[[[<br /> <br />]]]<br /> <br />Proof:'},
-      {name: 'Answer Exercise', description: '<br /> <br /> [[[ <br /> <br /> ]]] '}
-    ];
+    // this.exHeuristic = [
+    //   {
+    //     name: 'Formalization of Argument', description: '[[[ <br />' +
+    //     'Declare variables <br /> <br />' +
+    //     'State what argument is <br /> <br />' +
+    //     'The argument is a theorem by the following proof.<br /><br />' +
+    //     ']]]<br />' + ' <br />' + '[[[<br /> <br /> ]]]'
+    //   },
+    //   {name: 'Exercise with Proof', description: '[[[<br /> <br />]]]<br /> <br />Proof:'},
+    //   {name: 'Answer Exercise', description: '<br /> <br /> [[[ <br /> <br /> ]]] '}
+    // ];
 
     this.whatTheorem = [
       {rule: '(3.4)', name: 'true'},

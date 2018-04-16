@@ -113,7 +113,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       key: 13,
       handler: () => {
         this.hideSymbols = false;
-        // this.previousEditorSelection.index = this.editorInstance.getSelection();
+        // this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), '\n     ');
         this.previousEditorSelection = this.editorInstance.getSelection();
       }
@@ -221,72 +221,44 @@ export class EditorComponent implements OnInit, OnDestroy {
   symbolSelectorChanged(selectedVal) {
     switch (selectedVal) {
       case 'equals': {
-        this.editorInstance.insertText(
-          this.previousEditorSelection - this.spacing,
-          this.equalsUnicode + this.padding  + this.hintUnicode
-        );
-        this.previousEditorSelection = this.editorInstance.getSelection();
-        this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.equalsUnicode + this.padding + this.hintUnicode);
         this.hideSymbols = true;
         break;
       }
       case 'implies': {
-        this.editorInstance.insertText(
-          this.previousEditorSelection - this.spacing,
-          this.impliesUnicode + this.hintUnicode
-        );
-        this.previousEditorSelection = this.editorInstance.getSelection();
-        this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.impliesUnicode + this.hintUnicode);
         this.hideSymbols = true;
         break;
       }
       case 'followsFrom': {
-        this.editorInstance.insertText(
-          this.previousEditorSelection - this.spacing,
-          this.followsFromUnicode + this.hintUnicode
-        );
-        this.previousEditorSelection = this.editorInstance.getSelection();
-        this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.followsFromUnicode + this.hintUnicode);
         this.hideSymbols = true;
         break;
       }
       case 'lessThan': {
-        this.editorInstance.insertText(
-          this.previousEditorSelection - this.spacing,
-          this.lessThanUnicode + this.padding + this.hintUnicode
-        );
-        this.previousEditorSelection = this.editorInstance.getSelection();
-        this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.lessThanUnicode + this.padding + this.hintUnicode);
         this.hideSymbols = true;
         break;
       }
       case 'lessThanOrEq': {
-        this.editorInstance.insertText(
-          this.previousEditorSelection - this.spacing,
-          this.lessThanOrEqUnicode + this.padding + this.hintUnicode
-        );
-        this.previousEditorSelection = this.editorInstance.getSelection();
-        this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.lessThanOrEqUnicode + this.padding + this.hintUnicode);
         this.hideSymbols = true;
         break;
       }
       case 'greaterThan': {
-        this.editorInstance.insertText(
-          this.previousEditorSelection - this.spacing,
-          this.greaterThanUnicode + this.padding + this.hintUnicode
-        );
-        this.previousEditorSelection = this.editorInstance.getSelection();
-        this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.greaterThanUnicode + this.padding + this.hintUnicode);
         this.hideSymbols = true;
         break;
       }
       case 'greaterThanOrEq': {
-        this.editorInstance.insertText(
-          this.previousEditorSelection - this.spacing,
-          this.greaterThanorEqUnicode + this.padding + this.hintUnicode
-        );
-        this.previousEditorSelection = this.editorInstance.getSelection();
-        this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.greaterThanorEqUnicode + this.padding + this.hintUnicode);
         this.hideSymbols = true;
         break;
       }
