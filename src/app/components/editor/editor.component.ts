@@ -113,6 +113,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       key: 13,
       handler: () => {
         this.hideSymbols = false;
+        this.previousEditorSelection.index = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), '\n     ');
         this.previousEditorSelection = this.editorInstance.getSelection();
       }
@@ -233,7 +234,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.previousEditorSelection - this.spacing,
           this.impliesUnicode + this.hintUnicode
         );
-        this.editorInstance.setSelection(this.previousEditorSelection.index -1);
+        this.editorInstance.setSelection(this.previousEditorSelection.index - 1);
         this.hideSymbols = true;
         break;
       }
