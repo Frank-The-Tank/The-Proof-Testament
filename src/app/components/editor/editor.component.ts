@@ -113,7 +113,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       key: 13,
       handler: () => {
         this.hideSymbols = false;
-        this.previousEditorSelection.index = this.editorInstance.getSelection();
+        // this.previousEditorSelection.index = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), '\n     ');
         this.previousEditorSelection = this.editorInstance.getSelection();
       }
