@@ -56,17 +56,32 @@ quill-editor {
 
 /* symbol button */
 
-// .symbolBtn {
-//   height: auto;
-//   max-height: 200px;
-//   overflow-x: hidden;
-// }
+.symbolBtn {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
 
-// .d-inline-block2 {
-//   display: inline-block;
-// }
+.symbolBtn {
+  height: auto;
+  max-height: 200px;
+  width: 40px !important;
+  overflow-x: hidden;
+}
 
-// #dropdownBasic2 {
-//   padding-top: 4px;
-//   width: 100px;
-// }
+.symbolBtn2 {
+  width: 100px !important;
+  float: left !important;
+}
+
+.dropdown-toggle::after {
+    display:none
+}
+
+.d-inline-block2 {
+  display: inline-block;
+}
+
+#dropdownBasic2 {
+  width: 90px;
+}
