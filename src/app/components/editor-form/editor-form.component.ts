@@ -88,8 +88,8 @@ export class EditorFormComponent implements OnInit, OnDestroy {
         outline += 'Reprove ' + this.reproveText + '<br />' + this.heuristicText;
         break;
       case 'exercise':
-        outline += 'Exercise ' + this.exNumText + '<br /><br />[[[<br />--clear out if no explanations needed--<br />]]]'+
-        '<br /><br />Proof or answer to exercise here<br /><br />[[[<br />--clear out if no explanations needed--<br />]]]' ;
+        outline += 'Exercise ' + this.exNumText + '<br /><br />[[[--clear out if no explanations needed, if needed clear then press enter--<br />]]]'+
+        'answer goes on next line, press enter <br />[[[--clear out if no explanations needed, if needed clear then press enter--<br />]]]' ;
         break;
       default:
         break;
@@ -114,8 +114,8 @@ export class EditorFormComponent implements OnInit, OnDestroy {
         outline += 'Reprove ' + this.addReproveText + '<br />' + this.addHeuristicText;
         break;
       case 'exercise':
-        outline += 'Exercise ' + this.addExNumText + '<br /><br />[[[<br />--clear out if no explanations needed--<br />]]]'+
-        '<br /><br />answer goes here<br /><br />[[[<br />--clear out if no explanations needed--<br />]]]';
+        outline += 'Exercise ' + this.addExNumText + '<br /><br />[[[--clear out if no explanations needed, if needed clear then press enter--<br />]]]'+
+        'answer goes on next line, press enter <br />[[[--clear out if no explanations needed, if needed clear then press enter--<br />]]]' ;
         break;
       default:
         break;
