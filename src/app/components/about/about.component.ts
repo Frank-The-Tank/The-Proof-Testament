@@ -22,7 +22,7 @@ export class AboutComponent implements OnInit {
       linkedIn: 'https://www.linkedin.com/in/frank-garcia-35b456106/',
       gitHub: 'https://github.com/Frank-The-Tank',
       facebook: 'https://www.facebook.com/frank.garcia.16',
-      twitter: '#',
+      twitter: '',
       pic: "../../../assets/images/frank.jpg"
     },
     {
@@ -30,10 +30,10 @@ export class AboutComponent implements OnInit {
       title: "Antlr/Quilljs Developer",
       description: "Coming from the flat land of Texas, Giorgio now lives in SoCal. He joined Pepperdine not knowing what convo was nor that the school was religiously affiliated. But it all worked out and he now studies to finish his Computer Science and Mathematics major. He one day wishes to work at Google, Amazon, or Apple.",
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>'],
-      linkedIn: '#',
+      linkedIn: '',
       gitHub: 'https://github.com/giorgio19',
-      facebook: '#',
-      twitter: '#',
+      facebook: '',
+      twitter: '',
       pic: "../../../assets/images/giorgio.jpg"
     },
     {
@@ -43,8 +43,8 @@ export class AboutComponent implements OnInit {
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'Portfolio Page: <a href="http://micahbenn.com/" target="_blank">Portfolio</a>'],
       linkedIn: 'https://www.linkedin.com/in/micahbenn/',
       gitHub: 'https://github.com/micahbenn',
-      facebook: '#',
-      twitter: '#',
+      facebook: '',
+      twitter: '',
       pic: "../../../assets/images/micah.jpeg"
     },
     {
@@ -54,8 +54,8 @@ export class AboutComponent implements OnInit {
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>'],
       linkedIn: 'https://www.linkedin.com/in/drake-ramsdall-07a007149/',
       gitHub: 'https://github.com/deerake',
-      facebook: '#',
-      twitter: '#',
+      facebook: '',
+      twitter: '',
       pic: "../../../assets/images/drake.jpg"
     },
     {
@@ -65,8 +65,8 @@ export class AboutComponent implements OnInit {
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'Hydrogen: <a href="https://github.com/nteract/hydrogen/" target="_blank">Github</a>'],
       linkedIn: 'https://www.linkedin.com/in/damir-kaliyev-604368b9/',
       gitHub: 'https://github.com/carenekl',
-      facebook: '#',
-      twitter: '#',
+      facebook: '',
+      twitter: '',
       pic: "../../../assets/images/damir.jpg"
     },
     {
@@ -77,8 +77,8 @@ export class AboutComponent implements OnInit {
       linkedIn: 'https://www.linkedin.com/in/zackery-rhodes-32884a149/',
       gitHub: 'https://github.com/ruskimagic',
       facebook: 'https://www.facebook.com/zack.rhodes.35',
-      twitter: '#',
-      pic: "../../../assets/images/zach.jpg"
+      twitter: '',
+      pic: "../../../assets/images/zack.jpg"
     },
     {
       name: "James Maynard",
@@ -87,8 +87,8 @@ export class AboutComponent implements OnInit {
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>'],
       linkedIn: 'https://www.linkedin.com/in/james-maynard-ba9837120/',
       gitHub: 'https://github.com/JamesMaynard26',
-      facebook: '#',
-      twitter: '#',
+      facebook: '',
+      twitter: '',
       pic: "../../../assets/images/james.jpg"
     },
     {
@@ -98,8 +98,8 @@ export class AboutComponent implements OnInit {
       projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>', 'The Daily Shopper: <a href="http://www.dailyshopperapp.com/" target="_blank">App Store</a>'],
       linkedIn: 'https://www.linkedin.com/in/joshua-myers-a98b83122/',
       gitHub: 'https://github.com/jamyers2',
-      facebook: '#',
-      twitter: '#',
+      facebook: '',
+      twitter: '',
       pic: "../../../assets/images/josh.jpg"
     }
   ];
