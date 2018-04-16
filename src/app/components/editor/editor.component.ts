@@ -1314,17 +1314,44 @@ export class EditorComponent implements OnInit, OnDestroy {
         'Content-Type': 'application/json'
       }
     }).subscribe((data: { base64: string }) => {
-      const pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data['base64'];
+
+      // Create blob
+
+      const contentType = 'application/pdf';
+      const sliceSize = 512;
+
+      const byteChars = atob(data['base64']);
+      const byteArrays = [];
+
+      for (var offset = 0; offset < byteChars.length; offset += sliceSize) {
+        var slice = byteChars.slice(offset, offset + sliceSize);
+
+        var byteNums = new Array(slice.length);
+
+        for (var i = 0; i < slice.length; i++) {
+          byteNums[i] = slice.charCodeAt(i);
+        }
+
+        const byteArray = new Uint8Array(byteNums);
+
+        byteArrays.push(byteArray);
+      }
+
+      const blob = new Blob(byteArrays, {type: contentType});
+      const blobURL = window.URL.createObjectURL(blob);
+
+      // Download blob
 
       const a = document.createElement('a');
+
       document.body.appendChild(a);
-      a.href = pdfDataURL;
 
-      a.download = (pin + 'a' + assignment + 'written').replace(/\s/g, '_');
-
+      a.href = blobURL;
       a.download = 'proof';
 
       a.click();
+
+      // Reset button/loader
 
       loader.style.visibility = 'hidden';
       exportBtn.disabled = false;
