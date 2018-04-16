@@ -88,7 +88,8 @@ export class EditorFormComponent implements OnInit, OnDestroy {
         outline += 'Reprove ' + this.reproveText + '<br />' + this.heuristicText;
         break;
       case 'exercise':
-        outline += 'Exercise ' + this.exNumText + '<br /><br />' + this.exerciseText;
+        outline += 'Exercise ' + this.exNumText + '<br /><br />[[[<br />--clear out if no explanations needed--<br />]]]'+
+        '<br /><br />Proof or answer to exercise here<br /><br />[[[<br />--clear out if no explanations needed--<br />]]]' ;
         break;
       default:
         break;
@@ -104,7 +105,7 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     if (this.addHeuristicText === '') {
       this.addHeuristicText = '<br /><u>Proof:</u>';
     }
-    let outline = '---- <br /><br />';
+    let outline = '---------------- <br /><br />';
     switch (this.addIntention) {
       case 'prove':
         outline += 'Prove ' + this.addProofText + '<br />' + this.addHeuristicText;
@@ -113,7 +114,8 @@ export class EditorFormComponent implements OnInit, OnDestroy {
         outline += 'Reprove ' + this.addReproveText + '<br />' + this.addHeuristicText;
         break;
       case 'exercise':
-        outline += 'Exercise ' + this.addExNumText + '<br /><br />' + this.addExerciseText;
+        outline += 'Exercise ' + this.addExNumText + '<br /><br />[[[<br />--clear out if no explanations needed--<br />]]]'+
+        '<br /><br />answer goes here<br /><br />[[[<br />--clear out if no explanations needed--<br />]]]';
         break;
       default:
         break;
@@ -133,7 +135,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       document.getElementById('proofDiv').style.display = 'block';
       document.getElementById('reproveDiv').style.display = 'none';
       document.getElementById('exNumDiv').style.display = 'none';
-      document.getElementById('exerciseDiv').style.display = 'none';
       document.getElementById('proveBtn').style.backgroundColor = '#82ac60';
       document.getElementById('proveBtn').style.borderColor = '#82ac60';
       document.getElementById('reproveBtn').style.backgroundColor = 'grey';
@@ -145,7 +146,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       document.getElementById('proofDiv').style.display = 'none';
       document.getElementById('reproveDiv').style.display = 'block';
       document.getElementById('exNumDiv').style.display = 'none';
-      document.getElementById('exerciseDiv').style.display = 'none';
       document.getElementById('proveBtn').style.backgroundColor = 'grey';
       document.getElementById('proveBtn').style.borderColor = 'grey';
       document.getElementById('reproveBtn').style.backgroundColor = '#82ac60';
@@ -157,7 +157,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       document.getElementById('proofDiv').style.display = 'none';
       document.getElementById('reproveDiv').style.display = 'none';
       document.getElementById('exNumDiv').style.display = 'block';
-      document.getElementById('exerciseDiv').style.display = 'block';
       document.getElementById('proveBtn').style.backgroundColor = 'grey';
       document.getElementById('proveBtn').style.borderColor = 'grey';
       document.getElementById('reproveBtn').style.backgroundColor = 'grey';
@@ -174,7 +173,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       document.getElementById('addProofDiv').style.display = 'block';
       document.getElementById('addReproveDiv').style.display = 'none';
       document.getElementById('addExNumDiv').style.display = 'none';
-      document.getElementById('addExerciseDiv').style.display = 'none';
       document.getElementById('addProveBtn').style.backgroundColor = '#82ac60';
       document.getElementById('addProveBtn').style.borderColor = '#82ac60';
       document.getElementById('addReproveBtn').style.backgroundColor = 'grey';
@@ -186,7 +184,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       document.getElementById('addProofDiv').style.display = 'none';
       document.getElementById('addReproveDiv').style.display = 'block';
       document.getElementById('addExNumDiv').style.display = 'none';
-      document.getElementById('addExerciseDiv').style.display = 'none';
       document.getElementById('addProveBtn').style.backgroundColor = 'grey';
       document.getElementById('addProveBtn').style.borderColor = 'grey';
       document.getElementById('addReproveBtn').style.backgroundColor = '#82ac60';
@@ -198,7 +195,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
       document.getElementById('addProofDiv').style.display = 'none';
       document.getElementById('addReproveDiv').style.display = 'none';
       document.getElementById('addExNumDiv').style.display = 'block';
-      document.getElementById('addExerciseDiv').style.display = 'block';
       document.getElementById('addProveBtn').style.backgroundColor = 'grey';
       document.getElementById('addProveBtn').style.borderColor = 'grey';
       document.getElementById('addReproveBtn').style.backgroundColor = 'grey';
