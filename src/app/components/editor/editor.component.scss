@@ -60,6 +60,7 @@ quill-editor {
   height: auto;
   max-height: 200px;
   overflow-x: hidden;
+  font-family: "Times";
 }
 
 .symbolBtn {
@@ -67,11 +68,13 @@ quill-editor {
   max-height: 200px;
   width: 40px !important;
   overflow-x: hidden;
+  font-family: "Times";
 }
 
 .symbolBtn2 {
   width: 100px !important;
   float: left !important;
+  font-family: "Times";
 }
 
 .dropdown-toggle::after {
