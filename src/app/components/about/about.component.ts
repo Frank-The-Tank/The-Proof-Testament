@@ -84,7 +84,10 @@ export class AboutComponent implements OnInit {
       name: "James Maynard",
       title: "Front-End Software Developer",
       description: 'James Maynard grew up in Naperville, Illinois and came to Pepperdine University with the original intent of pursuing a degree in Dentistry. After realizing that being a dentist is way less fun and interesting than being a computer programmer, he made the decision to switch his major to Computer Science and Mathematics. James has hopes of pursuing a career in chip design or some other aspect of Computer Hardware in the future.',
-      projects: ['The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>'],
+      projects: [
+        'The Proof Testament: <a href="https://github.com/Frank-The-Tank/The-Proof-Testament" target="_blank">GitHub</a>',
+        'Seaver College Walking Tour Registration: <a href="https://seaveradmissions.pepperdine.edu/grouptours/default.aspx?type=group" target="_blank">Web Page</a>'
+      ],
       linkedIn: 'https://www.linkedin.com/in/james-maynard-ba9837120/',
       gitHub: 'https://github.com/JamesMaynard26',
       facebook: '',

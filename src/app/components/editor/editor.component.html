@@ -11,9 +11,9 @@
           <button class='ql-indent' value="+1"></button>
         </span>
 
-<!--         <span id="symbolSelction" class="ql-formats">
+        <span id="symbolSelction" class="ql-formats">
           <div ngbDropdown class="d-inline-block2">
-            <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>Symbols</button>
+            <button class="btn" id="dropdownBasic2" ngbDropdownToggle style="width: auto;">Symbols &#8645;</button>
             <div class="symbolBtn" ngbDropdownMenu aria-labelledby="dropdownBasic2">
               <button
                 *ngFor="let symbol of keys(symbols)"
@@ -25,9 +25,26 @@
               </button>
             </div>
           </div>
-        </span> -->
+        </span>
 
-        <span id='symbolSelction' class="ql-formats">
+        <span class="ql-formats">
+          <div [hidden]="hideSymbols">
+            <div ngbDropdown class="d-inline-block2">
+              <button class="btn" id="dropdownBasic2" ngbDropdownToggle>Hints &#8645;</button>
+              <div class="symbolBtn" ngbDropdownMenu aria-labelledby="dropdownBasic2">
+              <button (click)="symbolSelectorChanged($event.target.value)" class="symbolBtn2" id="equalsBtn" value="equals" [innerHTML]="equalsUnicode"></button>
+              <button (click)="symbolSelectorChanged($event.target.value)" class="symbolBtn2" id="impliesBtn" value="implies" [innerHTML]="impliesUnicode"></button>
+              <button (click)="symbolSelectorChanged($event.target.value)" class="symbolBtn2" id="followsFromBtn" value="followsFrom" [innerHTML]="followsFromUnicode"></button>
+              <button (click)="symbolSelectorChanged($event.target.value)" class="symbolBtn2" id="lessThanBtn" value="lessThan" [innerHTML]="lessThanUnicode"></button>
+              <button (click)="symbolSelectorChanged($event.target.value)" class="symbolBtn2" id="greaterThanBtn" value="greaterThan" [innerHTML]="greaterThanUnicode"></button>
+              <button (click)="symbolSelectorChanged($event.target.value)" class="symbolBtn2" id="lessThanOrEqBtn" value="lessThanOrEq" [innerHTML]="lessThanOrEqUnicode"></button>
+              <button (click)="symbolSelectorChanged($event.target.value)" class="symbolBtn2" id="greaterThanOrEqBtn" value="greaterThanOrEq" [innerHTML]="greaterThanorEqUnicode"></button>
+              </div>
+            </div>
+          </div>
+        </span>
+
+        <!-- <span id='symbolSelction' class="ql-formats">
           <select
             id="symbolInLineSelector"
             (change)="insertSymbol($event.target)"
@@ -40,23 +57,24 @@
               [innerHtml]="symbols[symbol]">
             </option>
           </select>
-        </span>
+        </span> -->
 
-      <span class="ql-formats">
-          <div [hidden]="hideSymbols">
-            <select (change)="symbolSelectorChanged($event.target.value)"
-                    class="ql-size"
-                    title="symbolSelector">
-              <option id="equalsBtn" value="equals" [innerHtml]="equalsUnicode"></option>
-              <option id="impliesBtn" value="implies" [innerHtml]="impliesUnicode"></option>
-              <option id="followsFromBtn" value="followsFrom" [innerHtml]="followsFromUnicode"></option>
-              <option id="lessThanBtn" value="lessThan" [innerHtml]="lessThanUnicode"></option>
-              <option id="greaterThanBtn" value="greaterThan" [innerHtml]="greaterThanUnicode"></option>
-              <option id="lessThanOrEqBtn" value="greaterThanOrEq" [innerHtml]="lessThanOrEqUnicode"></option>
-              <option id="greaterThanOrEqBtn" value="greaterThanOrEq" [innerHtml]="greaterThanOrEqUnicode"></option>
-            </select>
-          </div>
-        </span>
+      <!-- <span class="ql-formats">
+        <div [hidden]="hideSymbols">
+          <select (change)="symbolSelectorChanged($event.target.value)"
+                  class="ql-size"
+                  title="symbolSelector">
+            <option id="equalsBtn" value="equals" [innerHtml]="equalsUnicode"></option>
+            <option id="impliesBtn" value="implies" [innerHtml]="impliesUnicode"></option>
+            <option id="followsFromBtn" value="followsFrom" [innerHtml]="followsFromUnicode"></option>
+            <option id="lessThanBtn" value="lessThan" [innerHtml]="lessThanUnicode"></option>
+            <option id="greaterThanBtn" value="greaterThan" [innerHtml]="greaterThanUnicode"></option>
+            <option id="lessThanOrEqBtn" value="greaterThanOrEq" [innerHtml]="lessThanOrEqUnicode"></option>
+            <option id="greaterThanOrEqBtn" value="greaterThanOrEq" [innerHtml]="greaterThanorEqUnicode"></option>
+          </select>
+        </div>
+      </span> -->
+
       <span class="ql-formats">
           <button (click)="export()" id="exportBtn" class="functionBtn">Export</button>
         </span>

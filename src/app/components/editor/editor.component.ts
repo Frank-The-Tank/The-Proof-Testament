@@ -51,7 +51,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   private infoFilledSubscription;
   outline: string;
   private outlineSubscription;
-  hideSymbols = true;
+  hideSymbols = false;
   private hideSymbolsSubscription;
   private additionalProofSubscription;
   isReadOnly = false;
@@ -103,6 +103,9 @@ export class EditorComponent implements OnInit, OnDestroy {
   eventuallyUnicode = '\u25c7';
   booleanSymbol = '𝔹';
   plusUnicode = '\u002B';
+  padding = "  ";
+  spacing = 5;
+
 
 
   bindings = {
@@ -110,6 +113,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       key: 13,
       handler: () => {
         this.hideSymbols = false;
+        // this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), '\n     ');
         this.previousEditorSelection = this.editorInstance.getSelection();
       }
@@ -192,10 +196,20 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   insertSymbol(selectedVal) {
-    this.editorInstance.insertText(this.previousEditorSelection, selectedVal.value.substring(0, selectedVal.value.length - 15));
+
+    // New dropdown
+
+    this.editorInstance.insertText(this.previousEditorSelection, selectedVal.innerHTML.substring(0, 1));
     this.editorInstance.setSelection(this.previousEditorSelection.index + selectedVal.value.length + 2);
     this.previousEditorSelection = this.editorInstance.getSelection();
-    selectedVal.value = -1;
+
+    // Old dropdown
+
+    // this.editorInstance.insertText(this.previousEditorSelection, selectedVal.value.substring(0, selectedVal.value.length - 15));
+    // this.editorInstance.setSelection(this.previousEditorSelection.index + selectedVal.value.length + 2);
+    // this.previousEditorSelection = this.editorInstance.getSelection();
+
+    // selectedVal.value = -1;
   }
 
   insertSymbolFromBible(selectedVal) {
@@ -207,47 +221,44 @@ export class EditorComponent implements OnInit, OnDestroy {
   symbolSelectorChanged(selectedVal) {
     switch (selectedVal) {
       case 'equals': {
-        this.editorInstance.insertText(
-          this.previousEditorSelection,
-          this.equalsUnicode + this.hintUnicode
-        );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 14);
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.equalsUnicode + this.padding + this.hintUnicode);
         this.hideSymbols = true;
         break;
       }
       case 'implies': {
-        this.editorInstance.insertText(
-          this.previousEditorSelection,
-          this.impliesUnicode + this.hintUnicode
-        );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.impliesUnicode + this.hintUnicode);
         this.hideSymbols = true;
         break;
       }
       case 'followsFrom': {
-        this.editorInstance.insertText(
-          this.previousEditorSelection,
-          this.followsFromUnicode + this.hintUnicode
-        );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.followsFromUnicode + this.hintUnicode);
         this.hideSymbols = true;
         break;
       }
       case 'lessThan': {
-        this.editorInstance.insertText(
-          this.previousEditorSelection,
-          this.lessThanUnicode + this.hintUnicode
-        );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.lessThanUnicode + this.padding + this.hintUnicode);
+        this.hideSymbols = true;
+        break;
+      }
+      case 'lessThanOrEq': {
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.lessThanOrEqUnicode + this.padding + this.hintUnicode);
         this.hideSymbols = true;
         break;
       }
       case 'greaterThan': {
-        this.editorInstance.insertText(
-          this.previousEditorSelection,
-          this.greaterThanUnicode + this.hintUnicode
-        );
-        this.editorInstance.setSelection(this.previousEditorSelection.index + 15);
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.greaterThanUnicode + this.padding + this.hintUnicode);
+        this.hideSymbols = true;
+        break;
+      }
+      case 'greaterThanOrEq': {
+        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), this.greaterThanorEqUnicode + this.padding + this.hintUnicode);
         this.hideSymbols = true;
         break;
       }
@@ -1158,7 +1169,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, 'plus ', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 3, ' plus ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
@@ -1171,7 +1182,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'gcd ', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' gcd ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
@@ -1184,49 +1195,25 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'mod ', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' mod ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
 
-    //lcd
-    quill.keyboard.addBinding({key: 'd'}, {
+    //lcm
+    quill.keyboard.addBinding({key: 'm'}, {
         empty: false,
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lc$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'lcd ', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' lcm ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
 
-    //lub lowest upper bound
-    quill.keyboard.addBinding({key: 'b'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lu$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'lub ', {'bold': true, 'italic': true});
-        quill.format('bold', false);
-        quill.format('italic', false);
-      });
 
-    //glb greatest lower bound
-    quill.keyboard.addBinding({key: 'b'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*gl$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'glb ', {'bold': true, 'italic': true});
-        quill.format('bold', false);
-        quill.format('italic', false);
-      });
 
     //abs
     quill.keyboard.addBinding({key: 's'}, {
