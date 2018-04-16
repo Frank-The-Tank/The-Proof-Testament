@@ -22,18 +22,6 @@ quill-editor {
   font-size: 20px;
 }
 
-.symbolBtn {
-  border: 1px solid black;
-  outline-style: solid;
-  outline-color: #ee7624;
-  line-height: 18px;
-  margin-left: 10px;
-  border-radius: 50px;
-  &:hover {
-    color: red;
-  }
-}
-
 .functionBtn {
   font-weight: bold;
   line-height: 18px;
@@ -61,3 +49,20 @@ quill-editor {
 #inLineHolder {
 
 }
+
+/* symbol button */
+
+// .symbolBtn {
+//   height: auto;
+//   max-height: 200px;
+//   overflow-x: hidden;
+// }
+
+// .d-inline-block2 {
+//   display: inline-block;
+// }
+
+// #dropdownBasic2 {
+//   padding-top: 4px;
+//   width: 100px;
+// }
