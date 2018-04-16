@@ -12,5 +12,6 @@ export const environment = {
     projectId: "the-proof-testament",
     storageBucket: "the-proof-testament.appspot.com",
     messagingSenderId: "388835831512"
-  }
+  },
+  apiURL: "http://localhost:4201/scribe/"
 };
