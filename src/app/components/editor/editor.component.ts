@@ -1176,7 +1176,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 3, 'plus ', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 3, ' plus ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
@@ -1189,7 +1189,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'gcd ', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' gcd ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
@@ -1202,49 +1202,25 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'mod ', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' mod ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
 
-    //lcd
-    quill.keyboard.addBinding({key: 'd'}, {
+    //lcm
+    quill.keyboard.addBinding({key: 'm'}, {
         empty: false,
         collapsed: true,
         prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lc$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'lcd ', {'bold': true, 'italic': true});
+        quill.insertText(range.index - 2, ' lcm ', {'bold': true, 'italic': true});
         quill.format('bold', false);
         quill.format('italic', false);
       });
 
-    //lub lowest upper bound
-    quill.keyboard.addBinding({key: 'b'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lu$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'lub ', {'bold': true, 'italic': true});
-        quill.format('bold', false);
-        quill.format('italic', false);
-      });
 
-    //glb greatest lower bound
-    quill.keyboard.addBinding({key: 'b'}, {
-        empty: false,
-        collapsed: true,
-        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*gl$/
-      },
-      (range, context) => {
-        quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
-        quill.insertText(range.index - 2, 'glb ', {'bold': true, 'italic': true});
-        quill.format('bold', false);
-        quill.format('italic', false);
-      });
 
     //abs
     quill.keyboard.addBinding({key: 's'}, {
