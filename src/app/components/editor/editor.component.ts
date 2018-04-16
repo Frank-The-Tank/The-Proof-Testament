@@ -1338,9 +1338,6 @@ export class EditorComponent implements OnInit, OnDestroy {
       }
 
       const blob = new Blob(byteArrays, {type: contentType});
-
-      console.log(blob);
-
       const blobURL = window.URL.createObjectURL(blob);
 
       // Download blob
@@ -1358,18 +1355,6 @@ export class EditorComponent implements OnInit, OnDestroy {
 
       loader.style.visibility = 'hidden';
       exportBtn.disabled = false;
-
-      // const pdfDataURL = 'data:application/pdf;charset=binary;base64,' + data['base64'];
-
-      // const a = document.createElement('a');
-      // document.body.appendChild(a);
-      // a.href = pdfDataURL;
-
-      // a.download = (pin + 'a' + assignment + 'written').replace(/\s/g, '_');
-
-      // a.download = 'proof';
-
-      // a.click();
     }, error => {
       alert(error['error']);
 
