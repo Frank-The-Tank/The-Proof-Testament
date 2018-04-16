@@ -196,20 +196,9 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   insertSymbol(selectedVal) {
-
-    // New dropdown
-
-    this.editorInstance.insertText(this.previousEditorSelection, selectedVal.innerHTML.substring(0, 1));
-    this.editorInstance.setSelection(this.previousEditorSelection.index + selectedVal.value.length + 2);
+    this.editorInstance.insertText(this.editorInstance.getSelection(), " " + selectedVal.innerHTML.substring(0, 1) + " ");
+    this.editorInstance.setSelection(this.editorInstance.getSelection() + selectedVal.value.length + 2);
     this.previousEditorSelection = this.editorInstance.getSelection();
-
-    // Old dropdown
-
-    // this.editorInstance.insertText(this.previousEditorSelection, selectedVal.value.substring(0, selectedVal.value.length - 15));
-    // this.editorInstance.setSelection(this.previousEditorSelection.index + selectedVal.value.length + 2);
-    // this.previousEditorSelection = this.editorInstance.getSelection();
-
-    // selectedVal.value = -1;
   }
 
   insertSymbolFromBible(selectedVal) {
