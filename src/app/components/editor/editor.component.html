@@ -10,7 +10,24 @@
           <button class='ql-indent' value="-1"></button>
           <button class='ql-indent' value="+1"></button>
         </span>
-      <span id='symbolSelction' class="ql-formats">
+
+<!--         <span id="symbolSelction" class="ql-formats">
+          <div ngbDropdown class="d-inline-block2">
+            <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>Symbols</button>
+            <div class="symbolBtn" ngbDropdownMenu aria-labelledby="dropdownBasic2">
+              <button
+                *ngFor="let symbol of keys(symbols)"
+                [value]="symbol"
+                [innerHTML]="symbols[symbol]"
+                type="button"
+                class="dropdown-item"
+                (click)="insertSymbol($event.target)">
+              </button>
+            </div>
+          </div>
+        </span> -->
+
+        <span id='symbolSelction' class="ql-formats">
           <select
             id="symbolInLineSelector"
             (change)="insertSymbol($event.target)"
@@ -24,6 +41,7 @@
             </option>
           </select>
         </span>
+
       <span class="ql-formats">
           <div [hidden]="hideSymbols">
             <select (change)="symbolSelectorChanged($event.target.value)"
