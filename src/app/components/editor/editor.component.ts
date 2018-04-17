@@ -315,7 +315,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 7, 7); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 7, this.followsFromUnicode + this.hintUnicode);
-        quill.setSelection(range.index + 6);
+        quill.setSelection(range.index + 7);
       });
 
     // equals
