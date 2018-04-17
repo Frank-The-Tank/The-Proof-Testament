@@ -211,43 +211,58 @@ export class EditorComponent implements OnInit, OnDestroy {
     switch (selectedVal) {
       case 'equals': {
         this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.equalsUnicode + this.padding + this.hintUnicode);
+        this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
         this.hideSymbols = true;
         break;
       }
       case 'implies': {
         this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.impliesUnicode + this.hintUnicode);
+        this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
         this.hideSymbols = true;
         break;
       }
       case 'followsFrom': {
         this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.followsFromUnicode + this.hintUnicode);
+        this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
         this.hideSymbols = true;
         break;
       }
       case 'lessThan': {
         this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.lessThanUnicode + this.padding + this.hintUnicode);
+        this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
         this.hideSymbols = true;
         break;
       }
       case 'lessThanOrEq': {
         this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.lessThanOrEqUnicode + this.padding + this.hintUnicode);
+        this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
         this.hideSymbols = true;
         break;
       }
       case 'greaterThan': {
         this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.greaterThanUnicode + this.padding + this.hintUnicode);
+        this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
+        this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
         this.hideSymbols = true;
         break;
       }
       case 'greaterThanOrEq': {
         this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.previousEditorSelection = this.editorInstance.getSelection()
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.greaterThanorEqUnicode + this.padding + this.hintUnicode);
+        this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
         this.hideSymbols = true;
         break;
       }

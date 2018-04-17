@@ -9,7 +9,7 @@ export enum Symbols {
   'union' = '\u222A &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;un',
   'intersection' = '\u2229 &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;in',
   'powerSet' = '<i>P</i> &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;ps',
-  'gets' = '\u2254 &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;=',
+  'gets' = '\u2254 &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;ts',
   'genericQuantifier' = '\u2605 &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;st',
   'atLeast' = '\u2264 &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;ge',
   'atMost' = '\u2265 &nbsp; &nbsp; &nbsp; &nbsp; &thinsp; &thinsp; ;le',
