@@ -21,7 +21,6 @@
             </div>
           </div>
         </span>
-
         <span class="ql-formats">
           <div [hidden]="hideSymbols">
             <div ngbDropdown class="d-inline-block2">
@@ -38,38 +37,6 @@
             </div>
           </div>
         </span>
-
-        <!-- <span id='symbolSelction' class="ql-formats">
-          <select
-            id="symbolInLineSelector"
-            (change)="insertSymbol($event.target)"
-            class="ql-size"
-            title="symbolSelect">
-            <option value="-1">Symbols</option>
-            <option
-              *ngFor="let symbol of keys(symbols)"
-              [ngValue]="symbol"
-              [innerHtml]="symbols[symbol]">
-            </option>
-          </select>
-        </span> -->
-
-      <!-- <span class="ql-formats">
-        <div [hidden]="hideSymbols">
-          <select (change)="symbolSelectorChanged($event.target.value)"
-                  class="ql-size"
-                  title="symbolSelector">
-            <option id="equalsBtn" value="equals" [innerHtml]="equalsUnicode"></option>
-            <option id="impliesBtn" value="implies" [innerHtml]="impliesUnicode"></option>
-            <option id="followsFromBtn" value="followsFrom" [innerHtml]="followsFromUnicode"></option>
-            <option id="lessThanBtn" value="lessThan" [innerHtml]="lessThanUnicode"></option>
-            <option id="greaterThanBtn" value="greaterThan" [innerHtml]="greaterThanUnicode"></option>
-            <option id="lessThanOrEqBtn" value="greaterThanOrEq" [innerHtml]="lessThanOrEqUnicode"></option>
-            <option id="greaterThanOrEqBtn" value="greaterThanOrEq" [innerHtml]="greaterThanorEqUnicode"></option>
-          </select>
-        </div>
-      </span> -->
-
       <span class="ql-formats">
           <button (click)="export()" id="exportBtn" class="functionBtn">Export</button>
         </span>
