@@ -1310,11 +1310,14 @@ export class EditorComponent implements OnInit, OnDestroy {
 
     const text = this.editorInstance.getText();
 
-    const pin = text.match(/Pin\:(?:\s)(.*)/m);
-    const assignment = text.match(/Assignment\:(?:\s)(.*)/m);
+    const pin = (0 + (text.match(/Pin:\s?(\d{1,})/m)[1])).slice(-2);
+    const assignment = text.match(/Assignment:\s?(A\d{1,})/m)[1];
 
     const dev_apiURL = 'http://localhost:4201/scribe/pdf';
     const prod_apiURL = 'http://dev.benn.com.se:4201/scribe/pdf';
+
+    // Proof name
+    const proofName = (pin + assignment).toLowerCase() + "written";
 
     this.http.post(dev_apiURL, {
       text
@@ -1356,7 +1359,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       document.body.appendChild(a);
 
       a.href = blobURL;
-      a.download = 'proof';
+      a.download = proofName;
 
       a.click();
 
