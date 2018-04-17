@@ -1530,15 +1530,15 @@ export class EditorComponent implements OnInit, OnDestroy {
     const text = this.editorInstance.getText();
 
     const pin = (0 + (text.match(/Pin:\s?(\d{1,})/m)[1])).slice(-2);
-    const assignment = text.match(/Assignment:\s?(A\d{1,})/m)[1];
+    const assignment = (text.match(/Assignment:\s?(\d{1,})/m))[1];
 
     const dev_apiURL = 'http://localhost:4201/scribe/pdf';
-    const prod_apiURL = 'http://dev.benn.com.se:4201/scribe/pdf';
+    const prod_apiURL = 'https://dev.benn.com.se:4201/scribe/pdf';
 
     // Proof name
-    const proofName = (pin + assignment).toLowerCase() + "written";
+    const proofName = (pin + 'a' + assignment).toLowerCase() + "written";
 
-    this.http.post(dev_apiURL, {
+    this.http.post(prod_apiURL, {
       text
     }, {
       headers: {
