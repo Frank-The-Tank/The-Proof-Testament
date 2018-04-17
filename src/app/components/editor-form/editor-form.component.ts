@@ -70,9 +70,6 @@ export class EditorFormComponent implements OnInit, OnDestroy {
     if (this.heuristicText === '') {
       this.heuristicText = '<br /><u>Proof:</u>';
     }
-    if (this.assignmentText !== '') {
-      this.assignmentText = 'A' + this.assignmentText;
-    }
 
     let outline =
       ('Name: ').bold() + this.nameText + '<br />' +
