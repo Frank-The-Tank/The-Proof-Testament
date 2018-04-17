@@ -16,16 +16,16 @@ var LaTeX = function() {
 
 		if (arrayString.length >= 4) {
 			const name = (arrayString[0] as string).replace(/Name:(?:\s)(.*)/gm, '$1');
-			const pin = ((arrayString[1] as string)).replace(/Pin:(?:\s)(.*)/gm, '$1');
+			const pin = (0 + ((arrayString[1] as string)).replace(/Pin:(?:\s)(.*)/gm, '$1')).slice(-2);
 			const course = (arrayString[2] as string).replace(/Course:(?:\s)(.*)/gm, '$1');
-			const assignment = (arrayString[3] as string).replace(/Assignment:(?:\s)(.*)/gm, '$1');
+			const assignment = (arrayString[3] as string).replace(/Assignment:\s?(A\d{1,})/gm, "$1");
 
-			const latexName = '\\textbf{' + name + '}\\\\' + '\n';
-			const latexPin = '\\textbf{' + 'Pin: ' + pin + '}\\\\' + '\n';
+			const latexName = '\\textbf{' + pin + '\\ ' + name + '}\\\\' + '\n';
+			// const latexPin = '\\textbf{' + 'Pin: ' + pin + '}\\\\' + '\n';
 			const latexCourse = '\\textbf{' + course + '}\\\\' + '\n';
-			const latexAssignment = '\\textbf{' + "A"+ assignment + '}\\\\\\\\' + '\n';
+			const latexAssignment = '\\textbf{' + assignment + '}\\\\\\\\' + '\n';
 
-			const heading = latexName + latexPin + latexCourse + latexAssignment;
+			const heading = latexName + latexCourse + latexAssignment;
 
 			for (let i = 0; i <= numHeaders; i++) {
 				arrayString.shift();
