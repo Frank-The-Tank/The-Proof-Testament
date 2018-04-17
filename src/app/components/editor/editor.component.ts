@@ -1474,6 +1474,20 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
       });
 
+    //weakest precondition
+    quill.keyboard.addBinding({key: 'p'}, {
+        empty: false,
+        collapsed: true,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*w$/
+      },
+      (range, context) => {
+        quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
+        quill.insertText(range.index - 1, 'wp.().R', 'italic', true);
+        quill.format('italic', false);
+        quill.setSelection(quill.getSelection());
+      });
+
+
     //and-or, sum
     quill.keyboard.addBinding({key: 'm'}, {
         empty: false,
