@@ -30,6 +30,7 @@ quill-editor {
 
 #exportBtn:disabled {
   color: #F1F1F1;
+  font-family: "arial";
 }
 
 .loader {
@@ -77,6 +78,8 @@ quill-editor {
   font-family: "Times";
 }
 
+
+
 .dropdown-toggle::after {
     display:none
 }
@@ -84,6 +87,7 @@ quill-editor {
 .d-inline-block2 {
   display: inline-block;
 }
+
 
 #dropdownBasic2 {
   width: 90px;
