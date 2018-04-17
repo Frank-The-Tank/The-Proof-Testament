@@ -31,6 +31,8 @@ import {PDFTeX} from './pdftex/pdftex';
 
 import {HttpClient} from '@angular/common/http';
 
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
@@ -1298,7 +1300,10 @@ export class EditorComponent implements OnInit, OnDestroy {
     const pin = text.match(/Pin\:(?:\s)(.*)/m);
     const assignment = text.match(/Assignment\:(?:\s)(.*)/m);
 
-    this.http.post('http://localhost:4201/scribe/pdf', {
+    const dev_apiURL = 'http://localhost:4201/scribe/pdf';
+    const prod_apiURL = 'http://dev.benn.com.se:4201/scribe/pdf';
+
+    this.http.post(prod_apiURL, {
       text
     }, {
       headers: {
