@@ -31,7 +31,7 @@ import {PDFTeX} from './pdftex/pdftex';
 
 import {HttpClient} from '@angular/common/http';
 
-import { environment } from '../../../environments/environment';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-editor',
@@ -105,9 +105,8 @@ export class EditorComponent implements OnInit, OnDestroy {
   eventuallyUnicode = '\u25c7';
   booleanSymbol = '𝔹';
   plusUnicode = '\u002B';
-  padding = "  ";
+  padding = '  ';
   spacing = 5;
-
 
 
   bindings = {
@@ -198,7 +197,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   insertSymbol(selectedVal) {
-    this.editorInstance.insertText(this.editorInstance.getSelection(), " " + selectedVal.innerHTML.substring(0, 1) + " ");
+    this.editorInstance.insertText(this.editorInstance.getSelection(), ' ' + selectedVal.innerHTML.substring(0, 1) + ' ');
     this.editorInstance.setSelection(this.editorInstance.getSelection() + selectedVal.value.length + 2);
     this.previousEditorSelection = this.editorInstance.getSelection();
   }
@@ -212,7 +211,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   symbolSelectorChanged(selectedVal) {
     switch (selectedVal) {
       case 'equals': {
-        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), '\n');
         this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.equalsUnicode + this.padding + this.hintUnicode);
         this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
@@ -220,7 +219,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         break;
       }
       case 'implies': {
-        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), '\n');
         this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.impliesUnicode + this.hintUnicode);
         this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
@@ -228,7 +227,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         break;
       }
       case 'followsFrom': {
-        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), '\n');
         this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.followsFromUnicode + this.hintUnicode);
         this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
@@ -236,7 +235,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         break;
       }
       case 'lessThan': {
-        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), '\n');
         this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.lessThanUnicode + this.padding + this.hintUnicode);
         this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
@@ -244,7 +243,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         break;
       }
       case 'lessThanOrEq': {
-        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), '\n');
         this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.lessThanOrEqUnicode + this.padding + this.hintUnicode);
         this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
@@ -252,7 +251,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         break;
       }
       case 'greaterThan': {
-        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
+        this.editorInstance.insertText(this.editorInstance.getSelection(), '\n');
         this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.greaterThanUnicode + this.padding + this.hintUnicode);
         this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
@@ -261,8 +260,8 @@ export class EditorComponent implements OnInit, OnDestroy {
         break;
       }
       case 'greaterThanOrEq': {
-        this.editorInstance.insertText(this.editorInstance.getSelection(), "\n");
-        this.previousEditorSelection = this.editorInstance.getSelection()
+        this.editorInstance.insertText(this.editorInstance.getSelection(), '\n');
+        this.previousEditorSelection = this.editorInstance.getSelection();
         this.editorInstance.insertText(this.editorInstance.getSelection(), this.greaterThanorEqUnicode + this.padding + this.hintUnicode);
         this.editorInstance.setSelection(this.previousEditorSelection.index - 2);
         this.hideSymbols = true;
@@ -448,6 +447,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ≺ ');
+        quill.setSelection(range.index + 1);
       });
 
 
@@ -462,6 +462,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⪯ ');
+        quill.setSelection(range.index + 1);
       });
 
     // poset inverted
@@ -475,6 +476,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⪰ ');
+        quill.setSelection(range.index + 1);
       });
 
     // p inverted
@@ -488,6 +490,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ≻ ');
+        quill.setSelection(range.index + 1);
       });
 
     // hash
@@ -501,6 +504,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' # ');
+        quill.setSelection(range.index);
       });
 
     // sigma
@@ -511,9 +515,10 @@ export class EditorComponent implements OnInit, OnDestroy {
       },
       (range, context) => {
         quill.format('bold', false);
-      quill.format('italic', false);
+        quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' σ ');
+        quill.setSelection(range.index + 1);
       });
 
     // pi
@@ -527,6 +532,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' π ');
+        quill.setSelection(range.index + 1);
       });
 
     // natural join
@@ -540,6 +546,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ⨝ ');
+        quill.setSelection(range.index + 1);
       });
 
     // big-O
@@ -553,6 +560,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' Ο ');
+        quill.setSelection(range.index);
       });
 
     // big omega
@@ -566,6 +574,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' Ω ');
+        quill.setSelection(range.index);
       });
 
     // big theta
@@ -579,6 +588,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' Θ ');
+        quill.setSelection(range.index);
       });
 
     // phi
@@ -592,6 +602,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' 𝜙 ');
+        quill.setSelection(range.index + 1);
       });
 
     // follows from
@@ -605,6 +616,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.followsFromUnicode + ' ');
+        quill.setSelection(range.index + 1);
       });
 
     // less than
@@ -620,6 +632,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.lessThanUnicode + ' ');
+        quill.setSelection(range.index + 1);
       });
 
     // less than or equal to
@@ -633,7 +646,9 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.lessThanOrEqUnicode + ' ');
+        quill.setSelection(range.index + 1);
       });
+
 
     // greater than
     quill.keyboard.addBinding({key: 't'}, {
@@ -646,6 +661,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.greaterThanUnicode + ' ');
+        quill.setSelection(range.index + 1);
       });
 
 
@@ -660,6 +676,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.greaterThanorEqUnicode + ' ');
+        quill.setSelection(range.index + 1);
       });
 
     // left hint bracket
@@ -673,6 +690,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, this.leftBracketUnicode);
+        quill.setSelection(range.index + 1);
       });
 
     // right hint bracket
@@ -725,6 +743,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.textSubUnicode + ' ');
+        quill.setSelection(range.index + 1);
       });
 
     // element of
@@ -896,6 +915,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 2, ' ' + this.universalQuantifierUnicode);
+        quill.setSelection(range.index);
       });
 
     // there exists
@@ -1069,6 +1089,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('italic', false);
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
         quill.insertText(range.index - 3, ' ¬ ');
+        quill.setSelection(range.index);
       });
 
     // does not imply
@@ -1371,7 +1392,6 @@ export class EditorComponent implements OnInit, OnDestroy {
         quill.format('bold', false);
         quill.format('italic', false);
       });
-
 
 
     //abs
