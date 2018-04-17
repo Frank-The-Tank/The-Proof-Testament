@@ -1288,7 +1288,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     const dev_apiURL = 'http://localhost:4201/scribe/pdf';
     const prod_apiURL = 'http://dev.benn.com.se:4201/scribe/pdf';
 
-    this.http.post(prod_apiURL, {
+    this.http.post(dev_apiURL, {
       text
     }, {
       headers: {
