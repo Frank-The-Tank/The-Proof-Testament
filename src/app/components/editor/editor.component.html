@@ -38,8 +38,17 @@
           </div>
         </span>
       <span class="ql-formats">
-          <button (click)="export()" id="exportBtn" class="functionBtn">Export</button>
-        </span>
+          <!-- <button (click)="export()" id="exportBtn" class="functionBtn">Export</button> -->
+          
+          <div ngbDropdown class="d-inline-block2">
+            <button class="btn" id="dropdownBasic2" ngbDropdownToggle style="width: auto;">Save &#8645;</button>
+            <div class="saveBtn" ngbDropdownMenu aria-labelledby="dropdownBasic2">
+              <button (click)="save($event.target.value)" class="saveBtn" value="pdf">PDF</button>
+              <button (click)="save($event.target.value)" class="saveBtn" value="txt">TXT</button>
+            </div>
+          </div>
+
+      </span>
       <span class="ql-formats" style="float:right">
         <button (click)="addNewThm()" class="fa fa-plus-circle" style="color:rgb(130, 172, 96)"></button>
       </span>

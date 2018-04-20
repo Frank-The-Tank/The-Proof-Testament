@@ -1,7 +1,7 @@
 import { Antlr } from '../Antlr/Antlr'
 
 var LaTeX = function() {
-	this.write = function(string) {
+	this.write = function(input) {
 		var resolver;
 		var rejecter;
 		
@@ -10,7 +10,7 @@ var LaTeX = function() {
 			rejecter = reject;
 		});
 
-		const arrayString = string.split('\n');
+		const arrayString = input.split('\n');
 
 		const numHeaders = 4;
 

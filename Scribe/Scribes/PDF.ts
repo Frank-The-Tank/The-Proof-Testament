@@ -6,7 +6,7 @@ const nodeLatex = require('node-latex');
 const base64 = require('base64-stream');
 
 var PDF = function() {
-	this.write = function(string) {
+	this.write = function(input) {
 		var resolver;
 		var rejecter;
 		
@@ -17,10 +17,10 @@ var PDF = function() {
 			rejecter = reject;
 		});
 		
-		scribe.write(string).then((input) => {
+		scribe.write(input).then((latexString) => {
 			const output = base64.encode();
 			
-			const pdf = nodeLatex(input);
+			const pdf = nodeLatex(latexString);
 			
 			pdf.pipe(output);
 			
