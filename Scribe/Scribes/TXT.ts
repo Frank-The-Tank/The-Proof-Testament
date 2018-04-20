@@ -1,4 +1,6 @@
-var RTF = function() {
+const base64 = require('base64-stream');
+
+var TXT = function() {
 	this.write = function(input) {
 		var resolver;
 		var rejecter;
@@ -8,16 +10,14 @@ var RTF = function() {
 			rejecter = reject;
 		});
 
-		// Convert to RTF...
+		const output = Buffer.from(input).toString('base64');
 
-		// On sucess, resolver(<base64-encoded-rtf>)
-
-		// On failure, rejecter(<error>)
+		resolver(output);
 		
 		return promise;
 	};
 };
 
-const instance = new RTF();
+const instance = new TXT();
 
-export { instance as RTF }
+export { instance as TXT }

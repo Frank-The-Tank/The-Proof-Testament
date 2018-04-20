@@ -1520,9 +1520,84 @@ export class EditorComponent implements OnInit, OnDestroy {
     }
   }
 
+  save(selectedVal) {
+    const loader = document.getElementById('exportLoader');
+
+    loader.style.visibility = 'visible';
+
+    const text = this.editorInstance.getText();
+
+    const pin = (0 + (text.match(/Pin:\s?(\d{1,})/m)[1])).slice(-2);
+    const assignment = (text.match(/Assignment:\s?(\d{1,})/m))[1];
+
+    const dev_apiURL = 'http://localhost:4201/scribe/';
+
+    // Proof name
+    const proofName = (pin + 'a' + assignment).toLowerCase() + "written." + selectedVal;
+
+    const contentTypes = {
+      pdf: 'application/pdf',
+      txt: 'txt/plain'
+    }
+
+    this.http.post(dev_apiURL + selectedVal, {
+      text
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).subscribe((data: { base64: string }) => {
+
+      // Create blob
+
+      const contentType = contentTypes[selectedVal];
+      const sliceSize = 512;
+
+      const byteChars = atob(data['base64']);
+      const byteArrays = [];
+
+      for (var offset = 0; offset < byteChars.length; offset += sliceSize) {
+        var slice = byteChars.slice(offset, offset + sliceSize);
+
+        var byteNums = new Array(slice.length);
+
+        for (var i = 0; i < slice.length; i++) {
+          byteNums[i] = slice.charCodeAt(i);
+        }
+
+        const byteArray = new Uint8Array(byteNums);
+
+        byteArrays.push(byteArray);
+      }
+
+      const blob = new Blob(byteArrays, {type: contentType});
+      const blobURL = window.URL.createObjectURL(blob);
+
+      // Download blob
+
+      const a = document.createElement('a');
+
+      document.body.appendChild(a);
+
+      a.href = blobURL;
+      a.download = proofName;
+
+      a.click();
+
+      // Reset button/loader
+
+      loader.style.visibility = 'hidden';
+    }, error => {
+      alert(error['error']);
+
+      loader.style.visibility = 'hidden';
+    });
+  }
+
+  // not using export() anymore. keeping for reference :)
   export() {
     const loader = document.getElementById('exportLoader');
-    const exportBtn = (<HTMLInputElement> document.getElementById('exportBtn'));
+    const exportBtn = (<HTMLInputElement> document.getElementById('saveBtn'));
 
     loader.style.visibility = 'visible';
     exportBtn.disabled = true;

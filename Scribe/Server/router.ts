@@ -1,6 +1,7 @@
 import { AbstractScribe as scribe } from '../AbstractScribe';
 
 import { PDF } from '../Scribes/PDF';
+import { TXT } from '../Scribes/TXT';
 import { RTF } from '../Scribes/RTF';
 
 const express = require('express');
@@ -17,9 +18,10 @@ router.options('/', cors());
 router.post('/:type', (req, res) => {
 	const text = req.body.text;
 	const type = req.params.type;
-
+	
 	const scribes = {
 		pdf: PDF,
+		txt: TXT,
 		rtf: RTF
 	};
 
