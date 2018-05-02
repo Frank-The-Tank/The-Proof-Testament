@@ -292,7 +292,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'm'}, {
         empty: false,
         collapsed: true,
-        prefix: /;i$/,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;i$/,
         offset: 7
       },
       (range, context) => {
@@ -307,7 +307,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'f'}, {
         empty: false,
         collapsed: true,
-        prefix: /;f$/,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;f$/,
         offset: 7
       },
       (range, context) => {
@@ -322,7 +322,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'q'}, {
         empty: false,
         collapsed: true,
-        prefix: /;e$/,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/,
         offset: 7
       },
       (range, context) => {
@@ -337,7 +337,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /;l$/,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/,
         offset: 7
       },
       (range, context) => {
@@ -352,7 +352,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'e'}, {
         empty: false,
         collapsed: true,
-        prefix: /;l$/,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/,
         offset: 7
       },
       (range, context) => {
@@ -368,7 +368,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /;g$/,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;g$/,
         offset: 7,
       },
       (range, context) => {
@@ -383,7 +383,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'e'}, {
         empty: false,
         collapsed: true,
-        prefix: /;g$/,
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;g$/,
         offset: 7,
       },
       (range, context) => {
@@ -400,7 +400,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: '9', shiftKey: true}, {
         // empty: false,
         collapsed: true,
-        prefix: /$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -413,7 +413,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 219, shiftKey: true}, {
         // empty: false,
         collapsed: true,
-        prefix: /$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -426,7 +426,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 219}, {
         // empty: false,
         collapsed: true,
-        prefix: /$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -440,7 +440,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /;i$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;i$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -455,7 +455,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /;r$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -469,7 +469,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'r'}, {
         empty: false,
         collapsed: true,
-        prefix: /;t$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;t$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -483,7 +483,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'i'}, {
         empty: false,
         collapsed: true,
-        prefix: /;t$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;t$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -497,7 +497,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'h'}, {
         empty: false,
         collapsed: true,
-        prefix: /;h$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;h$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -511,7 +511,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
-        prefix: /;s$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;s$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -525,7 +525,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'i'}, {
         empty: false,
         collapsed: true,
-        prefix: /;p$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -539,7 +539,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'n'}, {
         empty: false,
         collapsed: true,
-        prefix: /;j$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;j$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -553,7 +553,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'o'}, {
         empty: false,
         collapsed: true,
-        prefix: /;b$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;b$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -567,7 +567,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'g'}, {
         empty: false,
         collapsed: true,
-        prefix: /;b$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;b$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -581,7 +581,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /;b$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;b$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -595,7 +595,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'h'}, {
         empty: false,
         collapsed: true,
-        prefix: /;p$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -609,7 +609,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'f'}, {
         empty: false,
         collapsed: true,
-        prefix: /;f$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;f$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -623,7 +623,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /;l$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/
 
         // missing * and - and + characters and ^
       },
@@ -639,7 +639,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'e'}, {
         empty: false,
         collapsed: true,
-        prefix: /;l$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -654,7 +654,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /;g$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;g$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -669,7 +669,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'e'}, {
         empty: false,
         collapsed: true,
-        prefix: /;g$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;g$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -683,7 +683,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'b'}, {
         empty: false,
         collapsed: true,
-        prefix: /;l$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -697,7 +697,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'b'}, {
         empty: false,
         collapsed: true,
-        prefix: /;r$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -711,7 +711,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'm'}, {
         empty: false,
         collapsed: true,
-        prefix: /;i$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;i$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -725,7 +725,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'q'}, {
         empty: false,
         collapsed: true,
-        prefix: /;e$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -739,7 +739,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 's'}, {
         empty: false,
         collapsed: true,
-        prefix: /;t$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;t$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -753,7 +753,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'l'}, {
         empty: false,
         collapsed: true,
-        prefix: /;e$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -767,7 +767,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 's'}, {
         empty: false,
         collapsed: true,
-        prefix: /;u$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;u$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -781,7 +781,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'b'}, {
         empty: false,
         collapsed: true,
-        prefix: /;p$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -795,7 +795,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
-        prefix: /;p$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -809,7 +809,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'b'}, {
         empty: false,
         collapsed: true,
-        prefix: /;s$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;s$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -823,7 +823,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
-        prefix: /;s$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;s$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -836,7 +836,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 's'}, {
         empty: false,
         collapsed: true,
-        prefix: /;e$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -851,7 +851,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'n'}, {
         empty: false,
         collapsed: true,
-        prefix: /;u$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;u$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -865,7 +865,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'n'}, {
         empty: false,
         collapsed: true,
-        prefix: /;i$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;i$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -879,7 +879,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'o'}, {
         empty: false,
         collapsed: true,
-        prefix: /;c$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;c$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -894,7 +894,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'r'}, {
         empty: false,
         collapsed: true,
-        prefix: /;o$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;o$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -908,7 +908,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'n'}, {
         empty: false,
         collapsed: true,
-        prefix: /;a$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;a$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -922,7 +922,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
-        prefix: /;f$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;f$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -936,7 +936,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'x'}, {
         empty: false,
         collapsed: true,
-        prefix: /;e$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;e$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -949,7 +949,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 's'}, {
         empty: false,
         collapsed: true,
-        prefix: /;p$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;p$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -963,7 +963,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
-        prefix: /;u$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;u$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -977,7 +977,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
-        prefix: /;r$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -991,7 +991,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
-        prefix: /;l$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;l$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1005,7 +1005,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
-        prefix: /;d$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;d$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1018,7 +1018,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
-        prefix: /;c$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;c$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1032,7 +1032,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'v'}, {
         empty: false,
         collapsed: true,
-        prefix: /;d$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;d$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1046,7 +1046,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'c'}, {
         empty: false,
         collapsed: true,
-        prefix: /;f$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;f$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1060,7 +1060,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
-        prefix: /;f$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;f$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1074,7 +1074,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /;d$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;d$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1088,7 +1088,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /;s$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;s$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1106,7 +1106,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /;no$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;no$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1120,7 +1120,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'm'}, {
         empty: false,
         collapsed: true,
-        prefix: /;ni$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ni$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1134,7 +1134,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'f'}, {
         empty: false,
         collapsed: true,
-        prefix: /;nf$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;nf$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1148,7 +1148,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'q'}, {
         empty: false,
         collapsed: true,
-        prefix: /;ne$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ne$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1162,7 +1162,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'v'}, {
         empty: false,
         collapsed: true,
-        prefix: /;ne$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ne$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1176,7 +1176,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'l'}, {
         empty: false,
         collapsed: true,
-        prefix: /;ne$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ne$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1190,7 +1190,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'b'}, {
         empty: false,
         collapsed: true,
-        prefix: /;ns$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ns$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1205,7 +1205,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
-        prefix: /;ns$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ns$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1219,7 +1219,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
-        prefix: /;np$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;np$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1233,7 +1233,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'b'}, {
         empty: false,
         collapsed: true,
-        prefix: /;np$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;np$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1248,7 +1248,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'n'}, {
         empty: false,
         collapsed: true,
-        prefix: /;n$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;n$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1262,7 +1262,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'r'}, {
         empty: false,
         collapsed: true,
-        prefix: /;i$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;i$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1276,7 +1276,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'a'}, {
         empty: false,
         collapsed: true,
-        prefix: /;r$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1290,7 +1290,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'n'}, {
         empty: false,
         collapsed: true,
-        prefix: /;r$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;r$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1304,7 +1304,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'n'}, {
         empty: false,
         collapsed: true,
-        prefix: /;b$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;b$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1318,7 +1318,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'd'}, {
         empty: false,
         collapsed: true,
-        prefix: /;en$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;en$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1332,7 +1332,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /;nx$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;nx$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1346,7 +1346,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'l'}, {
         empty: false,
         collapsed: true,
-        prefix: /;ut$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ut$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1360,7 +1360,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 't'}, {
         empty: false,
         collapsed: true,
-        prefix: /;ev$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;ev$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1374,7 +1374,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'w'}, {
         empty: false,
         collapsed: true,
-        prefix: /;al$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;al$/
       },
       (range, context) => {
         quill.format('bold', false);
@@ -1388,7 +1388,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 's'}, {
         empty: false,
         collapsed: true,
-        prefix: /plu$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*plu$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
@@ -1401,7 +1401,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'd'}, {
         empty: false,
         collapsed: true,
-        prefix: /gc$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*gc$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -1414,7 +1414,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'd'}, {
         empty: false,
         collapsed: true,
-        prefix: /mo$/
+        prefix: /[[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*mo$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -1427,7 +1427,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'm'}, {
         empty: false,
         collapsed: true,
-        prefix: /lc$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*lc$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -1441,7 +1441,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 's'}, {
         empty: false,
         collapsed: true,
-        prefix: /ab$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*ab$/
       },
       (range, context) => {
         quill.deleteText(range.index - 2, 2); // range.index-1 = user's cursor -1 -> where = character is
@@ -1454,7 +1454,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'e'}, {
         empty: false,
         collapsed: true,
-        prefix: /tru$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*tru$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
@@ -1466,7 +1466,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'e'}, {
         empty: false,
         collapsed: true,
-        prefix: /fals$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*fals$/
       },
       (range, context) => {
         quill.deleteText(range.index - 4, 4); // range.index-1 = user's cursor -1 -> where = character is
@@ -1478,7 +1478,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'p'}, {
         empty: false,
         collapsed: true,
-        prefix: /w$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*w$/
       },
       (range, context) => {
         quill.deleteText(range.index - 1, 1); // range.index-1 = user's cursor -1 -> where = character is
@@ -1492,7 +1492,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'm'}, {
         empty: false,
         collapsed: true,
-        prefix: /;su$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;su$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
@@ -1504,7 +1504,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     quill.keyboard.addBinding({key: 'd'}, {
         empty: false,
         collapsed: true,
-        prefix: /;pr$/
+        prefix: /[/(){}╱∏∑◇○ʯ□≡=¬≢≠≥≤⇒⇐⇍⇏≔<>∈∅Ʊ⊂⊃⊆⊇∉⊄⊅⊈⊉∪∩~⋅*∘∙÷×Ρ↓↑←→ ℕℤℚℝ𝔹〈〉◃▹σ★∀∃⋁⋀≺⪯⪰≻ΩΟΘπ#𝜙⨝+-^a-zA-Zs]*;pr$/
       },
       (range, context) => {
         quill.deleteText(range.index - 3, 3); // range.index-1 = user's cursor -1 -> where = character is
