@@ -1,0 +1,51 @@
+<form novalidate [formGroup]="userForm">
+  <fieldset formGroupName="user">
+    <div class="form-group">
+      <label>Name:</label>
+      <input type="text" class="form-control" formControlName="name" required>
+    </div>
+
+    <div class="form-group">
+      <label>Pin:</label>
+      <input type="number" class="form-control" formControlName="pin" required>
+    </div>
+
+    <div class="form-group">
+      <label>Course:</label>
+      <input type="text" class="form-control" formControlName="course" required>
+    </div>
+
+    <div class="form-group">
+      <label>Assignment:</label>
+      <input type="number" class="form-control" formControlName="assignment" required>
+    </div>
+  </fieldset>
+
+  <div class="form-group">
+    <button id="proveBtn" name="intention" (click)="intentionChosen('prove')" value="prove">Prove</button>
+    <button id="reproveBtn" name="intention" (click)="intentionChosen('reprove')" value="reprove">Reprove</button>
+    <button id="exBtn" name="intention" (click)="intentionChosen('exercise')" value="exercise">Exercise</button>
+  </div>
+
+  <div class="form-group">
+    <label>Proof:</label>
+    <select class="form-control" formControlName="proof">
+      <option value="">Please select a proof</option>
+      <option *ngFor="let p of proof" [ngValue]="p.rule">{{p.rule}}: {{p.name}}</option>
+    </select>
+  </div>
+
+
+  <div class="form-group">
+    <label>Method:</label>
+    <select class="form-control" formControlName="method">
+      <option value="">Please select a method</option>
+      <option *ngFor="let h of heuristic" [ngValue]="h.description">{{h.name}}</option>
+    </select>
+  </div>
+
+  <div class="pannel-footer">
+    <button>Generate Editor</button>
+  </div>
+  <pre>{{userForm.value | json}}</pre>
+</form>
